@@ -1,0 +1,71 @@
+#bottom-container {
+    webkit-display: flex;
+    display: flex;
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0px 2px 10px #888888;
+    z-index: 666;
+}
+
+#bottom-container .left-content {
+    display: flex;
+    flex: 1;
+    color: gray;
+    font-size: 12px;
+    background: white;
+}
+
+#bottom-container .right-content {
+    display: flex;
+    flex: 1;
+    color: white;
+    font-size: 16px;
+}
+
+#bottom-container .left-content .item {
+    flex-direction: column-reverse;
+    font-size: 11px;
+    color: #888;
+}
+
+#bottom-container .left-content img {
+    width: 24px;
+    height: 24px;
+}
+
+#bottom-container .item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+}
+#bottom-container .left-content .favored
+{
+    color: rgb(52, 187, 190);;
+}
+
+.appoint {
+    background: orange;
+    color: white;
+}
+
+.record {
+    background: mediumturquoise;
+    color: white;
+}
+
+#like {
+
+}
+
+#online-ask {
+
+}
+
+#phone-ask {
+
+}

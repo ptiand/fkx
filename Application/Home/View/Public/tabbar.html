@@ -1,0 +1,159 @@
+
+<style>
+    .bottom-tips {
+        background-color: #FF0000;
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        border-radius: 50%;
+        overflow: hidden;
+        display: none;
+    }
+</style>
+<div class="bottom-tab-bar">
+    <div class="bottom-tab">
+        <?php if(session('NavBar') =='Index' ){ ?>
+        <a class="" href="{:U('Index/index')}"><img src="/public/Home/images/btbar_index2.png" alt=""></a>
+        <a class="actives" href="{:U('Index/index')}">房客行</a>
+        <?php }else{ ?>
+        <a class="" href="{:U('Index/index')}"><img src="/public/Home/images/btbar_index1.png" alt=""></a>
+        <a class="" href="{:U('Index/index')}">房客行</a>
+        <?php } ?>
+    </div>
+    <div class="bottom-tab" id="tabIm">
+        <?php if(session('NavBar') =='Im' ){ ?>
+        <a href="{:U('Im/index')}" style="position: relative;"><img src="/public/Home/images/btbar_talk2.png" alt=""><i class="bottom-tips"></i></a>
+        <a class="actives" href="{:U('Im/index')}">微聊</a>
+        <?php }else{ ?>
+        <a href="{:U('Im/index')}" style="position: relative;"><img src="/public/Home/images/btbar_talk1.png" alt=""><i class="bottom-tips"></i></a>
+        <a href="{:U('Im/index')}">微聊</a>
+        <?php } ?>
+    </div>
+    <div class="bottom-tab">
+        <?php if(session('NavBar') =='Service' ){ ?>
+        <a href="{:U('Service/index')}"><img src="/public/Home/images/btbar_fav2.png" alt=""></a>
+        <a class="actives" href="{:U('Service/index')}">服务</a>
+        <?php }else{ ?>
+        <a href="{:U('Service/index')}"><img src="/public/Home/images/btbar_fav1.png" alt=""></a>
+        <a href="{:U('Service/index')}">服务</a>
+        <?php } ?>
+    </div>
+    <div class="bottom-tab">
+        <?php if(session('NavBar') =='Center' ){ ?>
+        <a href="{:U('Center/index')}"><img src="/public/Home/images/btbar_my2.png" alt=""></a>
+        <a class="actives" href="{:U('Center/index')}">我的</a>
+        <?php }else{ ?>
+        <a href="{:U('Center/index')}"><img src="/public/Home/images/btbar_my1.png" alt=""></a>
+        <a href="{:U('Center/index')}">我的</a>
+        <?php } ?>
+    </div>
+</div>
+<script src="/public/Static/webim/sdk/webim.js"></script>
+<script src="/public/Static/webim/sdk/json2.js"></script>
+<?php if(session('NavBar') !='Im' && $isLogin){ ?>
+<script>
+    (function () {
+
+
+        getLoginInfo(function (content) {
+            var info = content.loginInfo;
+            var loginInfo = {
+                identifier: info.identifier,
+                userSig: info.sig,
+                sdkAppID: info.sdkAppID,
+                accountType: info.accountType,
+            };
+            //监听新消息事件
+            //newMsgList 为新消息数组，结构为[Msg]
+            function onMsgNotify(newMsgList) {
+                getRecentContactList(updateTabImTip);
+            }
+
+            var listeners = {
+                "onConnNotify": function(e){} //监听连接状态回调变化事件,必填
+                ,
+                "jsonpCallback": function(e){} //IE9(含)以下浏览器用到的jsonp回调函数，
+                ,
+                "onMsgNotify": function(e){onMsgNotify(e);console.log("onMsgNotify >>> ", e);} //监听新消息(私聊，普通群(非直播聊天室)消息，全员推送消息)事件，必填
+                ,
+                "onBigGroupMsgNotify": function(e){} //监听新消息(直播聊天室)事件，直播场景下必填
+                ,
+                "onGroupSystemNotifys": function(e){} //监听（多终端同步）群系统消息事件，如果不需要监听，可不填
+                ,
+                "onGroupInfoChangeNotify": function(e){} //监听群资料变化事件，选填
+                ,
+                "onFriendSystemNotifys": function(e){} //监听好友系统通知事件，选填
+                ,
+                "onProfileSystemNotifys": function(e){} //监听资料系统（自己或好友）通知事件，选填
+                ,
+                "onKickedEventCall": function(e){} //被其他登录实例踢下线
+                ,
+                "onC2cEventNotifys": function(e){} //监听C2C系统消息通道
+                ,
+                "onAppliedDownloadUrl": function(e){} //申请文件/音频下载地址的回调
+            };
+
+            var options = {
+                'isAccessFormalEnv': true, //是否访问正式环境，默认访问正式，选填
+                'isLogOn': false //是否开启控制台打印日志,默认开启，选填
+            };
+
+            webim.login(loginInfo, listeners, options, function(resp){
+                // 登录成功
+                console.log("webim.login >>> ", resp);
+                getRecentContactList(updateTabImTip);
+            }, function(err) {
+                // alert(err.ErrorInfo);
+            });
+
+            function getRecentContactList(callback) {
+                webim.getRecentContactList({
+                    'Count': 10 //最近的会话数 ,最大为 100
+                },function(resp){
+                    //业务处理
+                    console.log("getRecentContactList >>> ", resp);
+                    callback(resp.SessionItem);
+                },function(resp){
+                    // 错误回调
+                    // alert('服务器出错!');
+                });
+            }
+
+            function hasMessage(itemList) {
+                var count = 0;
+                for (var item of itemList) {
+                    if (count>0) {
+                        return true;
+                    }
+                    count += item.UnreadMsgCount;
+                }
+                return count>0;
+            }
+
+            function updateTabImTip(itemList) {
+                if (hasMessage(itemList)) {
+                    console.log('new message >>>');
+                    $('#tabIm').find('.bottom-tips').show();
+                } else {
+                    console.log('no message');
+                }
+            }
+        });
+
+        function getLoginInfo(callback) {
+            $.post('{:U("Im/getLoginInfo")}', {}, function (e) {
+                // console.log('getLoginInfo', e);
+                if (!e || e.status!=1) {
+                    return;
+                }
+                callback(e.content);
+            });
+        }
+
+        // $('#tabIm').click(function () {
+        //     $('#tabIm').find('.bottom-tips').hide();
+        // });
+
+    })();
+</script>
+<?php }?>

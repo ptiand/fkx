@@ -1,0 +1,169 @@
+<foreach name="favorites" item="fav">
+    <if condition="$fav['houseType'] eq $HouseType['NewHouse']">
+    <div class="fav-item">
+        <div class="recommend-item" onclick="javascript:window.location.href='{:U('Lists/newHouseDetail', array('id'=>$fav['houseId']))}'">
+            <div class="main-content">
+                <div class="recommend-item-img">
+                    <img src="{$fav['house']['primaryImage']|default='/public/no_photo.png'}" alt="图片"/>
+                </div>
+                <div class="houseInfo">
+                    <span class="title">{$fav['house']['name']}</span>
+                    <div class="attr">
+                        <div class="left">
+                            <span>{$fav['house']['areaCaption']}</span>
+                            <span>
+                                <if condition="!empty($fav['house']['minHouseRoom']) && !empty($fav['house']['maxHouseRoom'])">
+                                    <?php if($fav['house']['minHouseRoom'] != $fav['house']['maxHouseRoom']){
+                                        echo $fav['house']['minHouseRoom'].'-'.$fav['house']['maxHouseRoom'].'室';
+                                    } else{
+                                        echo $fav['house']['maxHouseRoom'].'室';
+                                    }?>
+                                </if>
+                                <if condition="(!empty($fav['house']['minHouseRoom']) || !empty($fav['house']['maxHouseRoom'])) && (!empty($fav['house']['minSquare']) || !empty($fav['house']['maxSquare']))">|</if>
+                                <if condition="!empty($fav['house']['minSquare']) && !empty($fav['house']['maxSquare'])">
+                                    <?php if($fav['house']['minSquare'] != $fav['house']['maxSquare']){
+                                        echo $fav['house']['minSquare'].'-'.$fav['house']['maxSquare'].'㎡';
+                                    } else {
+                                        echo $fav['house']['maxSquare'].'㎡';
+                                    }?>
+                                </if>
+                                <if condition="empty($fav['house']['minHouseRoom']) && empty($fav['house']['maxHouseRoom']) && empty($fav['house']['minSquare']) && empty($fav['house']['maxSquare'])">敬请关注</if>
+                            </span>
+                        </div>
+                        <div class="right">
+                            <span style="flex-direction: row">
+                                <span class="money">
+                                    <if condition="$fav['house']['minTotalPrice'] gt 0">{:renderMoney($fav['house']['minTotalPrice'])}</if>
+                                    <if condition="!($fav['house']['minTotalPrice'] gt 0) && $fav['house']['minPrice']">{:renderMoney($fav['house']['minPrice'])}</if>
+                                </span>
+                                <span>
+                                    <if condition="$fav['house']['minTotalPrice'] gt 0">万元/套起</if>
+                                    <if condition="!($fav['house']['minTotalPrice'] gt 0) && $fav['house']['minPrice']">元/㎡起</if>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <?php $classNames = array(1=>'first', 2=> 'second', 0=> 'third');?>
+                    <div class="label">
+                        <span class="first">{$fav['house']['stateCaption']}</span>
+                        <span class="second">{$fav['house']['typeCaption']}</span>
+                        <foreach name="fav['house']['tags']" item="tag" key="key">
+                            <span class="{$classNames[$key%3]}">{$tagNames[$tag]}</span>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <if condition="$fav['house']['commission']">
+                <div class="bottom-content">
+                    <span>佣金： {$fav['house']['commission']}</span>
+                </div>
+            </if>
+            -->
+        </div>
+    </div>
+    </if>
+    <if condition="$fav['houseType'] eq $HouseType['OldHouse']">
+    <div class="fav-item">
+        <div class="recommend-item" onclick="javascript:window.location.href='{:U('OldHouse/detail', array('id'=>$fav['house']['id']))}'">
+            <div class="main-content">
+                <div class="recommend-item-img">
+                    <img src="{$fav['house']['primaryImage']|default='/public/no_photo.png'}" alt="图片"/>
+                </div>
+                <div class="houseInfo">
+                    <span class="title">{$fav['house']['name']}</span>
+                    <div class="attr">
+                        <div class="left">
+                        <span>{$fav['house']['areaCaption']}</span>
+                        <span>
+                            <?php
+                                $text='';
+                                if($fav['house']['houseRoom']) $text .= $fav['house']['houseRoom'] . '室';
+                                if($fav['house']['livingRoom']) $text .= $fav['house']['livingRoom'] . '厅';
+                                if($fav['house']['restRoom']) $text .= $fav['house']['restRoom'] . '卫';
+                                if($fav['house']['diningRoom']) $text .= $fav['house']['diningRoom'] . '厨';
+                                if($text) $text .= ' |';
+                                echo $text;
+                            ?>
+                            {$fav['house']['square']|round}㎡
+                        </span>
+                        </div>
+                        <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($fav['house']['totalPrice'], 0)}</span>
+                            <span>万元/套起</span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="label">
+                        <span class="first">{$fav['house']['stateCaption']}</span>
+                        <span class="second">{$fav['house']['typeCaption']}</span>
+                        <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                        <foreach name="fav['house']['tags']" item="tag" key="key">
+                            <span class="{$classMap[$key%3]}">{$tagNames[$tag]}</span>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </if>
+    <if condition="$fav['houseType'] eq $HouseType['RentalHouse']">
+    <div class="fav-item">
+        <div class="recommend-item" onclick="javascript:window.location.href='{:U('RentalHouse/detail', array('id'=>$fav['house']['id']))}'">
+            <div class="main-content">
+                <div class="recommend-item-img">
+                    <img src="{$fav['house']['primaryImage']|default='/public/no_photo.png'}" alt="图片"/>
+                </div>
+                <div class="houseInfo">
+                    <span class="title">{$fav['house']['name']}</span>
+                    <div class="attr">
+                        <div class="left">
+                        <span>
+                            <?php
+                                $text='';
+                                if($fav['house']['houseRoom']) $text .= $fav['house']['houseRoom'] . '室';
+                                if($fav['house']['livingRoom']) $text .= $fav['house']['livingRoom'] . '厅';
+                                if($fav['house']['restRoom']) $text .= $fav['house']['restRoom'] . '卫';
+                                if($fav['house']['diningRoom']) $text .= $fav['house']['diningRoom'] . '厨';
+                                if($text) $text .= ' |';
+                                echo $text;
+                            ?>
+                            {$fav['house']['square']|round}㎡
+                        </span>
+                            <span>{$fav['house']['areaCaption']}</span>
+                        </div>
+                        <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($fav['house']['price'], 0)}</span>
+                            <span>元/月</span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="label">
+                        <if condition="$house['source'] == $Source['Personal']">
+                            <notempty name="house['stateCaption']">
+                                <span class="first">{$house.stateCaption}</span>
+                            </notempty>
+                            <notempty name="house['typeCaption']">
+                                <span class="second">{$house.typeCaption}</span>
+                            </notempty>
+                        </if>
+                        <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                        <foreach name="fav['house']['tags']" item="tag" key="key">
+                            <span class="block {$classMap[$key%3]}">{$tagNames[$tag]}</span>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <if condition="$fav['house']['source']==2 && $fav['house']['commission']">
+                <div class="bottom-content">
+                    <span>佣金： {$fav['house']['commission']}</span>
+                </div>
+            </if>
+            -->
+        </div>
+    </div>
+    </if>
+</foreach>

@@ -1,0 +1,1026 @@
+[ 2018-07-19T16:28:50+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:28:58+08:00 ] 127.0.0.1 /admin.php/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-19T16:29:01+08:00 ] 127.0.0.1 /admin.php/RentalHouse/loadRentalHouse.html?sort=aid&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 LIMIT 0,10   [ RunTime:0.0220s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 9 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 9 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined index:  E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0220s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 13 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 12 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 12 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `state` <> 9 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-19T16:29:05+08:00 ] 127.0.0.1 /admin.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: 非法操作:RentalHouse
+
+[ 2018-07-19T16:29:40+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-07-19T16:29:46+08:00 ] 127.0.0.1 /admin.php/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:29:49+08:00 ] 127.0.0.1 /admin.php/RentalHouse/loadRentalHouse.html?sort=aid&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 LIMIT 0,10   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 9 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 9 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [8] Undefined index:  E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+NOTIC: [8] Undefined offset: 13 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 12 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 12 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `state` <> 9 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:29:51+08:00 ] 127.0.0.1 /admin.php/Admin/RentalHouse/edit.html?id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:RentalHouse
+
+[ 2018-07-19T16:30:27+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:30:29+08:00 ] 127.0.0.1 /admin.php/account/Login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `employee` WHERE `status` = 0 AND `del` = 0 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:30:36+08:00 ] 127.0.0.1 /admin.php/account/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `employee` WHERE `employee_num` = 'admin' AND `del` = 0 LIMIT 1   [ RunTime:0.0200s ]
+
+[ 2018-07-19T16:30:36+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:30:43+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:30:46+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/loadRentalHouse.html?sort=aid&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0490s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 LIMIT 0,10   [ RunTime:0.0530s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0430s ]
+NOTIC: [8] Undefined offset: 9 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 9 LIMIT 1   [ RunTime:0.0470s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0460s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0420s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0470s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0410s ]
+NOTIC: [8] Undefined index:  E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0440s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0360s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0380s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0360s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0340s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0360s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0340s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0330s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0250s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 13 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 12 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 12 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `state` <> 9 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-07-19T16:30:49+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0360s ]
+SQL: SELECT * FROM `types` WHERE `is_del` <> 1  [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `zxiu` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `zxiu` WHERE `is_del` <> 1  [ RunTime:0.0220s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` <> 1 AND `pid` = 0  [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 7 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 12 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 16 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 22 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 22 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 22 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 23 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 23 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 23 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 24 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 24 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 24 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 25 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 25 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 25 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 26 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 26 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 26 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 30 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 36 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 40 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 46 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 50 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 56 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 60 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 66 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 66 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 69 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 73 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 88 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 94 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 102 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 108 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 114 行.
+NOTIC: [8] Undefined variable: house E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 118 行.
+NOTIC: [8] Undefined variable: houseTags E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [8] Undefined variable: houseTags E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [8] Undefined variable: houseTags E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [8] Undefined variable: houseTags E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 125 行.
+NOTIC: [8] Undefined variable: houseVideo E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 132 行.
+NOTIC: [8] Undefined variable: housePics E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php 第 142 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:30:49+08:00 ] 127.0.0.1 /index.php/Admin/City/loadCitySelectHtml.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:31:24+08:00 ] 127.0.0.1 /index.php/Admin/City/loadCitySelectHtml.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` <> 1 AND `pid` = 9  [ RunTime:0.0200s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-07-19T16:31:42+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: tags E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php 第 51 行.
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0220s ]
+NOTIC: [2] Missing argument 2 for Common\Model\RentalHouseModel::saveHouse(), called in E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php on line 60 and defined E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 130 行.
+NOTIC: [8] Undefined variable: userId E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 141 行.
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','0','33','1','9','10','','','','','','22','','[]','','1531989102','1531989102')
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','0','33','1','9','10','','','','','','22','','[]','','1531989102','1531989102')
+
+[ 2018-07-19T16:31:51+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: tags E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php 第 51 行.
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+NOTIC: [2] Missing argument 2 for Common\Model\RentalHouseModel::saveHouse(), called in E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php on line 60 and defined E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 130 行.
+NOTIC: [8] Undefined variable: userId E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 141 行.
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','0','33','1','9','10','','','','','','22','','[]','','1531989111','1531989111')
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','0','33','1','9','10','','','','','','22','','[]','','1531989111','1531989111')
+
+[ 2018-07-19T16:32:12+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: tags E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php 第 51 行.
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+NOTIC: [2] Missing argument 2 for Common\Model\RentalHouseModel::saveHouse(), called in E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php on line 60 and defined E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 130 行.
+NOTIC: [8] Undefined variable: userId E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 141 行.
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','1','33','1','9','10','','','','','','22','','[]','','1531989132','1531989132')
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','1','33','1','9','10','','','','','','22','','[]','','1531989132','1531989132')
+
+[ 2018-07-19T16:32:42+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+NOTIC: [2] Missing argument 2 for Common\Model\RentalHouseModel::saveHouse(), called in E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php on line 60 and defined E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 130 行.
+NOTIC: [8] Undefined variable: userId E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 141 行.
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','1','33','1','9','10','','','','222','222','22','222','[\"6\"]','','1531989162','1531989162')
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2222','1','33','1','9','10','','','','222','222','22','222','[\"6\"]','','1531989162','1531989162')
+
+[ 2018-07-19T16:32:57+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.1050s ]
+NOTIC: [2] Missing argument 2 for Common\Model\RentalHouseModel::saveHouse(), called in E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php on line 60 and defined E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 130 行.
+NOTIC: [8] Undefined variable: userId E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 141 行.
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2000','12','33','1','9','10','','','','222','222','22','222','[\"6\"]','','1531989177','1531989177')
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2000','12','33','1','9','10','','','','222','222','22','222','[\"6\"]','','1531989177','1531989177')
+
+[ 2018-07-19T16:33:15+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+NOTIC: [2] Missing argument 2 for Common\Model\RentalHouseModel::saveHouse(), called in E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php on line 60 and defined E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 130 行.
+NOTIC: [8] Undefined variable: userId E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 141 行.
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2000','12','33','1','9','10','无可奈何花落去 ','','','222','222','22','222','[\"6\"]','','1531989195','1531989195')
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','3','2000','12','33','1','9','10','无可奈何花落去 ','','','222','222','22','222','[\"6\"]','','1531989195','1531989195')
+
+[ 2018-07-19T16:33:36+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+NOTIC: [2] Missing argument 2 for Common\Model\RentalHouseModel::saveHouse(), called in E:\myphp\fkx\Application\Admin\Controller\RentalHouseController.class.php on line 60 and defined E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 130 行.
+NOTIC: [8] Undefined variable: userId E:\myphp\fkx\Application\Common\Model\RentalHouseModel.class.php 第 141 行.
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','2','2000','12','33','1','9','10','无可奈何花落去 ','','','222','222','22','222','[\"6\"]','','1531989216','1531989216')
+ERR: 1366:Incorrect decimal value: '' for column 'longitude' at row 1
+ [ SQL语句 ] : INSERT INTO `RentalHouses` (`id`,`name`,`source`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`state`,`type`,`renovationStandard`,`price`,`sort`,`square`,`rentalType`,`cityId`,`areaId`,`address`,`longitude`,`latitude`,`introduce`,`fkxSay`,`commission`,`commissionRule`,`tags`,`primaryImage`,`updateTime`,`createTime`) VALUES ('0','测试无','1','1','1','1','1','1','1','2','2','2000','12','33','1','9','10','无可奈何花落去 ','','','222','222','22','222','[\"6\"]','','1531989216','1531989216')
+
+[ 2018-07-19T16:33:49+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/loadRentalHouse.html?sort=aid&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.6230s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 LIMIT 0,10   [ RunTime:0.2120s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.1120s ]
+NOTIC: [8] Undefined offset: 9 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 9 LIMIT 1   [ RunTime:0.1140s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.1150s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.1170s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.1100s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.1150s ]
+NOTIC: [8] Undefined index:  E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.1160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.1160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0630s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0700s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0220s ]
+NOTIC: [8] Undefined offset: 13 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 12 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 12 LIMIT 1   [ RunTime:0.0210s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `state` <> 9 LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-19T16:33:57+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/edit.html?id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.4130s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1140s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0930s ]
+SQL: SELECT * FROM `types` WHERE `is_del` <> 1  [ RunTime:0.0620s ]
+SQL: SHOW COLUMNS FROM `zxiu` [ RunTime:0.0540s ]
+SQL: SELECT * FROM `zxiu` WHERE `is_del` <> 1  [ RunTime:0.0680s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0710s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` <> 1 AND `pid` = 0  [ RunTime:0.0700s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0710s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0710s ]
+SQL: SHOW COLUMNS FROM `Medias` [ RunTime:0.0700s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = 1 AND `type` = 2 AND `houseType` = 3 AND `isDel` <> 1 ORDER BY id DESC LIMIT 1   [ RunTime:0.0730s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = 1 AND `type` = 1 AND `houseType` = 3 AND `isDel` <> 1 ORDER BY sort ASC  [ RunTime:0.0760s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 22 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 22 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 23 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 23 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 24 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 24 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 25 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 25 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 26 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 26 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 66 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 69 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:34:17+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/loadRentalHouse.html?sort=aid&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0220s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 LIMIT 0,10   [ RunTime:0.0220s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 9 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 9 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0210s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [8] Undefined index:  E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0230s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 13 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 12 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 12 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `state` <> 9 LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:34:20+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/edit.html?id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `types` WHERE `is_del` <> 1  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `zxiu` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `zxiu` WHERE `is_del` <> 1  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` <> 1 AND `pid` = 0  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `Medias` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = 1 AND `type` = 2 AND `houseType` = 3 AND `isDel` <> 1 ORDER BY id DESC LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = 1 AND `type` = 1 AND `houseType` = 3 AND `isDel` <> 1 ORDER BY sort ASC  [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 22 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 22 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 23 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 23 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 24 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 24 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 25 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 25 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 5 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 26 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 26 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [8] Undefined variable: emptyValue E:\myphp\fkx\Application\Admin\Common\function.php 第 312 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 66 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+NOTIC: [2] Missing argument 6 for renderHtmlSelect(), called in E:\myphp\fkx\Runtime\Cache\Admin\6d0691bc550dc0b974e658bd869b9db4.php on line 69 and defined E:\myphp\fkx\Application\Admin\Common\function.php 第 306 行.
+NOTIC: [8] Undefined variable: cssClass E:\myphp\fkx\Application\Admin\Common\function.php 第 308 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:34:25+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:34:29+08:00 ] 127.0.0.1 /admin.php/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `users` WHERE `id` = 100022 LIMIT 1   [ RunTime:0.0220s ]
+
+[ 2018-07-19T16:34:31+08:00 ] 127.0.0.1 /admin.php/OldHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:34:33+08:00 ] 127.0.0.1 /admin.php/OldHouse/loadOldHouse.html?sort=aid&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `OldHouses` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `OldHouses` WHERE `state` <> 9 LIMIT 0,10   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 0 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `citys` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 9 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 9 LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 11 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 4 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `OldHouses` WHERE `state` <> 9 LIMIT 1   [ RunTime:0.0200s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:34:37+08:00 ] 127.0.0.1 /admin.php/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-19T16:34:39+08:00 ] 127.0.0.1 /admin.php/RentalHouse/loadRentalHouse.html?sort=aid&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 LIMIT 0,10   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0160s ]
+NOTIC: [8] Undefined offset: 9 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 9 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0160s ]
+NOTIC: [8] Undefined index:  E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0250s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0210s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+NOTIC: [8] Undefined offset: 13 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 12 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 12 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `state` <> 9 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:34:41+08:00 ] 127.0.0.1 /admin.php/Admin/RentalHouse/edit.html?id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:RentalHouse
+
+[ 2018-07-19T16:35:03+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-19T16:35:03+08:00 ] 127.0.0.1 /admin.php/account/Login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0640s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `employee` WHERE `status` = 0 AND `del` = 0 LIMIT 1   [ RunTime:0.1160s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:35:15+08:00 ] 127.0.0.1 /admin.php/account/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0420s ]
+SQL: SELECT * FROM `employee` WHERE `employee_num` = 'admin' AND `del` = 0 LIMIT 1   [ RunTime:0.0540s ]
+
+[ 2018-07-19T16:35:16+08:00 ] 127.0.0.1 /admin.php/account/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `employee` WHERE `employee_num` = 'admin' AND `del` = 0 LIMIT 1   [ RunTime:0.0200s ]
+
+[ 2018-07-19T16:35:16+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-19T16:35:16+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:35:24+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-19T16:36:00+08:00 ] 127.0.0.1 /index.php/Admin/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+

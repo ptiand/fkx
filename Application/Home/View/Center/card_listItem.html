@@ -1,0 +1,19 @@
+<foreach name="cards" item="card">
+    <div id="coupon-content" class="content" >
+        <div class="left">
+            <div class="title">
+                <span>{$card.name}</span>
+                <span>{$card['returnCash']}</span>
+            </div>
+            <div class="second-title">
+                <span>{$card.houseName}</span>
+                <span>最高返现</span>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="right">
+            <span>{$card['createTime']|date="Y.m.d",###}</span>
+            <span>{$StateCaption[$card['state']]}</span>
+        </div>
+    </div>
+</foreach>

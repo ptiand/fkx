@@ -1,0 +1,391 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel"><empty name="Think.get.id">新增<else /> 编辑</empty>出租房</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="Form" method="post" action="{$self}">
+        <input type="hidden" name="id" value="{$house.id}" />
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">名称</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="name" type="text" name="name" value="{$house.name}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="source">来源</label>
+                <div class="col-sm-4">
+                    {:renderHtmlSelect('source','source',$sources, $house['source'],"请选择来源","form-control")}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">户型</label>
+                <div class="col-sm-4 form-inline">
+                    {:renderHtmlSelect("houseRoom", "", $houseRoomRange,$house['houseRoom'])}室
+                    {:renderHtmlSelect("livingRoom", "", $livingRoomRange,$house['livingRoom'])}厅
+                    {:renderHtmlSelect("restRoom", "", $restRoomRange,$house['restRoom'])}卫
+                    {:renderHtmlSelect("diningRoom", "", $diningRoomRange,$house['diningRoom'])}厨
+                    {:renderHtmlSelect("veranda", "", $verandaRange,$house['veranda'])}阳台
+                </div>
+                <label class="col-sm-2 control-label" for="state">房屋状态</label>
+                <div class="col-sm-4">
+                    {:renderHtmlSelect('state','state',$houseState, $house['state'],"请选择房屋状态","form-control")}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="type">建筑类型</label>
+                <div class="col-sm-4">
+                    {:renderHtmlSelect('type','type',$houseTypes, $house['type'],"请选择建筑类型","form-control")}
+                </div>
+                <label class="col-sm-2 control-label" for="renovationStandard">装修标准</label>
+                <div class="col-sm-4">
+                    {:renderHtmlSelect('renovationStandard','renovationStandard',$zxiuMap, $house['renovationStandard'],"请选择装修标准","form-control")}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="price">单价（元）</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="price" type="text" name="price" value="{$house.price}" placeholder="单价"/>
+                </div>
+                <label class="col-sm-2 control-label" for="sort">精选顺序</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="sort" name="sort"  value="{$house.sort}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="square">面积</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="square" name="square"  value="{$house.square}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="rentalType">租赁方式</label>
+                <div class="col-sm-4">
+                    {:renderHtmlSelect('rentalType','rentalType',$rentalTypes, $house['rentalType'],"请选择租赁方式","form-control")}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="citySelect">市/区</label>
+                <div class="col-sm-2">
+                    {:renderHtmlSelect('cityId', 'citySelect', $topCities, $house['cityId'],"请选择所在市")}
+                </div>
+                <div class="col-sm-2" id="areaSelect">
+                    {:renderHtmlSelect('areaId', 'areaId', [], '',"请选择所在区")}
+                </div>
+                <label class="col-sm-2 control-label" for="address">详细地址</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="address" name="address"  value="{$house.address}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >地图位置</label>
+                <div class="col-sm-7">
+                    <div id="mapContainer" style="height: 300px;width: 100%"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <div class="btn btn-primary" id="markMap">取消标记</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3" style="padding-right: 0px;">经度</label>
+                        <div class="col-sm-7">
+                            <input class="form-control"  name="longitude"  value="{$house['longitude']>0?$house['longitude']:''}" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3" style="padding-right: 0px;">纬度</label>
+                        <div class="col-sm-7">
+                            <input class="form-control"  name="latitude"  value="{$house['latitude']>0?$house['latitude']:''}" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="introduce"  class="col-sm-2 control-label">房源介绍</label>
+                <div class="col-sm-4">
+                    <textarea id="introduce" name="introduce" style=" height: 100px; width: 270px">{$house.introduce|htmlspecialchars_decode}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fkxSay"  class="col-sm-2 control-label">房客行说</label>
+                <div class="col-sm-4">
+                    <textarea id="fkxSay" name="fkxSay" style=" height: 100px; width: 270px">{$house.fkxSay|htmlspecialchars_decode}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="commission"  class="col-sm-2 control-label">佣金</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="commission" name="commission"  value="{$house.commission}" type="text" />
+                </div>
+                <label for="commissionRule"  class="col-sm-2 control-label">佣金规则</label>
+                <div class="col-sm-4">
+                    <textarea id="commissionRule" name="commissionRule" style=" height: 100px; width: 270px">{$house.commissionRule|htmlspecialchars_decode}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">次要标签</label>
+                <div class="col-sm-10 checkbox" style="display: flex;flex-wrap: wrap;">
+                    <foreach name="tags" item="tag">
+                        <label style="display: flex;align-items: flex-end;">
+                            <input type="checkbox" name="tags[]" {:in_array($tag['id'], $houseTags)?'checked="checked"':'' } value="{$tag.id}">{$tag.name}
+                        </label>
+                    </foreach>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="Video" >视频</label>
+                <div class="col-sm-4">
+                    <input type="hidden" id="Video" name="video" value="{$houseVideo.path}" />
+                    <video src="{$houseVideo.path|default=''}" controls="controls" width="100" id="video_preview" />
+                    <a id="deleteVideo">删除</a>
+                    <input class="upload-btn" type="file" id="video-upload">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">相册</label>
+                <div class="col-sm-10" >
+                    <div id="Pictures" style="display: flex;flex-wrap: wrap;">
+                        <foreach name="housePics" item="housePic">
+                            <div class="upload-img-preview">
+                                <input type="hidden" name="pics[]" value="{$housePic.path}" />
+                                <img src="{$housePic.path}" width="150" height="100" />
+                                <div class="upload-img-preview-opt"><a name="forward">向前移</a><a name="deletePic">删除</a><a name="backward">向后移</a></div>
+                            </div>
+                        </foreach>
+                    </div>
+                    <input class="upload-btn" type="file" id="pic-upload">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+    <button type="button" class="btn btn-primary" id="submit">保存</button>
+</div>
+<script type="text/javascript" src='__PUBLIC__/Static/uploadifive/Sample/jquery.uploadifive.min.js'></script>
+<style>
+.uploadifive-queue
+{
+    display: none;
+}
+.upload-img-preview
+{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.upload-img-preview-opt
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+</style>
+<script type="application/javascript">
+    $("#video-upload").uploadifive({
+        height: 25,
+        swf: '/Public/Static/uploadify/uploadify.swf',
+        uploadScript: "{:U('File/uploadVideo',array('session_id'=>session_id()))}",
+        width: 80,
+        buttonClass: "btn-primary",
+        buttonText: '上传视频',
+        onUploadComplete: function (file, data) {
+            data = $.parseJSON(data);
+            if (data.status) {
+                $("#video_preview").attr("src", data.data);
+                $("#Video").val(data.data);
+            }
+            else {
+                alert(data.info);
+            }
+        }
+    });
+    $('#deleteVideo').click(function () {
+        $("#video_preview").attr("src", '');
+        $("#Video").val('');
+    });
+    $("#pic-upload").uploadifive({
+        height: 25,
+        swf: '/Public/Static/uploadify/uploadify.swf',
+        uploadScript: "{:U('File/uploadPic',array('session_id'=>session_id()))}",
+        width: 80,
+        buttonClass: "btn-primary",
+        buttonText: '上传图片',
+        onUploadComplete: function (file, data) {
+            data = $.parseJSON(data);
+            if (data.status) {
+                $('#Pictures').append('<div class="upload-img-preview"><input type="hidden" name="pics[]" value="'+data.data+'" />\n' +
+                    '<img src="'+data.data+'" width="150" height="100" />' +
+                    '<div class="upload-img-preview-opt"><a name="forward">向前移</a><a name="deletePic">删除</a><a name="backward">向后移</a></div>' +
+                    '</div>')
+            }
+            else {
+                alert(data.info);
+            }
+        }
+    });
+    $('#Pictures').delegate('[name="deletePic"]', 'click', function ()
+    {
+        $(this).parents('.upload-img-preview').remove();
+    });
+    $('#Pictures').delegate('[name="forward"]', 'click', function ()
+    {
+        if($(this).parents('.upload-img-preview').prev().length)
+        {
+            $(this).parents('.upload-img-preview').insertBefore($(this).parents('.upload-img-preview').prev());
+        }
+    });
+    $('#Pictures').delegate('[name="backward"]', 'click', function ()
+    {
+        if($(this).parents('.upload-img-preview').next().length)
+        {
+            $(this).parents('.upload-img-preview').insertAfter($(this).parents('.upload-img-preview').next());
+        }
+    });
+    $(function () {
+        function renderAreaSelect()
+        {
+            $.ajax({
+                url:'{:U("City/loadCitySelectHtml")}',
+                type:'POST',
+                data:{pid: $('#citySelect').val(),selectId:'areaId', selectName:'areaId',emptyValue:'请选择所在区',value:{$house.areaId|default='""'}},
+                success: function (respHtml)
+                {
+                    $('#areaSelect').html(respHtml);
+                }
+            });
+        }
+        renderAreaSelect();
+        $('#citySelect').on('change', renderAreaSelect);
+        $("#submit").click(function(){
+            var $form = $('#Form');
+            $form.bootstrapValidator('validate');
+            if(!$form.data('bootstrapValidator').isValid())
+                return;
+            $.post($form.attr('action'), $form.serialize(), function(result) {
+                if(result.status==1){
+                    swal({
+                        title:"操作成功！",
+                        text:result.info,
+                        type:"success"
+                    },function(){
+                        $form.bootstrapValidator('resetForm', true);
+                        $('#Modal').modal('hide');
+                    });
+                }else{
+                    toastr.warning(result.info);return false;
+                }
+            }, 'json');
+        });
+        $('#Form').bootstrapValidator({
+            live: 'disabled',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:{
+                name: {
+                    validators:{
+                        notEmpty:{
+                            message:'不能为空'
+                        }
+                    }
+                },
+                state: {
+                    validators:{
+                        notEmpty:{
+                            message:'不能为空'
+                        }
+                    }
+                },
+                price: {
+                    validators:{
+                        notEmpty:{
+                            message:'不能为空'
+                        },
+                        numeric: {
+                            message: '请输入数字'
+                        }
+                    }
+                },
+                square: {
+                    validators:{
+                        notEmpty:{
+                            message:'不能为空'
+                        },
+                        numeric: {
+                            message: '请输入数字'
+                        }
+                    }
+                },
+                sort: {
+                    validators:{
+                        digits: {
+                            message: '请输入数字'
+                        }
+                    }
+                }
+            }
+        });
+    });
+    $(function () {
+        var map = new BMap.Map("mapContainer");    // 创建Map实例
+        map.centerAndZoom('厦门', 11);  // 初始化地图,设置中心点坐标和地图级别
+
+        //添加地图类型控件
+        map.addControl(new BMap.MapTypeControl({
+            mapTypes:[
+                BMAP_NORMAL_MAP,
+                BMAP_HYBRID_MAP
+            ]}));
+        map.addControl(new BMap.NavigationControl({
+            anchor: BMAP_ANCHOR_TOP_LEFT,
+            type:BMAP_NAVIGATION_CONTROL_LARGE,
+        }));
+        map.setCurrentCity("厦门");          // 设置地图显示的城市 此项是必须设置的
+        map.enableScrollWheelZoom(true);
+
+        var marker = null;
+        function addMarker(point)
+        {
+            map.removeOverlay(marker);
+            marker = new BMap.Marker(point);        // 创建标注
+            map.addOverlay(marker);
+        }
+        $('#markMap').click(function(){
+            if(marker)
+            {
+                $('[name="latitude"]').val('');
+                $('[name="longitude"]').val('');
+                map.removeOverlay(marker);
+            }
+        });
+        var mapInit = false;
+        map.addEventListener('tilesloaded', function () {
+            if(!mapInit)
+            {
+                mapInit = true;
+                if(parseFloat($('[name="latitude"]').val())>0 && parseFloat($('[name="longitude"]').val())>0)
+                {
+                    var p = {lat:parseFloat($('[name="latitude"]').val()), lng: parseFloat($('[name="longitude"]').val())};
+                    map.setCenter(new BMap.Point(p.lng, p.lat));
+                    addMarker(p);
+                }
+                else
+                {
+                    var geolocation = new BMap.Geolocation();
+                    geolocation.getCurrentPosition(function(r){
+                        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                            map.panTo(r.point);
+                        }
+                    },{enableHighAccuracy: true});
+                }
+            }
+
+        });
+        map.addEventListener("click",function(e, p){
+            addMarker(e.point);
+            $('[name="latitude"]').val(e.point.lat);
+            $('[name="longitude"]').val(e.point.lng);
+        });
+    });
+</script>

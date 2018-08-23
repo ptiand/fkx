@@ -1,0 +1,206 @@
+<style type="text/css">
+.header .button {margin-right: 10px;}
+</style>
+<div class="group-container">
+    <div class="title"><span>房屋</span></div>
+
+    <div class="item">
+        <span class="item-label">所在小区</span>
+        <input class="input-container" type="text" name="xq" value="{$others->xq}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">限制要求</span>
+        <input class="input-container" type="text" name="xz" value="{$others->xz}" placeholder="请输入"/>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">房屋朝向</span>
+        <select class="input-container" name="cx">
+            <foreach name="directionList" item="direction">
+                <option value="{$direction}" {$others->cx==$direction?'selected':''}>{$direction}</option>
+            </foreach>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">所在楼层</span>
+        <input class="input-container" type="text" name="lc" value="{$others->lc}" placeholder="请输入"/>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">有无电梯</span>
+        <select class="input-container" name="dt">
+            <option value="有" {$others->cx=='有'?'selected':''}>有</option>
+            <option value="无" {$others->cx=='无'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+</div>
+
+<div class="group-container">
+    <div class="title"><span>配套信息</span></div>
+
+    <div class="item">
+        <span class="item-label">床铺</span>
+        <select class="input-container ptxx" name="c">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->c=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->c=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">卫生间</span>
+        <select class="input-container ptxx" name="wsj">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->wsj=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->wsj=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">宽带</span>
+        <select class="input-container ptxx" name="kd">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->kd=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->kd=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">衣柜</span>
+        <select class="input-container ptxx" name="yg">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->yg=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->yg=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">座椅</span>
+        <select class="input-container ptxx" name="zy">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->zy=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->zy=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">沙发</span>
+        <select class="input-container ptxx" name="sf">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->sf=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->sf=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">空调</span>
+        <select class="input-container ptxx" name="kt">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->kt=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->kt=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">热水器</span>
+        <select class="input-container ptxx" name="rsq">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->rsq=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->rsq=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">洗衣机</span>
+        <select class="input-container ptxx" name="xyj">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->xyj=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->xyj=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">电视</span>
+        <select class="input-container ptxx" name="ds">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->ds=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->ds=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">冰箱</span>
+        <select class="input-container ptxx" name="bx">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->bx=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->bx=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">微波炉</span>
+        <select class="input-container ptxx" name="wbl">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->wbl=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->wbl=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">阳台</span>
+        <select class="input-container ptxx" name="yt">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->yt=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->yt=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">暖气</span>
+        <select class="input-container ptxx" name="nq">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->nq=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->nq=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+    <div class="item">
+        <span class="item-label">做饭</span>
+        <select class="input-container ptxx" name="kzf">
+            <option value="0" >请选择</option>
+            <option value="1" {$others->ptxx->kzf=='1'?'selected':''}>有</option>
+            <option value="0" {$others->ptxx->kzf=='0'?'selected':''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="seperator"></div>
+
+</div>

@@ -1,0 +1,237 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel"><empty name="Think.get.id">新增<else /> 编辑</empty>楼盘</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="defaultForm" method="post" action="{$self}">
+        <input type="hidden" name="id" value="{$info.id}" />
+        <fieldset>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">标题</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="title" type="text" name="title" value="{$info.title}"/>
+                </div>
+
+                <label class="col-sm-2 control-label" for="">楼盘区域</label>
+                <div class="col-sm-4">
+
+                    {:parse_dropdownlist($info[area_id],$menu,"area_id","area_id","form-control","请选择楼盘区域")}
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="address">地址</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="address" name="address"  value="{$info.address}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label">项目状态</label>
+                <div class="col-sm-3" style="padding-top:4px;">
+                    <input type="radio" value="1" checked="checked" name="status">
+                    正常
+                    <input type="radio" value="2" <if condition="$info['status'] eq 2">checked="checked"</if> name="status">
+                    锁定
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="size">大小（20-40平米）</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="size" name="size"  value="{$info.size}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label">精选</label>
+                <div class="col-sm-3" style="padding-top:4px;">
+                    <input type="radio" value="1" checked="checked" name="is_hot">
+                    不是
+                    <input type="radio" value="2" <if condition="$info['is_hot'] eq 2">checked="checked"</if> name="is_hot">
+                    是
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label  class="col-sm-2 control-label">单价</label>
+
+                <div class="col-sm-4">
+                    <input class="form-control" id="price" name="price"  value="{$info.price}" type="text" />
+                </div>
+
+                <label class="col-sm-2 control-label" for="">价格区间</label>
+                <div class="col-sm-3">
+                    {:parse_dropdownlist($info[jiage_id],$jiage,"jiage_id","jiage_id","form-control","请选择价格区间")}
+                </div>
+
+            </div>
+            <div class="form-group">
+
+                <label  class="col-sm-2 control-label">佣金</label>
+
+                <div class="col-sm-4">
+                    <input class="form-control" id="prices" name="prices"  value="{$info.prices}" type="text" />
+                </div>
+
+                <label class="col-sm-2 control-label" for="">户型</label>
+                <div class="col-sm-3">
+                    {:parse_dropdownlist($info[huxing_id],$huxing,"huxing_id","huxing_id","form-control","请选择价格区间")}
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="created_at">创建时间</label>
+                <div class="col-sm-2">
+                    <input class="form-control" id="created_at" name="created_at"  value="{$info.created_at}" type="text" />
+                </div>
+                <label for="add_at"  class="col-sm-1 control-label">上市时间</label>
+                <div class="col-sm-2">
+                    <input class="form-control" id="add_at" name="add_at"  value="{$info.add_at}" type="text" />
+                </div>
+                <label for="sort"  class="col-sm-1 control-label">排序</label>
+                <div class="col-sm-2">
+                    <input class="form-control" id="sort" name="sort"  value="{$info.sort}" type="text" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="created_at">楼市类型</label>
+                <div class="col-sm-4">
+                    {:parse_dropdownlist($info[type_id],$type,"type_id","type_id","form-control","请选择楼市类型")}
+                </div>
+                <label for="add_at"  class="col-sm-2 control-label">装修楼市</label>
+                <div class="col-sm-3">
+                    {:parse_dropdownlist($info[zxiu_id],$zxiu,"zxiu_id","zxiu_id","form-control","请选择装修楼市")}
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label  class="col-sm-2 control-label">主图</label>
+
+                <div class="col-sm-4">
+                    <input type="hidden" id="pic" name="pic" value="{$info.pic}" />
+                    <img src="{$info.pic|default='/public/no_photo.png'}" width="100" id="photo_preview" />
+                    <input class="upload-btn" type="file" id="btn-upload">
+                </div>
+
+                <label for="add_at"  class="col-sm-2 control-label">楼市简介</label>
+                <div class="col-sm-3">
+                    <textarea id="jianjie" name="jianjie" style=" height: 100px;">{$info.jianjie|htmlspecialchars_decode}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">标签</label>
+                <div class="col-sm-4">
+                    <input  class="form-control" placeholder="多个标签用英文分号隔开;" type="text" id="tag" name="tag" value="{$info.tag}" />
+                </div>
+                <label for="jingwei"  class="col-sm-2 control-label">经纬度</label>
+                <div class="col-sm-3">
+                    <input  class="form-control" placeholder="用英文分号隔开;" type="text" id="jingwei" name="jingwei" value="{$info.jingwei}" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="">&nbsp;楼盘详情</label>
+                <div class="col-sm-9">
+                    <textarea id="des" name="des" style="width: 99.9%; height: 260px;">{$info.des|htmlspecialchars_decode}</textarea>
+                </div>
+
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+    <button type="button" class="btn btn-primary" id="submit">保存</button>
+</div>
+<script type="text/javascript" src='__PUBLIC__/Static/uploadifive/Sample/jquery.uploadifive.min.js'></script>
+
+<script type="text/javascript">
+
+    //设置图片上传插件
+    $(function () {
+        $("#btn-upload").uploadifive({
+            height: 25,
+            swf: '/Public/Static/uploadify/uploadify.swf',
+            uploadScript: "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+            width: 80,
+            buttonClass: "l-btn",
+            buttonText: '上传',
+            onUploadComplete: function (file, data) {
+                data = $.parseJSON(data);
+                if (data.status) {
+                    $("#photo_preview").attr("src", data.data);
+                    $("#pic").val(data.data);
+                }
+                else {
+                    alert(data.info);
+                }
+            }
+        });
+    });
+
+    var ue = UE.getEditor('des');
+    laydate({elem: '#created_at', format: 'YYYY-MM-DD hh:mm:ss', event: 'focus'});
+    laydate({elem: '#add_at', format: 'YYYY-MM-DD hh:mm:ss', event: 'focus'});
+
+    $("#submit").click(function(){
+
+        $("#defaultForm").submit();
+    })
+    $(document).ready(function() {
+        $('#defaultForm')
+
+            .bootstrapValidator({
+                message: 'This value is not valid',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    LoginName: {
+                        message: '账号不可用',
+                        validators: {
+                            notEmpty: {
+                                message: '账号不能为空'
+                            },
+                            stringLength: {
+                                min: 6,
+                                max: 30,
+                                message: '账号长度6-30'
+                            },
+                            /*remote: {
+                             url: 'remote.php',
+                             message: '账号不可用'
+                             },*/
+                            regexp: {
+                                regexp: /^[a-zA-Z0-9_\.]+$/,
+                                message: '账号格式不正确'
+                            }
+                        }
+                    }
+                }
+            })
+
+                .on('success.form.bv', function(e) {
+                    // Prevent form submission
+                    e.preventDefault();
+                    // Get the form instance
+                    var $form = $(e.target);
+                    // Get the BootstrapValidator instance
+                    var bv = $form.data('bootstrapValidator');
+                    // Use Ajax to submit form data
+                    $.post($form.attr('action'), $form.serialize(), function(result) {
+                        if(result.status==1){
+                            swal({
+                                title:"操作成功！",
+                                text:result.info,
+                                type:"success"
+                            },function(){
+                                $('#defaultForm').bootstrapValidator('resetForm', true);$('input').val('');$('#addCustomer').modal('hide');
+                            });
+                        }else{
+                            toastr.warning(result.info);return false;
+                        }
+                    }, 'json');
+                });
+    });
+</script>

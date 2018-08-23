@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+}
+.container ul {
+    width: 100%
+}
+.container ul li {
+    margin: 0 15px;
+    height: 45px;
+    border-bottom: 1px solid #f2f2f2;
+    display: flex;
+}
+.container ul li p {
+    font-size: 14px;
+    color: #000000;
+    margin: auto 3px auto 0;
+}
+.container ul li span {
+    font-size: 12px;
+    color: #ff0000;
+    margin: auto 10px auto 0;
+}
+.container ul li input {
+    width: 60%;
+    height: 40px;
+    font-size: 14px;
+    color: #c2c2c2;
+    margin-top: 2px;
+}
+.container ul li input:checked {
+    width: 10px;
+    height: 10px;
+    border: 3px solid #44c3cc !important;
+}
+.cl {
+    width: 13px !important;
+    height: 13px !important;
+    margin: auto 0 auto 10px!important;
+}
+.bot {
+    margin: 20px 15px 50px 15px;
+    text-align: left;
+}
+.bot p{
+    font-size: 13px;
+    color: #cccccc;
+}
+.bot textarea {
+    width: 98%;
+    height: 75px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    resize: none;
+    color: #cccccc;
+    padding-top:15px;
+    padding-left: 5px;
+}
+.mas {
+    margin: 0 15px;
+    height: 45px;
+    background: #44c3cc;
+    border-radius: 5px;
+    text-align: center;
+}
+.mas a {
+    font-size: 17px;
+    color: #ffffff;
+    letter-spacing: 5px;
+    line-height: 45px;
+}

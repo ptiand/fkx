@@ -1,0 +1,397 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">编辑楼盘信息</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="Form" method="post" action="{$self}">
+        <input type="hidden" name="id" value="{$house.id}" />
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="kfs">开发商</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="kfs" type="text" name="extra.kfs" value="{$extra.kfs}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="sldzCitySelect">售楼地址市/区</label>
+                <div class="col-sm-2">
+                    {:renderHtmlSelect('extra.sldzCityId', 'sldzCitySelect', $topCities, $extra['sldzCityId'],"请选择所在市")}
+                </div>
+                <div class="col-sm-2" id="sldzAreaSelect">
+                    {:renderHtmlSelect('extra.sldzAreaId', 'sldzAreaSelect', [], '',"请选择所在区")}
+                </div>
+                <label class="col-sm-2 control-label" for="sldzAddress">详细地址</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="sldzAddress" name="extra.sldzAddress" value="{$extra.sldzAddress}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="jfsj">交房时间</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="jfsj" name="extra.jfsj" value="{$extra.jfsj}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="gcjd">工程进度</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="gcjd" name="extra.gcjd" value="{$extra.gcjd}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="ysxk">预售许可</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="ysxk" name="extra.ysxk" value="{$extra.ysxk}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">建筑类型</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{$houseTypes[$house['type']]}</p>
+                </div>
+                <label class="col-sm-2 control-label">装修标准</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{$zxiuMap[$house['renovationStandard']]}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="cqnx">产权年限</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="cqnx" name="extra.cqnx" value="{$extra.cqnx}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="jzmj">建筑面积</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="jzmj" name="extra.jzmj" value="{$extra.jzmj}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="zdmj">占地面积</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="zdmj" name="extra.zdmj" value="{$extra.zdmj}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="lds">楼栋数</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="lds" name="extra.lds" value="{$extra.lds}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="ghhs">规划户数</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="ghhs" name="extra.ghhs" value="{$extra.ghhs}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="lcqk">楼层情况</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="lcqk" name="extra.lcqk" value="{$extra.lcqk}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="rjl">容积率</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="rjl" name="extra.rjl" value="{$extra.rjl}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="lhl">绿化率</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="lhl" name="extra.lhl" value="{$extra.lhl}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="wygs">物业公司</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="wygs" name="extra.wygs" value="{$extra.wygs}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="wylx">物业类型</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="wylx" name="extra.wylx" value="{$extra.wylx}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="wyf">物业费</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="wyf" name="extra.wyf" value="{$extra.wyf}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="tcw">停车位</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="tcw" name="extra.tcw" value="{$extra.tcw}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="cwb">车位比</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="cwb" name="extra.cwb" value="{$extra.cwb}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="gnfs">供暖方式</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="gnfs" name="extra.gnfs" value="{$extra.gnfs}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="gsfs">供水方式</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="gsfs" name="extra.gsfs" value="{$extra.gsfs}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="gdfs">供电方式</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="gdfs" name="extra.gdfs" value="{$extra.gdfs}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">户型信息</label>
+                <div class="col-sm-10">
+                    <table class="table" id="HuXingTable">
+                        <thead>
+                        <tr>
+                            <th>户型图</th>
+                            <th>户型</th>
+                            <th>户型面积</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <foreach name="houseHuxings" item="houseHuxing" key="key">
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="huxing.id[]" value="{$houseHuxing.id}">
+                                    <input type="hidden" name="huxing.pic[]" id="huxing-pic-{$key+1}" value="{$houseHuxing.pic}">
+                                    <img src="{$houseHuxing.pic|default='/public/no_photo.png'}" width="150" height="100" id="preview-index-{$key+1}"/>
+                                    <input class="upload-btn" type="file" id="huxing-upload-{$key+1}" upload-index="{$key+1}">
+                                </td>
+                                <td class="form-inline">
+                                    {:renderHtmlSelect("huxing.houseRoom[]", "", $houseRoomRange,$houseHuxing['houseRoom'])}室
+                                    {:renderHtmlSelect("huxing.livingRoom[]", "", $livingRoomRange,$houseHuxing['livingRoom'])}厅
+                                    {:renderHtmlSelect("huxing.restRoom[]", "", $restRoomRange,$houseHuxing['restRoom'])}卫
+                                    {:renderHtmlSelect("huxing.diningRoom[]", "", $diningRoomRange,$houseHuxing['diningRoom'])}厨
+                                    {:renderHtmlSelect("huxing.veranda[]", "", $verandaRange,$houseHuxing['veranda'])}阳台
+                                </td>
+                                <td><input class="form-control" type="text" name="huxing.square[]" value="{$houseHuxing.square}"/></td>
+                                <td>
+                                    <a name="forward" class="btn btn-primary">上移</a>
+                                    <a name="deleteHuXing" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr>
+                        </foreach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <a id="addHuXing" class="btn btn-success">添加户型</a>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-sm-2 control-label">联系信息</label>
+                <div class="col-sm-10">
+                    <table class="table" id="ContactTable">
+                        <thead>
+                        <tr>
+                            <th>客服名称</th>
+                            <th>客服电话</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name="extra.contacts" item="contact" key="k">
+                                <tr>
+                                    <td><input class="form-control" type="text" name="contact.name[]" value="{$contact.name}"/></td>
+                                    <td><input class="form-control" type="text" name="contact.tel[]" value="{$contact.tel}"/></td>
+                                    <td><a name="deleteContact" class="btn btn-danger">删除</a></td>
+                                </tr>
+                            </foreach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <a id="addContact" class="btn btn-success">添加客服</a>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+    <button type="button" class="btn btn-primary" id="submit">保存</button>
+</div>
+<style>
+.uploadifive-queue
+{
+    display: none;
+}
+</style>
+<script type="text/javascript" src='__PUBLIC__/Static/uploadifive/Sample/jquery.uploadifive.min.js'></script>
+<script type="application/javascript">
+$(function () {
+    function renderAreaSelect()
+    {
+        $.ajax({
+            url:'{:U("City/loadCitySelectHtml")}',
+            type:'POST',
+            data:{pid: $('#sldzCitySelect').val(),selectId:'sldzAreaSelect', selectName:'extra.sldzAreaId',emptyValue:'请选择所在区',value:{$extra['sldzAreaId']|default='""'}},
+            success: function (respHtml)
+            {
+                $('#sldzAreaSelect').html(respHtml);
+            }
+        });
+    }
+    renderAreaSelect();
+    $('#sldzCitySelect').on('change', renderAreaSelect);
+    $("#submit").click(function(){
+        var $form = $('#Form');
+        $form.bootstrapValidator('validate');
+        if(!$form.data('bootstrapValidator').isValid())
+            return;
+        $.post($form.attr('action'), $form.serialize(), function(result) {
+            if(result.status==1){
+                swal({
+                    title:"操作成功！",
+                    text:result.info,
+                    type:"success"
+                },function(){
+                    $form.bootstrapValidator('resetForm', true);
+                    $('#Modal').modal('hide');
+                });
+            }else{
+                toastr.warning(result.info);return false;
+            }
+        }, 'json');
+    });
+    $('#HuXingTable').delegate('[name="deleteHuXing"]', 'click',function ()
+    {
+        $(this).parents('tr').remove();
+    });
+
+
+    $('#ContactTable').delegate('[name="deleteContact"]', 'click', function ()
+    {
+        $(this).parents('tr').remove();
+    });
+    $('#addContact').click(function ()
+    {
+        var html = '<tr>';
+            html += '<td><input class="form-control" type="text" name="contact.name[]" value=""/></td>';
+            html += '<td><input class="form-control" type="text" name="contact.tel[]" value=""/></td>';
+            html += '<td><a name="deleteContact" class="btn btn-danger">删除</a></td>';
+            html += '</tr>';
+        $('#ContactTable tbody').append(html);
+    });
+
+    var uploadBtns = $('.upload-btn');
+    var uploadIndex = {:count($houseHuxings)+1};
+    if(uploadBtns.length)
+    {
+        uploadBtns.each(function (index, element)
+        {
+            var $element = $(element);
+            console.log($element);
+            console.log($(element).attr('upload-index'));
+            $element.uploadifive({
+                height: 25,
+                swf: '/Public/Static/uploadify/uploadify.swf',
+                uploadScript: "{:U('File/uploadPic',array('session_id'=>session_id()))}",
+                width: 80,
+                buttonClass: "btn-primary",
+                buttonText: '上传户型图',
+                onUploadComplete: function (file, data) {
+                    data = $.parseJSON(data);
+                    console.log('data:', data);
+                    if (data.status) {
+                        //todo
+                        var previewId = 'preview-index-'+$element.attr('upload-index');
+                        console.log('preview', $('#'+previewId));
+                        $('#'+previewId).attr('src', data.data);
+                        var inputId = 'huxing-pic-'+$element.attr('upload-index');
+                        $('#'+inputId).val(data.data);
+                    }
+                    else {
+                        alert(data.info);
+                    }
+                }
+            });
+        });
+    }
+    $('#addHuXing').click(function ()
+    {
+        var html = '<tr>\n'+
+            '<td>\n'+
+                '<input type="hidden" name="huxing.id[]" value=""><input type="hidden" name="huxing.pic[]" id="huxing-pic-'+uploadIndex+'" value="">'+
+                '<img src="/public/no_photo.png" width="150" height="100" id="preview-index-'+uploadIndex+'"/>\n'+
+                '<input class="upload-btn" type="file" id="huxing-upload-'+uploadIndex+'" upload-index="'+uploadIndex+'">\n'+
+            '</td>\n'+
+            '<td class="form-inline">\n'+
+                "{:renderHtmlSelect('huxing.houseRoom[]','', $houseRoomRange)}室\n"+
+                "{:renderHtmlSelect('huxing.livingRoom[]','', $livingRoomRange)}厅\n"+
+                "{:renderHtmlSelect('huxing.restRoom[]','', $restRoomRange)}卫\n"+
+                "{:renderHtmlSelect('huxing.diningRoom[]','', $diningRoomRange)}厨\n"+
+                "{:renderHtmlSelect('huxing.veranda[]','', $verandaRange)}阳台\n"+
+            '</td>\n'+
+            '<td><input class="form-control" type="text" name="huxing.square[]" value=""/></td>\n'+
+            '<td><a name="forward" class="btn btn-primary">上移</a><a name="deleteHuXing" class="btn btn-danger">删除</a></td>\n'+
+        '</tr>\n';
+        $('#HuXingTable tbody').append(html);
+        var $element = $('#huxing-upload-'+uploadIndex);
+        console.log($element);
+        console.log($element.attr('upload-index'));
+        $element.uploadifive({
+            height: 25,
+            swf: '/Public/Static/uploadify/uploadify.swf',
+            uploadScript: "{:U('File/uploadPic',array('session_id'=>session_id()))}",
+            width: 80,
+            buttonClass: "btn-primary",
+            buttonText: '上传户型图',
+            onUploadComplete: function (file, data) {
+                data = $.parseJSON(data);
+                console.log('data:', data);
+                if (data.status) {
+                    //todo
+                    var previewId = 'preview-index-'+$element.attr('upload-index');
+                    console.log('preview', $('#'+previewId));
+                    $('#'+previewId).attr('src', data.data);
+                    var inputId = 'huxing-pic-'+$element.attr('upload-index');
+                    $('#'+inputId).val(data.data);
+                }
+                else {
+                    alert(data.info);
+                }
+            }
+        });
+        uploadIndex++;
+    });
+
+    $('#HuXingTable').delegate('[name="forward"]', 'click', function ()
+    {
+        if($(this).parents('tr').prev().length)
+        {
+            $(this).parents('tr').insertBefore($(this).parents('tr').prev());
+        }
+    });
+    // $('#huxing-upload-1').uploadifive({
+    //     height: 25,
+    //     swf: '/Public/Static/uploadify/uploadify.swf',
+    //     uploadScript: "{:U('File/uploadPic',array('session_id'=>session_id()))}",
+    //     width: 80,
+    //     buttonClass: "btn-primary",
+    //     buttonText: '上传户型图',
+    //     onUploadComplete: function (file, data) {
+    //         data = $.parseJSON(data);
+    //         console.log('data:', data);
+    //         if (data.status) {
+    //             //todo
+    //         }
+    //         else {
+    //             alert(data.info);
+    //         }
+    //     },
+    //     onSelect: function(queue)
+    //     {
+    //         console.log(queue.queued);
+    //         $('#huxing-upload').uploadifive('upload');
+    //     }
+    // });
+    // $('[name="huxing-upload"]').on('click', function ()
+    // {
+    //     console.log($(this).attr('upload-index'));
+    // });
+});
+</script>

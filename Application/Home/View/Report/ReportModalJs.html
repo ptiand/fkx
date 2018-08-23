@@ -1,0 +1,78 @@
+<script type="text/javascript">
+$(function ()
+{
+    $('#record').click(function ()
+    {
+        $('#ReportModal').modal({
+            show: true
+        });
+    });
+
+    $("#ReportModal").on("show.bs.modal", function() {
+        $.ajax({
+            url:'{:U("Report/report")}',
+            success:function (html)
+            {
+                $('#ReportModalContent').html(html);
+            }
+        }).
+        then(function ()
+        {
+            if($('[name="houseType"]').val() == 'RentalHouse')
+            {
+                $('.report-huxing').hide();
+                $('.report-zhiye').hide();
+            }
+        }).
+        then(function ()
+        {
+            $('#ReportModalClose').click(function ()
+            {
+                $('#ReportModal').modal('hide');
+            });
+            $('#SubmitReport').click(function ()
+            {
+                try {
+                    if(!document.getElementById('ReportForm').reportValidity())
+                    {
+                        return;
+                    }
+                } catch (e) {
+                    if(!document.getElementById("NameInput").value)
+                    {
+                        alert("请输入姓名");
+                        return;
+                    }
+                    if(!document.getElementById("PhoneInput").value)
+                    {
+                        alert("请输入手机号");
+                        return;
+                    }
+                }
+                var data = $('#ReportForm').serialize()+'&houseId='+$('[name="houseId"]').val()+'&houseType='+$('[name="houseType"]').val();
+                $.ajax({
+                    url:'{:U("Report/report")}',
+                    type:'POST',
+                    data: data,
+                    success:function (resData)
+                    {
+                        if(resData.status == 1)
+                        {
+                            FkxToast.success(resData.info);
+                            $('#ReportModal').modal('hide');
+                        }
+                        else
+                        {
+                            FkxToast.error(resData.info);
+                        }
+                    },
+                    error: function ()
+                    {
+                        FkxToast.error('提交失败！');
+                    }
+                });
+            });
+        });
+    });
+});
+</script>

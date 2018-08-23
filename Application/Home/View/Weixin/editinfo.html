@@ -1,0 +1,109 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/seting.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+    <style>
+      .bg {
+          background: rgba(0, 0, 0, 0.5);
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          display: none;
+          top: 0;
+          z-index: 99;
+      }    
+      .bg-list {
+          width: 100%;
+          position: fixed;
+          bottom: 0;
+      }
+      .action {
+          animation: ok 1s;
+          -webkit-animation: ok 1s;
+      }
+      @keyframes ok {
+          from{opacity: 0}to{opacity: 1}
+      }
+      @-webkit-keyframes ok {
+          from{opacity: 0}to{opacity: 1}
+      }
+      .bg-list ul li {
+          width: 100%;
+          height: 50px;
+          margin-top: 1px;
+          text-align: center;
+          background: #fff;
+      }
+      .bg-list ul li a {
+          font-size: 15px;
+          color: #666;
+          line-height: 50px;
+      }
+    </style>
+<div class="bg">
+    <div class="bg-list">
+        <ul>
+            <li><a href="">拍照</a></li>
+            <li><a href="">从相册选取</a></li>
+            <li id="cancel"><a href="">取消</a></li>
+        </ul>
+    </div>
+</div>
+<a href="{:U('Center/imgset')}">
+    <div class="head">
+        <p>头像</p>
+        <img id="pic" style="border-radius: 30px;" src="{$info.pic|default='/public/Home/images/bg.png'}" alt="">
+        <div style="top:24px" class="arrow">
+            <img src="/public/Home/images/arrow.png" alt="">
+        </div>
+    </div>
+</a>
+<a href="{:U('Center/edit_name')}">
+    <div style="border-bottom:10px solid #e5e5e5">
+        <div style="height:45px;border:none" class="head">
+            <p style="line-height:45px">用户名</p>
+            <div class="arrow">
+                <img src="/public/Home/images/arrow.png" alt="">
+            </div>
+        </div>
+    </div>
+</a>
+<!--<div style="height:45px" class="head">-->
+    <!--<p style="line-height:45px">银行卡绑定</p>-->
+    <!--<div class="arrow">-->
+        <!--<img src="/public/Home/images/arrow.png" alt="">-->
+    <!--</div>-->
+<!--</div>-->
+    <a href="{:U('Center/edit_pwd')}">
+<div style="height:45px" class="head">
+    <p style="line-height:45px">修改登录密码</p>
+    <div class="arrow">
+        <img src="/public/Home/images/arrow.png" alt="">
+    </div>
+</div>
+    </a>
+
+<div class="bottom">
+    <a href="{:U('Center/logout')}">退出登录</a>
+</div>
+<script>
+    $('.bg-list>ul>li a').click(function(e){
+        e.preventDefault()
+    })
+    $('#pic').click(function(){
+        $('.bg').css('display','block');
+        $('.bg-list').addClass('action')
+    });
+    $('#cancel').click(function(){
+        $('.bg').css('display','none');
+    })
+
+</script>
+</body>
+</html>

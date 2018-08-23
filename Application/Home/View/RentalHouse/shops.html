@@ -1,0 +1,180 @@
+<extend name="Public/main"/>
+<block name="title"><title>精品公寓</title></block>
+<block name="css">
+    <style>
+        #listContainer {
+            background-color: #fff;
+            padding: 0 6px;
+        }
+        .info-item {
+            display: flex;
+            position: relative;
+            align-items: center;
+            padding: 6px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .info-logo {
+            position: relative;
+            margin-right: 5px;
+        }
+        .info-logo.un-read::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #f11;
+            top: 0px;
+            right: 0px;
+        }
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            display: block;
+            border-radius: 30px;
+        }
+        .info-content{
+            flex: 1;
+            width: 10%;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+        }
+        .info-content .info-title {
+            margin-bottom: 6px;
+            font-size: 16px;
+            color: #000;
+        }
+        .tip-section {
+            text-align:center;
+            padding: 30px 0;
+            display: none;
+        }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>精品公寓</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <div id="listContainer">
+        </div>
+        <div id="loadingTip" class="tip-section">
+            <div style="color: #999;font-size: 14px;margin-top: 12px;"> 加载中... </div>
+        </div>
+        <div id="endTip" class="tip-section">
+            <div style="color: #999;font-size: 14px;margin-top: 12px;">- 已经到底了 -</div>
+        </div>
+        <div id="emptyTip" class="tip-section" style="background-color:#fff;">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <div style="color: #999;font-size: 14px;margin-top: 12px;">- 暂无信息 -</div>
+        </div>
+    </div>
+</block>
+<block name="js">
+<script id="item-temp" type="template/javascript">
+    <a class="info-item" href="{:U('RentalHouse/shop_info', array('shop_id'=>'[#id]'))}">
+        <div class="info-logo">
+            <img src="[#logo_img]" class="logo-img"/>
+        </div>
+        <div class="info-content">
+            <div class="info-title">[#shop_name]</div>
+            <div class="ellipsis">[#shop_info]</div>
+        </div>
+    </a>
+</script>
+<script type="text/javascript">
+$(function () {
+    var currentPage = 0,
+        loading = false,
+        pageSize = 10,
+        isEnd = false;
+    var $listContainer = $('#listContainer');
+
+    var scrollBefore = $(window).scrollTop();
+    $(window).scroll(function () {
+        var scrollAfter = $(window).scrollTop();
+        if (scrollAfter < scrollBefore) {
+            return;
+        }
+        var body = $('body').get(0);
+        var scrollBottom = body.scrollHeight - body.scrollTop - body.clientHeight;
+        if (scrollBottom <= 80 && !loading) {
+            scrollBefore = scrollAfter;
+            getList();
+        }
+    });
+
+    getList();
+    function getList()
+    {
+        if(loading || isEnd) return;
+        loading = true;
+        $('#loadingTip').show();
+        currentPage ++;
+        $.ajax({
+            url: '{:U("RentalHouse/load_shops")}',
+            data:{page_size: pageSize, cur_page:currentPage},
+            type: 'POST',
+            dataType: 'json',
+            success: function (resData)
+            {
+                loading = false;
+                $('#loadingTip').hide();
+                console.log('response data: ', resData);
+                if(Array.isArray(resData.rows))
+                {
+                    var html = [], temp = $("#item-temp").text(), itemCount = 0;
+                    resData.rows.forEach(function(item, idx) {
+                        html.push(temp.replace("[#logo_img]", item.logo_img || '/public/Home/images/message/icon_logo.png')
+                            .replace("[#shop_name]", item.shop_name)
+                            .replace("[#shop_info]", item.shop_info)
+                            .replace(RegExp(encodeURIComponent('[#id]'), 'g'), item.id)
+                        );
+                    })
+                    if(html)
+                    {
+                        if(currentPage === 1)
+                        {
+                            $listContainer.html(html);
+                        }
+                        else
+                        {
+                            $listContainer.append(html);
+                        }
+                    }
+
+                    itemCount = $listContainer.children().length;
+                    if(itemCount >= resData.total)
+                    {
+                        if(itemCount)
+                        {
+                            isEnd = true;
+                            $('#endTip').show();
+                        } else
+                        {
+                            $('#emptyTip').show();
+                        }
+                    }
+                }
+            },
+            error: function ()
+            {
+                loading = false;
+                $('#loadingTip').hide();
+            }
+        });
+    }
+
+});
+</script>
+</block>

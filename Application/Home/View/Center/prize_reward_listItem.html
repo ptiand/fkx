@@ -1,0 +1,39 @@
+<foreach name="rewardList" item="reward">
+    <div class="reward">
+        <div class="item reward-title">
+            <span class="item-label reward-state">{$StateCaption[$reward['state']]}</span>
+            <span class="input-container info reward-name">{$reward['reward']}</span>
+            <if condition="$reward['state']==$State['UnReceived']">
+                <a class="reward-btn" href="{:U('Center/supplyRewardInfo', array('id'=>$reward['id']))}">
+                    <span>填写领奖信息</span>
+                    <i class="gt"><img src="/public/Home/images/icon_gt.png"></i>
+                </a>
+            </if>
+        </div>
+        <if condition="!$reward['username'] && !$reward['phone'] && !$reward['address']">
+            <div class="item">
+                <span class="item-label">尚未填写联系信息</span>
+            </div>
+        <else/>
+            <div class="item">
+                <span class="item-label">联系姓名</span>
+                <span class="input-container info">{$reward['username']}</span>
+            </div>
+            <div class="item">
+                <span class="item-label">联系电话</span>
+                <span class="input-container info">{$reward['phone']}</span>
+            </div>
+            <div class="item">
+                <span class="item-label">联系地址</span>
+                <span class="input-container info">{$reward['address']}</span>
+            </div>
+
+        </if>
+        <if condition="$reward['state']==$State['Received']">
+            <div class="item">
+                <span class="item-label">领取时间</span>
+                <span class="input-container info">{$reward['receiveTime'] > 0 ?($reward['receiveTime']|date="Y-m-d H:i",###): ''}</span>
+            </div>
+        </if>
+    </div>
+</foreach>

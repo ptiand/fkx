@@ -1,0 +1,86 @@
+<div class="group-container">
+    <div class="title"><span>房屋地址</span></div>
+
+    <div class="item">
+        <span class="item-label">市、区</span>
+        <Select class="input-container" name="cityId" id="CitySelect" autofocus required>
+            <option value="">请选择</option>
+            <foreach name="districtList" item="district">
+                <eq name="district['pid']" value="0">
+                    <option value="{$district['id']}" {$house['cityId']==$district['id']?'selected':''}>{$district['city_name']}</option>
+                </eq>
+            </foreach>
+        </Select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+        <Select class="input-container" name="areaId" id="AreaSelect" required>
+            <option value="">请选择</option>
+            <foreach name="districtList" item="district" >
+                <neq name="district['pid']" value="0">
+                    <option class="area-option hide-option" pid="{$district['pid']}" value="{$district['id']}"
+                            {$house['areaId']==$district['id']?'selected':''}>{$district['city_name']}</option>
+                </neq>
+            </foreach>
+        </Select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+    <div class="item">
+        <span class="item-label">详细地址</span>
+        <input class="input-container" type="text" name="address" value="{$house['address']}" placeholder="请输入" required/>
+    </div>
+    <div class="item">
+        <span class="item-label">地图选址</span>
+        <?php
+            $isSelected = false;
+            if($house['longitude'] > 0 && $house['latitude'] > 0)
+            {
+                $isSelected = true;
+            }
+        ?>
+        <input class="input-container" type="text" name="" id="SelectMap" placeholder="请选择" value="{$isSelected?'已选择':''}" readonly/>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+</div>
+
+<div class="group-container">
+    <div class="title"><span>联系信息</span></div>
+
+    <div class="item">
+        <span class="item-label">联系姓名</span>
+        <input class="input-container" type="text" name="yzxm" value="{$others->yzxm}" placeholder="请输入" required/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">联系电话</span>
+        <input class="input-container" type="text" name="yzdh" value="{$others->yzdh}" placeholder="请输入" required/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">是否显示</span>
+        <!--<input class="input-container" type="text" placeholder="请选择"/>-->
+        <select class="input-container" name="xsyz" required>
+            <option value="1" {$others->xsyz=='1'?'selected':''}>显示</option>
+            <option value="0" {$others->xsyz=='0'?'selected':''}>不显示</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+
+</div>
+<div class="item-info">*个人号码如隐藏，客户可通过微聊咨询您，或申请房客行服务。</div>
+<div class="group-container">
+    <div class="title"><span>当前状态</span></div>
+
+    <div class="item">
+        <span class="item-label">当前状态</span>
+        <!--<input class="input-container" type="text" placeholder="请选择"/>-->
+        <select class="input-container" name="state">
+            <foreach name="StateCaption" item="state" key="id">
+                <option value="{$id}" {$house['state']==$id?'selected':''}>{$state}</option>
+            </foreach>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+</div>

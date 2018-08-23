@@ -1,0 +1,126 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">新增广告</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="Form" method="post" action="{$self}">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">标题</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="title" type="text" name="title" value=""/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="citySelect">市/区</label>
+                <div class="col-sm-2">
+                    {:renderHtmlSelect('cityId', 'citySelect', $topCities, '',"请选择投放市")}
+                </div>
+                <div class="col-sm-2" id="areaSelect">
+                    {:renderHtmlSelect('areaId', 'areaId', [], '',"请选择投放区")}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="Video" >广告视频</label>
+                <div class="col-sm-4">
+                    <input type="hidden" id="Video" name="video" value="" />
+                    <video src="" controls="controls" width="100" id="video_preview" />
+                    <a id="deleteVideo">删除</a>
+                    <input class="upload-btn" type="file" id="video-upload">
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+    <button type="button" class="btn btn-primary" id="submit">保存</button>
+</div>
+<script type="text/javascript" src='__PUBLIC__/Static/uploadifive/Sample/jquery.uploadifive.min.js'></script>
+<style>
+.uploadifive-queue
+{
+    display: none;
+}
+.upload-img-preview
+{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.upload-img-preview-opt
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+</style>
+<script type="application/javascript">
+$(function () {
+    function renderAreaSelect()
+    {
+        $.ajax({
+            url:'{:U("City/loadCitySelectHtml")}',
+            type:'POST',
+            data:{pid: $('#citySelect').val(),selectId:'areaId', selectName:'areaId',emptyValue:'请选择投放区',value:''},
+            success: function (respHtml)
+            {
+                $('#areaSelect').html(respHtml);
+            }
+        });
+    }
+    renderAreaSelect();
+    $('#citySelect').on('change', renderAreaSelect);
+    $("#submit").click(function(){
+        if(!$('#title').val() || !$('#citySelect').val() || !$('#areaId').val() || !$('#Video').val())
+        {
+            alert('请完善信息');
+            return;
+        }
+        var $form = $('#Form');
+        $form.bootstrapValidator('validate');
+        if(!$form.data('bootstrapValidator').isValid())
+            return;
+        $.post($form.attr('action'), $form.serialize(), function(result) {
+            if(result.status==1){
+                swal({
+                    title:"操作成功！",
+                    text:result.info,
+                    type:"success"
+                },function(){
+                    $form.bootstrapValidator('resetForm', true);
+                    $('#Modal').modal('hide');
+                });
+            }else{
+                toastr.warning(result.info);return false;
+            }
+        }, 'json');
+    });
+
+    $("#video-upload").uploadifive({
+        height: 25,
+        swf: '/Public/Static/uploadify/uploadify.swf',
+        uploadScript: "{:U('File/uploadVideo',array('session_id'=>session_id()))}",
+        width: 80,
+        buttonClass: "btn-primary",
+        buttonText: '上传视频',
+        onUploadComplete: function (file, data) {
+            data = $.parseJSON(data);
+            if (data.status) {
+                $("#video_preview").attr("src", data.data);
+                $("#Video").val(data.data);
+            }
+            else {
+                alert(data.info);
+            }
+        }
+    });
+    $('#deleteVideo').click(function () {
+        $("#video_preview").attr("src", '');
+        $("#Video").val('');
+    });
+});
+
+</script>

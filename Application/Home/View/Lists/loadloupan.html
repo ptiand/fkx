@@ -1,0 +1,58 @@
+<volist name="info" id="vo">
+    <div class="card-container">
+        <div class="item-top-container">
+            <a href="{:U('Lists/lpinfo',array('id'=>$vo['id']))}">
+                <img src="{$vo.pic}" alt="">
+            </a>
+            <a class="item_right_content" href="{:U('Lists/newHouseDetail',array('id'=>$vo['id']))}">
+                <div class="card-container-right">
+                    <div class="item_left_content">
+                        <!--<h1>{$vo.title}</h1>-->
+                        <!--<div class="card-child-1">-->
+                        <!--&lt;!&ndash;<p>{$vo.price}</p>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span>元／平起</span>&ndash;&gt;-->
+                        <!--<p>2-5室 | 89-148㎡ -->
+                        <!--</div>-->
+
+                        <!--<div class="card-child-2">-->
+                        <!--<div class="childs-1">-->
+                        <!--<p>佣金</p>-->
+                        <!--</div>-->
+                        <!--<div class="childs-2">-->
+                        <!--<p><?php if($yongjin == 1){ ?>-->
+                        <!--{$vo.prices} <?php }else{ echo '登录可见'; ?> <?php } ?></p>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="last-child">-->
+                        <!--&lt;!&ndash;<p>{$vo.address}</p>&ndash;&gt;-->
+                        <!--</div>-->
+                        <h1>{$vo.title}</h1>
+                        <span class="gray_text">2-5室 | 89-148㎡</span>
+                        <span class="gray_text">2-5室 | 89-148㎡</span>
+                        <div>
+                            <span class="tag">在售</span>
+                            <span class="tag">住宅</span>
+                            <span class="tag">复式</span>
+                        </div>
+                    </div>
+                    <!--<div class="right">-->
+                    <!--<a href="{:U('client/report',array('loupan_id'=>$vo['id']))}">-->
+                    <!--<img src="/public/Home/images/baobei.png" alt="">-->
+                    <!--<p>快速报备</p>-->
+                    <!--</a>-->
+                    <!--</div>-->
+                    <div class="right">
+                        <div class="price">
+                            <p>{$vo.price}</p>
+                            <span>元/㎡</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="item-bottom-container">佣金： 5%-10%</div>
+
+    </div>
+</volist>

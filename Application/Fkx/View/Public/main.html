@@ -1,0 +1,111 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <title>{$title|default='房客行'}</title>
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <block name="css"></block>
+
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <script src="/public/Home/js/jquery.touchSlider.js"></script>
+    <style>
+        .actives{
+            color:#44c3ca !important;
+        }
+    </style>
+</head>
+<body>
+
+<block name="main"></block>
+
+<div class="bottom-mane">
+    <div class="bottom-mane-heft">
+        <div class="bottom-mane-child">
+            <?php if(session('key') ==1 ){ ?>
+            <a class="" href="{:U('Index/index')}"><img src="/public/Home/images/index_2.png" alt=""></a>
+            <a class="actives" href="{:U('Index/index')}">首页</a>
+            <?php }else{ ?>
+            <a class="" href="{:U('Index/index')}"><img src="/public/Home/images/index_1.png" alt=""></a>
+            <a class="" href="{:U('Index/index')}">首页</a>
+            <?php } ?>
+        </div>
+
+        <div class="bottom-mane-child">
+            <?php if(session('key') ==2 ){ ?>
+            <a href="{:U('Lists/index')}"><img src="/public/Home/images/build_2.png" alt=""></a>
+            <a class="actives" href="{:U('Lists/index')}">房源</a>
+            <?php }else{ ?>
+            <a href="{:U('Lists/index')}"><img src="/public/Home/images/build_1.png" alt=""></a>
+            <a href="{:U('Lists/index')}">房源</a>
+            <?php } ?>
+        </div>
+    </div>
+    <div class="bottom-mane-heft" style="padding-left:35px">
+        <div class="bottom-mane-child">
+            <?php if(session('key') ==3 ){ ?>
+            <a href="{:U('Client/index')}"><img src="/public/Home/images/person_2.png" alt=""></a>
+            <a class="actives" href="{:U('Client/index')}">客户</a>
+            <?php }else{ ?>
+            <a href="{:U('Client/index')}"><img src="/public/Home/images/person_1.png" alt=""></a>
+            <a href="{:U('Client/index')}">客户</a>
+            <?php } ?>
+        </div>
+
+        <div class="bottom-mane-child">
+            <?php if(session('key') ==4 ){ ?>
+            <a href="{:U('Center/index')}"><img src="/public/Home/images/center_2.png" alt=""></a>
+            <a class="actives" href="{:U('Center/index')}">我的</a>
+            <?php }else{ ?>
+            <a href="{:U('Center/index')}"><img src="/public/Home/images/center.png" alt=""></a>
+            <a href="{:U('Center/index')}">我的</a>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+<block name="js"></block>
+<script>
+
+
+    $(document).ready(function(){
+        $(".main_visual").hover(function(){
+            $("#btn_prev,#btn_next").fadeIn()
+        },function(){
+            $("#btn_prev,#btn_next").fadeOut()
+        });
+
+        $dragBln = false;
+
+        $(".main_image").touchSlider({
+            flexible : true,
+            speed : 200,
+            btn_prev : $("#btn_prev"),
+            btn_next : $("#btn_next"),
+            paging : $(".flicking_con a"),
+            counter : function (e){
+                $(".flicking_con a").removeClass("on").eq(e.current-1).addClass("on");
+            }
+        });
+
+        $(".main_image").bind("mousedown", function() {
+            $dragBln = false;
+        });
+
+        $(".main_image").bind("dragstart", function() {
+            $dragBln = true;
+        });
+
+        $(".main_image a").click(function(){
+            if($dragBln) {
+                return false;
+            }
+        });
+
+        timer = setInterval(function(){
+            $("#btn_next").click();
+        }, 2500);
+
+    });
+</script>
+</body>
+</html>

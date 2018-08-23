@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <title>房客行</title>
+    <meta keywords="房客行官网">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="/public/Fkx/css/base.css">
+    <link rel="stylesheet" href="/public/Fkx/css/index.css">
+    <script src="/public/Fkx/js/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+<div class="top-bar">
+    <h1>房客行</h1>
+    <a href="#banner_tabs">首页</a>
+    <a href="#goodjob">优质服务</a>
+    <a href="#morebuild">最全房源</a>
+    <a href="#users">平台用户</a>
+    <a href="#about">关于我们</a>
+</div>
+<div id="banner_tabs" class="flexslider">
+    <ul class="slides">
+        <li>
+            <a title="" target="_blank" href="#">
+                <img width="100%" height="941px" alt=""  src="/public/Fkx/img/fkx-1.jpg">
+            </a>
+        </li>
+        <li>
+            <a title="" href="#">
+                <img width="100%" alt=""  src="/public/Fkx/img/fkx-7.jpg">
+            </a>
+        </li>
+
+    </ul>
+    <ul class="flex-direction-nav">
+        <li><a class="flex-prev" href="javascript:;">Previous</a></li>
+        <li><a class="flex-next" href="javascript:;">Next</a></li>
+    </ul>
+    <ol id="bannerCtrl" class="flex-control-nav flex-control-paging">
+        <li><a>1</a></li>
+        <li><a>2</a></li>
+    </ol>
+</div>
+<div class="container">
+    <ul>
+        <li id="goodjob">
+            <img src="/public/Fkx/img/fkx-2.jpg" alt="">
+        </li>
+        <li id="morebuild">
+            <img src="/public/Fkx/img/fkx-3.jpg" alt="">
+        </li>
+        <li id="users">
+            <img src="/public/Fkx/img/fkx-4.jpg" alt="">
+        </li>
+        <li id="about">
+            <img src="/public/Fkx/img/fkx-5.jpg" alt="">
+        </li>
+        <li>
+            <img src="/public/Fkx/img/fkx-6.jpg" alt="">
+        </li>
+    </ul>
+</div>
+<script>
+    $(function() {
+        var bannerSlider = new Slider($('#banner_tabs'), {
+            time: 5000,
+            delay: 400,
+            event: 'hover',
+            auto: true,
+            mode: 'fade',
+            controller: $('#bannerCtrl'),
+            activeControllerCls: 'active'
+        });
+        $('#banner_tabs .flex-prev').click(function() {
+            bannerSlider.prev()
+        });
+        $('#banner_tabs .flex-next').click(function() {
+            bannerSlider.next()
+        });
+    })
+</script>
+<script src="/public/Fkx/js/slider.js"></script>
+</body>
+</html>

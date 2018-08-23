@@ -1,0 +1,84 @@
+<extend name="Public/main" />
+<block name="css">
+    <style>
+        .c {
+            padding: 10 15px 10px 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f2f2f2;
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+        }
+        .c p {
+            font-size: 14px;
+            color: #333333;
+        }
+        .c input {
+            width: 80%;
+            font-size: 14px;
+            color: #333333;
+            text-align: left;
+
+        }
+        .btn {
+            margin: 0 15px;
+            height: 40px;
+            border-radius: 20px;
+            background: #44c3cc;
+            text-align: center;
+        }
+        .btn a {
+            font-size: 16px;
+            color: #fff;
+            line-height: 39px;
+        }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>修改用户名</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <div class="c">
+            <p>姓名</p>
+            <input type="text" name="" id="name" value="{$name}" placeholder="">
+        </div>
+
+        <div class="btn sub">
+            <a >保存</a>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script>
+        $(document).ready(function(){
+            $('#name').focus()
+        })
+
+        $('.sub').click(function(){
+            var name = $('#name').val();
+            if(!name){
+                alert('用户名不能为空');
+                return false;
+            }
+            var info = {user_name:name}
+            $.post("{:U('Center/edit_n')}",info,function(data){
+
+                if(1 == data.status){
+                    location.href = '/index.php/Center/index';
+                }else{
+                    alert(data.info)
+                }
+            })
+
+        })
+    </script>
+</block>

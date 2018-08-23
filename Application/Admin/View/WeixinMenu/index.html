@@ -1,0 +1,221 @@
+<extend name="Public/common" />
+<block name="body">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>{$title_name}</h5>
+            <div class="ibox-tools">
+                <button id="create_menu" class="btn btn-success" >发布微信公众号菜单
+                </button>
+                <button id="remove_menu" class="btn btn-danger" >删除微信公众号菜单
+                </button>
+                <!-- <i style="clear:both"></i> -->
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div id="toolbar">
+                        <button id="addform" class="btn btn-success">新增</button>
+                        <button id="remove" class="btn btn-danger" disabled >
+                            <i class="glyphicon glyphicon-remove"></i>删除
+                        </button>
+                    </div>
+                    <table id="table">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="modal">
+    <div class="modal fade" id="Modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        var $table = $('#table'), $edit=$('#edit');$remove = $('#remove'), selections = [];
+        var $add = $('#addform');
+        function initTable() {
+            $table.bootstrapTable({
+                url: "{:U('loadMenus')}",
+                toolbar: "#toolbar",
+                method: 'GET',
+                showRefresh: true,
+                minimumCountColumns: 5,
+                clickToSelect : true,
+                showFooter: false,
+                sidePagination: "server",
+                height: getHeight(),
+                formatLoadingMessage: function(){
+                    return '正在加载，请稍候...';
+                },
+                formatNoMatches: function()
+                {
+                    return '没有数据！';
+                },
+                columns: [
+                    [
+                        {checkbox: true, align: 'center', valign: 'middle'},
+                        {field: 'id',title: '菜单ID', align: 'center'},
+                        {field: 'parent_id',title: '上级菜单', align: 'center'},
+                        {field: 'name', title: '菜单标题', align: 'left', halign:'center'},
+                        {field: 'type', title: '菜单内容', align: 'center'},
+                        //{field: 'key', title: 'KEY值', align: 'center'},
+                        {field: 'url', title: '链接', align: 'center'},
+                        {field: 'ordernum', title: '排序序号', align: 'center'},
+                        {title:'操作', align:'center',clickToSelect: false, formatter: function (value, row, index)
+                        {
+                        <?php if (!$parent_id):?>
+                            return '<button name="edit" data-id="'+row.id+'" class="btn btn-primary">编辑</button>'  +
+                                '<button name="sub_menu" data-id="'+row.id+'" class="btn btn-primary">查看子菜单</button>'+
+                                '<button name="add_submenu" data-id="'+row.id+'" has-submenu="'+row.has_submenu+'" class="btn btn-primary">添加子菜单</button>';
+                        <?php else :?>
+                            return '<button name="edit" data-id="'+row.id+'" class="btn btn-primary">编辑</button>';
+                        <?php endif;?>
+                        }}
+                    ]
+                ],
+                onCheck: checkRemoveBtn,
+                onUncheck: checkRemoveBtn,
+                onCheckAll: checkRemoveBtn,
+                onUncheckAll: checkRemoveBtn
+            });
+            function checkRemoveBtn()
+            {
+                $('#remove').prop('disabled', !$table.bootstrapTable('getSelections').length);
+            }
+
+            setTimeout(function () {
+                $table.bootstrapTable('resetView');
+            }, 200);
+            $remove.click(function () {
+                var ids = getIdSelections();
+                var param = {ids:ids};
+                confirmDelete("{:U('delete')}",param,$table,$remove,"id",ids);
+            });
+            $add.click(function(){
+                $("#Modal").modal({
+                    remote: "{:U('add')}?parent_id={$parent_id}"
+                    ,backdrop: 'static'
+                    ,keyboard: false
+                });
+            });
+            $table.delegate('[name="edit"]','click', function ()
+            {
+                var id = $(this).attr('data-id');
+                $("#Modal").modal({
+                    remote: "{:U('add')}?id="+id,
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            });
+            $table.delegate('[name="sub_menu"]','click', function (){
+                var parentId = $(this).attr('data-id');
+                window.location.href="{:U('subMenu')}?parentId="+parentId;
+            });
+            $table.delegate('[name="add_submenu"]','click', function (){
+                
+                var parent_id = $(this).attr('data-id');
+                var has_submenu =$(this).attr('has-submenu');
+                if (has_submenu == 2) {
+                    swal({
+                        title: "确定添加子菜单？",
+                        text: "添加子菜单后，一级菜单的内容将被清除。",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText:"让我再考虑一下…",
+                        confirmButtonColor: "#1ab394",
+                        confirmButtonText: "添加",
+                        closeOnConfirm: true
+                    }, function () {
+                        $("#Modal").modal({
+                            remote: "{:U('add')}?parent_id=" + parent_id+'&t=' + Math.random(1000)
+                            ,backdrop: 'static'
+                            ,keyboard: false
+                        });
+                    });
+                }else{
+                    $("#Modal").modal({
+                        remote: "{:U('add')}?parent_id=" + parent_id+'&t=' + Math.random(1000)
+                        ,backdrop: 'static'
+                        ,keyboard: false
+                    });
+                }
+            });
+            $('#create_menu').click(function(){
+                swal({
+                    title: "您确定要发布微信公众号菜单吗？",
+                    text: "发布后公众号菜单将以最新的菜单展示！",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText:"让我再考虑一下…",
+                    confirmButtonColor: "#1ab394",
+                    confirmButtonText: "发布",
+                    closeOnConfirm: true
+                }, function () {
+                    $.post("{:U('create_menu')}", '', function(result) {
+                        if(result.status==1){
+                            swal({
+                                title:"操作成功！",
+                                text:result.info,
+                                type:"success"
+                            },function(){
+                            });
+                        }else{
+                            toastr.warning(result.info);return false;
+                        }
+                    }, 'json');
+                });
+            });
+            $('#remove_menu').click(function(){
+                swal({
+                    title: "您确定要删除微信公众号菜单吗？",
+                    text: "删除后微信公众号将无菜单展示！",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText:"让我再考虑一下…",
+                    confirmButtonColor: "red",
+                    confirmButtonText: "删除",
+                    closeOnConfirm: true
+                }, function () {
+                    $.post("{:U('remove_menu')}", '', function(result) {
+                        if(result.status==1){
+                            swal({
+                                title:"操作成功！",
+                                text:result.info,
+                                type:"success"
+                            },function(){
+                            });
+                        }else{
+                            toastr.warning(result.info);return false;
+                        }
+                    }, 'json');
+                });
+            });
+            $(window).resize(function () {
+                $table.bootstrapTable('resetView', {
+                    height: getHeight()
+                });
+            });
+
+        }
+
+        function getIdSelections(param) {
+            return $.map($table.bootstrapTable('getSelections'), function (row) {
+                return row.id;
+            });
+        }
+        $(function () {
+            $("#Modal").on("hidden.bs.modal", function() {
+                $(this).removeData("bs.modal");
+                $table.bootstrapTable('refresh', {silent: true});
+            });
+            eachSeries(getScript, initTable);
+        });
+    </script>
+</block>

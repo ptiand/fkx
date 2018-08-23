@@ -1,0 +1,355 @@
+<extend name="Public/main" />
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+    <style type="text/css">
+    .header input
+    {
+        padding-left: 60px;
+        padding-right: 36px;
+    }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="search">
+            <select id="TypeSelect" class="index_sc">
+                <option value="3">&nbsp;&nbsp;租房</option>
+                <option value="1">&nbsp;&nbsp;新房</option>
+                <option value="2">&nbsp;&nbsp;二手</option>
+            </select>
+            <i class="index_scdrop"><img src="/public/Home/images/icon_drop.png" width="12" /></i>
+            <input type="text" placeholder="搜索房源信息" id="SearchInput" />
+            <button id="SearchBtn" class="index_scbtn">搜索</button>
+        </div>
+        <a class="button" href="{:U('Message/index')}">
+            <img src="/public/Home/images/message.png" width="23" height="23">
+        </a>
+    </div>
+</block>
+<block name="main">
+    <div class="tab-content-container storageRange">
+        <div class="downapp" id="downapp">
+            <a href="http://a.app.qq.com/o/simple.jsp?pkgname=cn.fangkexing.app&channel=0002160650432d595942&fromcase=60001">
+                <img src="/public/Home/images/icon_down.png" alt="房客行图标" width="48" height="48" />
+                <h3 class="tit">下载房客行APP</h3>
+                <span class="titsub">买卖双方直沟通&nbsp;&nbsp;买房租房全免中介费</span>
+                <span class="downbtn">立即打开</span>
+                <span></span>
+            </a>
+            <img src="/public/Home/images/x.png" id="HideDownApp"
+                 style="position: absolute;
+                        bottom: 52px;
+                        right: 5px;
+                        height: 12px;
+                        margin: 0;"
+            />
+        </div>
+        <div class="main_visual">
+            <div class="flicking_con">
+            </div>
+            <div class="main_image">
+                <ul>
+                    <volist name="ads" id="a" key="ak">
+                    <li><span><a href="{$a.url}"><img id="b_{$ak + 1}" src="{$a.pic}"></a></span></li>
+                    </volist>
+                </ul>
+                <a href="javascript:;" id="btn_prev"></a>
+                <a href="javascript:;" id="btn_next"></a>
+            </div>
+        </div>
+        <div class="mid-container">
+            <ul>
+                <li>
+                    <a class="img" href="{:U('Lists/index2')}">
+                        <img src="/public/Home/images/icon-new.png" alt="新房">
+                    </a>
+                    <a href="{:U('Lists/index2')}">新房</a>
+                </li>
+                <li>
+                    <a class="img" href="{:U('OldHouse/index')}">
+                        <img src="/public/Home/images/icon-er.png" alt="二手房">
+                    </a>
+                    <a href="{:U('OldHouse/index')}">二手房</a>
+                </li>
+                <li>
+                    <a class="img" href="{:U('RentalHouse/index')}">
+                        <img src="/public/Home/images/icon-zu.png" alt="个人房源">
+                    </a>
+                    <a href="{:U('RentalHouse/index')}">个人房源</a>
+                </li>
+			</ul>
+			<ul>
+                <li>
+                    <a class="img" href="{:U('RentalHouse/index2')}">
+                        <img src="/public/Home/images/icon-mypublic.png" alt="精品公寓">
+                    </a>
+                    <a href="{:U('RentalHouse/index2')}">精品公寓</a>
+                </li>
+                <li>
+                    <a class="img" href="{:U('Publish/index')}">
+                        <img src="/public/Home/images/icon-shou.png" alt="租售发布">
+                    </a>
+                    <a href="{:U('Publish/index')}">租售发布</a>
+                </li>
+                <li>
+                    <a class="img" href="{:U('MapHouse/index')}">
+                        <img src="/public/Home/images/icon-weituo.png" alt="地图找房">
+                    </a>
+                    <a href="{:U('MapHouse/index')}">地图找房</a>
+                </li>
+            </ul>
+        </div>
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">二手房服务</span>
+                <a href="{:U('Index/trade')}"><span class="right">查看完整服务介绍 <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i></span></a>
+            </div>
+            <div class="recommend-list">
+                <a class="right" href="{:U('Index/trade')}"><img src="/public/Home/images/trade_process.png" alt="交易流程图" width="100%" /></a>
+            </div>
+        </div>
+        <div class="requirement">
+            <span>没有我要的房源</span>
+            <a class="custom-button" href="{:U('Requirement/custom')}">
+                <span>购房需求定制</span>
+            </a>
+        </div>
+        <!-- 租房 -->
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">精选租房</span>
+                <a href="{:U('RentalHouse/index')}"><span class="right">更多租房 <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i></span></a>
+            </div>
+            <div class="recommend-list"  id="rentalHouseList">
+                <div class="message">
+                    <span>加载中...</span>
+                </div>
+            </div>
+        </div>
+        <!-- 二手房 -->
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">精选二手房</span>
+                <a href="{:U('OldHouse/index')}"><span class="right">更多二手房 <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i></span></a>
+            </div>
+            <div class="recommend-list" id="oldHouseList">
+                <div class="message">
+                    <span>加载中...</span>
+                </div>
+                <volist name="houses" id="house">
+                    <div class="recommend-item" url="{:U('Lists/lpinfo',array('id'=>$house['id']))}">
+                        <div class="recommend-item-img">
+                            <img src="{$house.pic}" alt="" />
+                        </div>
+                        <div class="houseInfo">
+                            <span class="title">{$house.title}</span>
+                            <div class="attr">
+                                <div class="left">
+                                    <span>{$house.size}</span>
+                                    <span>{$house.address}</span>
+                                </div>
+                                <div class="right">
+                                    <span>{$house.price}</span>
+                                    <!-- <span>340000元/㎡</span> -->
+                                </div>
+                            </div>
+                            <!--
+                            <div class="label">
+                                <span>代售</span>
+                                <span>别墅</span>
+                                <span>商业区</span>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <!-- 新房 -->
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">精选新房</span>
+                <a href="{:U('Lists/index2')}"><span class="right">更多新房 <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i></span></a>
+            </div>
+            <div class="recommend-list" id="newHouseList">
+                <div class="message">
+                    <span>加载中...</span>
+                </div>
+                <volist name="houses" id="house">
+                    <div class="recommend-item" url="{:U('Lists/lpinfo',array('id'=>$house['id']))}">
+                        <div class="recommend-item-img">
+                            <img src="{$house.pic}" alt="" />
+                        </div>
+                        <div class="houseInfo">
+                            <span class="title">{$house.title}</span>
+                            <div class="attr">
+                                <div class="left">
+                                    <span>{$house.size}</span>
+                                    <span>{$house.address}</span>
+                                </div>
+                                <div class="right">
+                                    <span>{$house.price}</span>
+                                    <!-- <span>340000元/㎡</span> -->
+                                </div>
+                            </div>
+                            <!--
+                            <div class="label">
+                                <span>代售</span>
+                                <span>别墅</span>
+                                <span>商业区</span>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <div class="content-footer">
+            <span>-- 已经到底了 --</span>
+        </div>
+    </div>
+</block>
+<block name="tabbar">
+    <include file="Public:tabbar"/>
+</block>
+<block name="js">
+<script>
+function setSliderHeight(){
+    var sliderHeight = $(window).width()*120/320;
+    $('.main_image,.main_image ul,.main_image li,.main_image img').css('height',sliderHeight);
+}
+$(window).resize(function() {
+    setSliderHeight();
+});
+var indexLi = $('.main_image>ul li').length;
+
+(function() {
+    var wid = window.innerWidth*0.04;
+    var left = Number($('.flicking_con').css('left').slice(0,3))
+    var num = indexLi-3;
+    var slip = left-num*wid;
+    console.log(slip);
+    $('.flicking_con').css('left',slip)
+    for(i=0;i<indexLi;i++){
+        var a = '<a></a>'
+
+    $('.flicking_con').append(a)
+}
+})();
+
+        // var current_loading = false;
+        // var page_container_object =  $("body").get(0);
+        // var time=1;
+        // $(window).scroll(function(){
+        //     var scroll_interval = page_container_object.scrollHeight - page_container_object.scrollTop-page_container_object.clientHeight;
+        //     if (scroll_interval <= 100 && !current_loading) {
+        //         current_loading = true;
+        //         loadMore(time);
+        //     }
+        // });
+        // //"向服务器请求数据"
+        // function loadMore(te) {
+        //     $.get("{:U('Index/loadloupan')}",{ time : te} , function(data) {
+        //         if(data.status==0){
+        //             // $(".loadingA").add(".loadingB").add(".loadingC").hide();
+        //         }else{
+        //             $(".con").last().append(data.houses);
+        //             current_loading =false;
+        //             time++;
+        //         }
+        //     });
+        // }
+        (function () {
+            $.get("{:U('Index/loadRecommendNewHouse')}", function (respHtml)
+            {
+                $('#newHouseList').html(respHtml);
+            });
+            $.get("{:U('Index/loadRecommendOldHouse')}", function (respHtml)
+            {
+                $('#oldHouseList').html(respHtml);
+            });
+            $.get("{:U('Index/loadRecommendRentalHouse')}", function (respHtml)
+            {
+                $('#rentalHouseList').html(respHtml);
+            });
+        })();
+
+        $(document).ready(function(){
+            $(".main_visual").hover(function(){
+                $("#btn_prev,#btn_next").fadeIn()
+            },function(){
+                $("#btn_prev,#btn_next").fadeOut()
+            });
+
+            $dragBln = false;
+
+            $(".main_image").touchSlider({
+                flexible : true,
+                speed : 200,
+                btn_prev : $("#btn_prev"),
+                btn_next : $("#btn_next"),
+                paging : $(".flicking_con a"),
+                counter : function (e){
+                    $(".flicking_con a").removeClass("on").eq(e.current-1).addClass("on");
+                }
+            });
+
+            $(".main_image").bind("mousedown", function() {
+                $dragBln = false;
+            });
+
+            $(".main_image").bind("dragstart", function() {
+                $dragBln = true;
+            });
+
+            $(".main_image a").click(function(){
+                if($dragBln) {
+                    return false;
+                }
+            });
+
+            timer = setInterval(function(){
+                $("#btn_next").click();
+            }, 2500);
+
+            $("#SearchBtn").click(function () {
+                var type = $('#TypeSelect').val();
+                var keyWord = $("#SearchInput").val();
+                var url = '';
+                if (type==1) {
+                    url = '{:U("Lists/index2")}';
+                } else if (type==2) {
+                    url = '{:U("OldHouse/index")}';
+                } else {
+                    url = '{:U("RentalHouse/index")}';
+                }
+                return window.location.href = `${url}?keyWord=${keyWord}`;
+            });
+        });
+        $("#HideDownApp").click(function () {
+            sessionStorage.hideDownLoad = true;
+            $("#downapp").hide();
+        });
+</script>
+<script type="text/javascript">
+    var downapp=document.getElementById("downapp");
+    if(navigator.userAgent.search('fkxapp')>-1 || sessionStorage.hideDownLoad) {
+        downapp.style.display ='none';
+    } else {
+        downapp.style.display ='block';
+    }
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.match(/MicroMessenger/i) != "micromessenger") {
+        if(navigator && navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(function(position){
+                if(position && position.coords)
+                {
+                    console.log('longitude:', position.coords.longitude, 'latitude:', position.coords.latitude);
+                    $.post('{:U("Location/report")}',{longitude: position.coords.longitude, latitude: position.coords.latitude});
+                }
+            }, function(err){console.log(err);});
+        }
+    }
+</script>
+</block>

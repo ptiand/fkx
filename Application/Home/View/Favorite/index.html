@@ -1,0 +1,108 @@
+<extend name="Public/main" />
+<block name="title"><title>我的收藏</title></block>
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/house_list.css">
+    <style>
+        html body
+        {
+            background-color: #F2F2F2;
+        }
+        .fav-item
+        {
+            padding: 0px 10px;
+            margin-bottom: 5px;
+            background-color: white;
+        }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button"></div>
+        <div class="title">
+            <span>我的收藏</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="tab-content-container">
+        <div id="listContainer"></div>
+        <div id="loadingTip" style="text-align:center;padding: 30px 0;">
+            <div style="color: #999;font-size: 14px;margin-top: 12px;"> 加载中... </div>
+        </div>
+        <div id="endTip" style="text-align:center;padding: 30px 0;display: none;">
+            <div style="color: #999;font-size: 14px;margin-top: 12px;">- 已经到底了 -</div>
+        </div>
+        <div id="emptyTip" style="text-align:center;padding: 30px 0;display: none;">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <div style="color: #999;font-size: 14px;margin-top: 12px;">- 暂无收藏房源 -</div>
+        </div>
+    </div>
+</block>
+<block name="tabbar">
+    <include file="Public:tabbar"/>
+</block>
+<block name="js">
+<script type="application/javascript">
+(function () {
+    var currentPage = 0,
+        loading = false,
+        pageSize = 10,
+        isEnd = false;
+
+    var scrollBefore = $(window).scrollTop();
+    $(window).scroll(function () {
+    var scrollAfter = $(window).scrollTop();
+    if (scrollAfter < scrollBefore) {
+        console.log("scroll to top, ignore");
+        return;
+    }
+    var body = $('body').get(0);
+    var scrollBottom = body.scrollHeight - body.scrollTop - body.clientHeight;
+    if (scrollBottom<=80 && !loading) {
+        getList();
+    }
+    });
+    getList();
+    function getList()
+    {
+        if(loading || isEnd) return;
+        loading = true;
+        currentPage ++;
+        $.ajax({
+            url: '{:U("Favorite/loadData")}',
+            data:{pageSize: pageSize, currentPage:currentPage},
+            type: 'POST',
+            success: function (resData)
+            {
+                loading = false;
+                if(resData.status == 1)
+                {
+                    if(resData.info.html)
+                    {
+                        $('#listContainer').append(resData.info.html);
+                    }
+                    if(!resData.info.hasMore)
+                    {
+                        $('#loadingTip').hide();
+                        if($('#listContainer').children().length)
+                        {
+                            isEnd = true;
+                            $('#endTip').show();
+                        } else
+                        {
+                            $('#emptyTip').show();
+                        }
+                    }
+                }
+            },
+            error: function ()
+            {
+               loading = false;
+            }
+        });
+    }
+
+})();
+</script>
+</block>

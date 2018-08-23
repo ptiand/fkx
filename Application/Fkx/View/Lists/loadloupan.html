@@ -1,0 +1,33 @@
+
+<volist name="info" id="vo">
+     <div class="card-container">
+
+         <a href="{:U('Lists/lpinfo',array('id'=>$vo['id']))}">
+             <img src="{$vo.pic}" alt="">
+         </a>
+        <div class="card-container-right">
+            <h1>{$vo.title}</h1>
+            <div class="card-child-1">
+                <p>{$vo.price}</p>
+                <span>元／平起</span>
+            </div>
+            <div class="card-child-2">
+                <div class="childs-1">
+                    <p>佣金</p>
+                </div>
+                <div class="childs-2">
+                    <p><?php if($yongjin == 1){ ?>{$vo.prices} <?php }else{ echo '登录可见'; ?> <?php } ?></p>
+                </div>
+            </div>
+            <div class="last-child">
+                <p>{$vo.address}</p>
+            </div>
+        </div>
+         <div class="right">
+             <a href="{:U('client/report',array('loupan_id'=>$vo['id']))}">
+                 <img src="/public/Home/images/baobei.png" alt="">
+                 <p>快速报备</p>
+             </a>
+         </div>
+    </div>
+    </volist>

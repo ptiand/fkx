@@ -1,0 +1,607 @@
+[ 2018-07-20T09:38:37+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0520s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0430s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T09:49:29+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T09:49:33+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T10:16:26+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T10:27:02+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0190s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T10:27:07+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T10:27:37+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0210s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T10:36:23+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+ERR: 1146:Table 'fkx_dev.rental_houses' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `rental_houses`
+
+[ 2018-07-20T10:46:58+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `id` = 12 LIMIT 1   [ RunTime:0.0190s ]
+
+[ 2018-07-20T10:47:13+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `RentalHouses` LIMIT 1   [ RunTime:0.0180s ]
+
+[ 2018-07-20T10:48:03+08:00 ] 127.0.0.1 /index.php/Service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `RentalHouses` LIMIT 0,20   [ RunTime:0.0190s ]
+
+[ 2018-07-20T11:16:04+08:00 ] 127.0.0.1 /index.php/Service%E3%80%81load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Service、load_houses
+
+[ 2018-07-20T11:16:14+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+NOTIC: [8] Undefined variable: limit E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 75 行.
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1  [ RunTime:0.0190s ]
+
+[ 2018-07-20T11:16:43+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined variable: limit E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 75 行.
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1  [ RunTime:0.0180s ]
+
+[ 2018-07-20T11:16:59+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined variable: limit E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 75 行.
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1  [ RunTime:0.0180s ]
+
+[ 2018-07-20T11:17:13+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined variable: limit E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 75 行.
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022  [ RunTime:0.0180s ]
+
+[ 2018-07-20T11:17:27+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0220s ]
+NOTIC: [8] Undefined variable: limit E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 75 行.
+SQL: SELECT * FROM `RentalHouses` WHERE `userId` = 100022  [ RunTime:0.0400s ]
+
+[ 2018-07-20T11:24:29+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0810s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+NOTIC: [8] Undefined variable: limit E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 75 行.
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1  [ RunTime:0.0400s ]
+NOTIC: [8] Undefined variable: reorder E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 78 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1 LIMIT 1   [ RunTime:0.0200s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-20T15:58:27+08:00 ] 127.0.0.1 /index.php/Service/houses_setup
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0670s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0710s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0670s ]
+ERR: 模板不存在:../Application/Home/View/Service/houses_setup.html
+
+[ 2018-07-20T15:58:46+08:00 ] 127.0.0.1 /index.php/Service/houses_setup
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+
+[ 2018-07-20T16:02:50+08:00 ] 127.0.0.1 /index.php/Service/houses_setup
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 AND `request_flag` = 1 AND `status` = 1 LIMIT 1   [ RunTime:0.0200s ]
+
+[ 2018-07-20T16:04:41+08:00 ] 127.0.0.1 /index.php/Service/houses_setup
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0390s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0260s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 AND `request_flag` = 1 AND `status` = 1 LIMIT 1   [ RunTime:0.0260s ]
+ERR: 模板不存在:../Application/Home/View/Service/houses_setup.html
+
+[ 2018-07-20T16:04:48+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0660s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0510s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0900s ]
+NOTIC: [8] Undefined variable: limit E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 76 行.
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1  [ RunTime:0.1100s ]
+
+[ 2018-07-20T16:05:14+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.1030s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0810s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1 LIMIT 0,1   [ RunTime:0.1040s ]
+
+[ 2018-07-20T16:06:19+08:00 ] 127.0.0.1 /index.php/Service/load_houses
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = null AND `shop_id` = 0 LIMIT 0,1   [ RunTime:0.0610s ]
+
+[ 2018-07-20T16:19:07+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+SQL: SHOW COLUMNS FROM `ad` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `ad` WHERE `status` = 2 AND `positions` = 'index' ORDER BY sort asc  [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: houses E:\myphp\fkx\Runtime\Cache\Home\9b1c26b1cee56f532f15c56b96a07c74.php 第 167 行.
+NOTIC: [8] Undefined variable: houses E:\myphp\fkx\Runtime\Cache\Home\9b1c26b1cee56f532f15c56b96a07c74.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-20T16:19:08+08:00 ] 127.0.0.1 /uploads/type/2017-12-22/5a3c7e41e7c89.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-20T16:19:08+08:00 ] 127.0.0.1 /uploads/type/2017-12-22/5a3c7e2558cad.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.006000s ]
+
+[ 2018-07-20T16:19:08+08:00 ] 127.0.0.1 /uploads/type/2018-02-03/5a758b27e76dd.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-20T16:19:09+08:00 ] 127.0.0.1 /index.php/Im/getLoginInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+NOTIC: [2] Missing argument 1 for Library\TencentIMSdk\IMSdk::createAndInitRestAPI(), called in E:\myphp\fkx\Application\Home\Controller\ImController.class.php on line 200 and defined E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 32 行.
+NOTIC: [8] Undefined variable: identifier E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 35 行.
+
+[ 2018-07-20T16:19:12+08:00 ] 127.0.0.1 /index.php/Index/loadRecommendNewHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `NewHouses` [ RunTime:0.0220s ]
+SQL: SELECT * FROM `NewHouses` WHERE `state` <> 9 AND `sort` > 0 ORDER BY sort ASC, updateTime DESC   [ RunTime:0.0210s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `HouseHuxings` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 1 ORDER BY sort ASC  [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 11 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 22 ORDER BY sort ASC  [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 24 ORDER BY sort ASC  [ RunTime:0.0210s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 28 ORDER BY sort ASC  [ RunTime:0.0220s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 1 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0220s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-20T16:19:14+08:00 ] 127.0.0.1 /index.php/Index/loadRecommendOldHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `OldHouses` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `OldHouses` WHERE `state` <> 9 AND `sort` > 0 ORDER BY sort ASC, updateTime DESC   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0160s ]
+NOTIC: [8] Undefined offset: 11 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0160s ]
+NOTIC: [8] Undefined offset: 4 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0160s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 2 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-20T16:19:16+08:00 ] 127.0.0.1 /index.php/Index/loadRecommendRentalHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 AND `sort` > 0 ORDER BY sort ASC, updateTime DESC   [ RunTime:0.0220s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0220s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-20T16:19:18+08:00 ] 127.0.0.1 /index.php/Publish/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `OldHouses` [ RunTime:0.0190s ]
+SQL: SELECT COUNT(id) AS tp_count FROM `OldHouses` WHERE `userId` = 100022 AND `state` <> 9 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+SQL: SELECT COUNT(id) AS tp_count FROM `RentalHouses` WHERE `userId` = 100022 AND `state` <> 9 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-20T16:19:24+08:00 ] 127.0.0.1 /index.php/Publish/rentalHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `types` WHERE `is_del` <> 1  [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `zxiu` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `zxiu` WHERE `is_del` <> 1  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` = 0  [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `Medias` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = null AND `type` = 1 AND `houseType` = 3 AND `isDel` <> 1 ORDER BY sort ASC  [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = null AND `type` = 2 AND `houseType` = 2 AND `isDel` <> 1 ORDER BY id DESC LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 252 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 259 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 268 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 277 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 286 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 287 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 300 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 300 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 301 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 301 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 310 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 310 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 311 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 311 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 320 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 320 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 321 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 321 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 330 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 330 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 331 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 331 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 340 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 340 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 341 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 341 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 350 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 350 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 351 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 351 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 360 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 360 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 361 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 361 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 370 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 370 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 371 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 371 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 380 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 380 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 381 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 381 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 390 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 390 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 391 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 391 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 400 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 400 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 401 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 401 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 410 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 410 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 411 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 411 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 420 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 420 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 421 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 421 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 430 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 430 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 431 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 431 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 440 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 440 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 441 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 441 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 506 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 513 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 521 行.
+NOTIC: [8] Trying to get property of non-object E:\myphp\fkx\Runtime\Cache\Home\04518e1957cab7167243fccd674f7dd4.php 第 522 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

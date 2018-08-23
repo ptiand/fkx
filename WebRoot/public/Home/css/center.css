@@ -1,0 +1,81 @@
+body {
+    background: #f2f2f2;
+}
+.banner {
+    width: 100%;
+    height: 165px;
+    text-align: center;
+    background: url(../images/beijing.png);
+    background-size: 100% 165px;
+    position: fixed;
+}
+.seting {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+}
+.seting img {
+    width: 21px !important;
+    height: 21px !important;
+}
+.banner img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin: 18px 5px 8px 5px;
+}
+.banner h1 {
+    font-size: 17px;
+    color: #ffffff;
+}
+.banner p{
+    font-size: 13px;
+    color: #ffffff;
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+
+.container {
+    width: 100%;
+}
+.container ul {
+    width: 100%;
+    background: #ffffff;
+    margin-bottom: 10px;
+}
+.container ul li {
+    margin: 0 15px;
+    border-bottom: 1px solid #f2f2f2;
+    display: flex;
+    justify-content: space-between;
+}
+.container ul li:last-child{
+    border:0 none;
+}
+.container ul li a {
+    display: flex;
+    height: 45px;
+    width: 100%;
+    justify-content: space-between;
+}
+.left{
+    display: flex;
+}
+.left img {
+    width: 21px;
+    height: 21px;
+    margin: auto 15px auto 0;
+}
+.left p {
+    font-size: 14px;
+    color: #444;
+    margin: auto 0;
+}
+.right {
+    display: block;
+}
+.right img {
+    width: 13px;
+    height: 11px;
+    margin: 16px 0;
+}

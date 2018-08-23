@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    $(function () {
+        $('#report-text').click(function ()
+        {
+            $('#AppealModal').modal({
+                show: true
+            });
+        });
+        $('#AppealModalClose').click(function ()
+        {
+            $('#AppealModal').modal('hide');
+        });
+        $("#AppealModal").on("hidden.bs.modal", function() {
+            $('[name="appeal.content"]').val("")
+        });
+        $('#SubmitAppeal').click(function ()
+        {
+            var houseId = $('[name="houseId"]').val(),
+                houseType = $('[name="houseType"]').val(),
+                content = $('[name="appeal.content"]').val();
+            $.ajax({
+                url: "{:U('Appeal/submit')}",
+                data: {content: content,houseId: houseId, houseType: houseType},
+                type: 'POST',
+                success: function (resData)
+                {
+                    if(resData.status == 1)
+                    {
+                        FkxToast.success(resData.info);
+                        $('#AppealModal').modal('hide');
+                    }
+                    else
+                    {
+                        FkxToast.error(resData.info);
+                    }
+                },
+                error: function ()
+                {
+                    FkxToast.error('提交失败！');
+                }
+            });
+        });
+    });
+</script>

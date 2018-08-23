@@ -1,0 +1,211 @@
+.modal.in .modal-dialog {
+    transform: none;
+}
+
+.item-info {
+    padding: 5px 12px;
+    color: #999;
+    font-size: 11px;
+}
+
+.bottom-container {
+    height: 42px;
+    background-color: #34BBBE;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+}
+
+.group-container .title {
+    padding: 10px 0 5px 10px;
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 13px;
+    color: #333;
+}
+
+.group-container .title .item-tips {
+    font-weight: normal;
+}
+
+.group-container .width-tail {
+    justify-content: space-between;
+    display: flex;
+    padding-right: 8px;
+}
+
+.group-container .item {
+    background-color: white;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+}
+
+.group-container .item-label {
+    font-size: 13px;
+    color: #333;
+    font-weight: normal;
+    min-width: 52px;
+}
+
+.group-container .item-tips {
+    font-size: 13px;
+    color: #999;
+}
+
+.group-container .item .input-container {
+    margin-left: 10px;
+    margin-right: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: space-between;
+    color: #333;
+    font-size: 13px;
+    border: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+}
+
+.group-container .seperator {
+    height: 1px;
+    background-color: #e4e4e4;
+    margin: 0 12px;
+    display: none;
+}
+
+.group-container .item .input-container .inner-container {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0 5px 0;
+}
+
+.group-container .item .input-container .inner-input {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    border: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+}
+
+.group-container .item .input-container .inner-tail {
+
+}
+
+.group-container .item .multiple-line {
+    margin-right: 0;
+}
+
+.group-container .image-item {
+    display: flex;
+    align-items: center;
+}
+
+.group-container .images-container {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    flex-wrap: wrap;
+    margin-left: -3px;
+}
+
+.group-container .images-container .images-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #eaeaea;
+    display: inline-block;
+    margin: 3px;
+    padding: 2px;
+}
+
+.group-container .images-container .images-item img {
+    width: 59px;
+    height: 59px;
+}
+
+.group-container .images-container .images-item video {
+    width: 59px;
+    height: 59px;
+}
+
+.group-container .item .multiple-line-input {
+    margin: 0;
+    height: 54px;
+    border: none;
+}
+
+.image-view-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-view-container .image-list {
+    display: flex;
+    padding: 10px;
+    overflow: auto;
+}
+
+.image-view-container .image-list .image-container {
+    height: 68px;
+    width: 68px;
+    margin-right: 10px;
+}
+
+.image-view-container .Image-Swiper {
+    height: 100px;
+    background-color: #fff;
+}
+
+.image-view-container .image-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 0;
+}
+
+.image-view-container .image-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    color: red;
+    width: 90px;
+    margin: 0 auto;
+    /* height: 36px; */
+    border: 1px solid #ff0000;
+    line-height: 32px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.bottom-container .box-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.image-view-container .image-list .active-image {
+    border: 2px solid blue;
+}
+
+.hide-option {
+    display: none;
+}

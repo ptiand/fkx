@@ -1,0 +1,128 @@
+<extend name="Public/common" />
+<block name="body">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>奖励列表</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div id="toolbar">
+                    </div>
+                    <table id="table"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="modal">
+    <div class="modal fade" id="Modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+    var $table = $('#table'), selections = [];
+    $table.bootstrapTable({
+        url: "{:U('Reward/loadRewardList')}",
+        toolbar: "#toolbar",
+        method: 'GET',
+        search: true,
+        showRefresh: true,
+        showColumns: true,
+        showExport: true,
+        minimumCountColumns: 5,
+        pagination: true,
+        idField: "id",
+        sortName: "aid",
+        //detailFormatter: "detailFormatter",
+        clickToSelect : true,
+        order: "desc",
+        pageSize : 10,
+        pageNumber : 1,
+        pageList: [10,20,50,100,"ALL"],
+        showFooter: false,
+        sidePagination: "server",
+        //responseHandler: "responseHandler",
+        formatSearch: function(){return '请输入用户名称或手机号'},
+        height: getHeight(),
+        formatLoadingMessage: function(){
+            return '正在加载，请稍候...';
+        },
+        formatShowingRows: function (pageFrom, pageTo, totalRows) {
+            return '第 ' + pageFrom + ' - ' + pageTo + ' 记录，共 ' + totalRows + ' 条记录';
+        },
+        formatRecordsPerPage: function(pageNumber){
+            return '每页 '+pageNumber + ' 记录';
+        },
+        formatNoMatches: function()
+        {
+            return '没有数据！';
+        },
+        columns: [
+            //{checkbox: true, align: 'center', valign: 'middle'},
+            {field: 'id',title: '奖励id', align: 'center',sortable: true},
+            {field: 'userName',title: '用户名', align: 'center'},
+            {field: 'userPhone', title: '手机号', align: 'center'},
+            {field: 'reward', title: '奖品', align: 'center'},
+            {field: 'username', title: '联系姓名', align: 'center'},
+            {field: 'phone', title: '联系手机号', align: 'center'},
+            {field: 'address', title: '联系地址', align: 'center'},
+            {field: 'receiveTime', title: '领奖时间', align: 'center'},
+            {field: 'stateCaption', title: '状态', align: 'center'},
+            {title:'操作', align:'center',clickToSelect: false, formatter: function (value, row, index)
+                {
+                    var btnEnable = '';
+                    console.log(row);
+                    if(row.state != '{$State['UnReceived']}')
+                    {
+                        btnEnable = 'disabled';
+                    }
+                    return '<button name="give" data-id="'+row.id+'" class="btn btn-primary" '+btnEnable+'>发放奖励</button>';
+                }}
+        ],
+    });
+    $table.delegate('[name="give"]','click', function ()
+    {
+        if($(this).attr('disabled'))
+        {
+            return ;
+        }
+        var id = $(this).attr('data-id');
+        swal({
+                title: "确定发放吗？",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定发放！",
+                cancelButtonText: "取消",
+                closeOnConfirm: false
+            },
+            function(){
+                $.post("{:U('/Admin/Reward/give')}", {id:id}, function(result) {
+                    if(result.status==1){
+                        swal({
+                            title:"操作成功！",
+                            text:result.info,
+                            type:"success"
+                        },function(){
+                            $table.bootstrapTable('refresh', {});
+                        });
+                    }else{
+                        toastr.warning(result.info);return false;
+                    }
+                }, 'json');
+            });
+    });
+    $(window).resize(function () {
+        $table.bootstrapTable('resetView', {
+            height: getHeight()
+        });
+    });
+
+</script>
+</block>

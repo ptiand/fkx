@@ -1,0 +1,118 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel"><empty name="Think.get.id">新增<else /> 编辑</empty>微信菜单</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="defaultForm" method="post" action="{$self}">
+        <input type="hidden" name="id" value="{$info.id}" />
+        <fieldset>
+            <?php if ($has_submenu == 2):?>
+            <div class="form-group" style="display: inline-table;width: 100%;">
+                <label class="col-sm-2 control-label" for="name">菜单级别</label>
+                <div class="col-sm-4">
+                   <select id="parent_id" class="form-control select-huge" name="parent_id">
+                        <option value="0">一级菜单</option>
+                        <?php foreach ($firstmenu as $k => $v) :?>
+                            <option  value="{$v.id}" <if condition="$parent_id eq $v['id']">selected="selected"</if>>{$v.name}</option>
+                        <?php endforeach;?>
+                   </select>
+                </div>
+            </div>
+            <?php endif;?>
+            <div class="form-group" style="display: inline-table;width: 100%;">
+                <label class="col-sm-2 control-label" for="menu_name">菜单名称</label>
+                <div class="col-sm-5">
+                    <input class="form-control" id="menu_name" name="name" type="text" value="{$info.name}"/>
+                    菜单标题，不超过16个字节，子菜单不超过60个字节
+                </div>
+            </div>
+            <?php if ($has_submenu == 2):?>
+            <div class="form-group" style="display: inline-table;width: 100%;">
+                <label class="col-sm-2 control-label" for="type">菜单内容</label>
+                <div class="col-sm-3" style="padding-top:5px;">
+                    <?php foreach ($menu_type as $k => $v) :?>
+                        <input id="type" class="menu_type"name="type" type="radio" value="{$k}" <if condition="$info['type'] eq $k">checked="checked"</if>>{$v}</input>
+                    <?php endforeach;?>
+                </div>
+            </div>
+            <div class="form-group type-set-1" style="display: inline-table;width: 100%;">
+                <label class="col-sm-2 control-label" for="url">页面地址</label>
+                <div class="col-sm-7">
+                   <input class="form-control" id="url" name="url" type="text" value="{$info.url}"/>必须以http://或https://开头
+                </div>
+            </div>
+
+             <div class="form-group type-set-2" style="display: inline-table;width: 100%;">
+                <label class="col-sm-2 control-label" for="text_content">回复内容</label>
+                <div class="col-sm-7">
+                   <textarea class="form-control" rows="4" cols="40" id="text_content" name="text_content">{$info.text_content|htmlspecialchars_decode}</textarea>回复内容不能为空且最多300个字 按下Enter键换行
+                </div>
+            </div>
+            <?php endif;?>
+            <div class="form-group" style="display: inline-table;width: 100%;">
+                <label class="col-sm-2 control-label" for="ordernum">排序序号</label>
+                <div class="col-sm-7">
+                    <input class="form-control" id="ordernum" name="ordernum" min="0" max="100" type="number" value="{$info.ordernum}"/>1-100的数字
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+    <button type="button" class="btn btn-primary" id="submit">保存</button>
+</div>
+
+<script type="text/javascript">
+    $("#submit").click(function(){
+        $("#defaultForm").submit();
+    })
+    $(".menu_type").change(function(){
+        var type_str = $('input[name="type"]:checked').val();
+        if (type_str == 'view') {
+            $(".type-set-1").css('display','inline-table');
+            $(".type-set-2").css('display','none');
+        }else{
+            $(".type-set-1").css('display','none');
+            $(".type-set-2").css('display','inline-table');
+        }
+    });
+    $(document).ready(function() {
+        <?php if ($info['id'] && in_array($info['type'], array('click'))):?>
+            $(".type-set-1").css('display','none');
+            $(".type-set-2").css('display','inline-table');
+        <?php else:?>
+            $(".type-set-2").css('display','none');
+        <?php endif;?>
+        $('#defaultForm').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+            }
+        })
+        .on('success.form.bv', function(e) {
+            e.preventDefault();
+            var $form = $(e.target);
+            var bv = $form.data('bootstrapValidator');
+            $.post($form.attr('action'), $form.serialize(), function(result) {
+                if(result.status==1){
+                    swal({
+                        title:"操作成功！",
+                        text:result.info,
+                        type:"success"
+                    },function(){
+                        $('#defaultForm').bootstrapValidator('resetForm', true);$('input').val('');
+                        $('#Modal').modal('hide');
+                    });
+                }else{
+                    toastr.warning(result.info);return false;
+                }
+            }, 'json');
+        });
+    });
+</script>

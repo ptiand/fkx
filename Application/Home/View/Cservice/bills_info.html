@@ -1,0 +1,201 @@
+<extend name="Public/main" />
+<block name="title">
+    <title>账单详情</title>
+</block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Static/ios-select/iosSelect.css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+    <link rel="stylesheet" href="/public/Home/css/publish.css">
+</block>
+<block name="header">
+    <div class="header">
+        <a class="button" href="javascript:history.go(-1)">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22" />
+        </a>
+        <div class="title">
+            <span>账单详情</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <style>
+        .info-item {
+            display: flex;
+            position: relative;
+            background-color: #fff;
+            padding: 6px;
+            color: #000;
+        }
+        .item-content {
+            flex: 1;
+            width: 10%;
+            padding: 0 6px;
+        }
+        .info-icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+        }
+        .address {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .detail-item{
+            font-size: 13px;
+        }
+        .flex-2 {
+            flex: 2;
+            text-align: right;
+        }
+        .flex-3 {
+            flex: 3;
+        }
+        .input-container.price-text {
+            text-align: right;
+            display: block !important;
+            margin-right: 0!important;
+        }
+        .price-input {
+            width: 80px;
+            border: 1px solid #cdcdcd;
+            padding: 4px 0;
+            text-align: right;
+        }
+        .add-btn {
+            width: 100%;
+            text-align: center;
+            display: block;
+            background-color: white;
+            padding: 10px 0;
+        }
+        .group-container .item.date-range {
+            justify-content: space-around;
+        }
+        .date-range-item {
+            border: 1px solid #34BBBE;
+            border-radius: 2px;
+            padding: 2px 10px;
+        }
+        .other-cost-item .cost-input{
+            width: 10%;
+            flex: 1;
+            border: 1px solid #dedede;
+            margin-right: 8px;
+            padding: 4px 6px;
+            border-radius: 4px;
+        }
+        .other-cost-item .del-btn {
+            margin-left: 6px;
+        }
+        .other-cost-item .del-btn img {
+            width: 18px;
+        }
+        .bottom-btn.flex {
+            display: flex;
+        }
+        .bottom-btn.flex a {
+            flex: 1;
+            color: #fff;
+            border-left: 1px solid #fff;
+        }
+        .bottom-btn.flex a.disabled {
+            background-color: #cdcdcd;
+        }
+        .layui-m-layer4 .layui-m-layercont{
+            padding: 20px;
+        }
+    </style>
+    <form class="content-container" id="Main-Form">
+        <input value="{$agreement_info['id']}" name="id" hidden/>
+        <input value="{$room_info['id']}" name="room_id" hidden/>
+        <div class="info-item">
+            <img class="info-icon" src="/public/Home/images/icon-new.png" alt="">
+            <div class="item-content">
+                <div class="ellipsis">{$house_info.name} {$room_info.room_name}</div>
+                <div class="address clr-gray ellipsis">{$house_info.address}</div>
+            </div>
+        </div>
+        <div class="group-container user-info-group">
+            <div class="title">账单信息</div>
+            <div class="item">
+                <div class="input-container">租客： {$agreement_info['buy_user_name']}</div>
+                <div class="input-container">押付方式： {$apartment_type[$agreement_info['rental_type']]}</div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <div class="input-container">手机号码： {$agreement_info['buy_user_phone']}</div>
+                <div class="input-container">收费日期： {$pay_date[$agreement_info['pay_date']]}</div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <div class="input-container">入住时间： {$agreement_info['start_date']}</div>
+                <div class="input-container">
+                    <if condition="$bill_info['pay_state'] == '1' || $bill_info['is_pay'] == 1">
+                        <span>账单状态： <span class="clr-green">{$bill_info['pay_state'] == '1' ? '微信支付' : '线下收款'}</span></span>
+                    <else/>
+                        <span>账单状态： <span class="clr-yellow">未支付</span></span>
+                    </if>
+                </div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <div class="input-container">账单周期： {$bills_info['start_date']} ~ {$bills_info['end_date']} </div>
+            </div>
+        </div>
+        <div class="group-container">
+            <div class="title">账单明细</div>
+            <div class="item">
+                <div class="flex-3">收费项</div>
+                <div class="flex-2">使用量</div>
+                <div class="flex-2">金额</div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item detail-item">
+                <div class="flex-3">房租</div>
+                <div class="flex-2"></div>
+                <div class="flex-2">￥{$bills_info['price']}</div>
+            </div>
+            <foreach name="bills_info['details']" item="item">
+                <if condition="$item['cost_unit_id'] != '2' || $item['cur_num'] != 0">
+                <div class="seperator"></div>
+                <div class="item detail-item">
+                    <div class="flex-3">
+                        <if condition="$item['cost_unit_id'] != '2' && $item['cost_type_id'] == 1">
+                            {$cost_name_id[$item['cost_unit_id']][$item['cost_name_id']]}({$cost_type_id[$item['cost_unit_id']][$item['cost_type_id']]})
+                        <else/>
+                            {$cost_name_id[$item['cost_unit_id']][$item['cost_name_id']]}({$item['cost']} {$cost_type_id[$item['cost_unit_id']][$item['cost_type_id']]})
+                        </if>
+                    </div>
+                    <if condition="$item['cost_unit_id'] == '2'">
+                        <div class="flex-2">{$item['cur_num']} - {$item['last_num']}</div>
+                    <else/>
+                        <div class="flex-2"></div>
+                    </if>
+                    <div class="flex-2">￥{$item['total_cost']}</div>
+                </div>
+                </if>
+            </foreach>
+            <div class="item">
+                <span class="item-label">合计</span>
+                <div class="input-container price-text">
+                    ￥{$bills_info['gift_price'] + $bills_info['total_price']}
+                </div>
+            </div>
+            <div class="item">
+                <span class="item-label">优惠金额</span>
+                <div class="input-container price-text">
+                    ￥{$bills_info['gift_price']}
+                </div>
+            </div>
+            <div class="item">
+                <span class="item-label">应付金额</span>
+                <div class="input-container price-text" id="proceeds" data-total="{$bills_info['total_price']}">
+                    ￥{$bills_info['total_price']}
+                </div>
+            </div>
+        </div>
+    </form>
+</block>
+<block name="js">
+</block>

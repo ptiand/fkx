@@ -1,0 +1,90 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>客户报备</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/up.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li><p>客户姓名</p><span>*</span><input type="text" id="name" name="name" placeholder="请输入姓名"></li>
+        <li><p>客户性别</p><span>*</span><input class="cl" name="sex" value="=2" type="radio" ><p>男</p><input class="cl" name="sex" value="1" type="radio"><p>女</p></li>
+        <li><p>客户电话</p><span>*</span><input type="text" id="phone" name="phone" placeholder="请输入电话"></li>
+        <li><p>置业目的（选填）</p>
+            <select id="zhiye" name="zhiye" style="padding: 5px;height: 30px;margin-top: 8px;">
+                <option value="0">无</option>
+                <option value="1">投资</option>
+                <option value="2">自住</option>
+                <option value="3">投资兼自住</option>
+            </select>
+        </li>
+        <li><p>关注户型（选填）</p>
+            <select id="huxing" name="huxing" style="padding: 5px;height: 30px;margin-top: 8px;">
+                <option value="0">无</option>
+                <option value="1">一房</option>
+                <option value="2">两房</option>
+                <option value="3">三房</option>
+                <option value="4">四房</option>
+                <option value="5">五房及以上</option>
+            </select>
+        </li>
+    </ul>
+</div>
+<div class="bot">
+    <p>备注信息</p>
+    <textarea id="texts" name="node"  placeholder="例：价格300-333万之间，置业目的：投资房地产，区域：思明区嘉禾路，需求点：学区房等">例：价格300-333万之间，置业目的：投资房地产，区域：思明区嘉禾路，需求点：学区房等</textarea>
+</div>
+<div class="error" style="font-size:14px;text-align: center;padding: 5px;color:red;">
+
+</div>
+<div class="mas sub">
+    <a>确认提交</a>
+</div>
+<script>
+    var n = 0;
+    $('#texts').click(function(){
+        n++;
+        if(n===1){
+           $('#texts').html('');
+            $('#texts').css('color','#333333')
+        }
+    })
+    $('.sub').click(function(){
+        var loupan_id = "{$Think.get.loupan_id}"
+        var name = $('#name').val();
+        if(!name){
+            alert('名字不能为空');
+            return false;
+        }
+        var phone = $('#phone').val();
+        if(!phone){
+            alert('手机号码不能为空');
+            return false;
+        }
+        var node = $('#texts').val();
+        var te = '例：价格300-333万之间，置业目的：投资房地产，区域：思明区嘉禾路，需求点：学区房等';
+        if(node===te) {
+            node = ''
+        }
+        var zhiye = $('#zhiye').val();
+        var huxing = $('#huxing').val();
+        var sex = $("input[name='sex']:checked").val();
+        var info = {nick_name:name,phone:phone,sex:sex,node:node,huxing:huxing,zhiye:zhiye,loupan_id:loupan_id};
+        $.post("{:U('client/report_in')}",info,function(data){
+//            console.log(data)
+            if(1 == data.status){
+                alert(data.info);
+                location.href = "{:U('client/index')}";
+            }else{
+                $('.error').html(data.info)
+            }
+        })
+    })
+
+</script>
+</body>
+</html>

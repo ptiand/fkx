@@ -1,0 +1,50 @@
+<foreach name="reports" item="report">
+    <div class="card" onclick="javascript:window.location.href='{:U("Report/detail", array('id'=>$report['id']))}'">
+        <div class="title">
+            <span class="time">{$report['created_at']|date="Y-m-d H:i",###}</span>
+            <?php
+            $statusCss = '';
+            if($report['status'] == $Status['FollowUp'])
+            {
+                $statusCss = 'followup';
+            }
+            else if($report['status'] == $Status['Done'])
+            {
+                $statusCss = 'done';
+            }
+            else if($report['status'] == $Status['Failed'])
+            {
+                $statusCss = 'failed';
+            }
+            ?>
+            <span class="status {$statusCss}">{$StatusCaption[$report['status']]}</span>
+        </div>
+        <div class="item">
+            <span class="item-label">房源信息</span>
+            <span class="input-container info">{$report['houseName']}</span>
+        </div>
+        <div class="seperator"></div>
+        <div class="item">
+            <span class="item-label">客户信息</span>
+            <span class="input-container info">{$report['nick_name']}&nbsp;{$report['phone']}</span>
+        </div>
+        <div class="seperator"></div>
+        <div class="item">
+            <span class="item-label">备注信息</span>
+            <span class="input-container info">{$report['node']}</span>
+        </div>
+        <div class="seperator"></div>
+        <notempty name="report['followups']">
+        <div class="item reply">
+            <span class="item-label">客服回复</span>
+            <span class="input-container info">
+                <foreach name="report['followups']" item="followup">
+                <p>{$followup['created_at']|date="Y-m-d H:i",###}</p>
+                <p>{$followup['contents']|default='-'}</p>
+                </foreach>
+            </span>
+        </div>
+        </notempty>
+
+    </div>
+</foreach>

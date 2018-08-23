@@ -1,0 +1,89 @@
+<extend name="Public/main"/>
+<block name="css">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/form.css">
+<style type="text/css">
+.group-container {padding: 0 12px 30px 12px;background-color: #fff;}
+.btn-content {padding:12px 0;}
+.more {display: flex;flex-direction: row;justify-content: flex-end;padding:0 12px;background-color: #fff;line-height: 32px;}
+.more a {font-size: 14px;color:#34BBBE; }
+</style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>交易流程</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <img src="__PUBLIC__/Home/images/img_service_01.png" width="100%">
+        <div class="more">
+            <a id="CommissionRule" class="item-label" href="{:U('Index/trade2')}">费用标准<i class="gt"><img src="/public/Home/images/icon_gt.png"></i></a>
+        </div>
+        <p style="background-color: #fff;text-align: center;color: #666;font-size: 16px;">以总价500万房源计算</p>
+        <img src="__PUBLIC__/Home/images/img_service_02.png" width="100%">
+        <form id="InfoForm">
+        <input type="hidden" name="houseId" value="{$houseId}"/>
+        <input type="hidden" name="houseType" value="{$houseType}"/>
+        <div class="group-container">
+            <div class="item">
+                <span class="item-label">称呼</span>
+                <input type="text" name="info.name" required class="input-container" placeholder="请输入" />
+            </div>
+            <div class="item">
+                <span class="item-label">电话</span>
+                <input type="text" name="info.phone" required class="input-container" placeholder="请输入" />
+            </div>
+            <div class="item">
+                <span class="item-label">期望时间</span>
+                <input type="text" name="info.time" class="input-container" placeholder="请输入看房时间以便房小二联系" />
+            </div>
+            <div class="btn-content">
+                <button id="filter-confirm-btn" onclick="submitInfo();return false;">确定</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+function submitInfo()
+{
+    try {
+        if(!document.getElementById('InfoForm').reportValidity())
+        {
+            return;
+        }
+    }catch (e) {
+
+    }
+    var data = $('#InfoForm').serialize();
+    $.ajax({
+        url:'{:U("Info/info")}',
+        type:'POST',
+        data: data,
+        success:function (resData)
+        {
+            if(resData.status == 1)
+            {
+                FkxToast.success(resData.info);
+                history.back();
+            }
+            else
+            {
+                FkxToast.error(resData.info);
+            }
+        },
+        error: function ()
+        {
+            FkxToast.error('提交失败！');
+        }
+    });
+}
+</script>
+</block>

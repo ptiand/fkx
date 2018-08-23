@@ -1,0 +1,123 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>分享</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+<style>
+    .img-cont {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .img-cont img {
+        width: 100%;
+    }
+    .btn {
+        height: 40px;
+        width: 200px;
+        background: #44c3cc;
+        border-radius: 5px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .btn a {
+        font-size: 16px;
+        line-height: 38px;
+        color: #fff;
+    }
+    .content {
+        padding: 0 15px;
+        margin-top: 20px;
+        text-align: left;
+        background: #f2f2f2;
+    }
+    .content p {
+        font-size: 14px;
+        color: #666;
+        line-height: 33px;
+    }
+    .list{
+        padding: 0 15px;
+    }
+    .list ul li {
+        height: 36px;
+        position: relative;
+        display: flex;
+        text-align: left;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .list ul li:last-child{
+        border: none;
+    }
+    .list ul li p {
+        font-size: 12px;
+        color: #666;
+        margin-right: 30px;
+        line-height: 36px;
+    }
+    .list ul li img {
+        width: 14px;
+        height: 12px;
+        position: absolute;
+        right: 0;
+        top: 13px;
+    }
+    .text {
+        padding: 0 30px 7px 30px;
+        position: relative;
+    }
+    .text img {
+        width: 18px;
+        height: 20px;
+        top: 8px;
+        left: 30px;
+        position: absolute;
+    }
+    .text-top {
+        width: 100%;
+        height: 35px;
+        padding-left: 25px;
+        margin-bottom: 7px;
+        border-bottom: 1px solid #ccc;
+    }
+    .text-top p {
+        font-size: 14px;
+        color: #3a3a3a;
+        line-height: 35px;
+    }
+    .text span {
+        font-size: 15px;
+        color: #3a3a3a;
+    }
+</style>
+<div class="text">
+    <img src="/public/Home/images/ren.jpg" alt="">
+    <div class="text-top">
+        <p>活动规则</p>
+    </div>
+    <span>推荐好友注册，好友的客户成交后获得佣金，您将额外获得其佣金的5%。</span>
+</div>
+<div class="img-cont">
+    <img src="{$filename}" alt="">
+</div>
+<a href="">
+    <div class="btn">
+        <a href="">长按二维码分享</a>
+    </div>
+</a>
+<div class="content">
+    <p>我的分享</p>
+</div>
+<div class="list">
+    <ul>
+        <volist name="info" id="vo">
+            <li><p>{$vo['created_at']|date="y.m.d",###}</p><p>{$vo.user_name}</p><p>{$vo.phone}</p><img src="/public/Home/images/arrow.png" alt=""></li>
+        </volist>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<extend name="Public/common" />
+<block name="body">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>【{$menu.name}】&nbsp;&nbsp; 子菜单列表</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <div id="toolbar">
+                        <button id="goBack" class="btn btn-success">返回</button>
+                        <button id="addSubMenu" class="btn btn-success">添加子菜单</button>
+                        <button id="remove" class="btn btn-danger" disabled>
+                            <i class="glyphicon glyphicon-remove"></i>删除
+                        </button>
+                    </div>
+                    <table id="table"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="modal">
+    <div class="modal fade" id="Modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+    var $table = $('#table'), selections = [];
+    $table.bootstrapTable({
+        url: "{:U('WeixinMenu/loadSubMenu', array('parentId'=>$menu['id']))}",
+        toolbar: "#toolbar",
+        method: 'GET',
+        showRefresh: true,
+        minimumCountColumns: 5,
+        idField: "id",
+        clickToSelect : true,
+        sidePagination: "server",
+        height: getHeight(),
+        formatLoadingMessage: function(){
+            return '正在加载，请稍候...';
+        },
+        formatNoMatches: function()
+        {
+            return '没有数据！';
+        },
+        columns: [
+            {checkbox: true, align: 'center', valign: 'middle'},
+            {field: 'id',title: '菜单ID', align: 'center'},
+            {field: 'name', title: '菜单标题', align: 'left'},
+            {field: 'type', title: '菜单内容', align: 'center'},
+            {field: 'url', title: '链接', align: 'center'},
+            {field: 'ordernum', title: '排序序号', align: 'center'},
+            {title:'操作', align:'center',clickToSelect: false, formatter: function (value, row, index)
+            {
+                return '<button name="edit" data-id="'+row.id+'" class="btn btn-primary">编辑</button>';
+            }}
+        ],
+        onCheck: checkRemoveBtn,
+        onUncheck: checkRemoveBtn,
+        onCheckAll: checkRemoveBtn,
+        onUncheckAll: checkRemoveBtn
+
+    });
+    function checkRemoveBtn()
+    {
+        $('#remove').prop('disabled', !$table.bootstrapTable('getSelections').length);
+    }
+    $('#addSubMenu').click(function ()
+    {
+        function showModal()
+        {
+            $("#Modal").modal({
+                remote: "{:U('add')}?parent_id={$menu.id}"
+                ,backdrop: 'static'
+                ,keyboard: false
+            });
+        }
+        var dataList = $table.bootstrapTable('getData', {});
+        if(!dataList.length)
+        {
+            swal({
+                title: "确定添加子菜单？",
+                text: "添加子菜单后，一级菜单的内容将被清除。",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText:"让我再考虑一下…",
+                confirmButtonColor: "#1ab394",
+                confirmButtonText: "添加",
+                closeOnConfirm: true
+            }, showModal);
+        }
+        else
+        {
+            showModal();
+        }
+    });
+    $('#remove').click(function () {
+        var selections = $table.bootstrapTable('getSelections');
+        if(!selections.length)
+        {
+            return;
+        }
+        var ids = [];
+        $(selections).each(function (index, item)
+        {
+            ids.push(item.id);
+        });
+        var param = {ids:ids};
+        confirmDelete("{:U('delete')}",param,$table,$('#remove'),"id",ids);
+    });
+    $(window).resize(function () {
+        $table.bootstrapTable('resetView', {
+            height: getHeight()
+        });
+    });
+    $table.delegate('[name="edit"]','click', function ()
+    {
+        var id = $(this).attr('data-id');
+        $("#Modal").modal({
+            remote: "{:U('add')}?id="+id,
+            backdrop: 'static',
+            keyboard: false
+        });
+    });
+
+    $("#Modal").on("hidden.bs.modal", function() {
+        $table.bootstrapTable('refresh', {});
+        $(this).removeData("bs.modal");
+    });
+    $('#goBack').click(function ()
+    {
+        window.history.back();
+    })
+
+</script>
+</block>

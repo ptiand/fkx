@@ -1,0 +1,101 @@
+<extend name="Public/main"/>
+<block name="title"><title>{$msg_info['msg_type'] == '1' ? '租凭确认' : '系统消息'}</title></block>
+<block name="css">
+    <style>
+        .content-section {
+            text-align: center;
+            padding: 5px 10px;
+        }
+        .date-span {
+            background-color: #919191;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 4px;
+        }
+        .content {
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-align: left;
+            margin-top: 10px;
+        }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>{$msg_info['msg_type'] == '1' ? '租凭确认' : '系统消息'}</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="btn-content-container">
+      <div class="content-section">
+          <span class="date-span">{$msg_info['create_time']}</span>
+          <div class="content">{$msg_info['content']}</div>
+        </div>
+    </div>
+</block>
+<block name="tabbar">
+    <if condition="$msg_info['is_confirm'] == 0">
+        <a class="bottom-btn" href="javascript:;" id="submit-btn" data-id="{$msg_info['id']}">确认</a>
+    <else />
+        <a class="bottom-btn disabled" href="javascript:;">已确认</a>
+    </if>
+</block>
+<block name="js">
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script>
+        function showToast(msg, cb) {
+            layer.open({content: msg, type: 3, skin: 'msg', time: 1.5, end: cb});
+        }
+        function sendAjax(data, layerIdx) {
+            var loading = layer.open({type: 2, shadeClose: false});
+            $.ajax({
+                url: data.url,
+                data: data.data,
+                type: 'POST',
+                dataType: 'json',
+                success: function (resData) {
+                    layer.close(loading);
+                    console.log('resp: ', resData)
+                    if (resData.status == 1) {
+                        showToast(resData.info || '确认成功', function() {
+                            location.reload();
+                        });
+                    } else {
+                        // layer.close(loading);
+                        showToast(resData.info);
+                    }
+
+                },
+                error: function (msg) {
+                    layer.close(loading);
+                    showToast('操作失败')
+                }
+            });
+        }
+        $(function () {
+            $('#submit-btn').on('click', function() {
+                var me = $(this)
+                layer.open({
+                    title: '租凭确认',
+                    content: '确认租凭信息无误？',
+                    shadeClose: false,
+                    btn: ['确定', '取消'],
+                    yes: function(index) {
+                        layer.close(index);
+                        sendAjax({
+                            url: '{:U("Mymsg/confirm_do")}',
+                            data: {msg_id: me.data('id')}
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+</block>

@@ -1,0 +1,666 @@
+[ 2018-07-17T14:41:23+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+
+[ 2018-07-17T14:41:26+08:00 ] 127.0.0.1 /admin.php/account/Login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0210s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `employee` WHERE `status` = 0 AND `del` = 0 LIMIT 1   [ RunTime:0.0200s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-17T14:41:34+08:00 ] 127.0.0.1 /admin.php/account/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0185s ]
+SQL: SELECT * FROM `employee` WHERE `employee_num` = 'admin' AND `del` = 0 LIMIT 1   [ RunTime:0.0270s ]
+
+[ 2018-07-17T14:41:34+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-17T14:41:38+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000500s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+
+[ 2018-07-17T14:42:15+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001500s ]
+
+[ 2018-07-17T14:42:19+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0210s ]
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+
+[ 2018-07-17T14:42:58+08:00 ] 127.0.0.1 /admin.php/account/Login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0925s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `employee` WHERE `status` = 0 AND `del` = 0 LIMIT 1   [ RunTime:0.0215s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T14:43:17+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003500s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000500s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001500s ]
+
+[ 2018-07-17T14:43:22+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0185s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` LIMIT 0,20   [ RunTime:0.0175s ]
+
+[ 2018-07-17T14:47:15+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000500s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001500s ]
+
+[ 2018-07-17T14:47:19+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+
+[ 2018-07-17T14:48:47+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001500s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000500s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-17T14:48:52+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+
+[ 2018-07-17T14:51:35+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+
+[ 2018-07-17T14:51:57+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2018-07-17T14:52:02+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+ERR: 1146:Table 'fkx_dev.shops' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `shops`
+
+[ 2018-07-17T14:52:11+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-17T14:52:15+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001500s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Shops` LIMIT 0,20   [ RunTime:0.0175s ]
+
+[ 2018-07-17T16:57:10+08:00 ] 127.0.0.1 /index.php/Admin/Customer/customer.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-07-17T16:57:13+08:00 ] 127.0.0.1 /index.php/Admin/Customer/loadCustomer.html?sort=created_at&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 0,10   [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-07-17T16:57:23+08:00 ] 127.0.0.1 /index.php/admin/Customer/editCustomer?id=7&t=0.6548272868432834
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `users` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: sex E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 42 行.
+NOTIC: [8] Use of undefined constant grade_id - assumed 'grade_id' E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined index: grade_id E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: grade E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined index: weixin E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 58 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T16:57:30+08:00 ] 127.0.0.1 /index.php/Admin/Customer/loadCustomer.html?sort=created_at&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 0,10   [ RunTime:0.0180s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T16:57:32+08:00 ] 127.0.0.1 /index.php/admin/Customer/addCustomer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 7 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 13 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 18 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 27 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 33 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 42 行.
+NOTIC: [8] Use of undefined constant grade_id - assumed 'grade_id' E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: grade E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 54 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 58 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T16:57:34+08:00 ] 127.0.0.1 /index.php/Admin/Customer/loadCustomer.html?sort=created_at&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 0,10   [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T16:57:35+08:00 ] 127.0.0.1 /index.php/admin/Customer/addCustomer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0200s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 7 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 13 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 18 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 27 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 33 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 42 行.
+NOTIC: [8] Use of undefined constant grade_id - assumed 'grade_id' E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: grade E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 54 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 58 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T16:58:05+08:00 ] 127.0.0.1 /index.php/Admin/Customer/loadCustomer.html?sort=created_at&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 0,10   [ RunTime:0.0230s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 1   [ RunTime:0.0210s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T17:02:08+08:00 ] 127.0.0.1 /index.php/admin/Customer/addCustomer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 7 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 13 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 18 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 27 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 33 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 42 行.
+NOTIC: [8] Use of undefined constant grade_id - assumed 'grade_id' E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: grade E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 54 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 58 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T17:02:17+08:00 ] 127.0.0.1 /admin.php/account/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `employee` WHERE `employee_num` = 'admin' AND `del` = 0 LIMIT 1   [ RunTime:0.0180s ]
+
+[ 2018-07-17T17:02:17+08:00 ] 127.0.0.1 /index.php/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/menu.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 48 行.
+NOTIC: [8] Undefined variable: user E:\myphp\fkx\Runtime\Cache\Admin\53ba6b9177d3b17ee3b89aee36ab9c4d.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T17:02:22+08:00 ] 127.0.0.1 /index.php/Admin/Customer/customer.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(../Application/Admin/View/Public/footer.html): failed to open stream: No such file or directory E:\myphp\fkx\ThinkPHP\Library\Think\Template.class.php 第 696 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-17T17:02:25+08:00 ] 127.0.0.1 /index.php/Admin/Customer/loadCustomer.html?sort=created_at&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 0,10   [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 1   [ RunTime:0.0230s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-17T17:02:27+08:00 ] 127.0.0.1 /index.php/admin/Customer/addCustomer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 7 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 13 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 18 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 27 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 33 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 42 行.
+NOTIC: [8] Use of undefined constant grade_id - assumed 'grade_id' E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: grade E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 47 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 54 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 58 行.
+NOTIC: [8] Undefined variable: info E:\myphp\fkx\Runtime\Cache\Admin\7e2bb29d4a7ad4debb3c794abd41bf3c.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-07-17T17:02:45+08:00 ] 127.0.0.1 /index.php/admin/Customer/addCustomer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0210s ]
+SQL: INSERT INTO `users` (`id`,`user_name`,`pic`,`balance`,`status`,`phone`) VALUES ('0','测试','','1','0','13513513513') [ RunTime:0.2160s ]
+
+[ 2018-07-17T17:02:50+08:00 ] 127.0.0.1 /index.php/Admin/Customer/loadCustomer.html?sort=created_at&order=asc&limit=10&offset=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 0,10   [ RunTime:0.0220s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `users` WHERE `is_del` = 0 ORDER BY created_at asc LIMIT 1   [ RunTime:0.0200s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-07-17T17:08:48+08:00 ] 127.0.0.1 /index.php/Admin/shops/shop_list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `users` WHERE `id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+

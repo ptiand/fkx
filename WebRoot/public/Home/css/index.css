@@ -1,0 +1,361 @@
+/* 轮播样式 */
+
+.main_visual {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    background-color: #f5f5f5;
+}
+
+.main_image {
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+}
+
+.main_image ul {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main_image li {
+    float: left;
+    width: 100%;
+}
+
+.main_image li span {
+    display: block;
+}
+
+.main_image li span img {
+    width: 100%;
+}
+
+
+.main_image li .img_1 {
+    background: url(../images/img_main_1.jpg) center top no-repeat
+}
+
+.main_image li .img_4 {
+    background: url(../images/img_main_2.jpg) center top no-repeat
+}
+
+.main_image li .img_3 {
+    background: url(../images/img_main_3.jpg) center top no-repeat
+}
+
+div.flicking_con {
+    position: absolute;
+    bottom: 5px;
+    z-index: 999;
+    width: 100%;
+    height: 10px;
+    margin:0 auto;
+    text-align: center;
+
+}
+
+div.flicking_con a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    background-color: #000;
+    text-indent: -1000px;
+    position: relative;
+    margin: 0 3px;
+    border-radius: 50%;
+}
+
+div.flicking_con a.on {
+    background-color: #fff;
+}
+
+#btn_prev,
+#btn_next {
+    z-index: 11111;
+    position: absolute;
+    display: block;
+    width: 73px!important;
+    height: 74px!important;
+    top: 50%;
+    margin-top: -37px;
+    display: none;
+    
+}
+
+#btn_prev {
+    left: 1000px;
+    background: url(../images/left.png) no-repeat;
+}
+
+#btn_next {
+    right: 1000px;
+    background: url(../images/right.png) no-repeat;
+}
+.mid-container {
+    padding: 10px;
+    background-color: #ffffff;
+}
+.mid-container ul
+{
+    display: flex;
+    flex-direction: row;
+}
+.mid-container ul li{
+    display: flex;
+    flex: auto;
+    width: 80px;
+    text-align: center;
+    flex-direction: column;
+}
+.mid-container ul li .img
+{
+    width: 58px;
+    height: 58px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-self: center;
+    background-color:#f5f5f5;
+    border-radius: 50%;
+}
+.mid-container ul li img {
+    width: 58px;
+    height: 58px;
+}
+.mid-container ul li a{
+    font-size: 13px;
+    color: #000000;
+    margin: 5px 0 2px 0;
+}
+
+.requirement
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin: 8px 0px 0px 0px;
+    color: #444;
+}
+.requirement span
+{
+    font-size: 15px;
+    padding: 15px 0px 10px 0px;
+}
+.requirement .custom-button
+{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: #34BBBE;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.requirement .custom-button span
+{
+    padding: 8px 0px 8px 0px;
+}
+
+.trade-process .trade-process-img
+{
+    margin-top: 5px;
+}
+.gt {
+    padding-top: 3px;
+    float: right;
+}
+
+.recommend
+{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 10px 15px;
+    align-items: center;
+    margin-top: 8px;
+}
+.recommend .recommend-header
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.recommend .recommend-header .left
+{
+    font-size: 15px;
+    color: rgb(68, 68, 68);
+    font-weight: 600;
+}
+.recommend .recommend-header .right
+{
+    font-size: 12px;
+    color: rgb(167,167,167);
+    float: right;
+}
+.recommend .recommend-list
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.recommend .recommend-list:last-child
+{
+    padding-bottom: 0px;
+}
+.recommend .recommend-item
+{
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0px;
+    position: relative;
+}
+.recommend-item-img {
+    width: 110px;
+    height: 80px;
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 110px;
+}
+.recommend-item img
+{
+    width: 110px;
+    height: 80px;
+}
+.recommend-item .houseInfo
+{
+    margin-left:12px;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+.recommend-item .houseInfo .title
+{
+    font-weight: 400;
+    font-size: 16px;
+    padding:2px 0;
+    width: 100%;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+}
+.recommend-item .houseInfo .attr
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.recommend-item .houseInfo .attr .left
+ {
+     display: flex;
+     flex-direction: column;
+ }
+.recommend-item .houseInfo .attr .left span
+{
+    font-size: 11px;
+    font-weight: 400;
+    color: rgb(153, 153, 153);
+}
+.recommend-item .houseInfo .attr .right
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 35%;
+    color: #FF3300;
+    font-family: Helvetica;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    top: 32px;
+}
+
+.recommend-item .houseInfo .attr .right span
+{
+    font-size: 10px;
+    font-weight: 400;
+}
+.recommend-item .houseInfo .attr .right .money
+{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 15px;
+}
+
+.recommend-item .houseInfo .attr .right .submoney
+{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 10px;
+    color: #999;
+    
+}
+.recommend-item .houseInfo .attr .right .submoney .money{
+    font-size: 12px;
+}
+
+.recommend-item .houseInfo .label
+{
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 2px;
+    line-height: 12px;
+}
+.recommend-item .houseInfo .label span
+{
+    margin: 2px 4px 2px 0;
+    padding:2px 3px;
+    white-space: nowrap;
+    float: left;
+}
+.recommend-item .houseInfo .label .first
+{
+    color: #34BBBE;
+    background-color: rgba(233, 250, 250, 1);
+}
+.recommend-item .houseInfo .label .second
+{
+    color: #ff9900;
+    background-color: rgba(255, 242, 223, 1);
+}
+.recommend-item .houseInfo .label .third
+{
+    color: #66CC66;
+    background-color: rgba(241, 251, 236, 1);
+}
+
+.recommend-list .message
+{
+    font-size: 10px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+}
+
+.content-footer
+{
+    display: flex;
+    justify-content: center;
+}
+.content-footer span
+{
+    color: rgb(204, 204, 204);
+    font-weight: 400;
+    font-size: 11px;
+    padding: 8px 0px 8px 0px;
+}

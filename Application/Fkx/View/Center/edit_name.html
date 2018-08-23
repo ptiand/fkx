@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <title>修改用户名</title>
+</head>
+<body>
+<style>
+    .c {
+        margin: 0 15px 30px 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #f2f2f2;
+        display: flex;
+        justify-content: space-between;
+    }
+    .c p {
+        font-size: 14px;
+        color: #333333;
+    }
+    .c input {
+        width: 80%;
+        font-size: 14px;
+        color: #333333;
+        text-align: right;
+
+    }
+    .btn {
+        margin: 0 15px;
+        height: 40px;
+        border-radius: 20px;
+        background: #44c3cc;
+        text-align: center;
+    }
+    .btn a {
+        font-size: 16px;
+        color: #fff;
+        line-height: 39px;
+    }
+</style>
+<div class="c">
+    <p>姓名</p>
+    <input type="text" name="" id="name" value="{$name}" placeholder="">
+</div>
+
+<div class="btn sub">
+    <a >保存</a>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#name').focus()
+    })
+
+    $('.sub').click(function(){
+        var name = $('#name').val();
+        if(!name){
+            alert('用户名不能为空');
+            return false;
+        }
+        var info = {user_name:name}
+        $.post("{:U('Center/edit_n')}",info,function(data){
+
+            if(1 == data.status){
+                location.href = '/index.php/Center/index';
+            }else{
+                alert(data.info)
+            }
+        })
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<extend name="Public/common"/>
+<block name="title"><title>{$groupName|default="微聊"}</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+    <link rel="stylesheet" href="/public/Home/css/house_list.css">
+
+</block>
+<block name="body">
+    <style>
+        html body {
+            /*background-color: rgba(242, 242, 242, 1);;*/
+            background-color: white;
+        }
+        .content-container {
+            overflow-y: hidden;
+            /* height: 100%; */
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 54px;
+            bottom: 44px;
+        }
+        .gray-bg {
+            background-color: white;
+        }
+        .container {
+            position: relative;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background: none;
+        }
+        .session-list {
+            /* display: flex; */
+            flex-direction: column;
+            /* margin-bottom: 70px; */
+            height: 100%;
+            overflow-y: scroll;
+            /* margin-top: 54px; */
+            position: absolute;
+            left: 0;
+            right: 0;
+            /* bottom: 0; */
+            top: 0
+        }
+        .session-list .list-item {
+            display: flex;
+            margin-top: 22px;
+            position: relative;
+        }
+
+        .session-list .list-item .message {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 14px;
+            /*flex: 1;*/
+        }
+
+        .session-list .list-item .blank {
+            flex: 1;
+        }
+
+        .session-list .list-item .avatar {
+            margin: 0 12px;
+            border-radius: 50%;
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            flex: none;
+        }
+        .session-list .send-item {
+            justify-content: flex-end;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .session-list .send-item .message {
+            /*box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.0784313725490196);*/
+            border:1px solid #67c30b;
+            margin-left: 56px;
+            color: #333;
+            background-color: #76d21b;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-all;
+            position: relative;
+        }
+        .session-list .send-item .message:after {
+            width: 8px;
+            height: 11px;
+            overflow: hidden;
+            background-image: url(/public/Home/images/icon_msgdot1.png);
+            background-position: left top;
+            background-size: 8px 11px;
+            position: absolute;
+            right: -8px;
+            top: 10px;
+            content: "";
+        }
+        .session-list .receive-item .message {
+            /*box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.0784313725490196);*/
+            border:1px solid #eaeaea;
+            margin-right: 56px;
+            position: relative;
+        }
+        .session-list .receive-item .message:before {
+            width: 8px;
+            height: 11px;
+            overflow: hidden;
+            background-image: url(/public/Home/images/icon_msgdot2.png);
+            background-position: right top;
+            background-size: 8px 11px;
+            position: absolute;
+            left: -8px;
+            top: 10px;
+            content: "";
+        }
+
+        .session-list .receive-item {
+            margin-right: 10px;
+        }
+        .input-container {
+            position: fixed;
+            bottom:0;
+            left: 0;
+            display: flex;
+            width: 100%;
+            height: 44px;
+            background-color: rgba(242,242,242, 1);
+            border-top: 1px solid rgba(228, 228, 228, 1);
+        }
+        .input-container .text-input {
+            flex: 1;
+            margin: 5px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+            padding: 0 5px 0 8px;
+            -webkit-appearance: none;
+            font-size: 14px;
+        }
+        .input-container .text-input:focus {
+            background-color: #fff;
+        }
+        #SendBtn{
+            width: 60px;
+            margin: 5px 5px 5px 0;
+            border-radius: 3px;
+            border: none;
+            background-color: rgba(52, 187, 190, 1);
+            color: white;
+            font-family: 'Arial Negreta', 'Arial';
+            font-weight: 700;
+            font-style: normal;
+            font-size: 14px;
+            color: #FFF;
+        }
+        .wrapper.wrapper-content.animated.fadeInRight {
+            width: 50%;
+            margin: auto;
+            background-color: rgba(242,242,242, 1);
+            height:100%;
+        }
+        .send-item .message-time {
+            position: absolute;
+            right: 64px;
+            top: -18px;
+            font-size: 10px;
+            color: #999;
+            text-align: right;
+        }
+
+        .receive-item .message-time {
+            position: absolute;
+            left: 67px;
+            top: -18px;
+            font-size: 10px;
+            color: #999;
+            text-align: left;
+        }
+    </style>
+    <div>
+        <button onclick="history.back();">返回</button>
+        <b>{$groupName}</b>
+    </div>
+
+    <div class="content-container">
+        <div class="session-list">
+
+        </div>
+        <div class="input-container">
+            <input type="text" class="text-input" id="InputMessage"/>
+            <button id="SendBtn">发送</button>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="/public/Static/moment.js"></script>
+    <script src="/public/Static/webim/sdk/webim.js"></script>
+    <script src="/public/Static/webim/sdk/json2.js"></script>
+<script type="text/javascript">
+    var prePend;
+$(function ()
+{
+    const loginInfo = {
+        identifier: '{$identifier}',
+        userSig: '{$sig}',
+        sdkAppID: '{$sdkAppID}',
+        accountType: '{$accountType}',
+    };
+
+    const userNameObj = {
+        <foreach name='userNameMap' item='userName' key='id'>
+            '{$id}': '{$userName}',
+        </foreach>
+    };
+    // const chatIdentifier = '{$chatIdentifier}';
+    let groupId = '{$groupId}';
+    // let chatUserId = '{$chatUserId}';
+    //监听新消息事件
+    //newMsgList 为新消息数组，结构为[Msg]
+    function onMsgNotify(newMsgList) {
+        console.log('newMsgList >>>', newMsgList);
+        var sess, newMsg;
+        //获取所有聊天会话
+        var sessMap = webim.MsgStore.sessMap();
+        console.log('onMsgNotify sessMap >>> ', sessMap);
+
+        for (let newMsg of newMsgList) {
+            let text = '';
+            for (let elem of newMsg.getElems()) {
+                let type = elem.getType();//获取元素类型
+                let content = elem.getContent();//获取元素对象
+                switch (type) {
+                    case webim.MSG_ELEMENT_TYPE.TEXT:
+                        text += convertTextMsgToHtml(content);
+                        break;
+                }
+            }
+            if(newMsg.isSend)
+            {
+                appendSendMessage(text, newMsg.uniqueId, newMsg.time, newMsg.fromAccount);
+            }
+            else
+            {
+                appendReceiveMessage(text, newMsg.uniqueId, newMsg.time, newMsg.fromAccount);
+            }
+            webim.setAutoRead(newMsg.getSession(), true, true);
+        }
+        scrollToEnd();
+
+    }
+    let listeners = {
+        "onConnNotify": (e)=>{} //监听连接状态回调变化事件,必填
+        ,
+        "jsonpCallback": (e)=>{} //IE9(含)以下浏览器用到的jsonp回调函数，
+        ,
+        "onMsgNotify": (e)=>{onMsgNotify(e)} //监听新消息(私聊，普通群(非直播聊天室)消息，全员推送消息)事件，必填
+        ,
+        "onBigGroupMsgNotify": (e)=>{} //监听新消息(直播聊天室)事件，直播场景下必填
+        ,
+        "onGroupSystemNotifys": (e)=>{} //监听（多终端同步）群系统消息事件，如果不需要监听，可不填
+        ,
+        "onGroupInfoChangeNotify": (e)=>{} //监听群资料变化事件，选填
+        ,
+        "onFriendSystemNotifys": (e)=>{} //监听好友系统通知事件，选填
+        ,
+        "onProfileSystemNotifys": (e)=>{} //监听资料系统（自己或好友）通知事件，选填
+        ,
+        "onKickedEventCall": (e)=>{} //被其他登录实例踢下线
+        ,
+        "onC2cEventNotifys": (e)=>{} //监听C2C系统消息通道
+        ,
+        "onAppliedDownloadUrl": (e)=>{} //申请文件/音频下载地址的回调
+    };
+
+    $("#SendBtn").click(function () {
+        // hideSessionModal();
+        // if (!groupId) {
+        //     return ajaxSel2SendId(chatUserId, (content) => {
+        //         groupId = content.groupId;
+        //         onSendMsg(groupId);
+        //         scrollToEnd();
+        //     });
+        // }
+        onSendMsg(groupId);
+        scrollToEnd();
+    });
+
+    function getUserName(identifier) {
+        return userNameObj[identifier] || '房客行客服';
+    }
+
+    function appendSendMessage(content,uniqueId, time, identifier) {
+        $('.session-list').append(` <div class="list-item send-item" id="${uniqueId}">
+                <p class="message-time">${moment(time*1000).format('MM-DD hh:mm')}&nbsp;&nbsp;${getUserName(identifier)}</p>
+                <p class="message">${content}</p>
+                <img src="/public/Home/images/message/icon_logo.png" class="avatar"/>
+            </div>`);
+
+    }
+
+    function appendReceiveMessage(content,uniqueId, time, identifier) {
+        $('.session-list').append(`<div class="list-item receive-item" id="${uniqueId}">
+                <p class="message-time">${getUserName(identifier)}&nbsp;&nbsp;${moment(time*1000).format('MM-DD hh:mm')}</p>
+                <img src="/public/Home/images/message/icon_logo.png" class="avatar"/>
+                <p class="message">${content}</p>
+            </div>`);
+    }
+    function prependSendMessage(content,uniqueId, time, identifier) {
+        $('.session-list').prepend(` <div class="list-item send-item" id="${uniqueId}">
+                 <p class="message-time">${moment(time*1000).format('MM-DD hh:mm')}&nbsp;&nbsp;${getUserName(identifier)}</p>
+                <p class="message">${content}</p>
+                <img src="/public/Home/images/message/icon_logo.png" class="avatar"/>
+            </div>`);
+
+    }
+
+    function prependReceiveMessage(content,uniqueId, time, identifier) {
+        $('.session-list').prepend(`<div class="list-item receive-item" id="${uniqueId}">
+                <p class="message-time">${getUserName(identifier)}&nbsp;&nbsp;${moment(time*1000).format('MM-DD hh:mm')}</p>
+                <img src="/public/Home/images/message/icon_logo.png" class="avatar"/>
+                <p class="message">${content}</p>
+            </div>`);
+    }
+    prePend = prependReceiveMessage;
+    $('#InputMessage').keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#SendBtn").click();
+        }
+    });
+
+    //发送消息(文本或者表情)
+    function onSendMsg(selToID) {
+        // const selToID = '@TGS#3J6W67GFQ';
+        //获取消息内容
+        var msgtosend = $('#InputMessage').val();
+        var msgLen = webim.Tool.getStrBytes(msgtosend);
+        if (msgtosend.length < 1) {
+            alert("发送的消息不能为空!");
+            return;
+        }
+        let selSess = null;
+        const selType =webim.SESSION_TYPE.GROUP;
+        if (!selSess) {
+            selSess = new webim.Session(selType, selToID, selToID, '', Math.round(new Date().getTime() / 1000));
+        }
+        var isSend = true;//是否为自己发送
+        var seq = -1;//消息序列，-1表示 SDK 自动生成，用于去重
+        var random = Math.round(Math.random() * 4294967296);//消息随机数，用于去重
+        var msgTime = Math.round(new Date().getTime() / 1000);//消息时间戳
+        var subType;//消息子类型
+        if (selType == webim.SESSION_TYPE.C2C) {
+            subType = webim.C2C_MSG_SUB_TYPE.COMMON;
+        } else {
+            //webim.GROUP_MSG_SUB_TYPE.COMMON-普通消息,
+            //webim.GROUP_MSG_SUB_TYPE.LOVEMSG-点赞消息，优先级最低
+            //webim.GROUP_MSG_SUB_TYPE.TIP-提示消息(不支持发送，用于区分群消息子类型)，
+            //webim.GROUP_MSG_SUB_TYPE.REDPACKET-红包消息，优先级最高
+            subType = webim.GROUP_MSG_SUB_TYPE.COMMON;
+        }
+        var msg = new webim.Msg(selSess, isSend, seq, random, msgTime, loginInfo.identifier, subType, loginInfo.identifier);
+        var text_obj, face_obj, tmsg, emotionIndex, emotion, restMsgIndex;
+        //解析文本和表情
+        var expr = /\[[^[\]]{1,3}\]/mg;
+        var emotions = msgtosend.match(expr);
+        if (!emotions || emotions.length < 1) {
+            text_obj = new webim.Msg.Elem.Text(msgtosend);
+            msg.addText(text_obj);
+        } else {
+            for (var i = 0; i < emotions.length; i++) {
+                tmsg = msgtosend.substring(0, msgtosend.indexOf(emotions[i]));
+                if (tmsg) {
+                    text_obj = new webim.Msg.Elem.Text(tmsg);
+                    msg.addText(text_obj);
+                }
+                emotionIndex = webim.EmotionDataIndexs[emotions[i]];
+                emotion = webim.Emotions[emotionIndex];
+                if (emotion) {
+                    face_obj = new webim.Msg.Elem.Face(emotionIndex, emotions[i]);
+                    msg.addFace(face_obj);
+                } else {
+                    text_obj = new webim.Msg.Elem.Text(emotions[i]);
+                    msg.addText(text_obj);
+                }
+                restMsgIndex = msgtosend.indexOf(emotions[i]) + emotions[i].length;
+                msgtosend = msgtosend.substring(restMsgIndex);
+            }
+            if (msgtosend) {
+                text_obj = new webim.Msg.Elem.Text(msgtosend);
+                msg.addText(text_obj);
+            }
+        }
+        webim.sendMsg(msg, function (resp) {
+            // if (selType == webim.SESSION_TYPE.C2C) {//私聊时，在聊天窗口手动添加一条发的消息，群聊时，长轮询接口会返回自己发的消息
+            //     addMsg(msg);
+            // }
+            //appendSendMessage(msgtosend);
+            console.log('sendMessage >>> ', resp);
+            webim.Tool.setCookie("tmpmsg_" + selToID, '', 0);
+            $("#InputMessage").val('');
+            // turnoffFaces_box();
+        }, function (err) {
+            alert(err.ErrorInfo);
+            $("#InputMessage").val('');
+        });
+    }
+    function convertTextMsgToHtml(content) {
+        return content.getText();
+    }
+
+    function scrollToEnd(){
+        $('body').animate({scrollTop: document.body.scrollHeight-document.body.clientHeight}, 400);
+    }
+
+    function ajaxSel2SendId(chatUserId, callback) {
+        $.post('{:U("Im/createGroup")}', { chatUserId: chatUserId },  (e) => {
+            // console.log("ajaxSel2SendId >>> ", e);
+            if (e.status == 1) {
+                callback(e.content);
+            } else {
+                alert(e.errMsg);
+            }
+        })
+    }
+    const options = {
+        'isAccessFormalEnv': true, //是否访问正式环境，默认访问正式，选填
+        'isLogOn': false //是否开启控制台打印日志,默认开启，选填
+    };
+    window.onscroll = function()
+    {
+        if($('body').scrollTop() == 0)
+        {
+            groupLoader.loadPrevMsg();
+        }
+    };
+    var groupLoader = (function ()
+    {
+        var groupId = '',
+            reqMsgSeq = 0,
+            reqMsgNumber = 15;
+        function setReqMsgSeq(pms)
+        {
+            reqMsgSeq = pms;
+        }
+        function setGroupId(gId)
+        {
+            groupId = gId;
+        }
+        function loadPrevMsg(init)
+        {
+            console.log('reqMsgSeq:', reqMsgSeq);
+            //拉取最新的群历史消息
+            var options = {
+                'GroupId': groupId,
+                'ReqMsgSeq': reqMsgSeq,
+                'ReqMsgNumber': reqMsgNumber
+            };
+            if (options.ReqMsgSeq == null || options.ReqMsgSeq == undefined || options.ReqMsgSeq<=0) {
+                webim.Log.warn("该群还没有历史消息:options=" + JSON.stringify(options));
+                return;
+            }
+            //if()
+            webim.syncGroupMsgs(
+                options,
+                function (msgList) {
+                    reqMsgSeq -= reqMsgNumber;
+                    if (msgList.length == 0) {
+                        webim.Log.error("该群没有历史消息了:options=" + JSON.stringify(options));
+                        return;
+                    }
+                    console.log(msgList);
+                    if(init)
+                    {
+                        onMsgNotify(msgList);
+                    }
+                    else
+                    {
+                        renderMsgHistory(msgList);
+                    }
+                },
+                function (err) {
+                    console.log('获取群消息历史记录失败！');
+                    alert(err.ErrorInfo);
+                }
+            );
+        }
+        function renderMsgHistory(newMsgList) {
+            console.log('renderMsgHistory >>>', newMsgList);
+            var sess, newMsg;
+            //获取所有聊天会话
+            var sessMap = webim.MsgStore.sessMap();
+            console.log('renderMsgHistory sessMap >>> ', sessMap);
+
+            for (let newMsg of newMsgList) {
+                let text = '';
+                for (let elem of newMsg.getElems()) {
+                    let type = elem.getType();//获取元素类型
+                    let content = elem.getContent();//获取元素对象
+                    switch (type) {
+                        case webim.MSG_ELEMENT_TYPE.TEXT:
+                            text += convertTextMsgToHtml(content);
+                            break;
+                    }
+                }
+                if(newMsg.isSend)
+                {
+                    prependSendMessage(text,newMsg.uniqueId, newMsg.time, newMsg.fromAccount);
+                }
+                else
+                {
+                    prependReceiveMessage(text,newMsg.uniqueId, newMsg.time, newMsg.fromAccount);
+                }
+            }
+        }
+        return {
+            setGroupId: setGroupId,
+            setReqMsgSeq: setReqMsgSeq,
+            loadPrevMsg : loadPrevMsg
+        };
+    })();
+    return Promise.resolve().
+    then(function ()
+    {
+        return new Promise(function (resolve, reject)
+        {
+            webim.login(loginInfo, listeners, options, (resp) => {
+                // 登录成功
+                console.log("resp", resp);
+                resolve(resolve);
+                // getGroupList();
+            }, err => {
+                reject(err);
+            });
+        });
+    }).
+    then(function ()
+    {
+        console.log('groupId:', groupId);
+        if(!groupId)
+        {
+            console.log('group id is false');
+            return;
+        }
+        var options = {
+            'GroupIdList': [
+                groupId
+            ],
+            'GroupBaseInfoFilter': [
+                'Type',
+                'Name',
+                'Introduction',
+                'Notification',
+                'FaceUrl',
+                'CreateTime',
+                'Owner_Account',
+                'LastInfoTime',
+                'LastMsgTime',
+                'NextMsgSeq',
+                'MemberNum',
+                'MaxMemberNum',
+            ],
+            'MemberInfoFilter': [
+                'Account',
+                'Role',
+                'JoinTime',
+                'LastSendMsgTime',
+            ]
+        };
+        console.log('getGroupInfo');
+        return new Promise(function (resolve, reject) {
+            webim.getGroupInfo(
+                options,
+                function (resp) {
+                    resolve(resp);
+                },
+                function (err) {
+                    reject(err.ErrorInfo);
+                }
+            );
+        }).
+        then(function (resp)
+        {
+            console.log('getGroupInfo resp:', resp);
+            if(resp.ErrorCode != 0)
+            {
+                console.log('获取群聊信息错误', resp);
+                return;
+            }
+            var groupInfo = resp.GroupInfo[0];
+
+            groupLoader.setGroupId(groupId);
+            groupLoader.setReqMsgSeq(groupInfo.NextMsgSeq-1);
+            groupLoader.loadPrevMsg(true);
+        });
+    }).
+    then(function ()
+    {
+
+    });
+
+    function scrollToEnd(){
+        $('.session-list').animate({scrollTop: $('.session-list')[0].scrollHeight-$('.session-list').height()}, 400);
+    }
+});
+</script>
+</block>

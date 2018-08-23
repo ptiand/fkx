@@ -1,0 +1,341 @@
+<extend name="Public/main" />
+<block name="title"><title>微聊</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+    <link rel="stylesheet" href="/public/Home/css/house_list.css">
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button"></div>
+        <div class="title">
+            <span>微聊</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <style>
+        html body {
+            background-color: #f5f5f5;
+        }
+        #list-container {
+            margin-top: 0;
+            padding: 0;
+        }
+        #list-container .recommend-item {
+            background-color: #fff;
+            margin-bottom: 0;
+        }
+        #list-container .item-container {
+            display: flex;
+            padding: 0 10px;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .item-container .logo {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #eaeaea;
+            border-radius: 50%;
+        }
+
+        .item-container .right-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .item-container .left-container {
+            position: relative;
+        }
+
+        .left-container .red-point {
+            background-color: red;
+            width: 14px;
+            height: 14px;
+            border-radius: 7px;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            color: white;
+            text-align: center;
+            line-height: 14px;
+            font-size: 10px;
+        }
+
+        .item-container .right-container .top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+            margin-top: 4px;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+            max-width: 240px;
+        }
+
+        .item-container .right-container .bottom {
+            margin-top: 3px;
+            color: #777;
+            font-size: 13px;
+            overflow: hidden;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+            max-width: 240px;
+        }
+
+        .right-container .top .date {
+            font-family: 'Arial Normal', 'Arial';
+            font-weight: 400;
+            font-style: normal;
+            font-size: 12px;
+            color: #999;
+            margin-top: 3px;
+            min-width: 90px;
+            min-height: 18px;
+            text-align: right;
+            background-color: #fff;
+            position: absolute;
+            right: 0;
+            top: 5px;
+        }
+        #empty-tail {background-color: #f5f5f5;}
+    </style>
+    <div class="tab-content-container">
+        <div id="list-container">
+        </div>
+        <div id="empty-tail">-- 已经到底了 --</div>
+        <div id="empty-container">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <span>- 暂无消息 -</span>
+        </div>
+        <!--<div style="text-align:center;padding: 30px 0;background-color: #fff;">-->
+            <!--<img src="/public/Home/images/empty_list_icon.png"/>-->
+            <!--<div style="color: #999;font-size: 14px;margin-top: 12px;">- 暂无消息 -</div>-->
+        <!--</div>-->
+    </div>
+</block>
+<block name="tabbar">
+    <include file="Public:tabbar"/>
+</block>
+<block name="js">
+    <script src="/public/Static/webim/sdk/webim.js"></script>
+    <script src="/public/Static/webim/sdk/json2.js"></script>
+    <script src="/public/Static/moment.js"></script>
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script type="application/javascript">
+
+        (function () {
+
+            var GroupNameCache = {};
+
+            var loginInfo = {
+                identifier: '{$identifier}',
+                userSig: '{$sig}',
+                sdkAppID: '{$sdkAppID}',
+                accountType: '{$accountType}',
+                identifierNick: '',
+            };
+
+            //监听新消息事件
+            //newMsgList 为新消息数组，结构为[Msg]
+            function onMsgNotify(newMsgList) {
+                getRecentContactList(createListHtml);
+            }
+
+            var listeners = {
+                "onConnNotify": function(e){} //监听连接状态回调变化事件,必填
+                ,
+                "jsonpCallback": function(e){} //IE9(含)以下浏览器用到的jsonp回调函数，
+                ,
+                "onMsgNotify": function(e){onMsgNotify(e);console.log("onMsgNotify >>> ", e);} //监听新消息(私聊，普通群(非直播聊天室)消息，全员推送消息)事件，必填
+                ,
+                "onBigGroupMsgNotify": function(e){} //监听新消息(直播聊天室)事件，直播场景下必填
+                ,
+                "onGroupSystemNotifys": function(e){} //监听（多终端同步）群系统消息事件，如果不需要监听，可不填
+                ,
+                "onGroupInfoChangeNotify": function(e){} //监听群资料变化事件，选填
+                ,
+                "onFriendSystemNotifys": function(e){} //监听好友系统通知事件，选填
+                ,
+                "onProfileSystemNotifys": function(e){} //监听资料系统（自己或好友）通知事件，选填
+                ,
+                "onKickedEventCall": function(e){} //被其他登录实例踢下线
+                ,
+                "onC2cEventNotifys": function(e){} //监听C2C系统消息通道
+                ,
+                "onAppliedDownloadUrl": function(e){} //申请文件/音频下载地址的回调
+            };
+
+            var options = {
+                'isAccessFormalEnv': true, //是否访问正式环境，默认访问正式，选填
+                'isLogOn': false //是否开启控制台打印日志,默认开启，选填
+            };
+
+            layer.open({
+                type: 2,
+                content: '加载中',
+                shadeClose: false
+            });
+
+            // webim.logout(function (resp) {
+            //     login();
+            // }, function (err) {
+            //     login();
+            // });
+            login();
+
+            function login() {
+                webim.login(loginInfo, listeners, options, function(resp) {
+                    // 登录成功
+                    console.log("resp", resp);
+                    getRecentContactList(createListHtml);
+                    layer.closeAll();
+                    // getGroupList();
+                }, function(err) {
+                    alert(err.ErrorInfo);
+                    layer.closeAll();
+                });
+            }
+
+            function setHeadImg(url) {
+                webim.setProfilePortrait({
+                    "ProfileItem":
+                        [
+                            {
+                                "Tag":"Tag_Profile_IM_Image",
+                                "Value": url
+                            }
+                        ]
+                }, function(resp) {console.log('setHeadImg >>> ', resp);}, function(err){alert(err.ErrorInfo)});
+            }
+
+            function getGroupList() {
+                var options = {
+                    'Member_Account': loginInfo.identifier,
+                    'Offset': 0,
+                    'GroupBaseInfoFilter': [
+                        'Type',
+                        'Name',
+                        'Introduction',
+                        'Notification',
+                        'FaceUrl',
+                        'CreateTime',
+                        'Owner_Account',
+                        'LastInfoTime',
+                        'LastMsgTime',
+                        'NextMsgSeq',
+                        'MemberNum',
+                        'MaxMemberNum',
+                        'ApplyJoinOption',
+                        'ShutUpAllMember'
+                    ],
+                    'SelfInfoFilter': [
+                        'Role',
+                        'JoinTime',
+                        'MsgFlag',
+                        'UnreadMsgNum'
+                    ]
+                };
+                webim.getJoinedGroupListHigh(
+                    options,
+                    function (resp){
+                        if (!resp.GroupIdList || resp.GroupIdList.length == 0) {
+                            alert('你目前还没有加入任何群组');
+                            return;
+                        }
+                        console.log("groupList", resp.GroupIdList);
+                    }
+                );
+            }
+
+            function getRecentContactList(callback) {
+                webim.getRecentContactList({
+                    'Count': 100 //最近的会话数 ,最大为 100
+                },function(resp){
+                    //业务处理
+                    console.log("getRecentContactList >>> ", resp);
+                    callback(resp.SessionItem);
+                },function(resp){
+                    //错误回调
+                    alert('服务器出错!');
+                });
+            }
+            
+            function createListHtml(sessionList) {
+                if (!sessionList.length) {
+                    setVisibility($('#empty-tail'), false);
+                    setVisibility($('#empty-container'), true);
+                    return;
+                }
+                getGroupNames(sessionList.map(function(s, i){return s.ToAccount}), function (groupNames) {
+                    var html = '';
+                    for (var session of sessionList) {
+                        selSess = webim.MsgStore.sessByTypeId(session.Type, session.ToAccount);
+                        var nickName=session.GroupNick, timeStamp=session.MsgTimeStamp, message=session.MsgShow,
+                            groupId=session.ToAccount, unreadMsgCount=session.UnreadMsgCount;
+                        nickName = groupNames[groupId]||nickName;
+                        html += createItemHtml({nickName, timeStamp, message, groupId, unreadMsgCount})
+                    }
+                    $("#list-container").html(html);
+                    setVisibility($('#empty-tail'), true);
+                    setVisibility($('#empty-container'), false);
+                });
+
+            }
+            
+            function createItemHtml({nickName, timeStamp, message, groupId, unreadMsgCount}) {
+                var unreadStyle='';
+                if (!unreadMsgCount) {
+                    unreadStyle ='display: none;';
+                }
+                return `<div class="recommend-item" groupId="${groupId}" onclick="javascript: window.location.href='{:U('Im/chat')}?groupId=${encodeURIComponent(groupId)}'">
+    <div class="item-container">
+        <div class="left-container">
+            <img src="/public/Home/images/message/icon_logo.png" class="logo"/>
+            <span class="red-point" style="${unreadStyle}" >${unreadMsgCount}</span>
+        </div>
+        <div class="right-container">
+            <span class="top">${nickName}<span></span><span class="date">${moment(timeStamp*1000).format('MM-DD HH:mm:ss')}</span></span>
+            <span class="bottom">${message}</span>
+        </div>
+    </div>
+</div>`;
+            }
+
+            function setVisibility($target, visible) {
+                return $target.css('display', visible ? 'flex' : 'none');
+            }
+
+            // 异步获取群名称
+            function getGroupNames(groupIdList , callback) {
+                var ids = Object.keys(GroupNameCache);
+                for (var id in groupIdList) {
+                    var index = ids.indexOf(id);
+                    if (index > -1) {
+                        groupIdList.splice(index, 1);
+                    }
+                }
+                if (!groupIdList.length) {
+                    return GroupNameCache;
+                }
+                $.post('getGroupName', { groupIdList }, function (e) {
+                    console.log("getGroupName >>> ", e);
+                    if (e.status != 1) {
+                        throw new Error('系统错误！');
+                    }
+                    var groupNames = e.content.groupNames;
+                    for (var key in groupNames) {
+                        GroupNameCache[key] = groupNames[key];
+                    }
+                    callback(GroupNameCache);
+                });
+            }
+
+        })();
+    </script>
+</block>

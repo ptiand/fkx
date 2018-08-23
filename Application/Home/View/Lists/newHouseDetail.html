@@ -1,0 +1,916 @@
+<extend name="Public/main" />
+<block name="title"><title>新房详情</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/Home/css/bottom_btns.css">
+    <link rel="stylesheet" href="/public/Home/css/house_detail.css">
+    <link rel="stylesheet" href="/public/Home/css/swiper-4.2.2.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/form.css">
+    <style type="text/css">
+        video::-webkit-media-controls-enclosure {
+            overflow:hidden;
+        }
+        video::-webkit-media-controls-panel {
+            width: calc(100% + 30px);
+        }
+        .backIcon
+        {
+            width: 20px;
+            height: 20px;
+            margin-top: 1px;
+            margin-left: 0;
+        }
+        .swiper-pagination
+        {
+            color: #fff;
+            font-size: 10px;
+            display: flex;
+            justify-content: flex-end;
+            width: 98%;
+        }
+        .swiper-pagination .page-number
+        {
+            background-color: #000;
+            padding: 3px 8px 3px 8px;
+        }
+        .video-container
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .modal-dialog {
+            margin: 0px;
+            height: 100%;
+        }
+        .modal-dialog .modal-content{
+            height: 100%;
+            background-color: rgba(242, 242, 242, 1);
+        }
+        #CommissionModal .content .commissionlabel
+        {
+            font-weight: 700;
+            font-size: 12px;
+            color: #666666;
+        }
+        #CommissionModal .content .commissionlabel
+        {
+            font-size: 12px;
+            color: #666666;
+            line-height: 18px;
+        }
+    </style>
+</block>
+<block name="header">
+    <div class="detail-header" id="detailHeader">
+        <div class="button goBackBtn" name="goBack">
+            <span><img class="backIcon" src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22" /></span>
+        </div>
+    </div>
+    <div class="header" id="header" style="display: none;">
+        <div class="button goBackBtn" name="goBack">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>详情</span>
+        </div>
+        <div class="button">
+        </div>
+    </div>
+</block>
+<block name="main">
+    <div class="container">
+        <input type="hidden" name="houseId" value="{$house.id}"/>
+        <input type="hidden" name="userId" value="{$house.id}"/>
+        <input type="hidden" name="houseType" value="NewHouse"/>
+        <div class="picture-container">
+            <if condition="$house['video']">
+            <div class="btn-video" style="" id="VideoPlayBtn">
+                <!--<img style="position: absolute;" src="/public/Home/images/house/circle.png">-->
+                <img style="" src="/public/Home/images/house/trangle.png">
+                <span>点击播放视频</span>
+            </div>
+            </if>
+            <div class="swiper-container" id="previewSwiper">
+                <div class="swiper-wrapper">
+                    <!--<if condition="$house['video']">-->
+                        <!--<div class="swiper-slide">-->
+                            <!--<div class="video-container" id="videoContainer">-->
+                                <!--<img style="position: absolute;" src="/public/Home/images/house/circle.png">-->
+                                <!--<img style="position: absolute;transform: rotate(90deg);margin-left: 3px;" src="/public/Home/images/house/trangle.png">-->
+                                <!--<video id="video" src="{$house.video}" style="width: 100%; height: 200px;" preload="auto"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</if>-->
+
+                    <foreach name="pics" item="pic">
+                        <div class="swiper-slide">
+                            <img src="{$pic.pic}" width="100%" height="200" >
+                        </div>
+                    </foreach>
+                </div>
+                <div class="swiper-pagination" id="previewPagination"></div>
+            </div>
+
+        </div>
+        <div class="top-content content" style="margin-top: 0;">
+            <div class="title">
+                <span>
+                    <span class="title-text" style="font-size: 16px;">{$house.name}</span>
+                    <span class="title-block state">{$house.stateCaption}</span>
+                    <span class="title-block type">{$house.typeCaption}</span>
+                </span>
+                <span class="right-text" {:renderLoginHtml('id="report-text"')}>投诉举报</span>
+            </div>
+
+            <div class="tag-container">
+                <foreach name="house['tags']" item="tag">
+                    <span class="block">{$tagNames[$tag]}</span>
+                </foreach>
+            </div>
+
+            <div id="divide-line"></div>
+
+            <div class="item">
+                <span class="item-label">均价</span>
+                <span class="item-content has-tail">
+                    <span class="price">{$house.minPrice|round} <if condition="$house['maxPrice'] gt 0">- {$house.maxPrice|round}</if>元/㎡</span>
+                    <notempty name="house['priceUpdateTime']">
+                        <span class="item-label" style="display: none">{$house.priceUpdateTimeCaption}更新</span>
+                    </notempty>
+                </span>
+            </div>
+            <if condition="$house['minTotalPrice'] gt 0 OR $house['maxTotalPrice'] gt 0">
+            <div class="item">
+                <span class="item-label">总价</span>
+                <span class="item-content">
+                    <span>{$house.minTotalPrice|round} <if condition="$house['maxTotalPrice'] gt 0">- {$house.maxTotalPrice|round}</if>万元/套</span>
+                </span>
+            </div>
+            </if>
+            <notempty name="house['square']">
+            <div class="item">
+                <span class="item-label">面积</span>
+                <span class="item-content"><?php echo ($house['square']?$house['square']:'暂无信息'); ?></span>
+            </div>
+            </notempty>
+            <notempty name="house['saleTimeCaption']">
+            <div class="item">
+                <span class="item-label">开盘</span>
+                <span class="item-content">{$house.saleTimeCaption|default="暂无信息"}</span>
+            </div>
+            </notempty>
+            <div class="item">
+                <span class="item-label">地址</span>
+                <?php
+                    $showMap = false;
+                    if($house['longitude']>0 && $house['latitude']>0)
+                    {
+                        $showMap = true;
+                    }
+                ?>
+                <span class="item-content {$house['address'] ? 'has-tail' :''}" {$showMap?'id="showMap"':""}>
+                    <input name="longitude" type="hidden" value="{$house['longitude']}"/>
+                    <input name="latitude" type="hidden" value="{$house['latitude']}"/>
+                    <span>{$house.cityCaption}&nbsp;{$house.areaCaption}&nbsp;{$house.address|default="暂无信息"}</span>
+                    <if condition="$showMap">
+                        <span><a class="item-label"><i class="gt"><img src="/public/Home/images/icon_gt.png" /></i></a></span>
+                    </if>
+                </span>
+            </div>
+            <div class="item">
+                <span class="item-label">佣金</span>
+                <span class="item-content has-tail">
+                    <span>{$house.commission}</span>
+                    <a id="CommissionRule" class="item-label" style="min-width: 64px;">佣金规则 <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i></a>
+                </span>
+            </div>
+
+        </div>
+        <notempty name="card">
+            <div id="coupon-content" class="content" <if condition="$isLogin">name="houseCard"<else/>onclick="javascript:window.location.href='{:U('Login/code_login')}'"</if> >
+                <div class="left">
+                    <input type="hidden" name="cardId" value="{$card.id}">
+                    <span class="title">{$card.name}</span>
+                    <span class="second-title">最高返现{$card['returnCash']}</span>
+                </div>
+                <div class="line"></div>
+                <div class="right">
+                    <span>立即领取</span>
+                </div>
+            </div>
+        </notempty>
+        <div id="extra-content" class="content">
+            <div class="title">
+                <span class="title-text">楼盘信息</span>
+            </div>
+            <div class="item">
+                <span class="item-label double-width">开发商</span>
+                <span class="item-content">
+                    {$others['kfs']|default="暂无信息"}
+                </span>
+            </div>
+            <div class="item">
+                <span class="item-label double-width">售楼地址</span>
+                <span class="item-content">{$others['area']} {$others['sldzAddress']|default="暂无信息"}</span>
+            </div>
+            <div class="item">
+                <span class="item-label double-width">交房时间</span>
+                <span class="item-content"><?php echo ($others['jfsj']?('预计'.$others['jfsj']):'暂无信息'); ?></span>
+            </div>
+            <div class="item">
+                <span class="item-label double-width">工程进度</span>
+                <span class="item-content">{$others['gcjd']|default="暂无信息"}</span>
+            </div>
+            <div class="item">
+                <span class="item-label double-width">预售许可</span>
+                <span class="item-content">{$others['ysxk']|default="暂无信息"}</span>
+            </div>
+            <div id="more-item-content">
+                <div class="item">
+                    <span class="item-label double-width">建筑类型</span>
+                    <span class="item-content">{$house['typeCaption']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">装修标准</span>
+                    <span class="item-content">{$house['renovationStandardCaption']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">产权年限</span>
+                    <span class="item-content">{$others['cqnx']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">建筑面积</span>
+                    <span class="item-content">{$others['jzmj']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">占地面积</span>
+                    <span class="item-content">{$others['zdmj']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">楼栋数</span>
+                    <span class="item-content">{$others['lds']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">规划户数</span>
+                    <span class="item-content">{$others['ghhs']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">楼层情况</span>
+                    <span class="item-content">{$others['lcqk']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">容积率</span>
+                    <span class="item-content">{$others['rjl']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">绿化率</span>
+                    <span class="item-content">{$others['lhl']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">物业公司</span>
+                    <span class="item-content">{$others['wygs']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">物业类型</span>
+                    <span class="item-content">{$others['wylx']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">物业费</span>
+                    <span class="item-content">{$others['wyf']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">停车位</span>
+                    <span class="item-content">{$others['tcw']|default="暂无信息"}</span>
+                </div>
+                <div class="item">
+                    <span class="item-label double-width">车位比</span>
+                    <span class="item-content">{$others['cwb']|default="暂无信息"}</span>
+                </div>
+            </div>
+
+            <div class="toggle-more-content">
+                <button class="btn" id="toggle-more-btn">展开全部信息</button>
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="title">
+                <span class="title-text">户型信息</span>
+                <if condition="count($houseHuxingList) gt 0">
+                    <a class="right-text" id="show-huxing-grid">全部{:count($houseHuxingList)}个户型 <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i></a>
+                </if>
+            </div>
+            <div class="item">
+                <if condition="count($houseHuxingList) gt 0">
+                    <div class="huxing-container" >
+                        <foreach name="houseHuxingList" item="houseHuxing" key="key">
+                            <if condition="$key lt 2">
+                                <div class="huxing-item">
+                                    <img src="{$houseHuxing.pic|default='/public/no_photo.png'}" width="100%" height="200"/>
+                                    <div class="huxing-info">
+                                        <span class="huxing-detail">
+                                            {$houseHuxing['houseRoom']|default='0'}室{$houseHuxing['livingRoom']|default='0'}厅<if
+                                                condition="$houseHuxing['restRoom'] gt 0">{$houseHuxing['restRoom']}卫</if><if
+                                                condition="$houseHuxing['diningRoom'] gt 0">{$houseHuxing['diningRoom']}厨</if><if
+                                                condition="$houseHuxing['veranda'] gt 0">{$houseHuxing['veranda']}阳台</if>
+                                        </span>
+                                        <if condition="$houseHuxing['square'] gt 0">
+                                            <span >{$houseHuxing.square|default='0'}㎡</span>
+                                        </if>
+                                    </div>
+                                </div>
+                            </if>
+
+                        </foreach>
+
+                    </div>
+                <else/>
+                    <span class="item-label">暂无户型信息，请保持关注，留意信息更新</span>
+                </if>
+            </div>
+        </div>
+        <notempty name="house['fkxSay']">
+            <div class="content">
+                <div class="title">
+                    <span class="title-text">房客行说</span>
+                </div>
+                <div class="item">
+                    <span class="item-label" style="line-height: 24px;font-size: 14px;white-space: pre-wrap;">{$house.fkxSay}</span>
+                </div>
+            </div>
+        </notempty>
+        <notempty name="house['estateSay']">
+        <div class="content last-content">
+            <div class="title">
+                <span class="title-text">楼盘介绍</span>
+            </div>
+            <div class="item">
+                <span class="item-label" style="line-height: 22px;font-size: 13px;white-space: pre-wrap;">{$house.estateSay}</span>
+            </div>
+        </div>
+        </notempty>
+        <include file="Public:bottombtns"/>
+    </div>
+
+</block>
+
+<block name="modal">
+    <div class="modal" id="ContactModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content contact-modal" style="background-color: rgba(242, 242, 242, 0);">
+                <if condition="$isLogin">
+                <div class="contact-view">
+                    <span class="title">欢迎来电咨询</span>
+                    <div class="contact">
+                        <div class="contact-label">房客行</div>
+                        <div class="contact-info">
+                            <if condition="count($others['contacts']) gt 0">
+                                <foreach name="others['contacts']" item="contact">
+                                    <a class="contact-item" href="tel:{$contact.tel}">
+                                        <span>{$contact.tel}&nbsp;{$contact.name}</span>
+                                        <img src="__PUBLIC__/Home/images/house/phone.png" width="16" height="16">
+                                    </a>
+                                </foreach>
+                            <else/>
+                                <div class="contact-item">
+                                    <span>暂无联系信息</span>
+                                </div>
+                            </if>
+                        </div>
+                    </div>
+                    <div class="close-icon" id="ContactClose">
+                        <img src="__PUBLIC__/Home/images/close_icon.png" width="20" height="20">
+                    </div>
+                </div>
+                </if>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="CommissionModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="header">
+                    <div class="button" id="commissionBack">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span>佣金规则</span>
+                    </div>
+                    <div class="button">
+                    </div>
+                </div>
+                <div class="container content-container">
+                    <div class="content" style="margin-top: 0px;">
+                        <span class="commissionlabel">佣金</span>
+                        <span style="font-weight: 700; font-size: 13px; color: #FF6600;margin-left: 15px;">
+                            <span>{$house.commission}</span>
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            <span class="commissionlabel">佣金说明</span>
+                        </div>
+                        <span class="commissionRule" style="line-height: 22px;font-size: 13px;">{$house.commissionRule}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ImageGridModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: rgba(51, 51, 51, 1);">
+                <div class="header" id="page-header"  style="background-color: rgba(51, 51, 51, 1);">
+                    <div class="button" id="imageGridBack">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span>全部{:count($pics)+($house['video']?1:0)}张图片</span>
+                    </div>
+                    <div class="button">
+                    </div>
+                </div>
+                <div class="content-container">
+                    <include file="Lists:ImageGrid"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal slide" id="HuxingGridModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: rgba(51, 51, 51, 1);">
+                <div class="header" style="background-color: rgba(51, 51, 51, 1);">
+                    <div class="button" id="huxingGridBack">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span>{:count($houseHuxingList)}个户型</span>
+                    </div>
+                    <div class="button">
+                    </div>
+                </div>
+                <div class="content-container">
+                    <include file="Lists:HuxingGrid" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ImageDetailModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: rgba(51, 51, 51, 1);display: flex;flex-direction: column;">
+                <div class="header"  style="background-color: rgba(51, 51, 51, 1); position: unset">
+                    <div class="button" id="imageDetailBack">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span id="imageDetailPagination"></span>
+                    </div>
+                    <div class="button">
+                    </div>
+                </div>
+                <div style="flex:1;display: flex;">
+                    <div class="swiper-container" id="imageDetailSwiper">
+                        <div class="swiper-wrapper" style="display: flex;">
+                        <if condition="$house['video']">
+                            <div class="swiper-slide" style="display: flex;align-items: center;">
+                                <div class="video-container" id="videoDetailContainer">
+                                    <img style="position: absolute;" src="/public/Home/images/house/circle.png">
+                                    <img style="position: absolute;transform: rotate(90deg);" src="/public/Home/images/house/trangle.png">
+                                    <div id="adInterval" class="btn-video" style="justify-self: flex-end;align-self: flex-end; bottom: unset">
+                                        <span>广告倒计时<span id="adLeftTime"></span></span>
+                                    </div>
+                                    <video id="videoDetail" src="" style="width: 100%;"/>
+                                </div>
+                            </div>
+                        </if>
+                        <foreach name="pics" item="pic">
+                            <div class="swiper-slide img-container swiper-zoom-container"
+                                 style="background-image: url('{$pic[\'pic\']}');
+                                    background-repeat: no-repeat;
+                                 background-position:center;
+                                 background-size: contain;
+                                 background: none;
+                                 width: 100%;
+                                 "><img src="{$pic[\'pic\']}"/></div>
+
+                        </foreach>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="HuxingDetailModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: rgba(51, 51, 51, 1);display: flex;flex-direction: column;">
+                <div class="header"  style="background-color: rgba(51, 51, 51, 1);position: unset">
+                    <div class="button" id="huxingDetailBack">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span id="huxingDetailPagination"></span>
+                    </div>
+                    <div class="button">
+                    </div>
+                </div>
+                <div style="flex:1;display: flex;">
+                    <div class="swiper-container" id="huxingDetailSwiper">
+                        <div class="swiper-wrapper" style="display: flex;">
+                            <foreach name="houseHuxingList" item="houseHuxing">
+                                <div class="swiper-slide img-container swiper-zoom-container"
+                                     style="background-image: url('{$houseHuxing.pic|default='/public/no_photo.png'}');
+                                    background-repeat: no-repeat;
+                                 background-position:center;
+                                 background-size: contain;
+                                 background: none;
+                                 width: 100%;">
+                                    <img src="{$houseHuxing.pic|default='/public/no_photo.png'}"/>
+                                </div>
+                            </foreach>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Components:AppealModal"/>
+    <include file="Report:ReportModal"/>
+    <include file="Components:MapModal"/>
+</block>
+
+<block name="js">
+    <script src="/public/Home/js/swiper-4.2.2.min.js"></script>
+    <script src="/public/Static/bootstrap/js/bootstrap.js"></script>
+<script>
+    $('#videoContainer').click(function ()
+    {
+        var videoEle = document.getElementById('video');
+        if(videoEle.paused)
+        {
+            videoEle.play();
+            $('#videoContainer img').hide();
+        }
+        else
+        {
+            $('#videoContainer img').show();
+            videoEle.pause();
+        }
+    });
+    // $('[name="goBack"]').click(function () {
+    //     window.history.go(-1);
+    // });
+
+    // $(".goBackBtn").click(function () {
+    //     window.history.back();
+    // });
+
+    window.onscroll = function()
+    {
+       if($('body').scrollTop() > 20)
+       {
+           setVisibility($('#detailHeader'), false);
+           setVisibility($('#header'), true);
+       }
+       else
+       {
+           setVisibility($('#header'), false);
+           setVisibility($('#detailHeader'), true);
+       }
+    };
+
+
+
+    $("#toggle-more-btn").click(function () {
+        var $target = $("#more-item-content");
+        setVisibility($target, !isVisible($target));
+        toggleMoreText(isVisible($target));
+    });
+
+    function toggleMoreText(itemVisibility) {
+        return itemVisibility ? $("#toggle-more-btn").text('收起全部信息') : $("#toggle-more-btn").text('展开全部信息');
+    }
+
+    function setVisibility($target, visible) {
+        return $target.css('display', visible ? 'flex' : 'none');
+    }
+    
+    function isVisible($target) {
+        return $target.css('display')!='none';
+    }
+    $('#previewSwiper').css('width', document.body.clientWidth);
+    var mySwiper = new Swiper ('#previewSwiper', {
+        direction: 'horizontal',
+        //loop: true,
+        width: document.body.clientWidth,
+        // autoplay: {
+        //     delay: 3000,
+        //     stopOnLastSlide: false,
+        //     disableOnInteraction: false,
+        // },
+        pagination: {
+            el: '#previewPagination',
+            type: 'custom',
+            renderCustom: function (swiper, current, total) {
+                return '<div class="page-number">'+current + '/' + total+'</div>';
+            }
+        },
+        on: {
+            slideChangeTransitionEnd: function()
+            {
+                if(this.activeIndex != 0)
+                {
+                    var video = document.getElementById('video');
+                    if(video)
+                    {
+                        $('#videoContainer img').show();
+                        video.pause();
+                    }
+                }
+            },
+        },
+    });
+    $('#CommissionRule').click(function ()
+    {
+        $('#CommissionModal').modal({
+            show: true,
+        });
+    });
+    $('#commissionBack').click(function () {
+        $('#CommissionModal').modal('hide');
+    });
+
+    $('.picture-container img').click(function () {
+        $('#ImageGridModal').modal({
+            show: true,
+        });
+    });
+
+    $('#imageGridBack').click(function () {
+        $('#ImageGridModal').modal('hide');
+    });
+
+    $("#show-huxing-grid").click(function () {
+        $('#HuxingGridModal').modal({
+            show: true,
+        });
+    });
+    $('.huxing-item').click(function ()
+    {
+        $('#HuxingGridModal').modal({
+            show: true,
+        });
+    });
+    $('#huxingGridBack').click(function () {
+        $('#HuxingGridModal').modal('hide');
+    });
+    $('#ImageGridModal .img-container').click(function ()
+    {
+        var i = $(this).index();
+        imgDetailSwiper.slideTo(i);
+        $('#ImageDetailModal').modal({show:true});
+    });
+    $('#imageDetailBack').click(function () {
+        $('#ImageDetailModal').modal('hide');
+    });
+    $("#ImageDetailModal").on("hidden.bs.modal", function() {
+        video.pause();
+    });
+    $('#imageDetailSwiper .img-container').css('height', document.body.clientHeight-40);
+    $('#imageDetailSwiper').css('width', document.body.clientWidth);
+    var imgDetailSwiper = new Swiper('#imageDetailSwiper', {
+        direction: 'horizontal',
+        zoom : true,
+        width: document.body.clientWidth,
+        pagination: {
+            el: '#imageDetailPagination',
+            type: 'custom',
+            renderCustom: function (swiper, current, total) {
+                return current + '/' + total
+            }
+        },
+        on: {
+            slideChangeTransitionEnd: function()
+            {
+                if(this.activeIndex != 0)
+                {
+                    video.pause();
+                }
+            },
+        },
+    });
+    $('#videoDetailContainer').click(function ()
+    {
+        video.click();
+    });
+
+    $('#huxingDetailSwiper .img-container').css('height', document.body.clientHeight-40);
+    $('#huxingDetailSwiper').css('width', document.body.clientWidth);
+    var huxingDetailSwiper = new Swiper('#huxingDetailSwiper', {
+        direction: 'horizontal',
+        zoom : true,
+        width: document.body.clientWidth,
+        pagination: {
+            el: '#huxingDetailPagination',
+            type: 'custom',
+            renderCustom: function (swiper, current, total) {
+                return current + '/' + total
+            }
+        }
+    });
+    $('#HuxingGridModal .item-container').click(function ()
+    {
+        var i = $(this).index();
+        huxingDetailSwiper.slideTo(i);
+        $('#HuxingDetailModal').modal({show:true});
+    });
+    $('#huxingDetailBack').click(function () {
+        $('#HuxingDetailModal').modal('hide');
+    });
+
+    $('#phone-ask').click(function ()
+    {
+        $('#ContactModal').modal({
+            show: true
+        });
+    });
+    $('#ContactClose').click(function ()
+    {
+        $('#ContactModal').modal('hide');
+    });
+    $('[name="houseCard"]').click(function ()
+    {
+        $.post('{:U("UserCard/add")}',
+            {cardId: $('[name="cardId"]').val()},
+            function (resData)
+            {
+                if(resData.status == 1)
+                {
+                    FkxToast.success(resData.info);
+                }
+                else
+                {
+                    FkxToast.error(resData.info);
+                }
+            }
+        );
+    });
+    $('#like').click(function ()
+    {
+        $.post('{:U("Favorite/favor")}',
+            {houseId: {$house['id']|default='0'}, houseType:'NewHouse'},
+            function (resData)
+            {
+                if(resData.status == 1)
+                {
+                    setVisibility($('#like'), false);
+                    setVisibility($('#liked'), true);
+                    FkxToast.success(resData.info);
+                }
+                else
+                {
+                    FkxToast.error(resData.info);
+                }
+            }
+        );
+    });
+    $('#liked').click(function ()
+    {
+        $.post('{:U("Favorite/cancelFavor")}',
+            {houseId: {$house['id']|default='0'}, houseType:'NewHouse'},
+            function (resData)
+            {
+                if(resData.status == 1)
+                {
+                    setVisibility($('#liked'), false);
+                    setVisibility($('#like'), true);
+                    FkxToast.success(resData.info);
+                }
+                else
+                {
+                    FkxToast.error(resData.info);
+                }
+            }
+        );
+    });
+
+    $("#online-ask").click(function (e) {
+        window.location.href = '{:U("Im/chat", array("houseId" => $house["id"],"houseType"=>$houseType))}';
+    });
+
+    $("#VideoPlayBtn").click(function () {
+        imgDetailSwiper.slideTo(0);
+        $('#ImageDetailModal').modal({show:true});
+        video.play();
+    });
+    var video = (function ()
+    {
+        var videoElem = document.getElementById('videoDetail');
+        var mediaAdPath = '{$mediaAd.filepath}';
+        var mediaAdId = '{$mediaAd.id}';
+        var houseVideo = '{$house.video}';
+        var hasAd = false;
+        var adPlayEnd = false;
+        var initPlay = true;
+        if(mediaAdPath)
+        {
+            hasAd = true;
+            $(videoElem).attr('src', mediaAdPath);
+        }
+        else
+        {
+            $(videoElem).attr('src', houseVideo);
+        }
+        var adInterval;
+        if(videoElem)
+        {
+            videoElem.addEventListener('ended', function (e,v)
+            {
+                if(hasAd && !adPlayEnd)
+                {
+                    clearInterval(adInterval);
+                    $('#adInterval').hide();
+                    adPlayEnd = true;
+                    $(videoElem).attr('src', houseVideo);
+                    play();
+                }
+            });
+            if(hasAd)
+            {
+                adInterval = setInterval(function ()
+                {
+                    $('#adLeftTime').text(Math.ceil(videoElem.duration - videoElem.currentTime));
+                }, 500);
+            }
+            else
+            {
+                $('#adInterval').hide();
+            }
+
+        }
+        function play()
+        {
+            if(videoElem)
+            {
+                $('#videoDetailContainer img').hide();
+                videoElem.play();
+            }
+            if(hasAd && initPlay)
+            {
+                initPlay = false;
+                $.post('{:U("MediaAd/count")}', {mediaAdId: mediaAdId});
+            }
+        }
+        function pause()
+        {
+
+            if(videoElem)
+            {
+                $('#videoDetailContainer img').show();
+                videoElem.pause();
+            }
+        }
+        function click()
+        {
+            if(!videoElem)
+                return;
+            if(videoElem.paused)
+            {
+                play();
+            }
+            else
+            {
+                pause();
+            }
+        }
+        return {
+            play,
+            pause,
+            click
+        }
+    })();
+    // (function() {
+    //     var scale = 0.5;
+    //     var video = document.getElementById('video');
+    //     video.addEventListener("loadeddata", function () {
+    //         try{
+    //             var canvas = document.createElement("canvas");
+    //             canvas.width = video.videoWidth * scale;
+    //             canvas.height = video.videoHeight * scale;
+    //             canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+    //             video.setAttribute("poster", canvas.toDataURL("image/jpeg"));
+    //         } catch (e) {
+    //             alert(e);
+    //         }
+    //
+    //     });
+    // }());
+
+</script>
+<include file="Components:AppealModalJs"/>
+<include file="Report:ReportModalJs"/>
+<include file="Components:MapModalJs"/>
+</block>

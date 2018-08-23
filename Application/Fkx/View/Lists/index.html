@@ -1,0 +1,212 @@
+<extend name="Public/main" />
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/build.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <script src="/public/Home/js/items.js"></script>
+</block>
+
+<block name="main">
+    <div class="top-container">
+        <div id="ads" class="top-container-left">
+            <p>厦/漳</p>
+            <img src="/public/Home/images/down.png" alt="">
+        </div>
+        <div class="top-container-right">
+            <form action="{$url.sh}" method="get" id="form">
+            <input type="text" name="sh" value="{$Think.get.sh}" placeholder="请输入楼盘名／地名">
+            <img class="search" src="/public/Home/images/search.png" alt="">
+            </form>
+        </div>
+    </div>
+    <div class="hide">
+        <volist name="city" id="cy">
+        <div class="title-hide">
+            <p>{$cy.city_name}</p>
+        </div>
+        <div class="li-cont">
+            <ul>
+                <a href="{$url.cy}"><li><p <?php if(!$_GET['cy']){echo 'class="act"';} ?> >全部</p></li></a>
+                <volist name="cy.son" id="so">
+                <a href="{$url.cy}&cy={$so.id}"><li><p <?php if($so['id'] ==$_GET['cy']){echo 'class="act"';} ?> >{$so.city_name}</p></li></a>
+                </volist>
+            </ul>
+        </div>
+        </volist>
+        <div class="close"></div>
+    </div>
+    <div class="text-container" id="select">
+        <ul id="up">
+            <li><p>总价</p><img src="/public/Home/images/down.png" alt=""></li>
+            <li><p>户型</p><img src="/public/Home/images/down.png" alt=""></li>
+            <li><p>装修</p><img src="/public/Home/images/down.png" alt=""></li>
+            <li><p>类型</p><img src="/public/Home/images/down.png" alt=""></li>
+        </ul>
+        <div class="btn-container" id="sccc">
+
+                    <ul>
+                       <li <?php if(!$_GET['zj']){echo 'class="act"';} ?> > <a href="{$url.zj}">全部</a></li>
+                        <volist name="jiage" id="jg">
+                            <li <?php if($jg['id'] ==$_GET['zj']){echo 'class="act"';} ?> ><a href="{$url.zj}&zj={$jg.id}">{$jg.jiage_name}</a></li>
+                        </volist>
+
+                    </ul>
+
+                    <ul>
+                        <li <?php if(!$_GET['hx']){echo 'class="act"';} ?> > <a href="{$url.hx}">全部</a></li>
+                        <volist name="huxing" id="hx">
+                            <li <?php if($hx['id'] ==$_GET['hx']){echo 'class="act"';} ?> ><a href="{$url.hx}&hx={$hx.id}">{$hx.huxing_name}</a></li>
+                        </volist>
+                    </ul>
+                    <ul>
+                        <li <?php if(!$_GET['zx']){echo 'class="act"';} ?> > <a href="{$url.zx}">全部</a></li>
+                        <volist name="zxiu" id="zx">
+                            <li <?php if($zx['id'] ==$_GET['zx']){echo 'class="act"';} ?> ><a href="{$url.zx}&zx={$zx.id}">{$zx.zxiu_name}</a></li>
+                        </volist>
+    
+                    </ul>
+                    <ul>
+                        <li <?php if(!$_GET['ty']){echo 'class="act"';} ?> > <a href="{$url.ty}">全部</a></li>
+                        <volist name="types" id="ty">
+                            <li <?php if($ty['id'] ==$_GET['ty']){echo 'class="act"';} ?> ><a href="{$url.ty}&ty={$ty.id}">{$ty.type_name}</a></li>
+                        </volist>
+    
+                    </ul>
+        </div>
+
+    </div>
+    <div class="con" style="margin-bottom: 45px;">
+    <volist name="info" id="vo">
+        <div class="card-container">
+            <a href="{:U('Lists/lpinfo',array('id'=>$vo['id']))}">
+                <img src="{$vo.pic}" alt="">
+            </a>
+            <a href="{:U('Lists/lpinfo',array('id'=>$vo['id']))}">
+        <div class="card-container-right">
+          <div>
+            <h1>{$vo.title}</h1>
+            <div class="card-child-1">
+                <p>{$vo.price}</p>
+                <span>元／平起</span>
+            </div>
+
+                <div class="card-child-2">
+                    <div class="childs-1">
+                        <p>佣金</p>
+                    </div>
+                    <div class="childs-2">
+                        <p><?php if($yongjin == 1){ ?>{$vo.prices} <?php }else{ echo '登录可见'; ?> <?php } ?></p>
+                    </div>
+                </div>
+
+            <div class="last-child">
+                <p>{$vo.address}</p>
+            </div>
+            </div>
+            <div class="right">
+                    <a href="{:U('client/report',array('loupan_id'=>$vo['id']))}">
+                        <img src="/public/Home/images/baobei.png" alt="">
+                        <p>快速报备</p>
+                    </a>
+                </div>
+        </div>
+                </a>
+    </div>
+    </volist>
+</div>
+</block>
+<block name="js">
+
+   <script>
+        $('body').on('touchmove',function(){
+            if($('body').scrollTop()>=50){
+                $('#select').addClass('solid')
+                }else {
+            $('#select').removeClass('solid')
+                }
+           })
+                    $('#sccc ul').on('click','li',function(){
+                        $('#sccc>ul li').removeClass('act')
+                        $(this).addClass('act')
+                    })
+                    $('#close').click(function(){
+                        $('#sccc').css('display','none')
+                    })
+
+       var current_loading = false;
+       var page_container_object =  $("body").get(0);
+       var time=1;
+       $(window).scroll(function(){
+           var scroll_interval = page_container_object.scrollHeight - page_container_object.scrollTop-page_container_object.clientHeight;
+           if (scroll_interval <= 100 && !current_loading) {
+               current_loading = true;
+               loadMore(time);
+           }
+       });
+       //"向服务器请求数据"
+       function loadMore(te) {
+        var where = '{$pagewhere}';
+           $.get("{:U('Lists/loadloupan')}",{ time : te, where:where} , function(data) {
+               if(data.status==0){
+                   // $(".loadingA").add(".loadingB").add(".loadingC").hide();
+               }else{
+                   $(".con").last().append(data.info);
+                   current_loading =false;
+                   time++;
+               }
+           });
+       }
+       var n = 0;
+       $('#up').on('click','li',function () {
+           n++;
+        var indexs = $(this).index();
+        if(n%2===1){
+            $('#sccc').css('display','block');
+        $('#sccc ul').css('display','none');
+        $('#sccc ul').eq(indexs).css('display','block')
+        }else {
+            $('#sccc').css('display','none');
+        }
+
+    })
+    $('#sccc ul').on('click','li',function(){
+        $('#sccc>ul li').removeClass('act')
+        $(this).addClass('act')
+    })
+    $('#close').click(function(){
+        $('#sccc').css('display','none')
+    })
+       $('#sccc ul').on('click','li',function(){
+           $('#sccc>ul li').removeClass('act')
+           $(this).addClass('act')
+       })
+       $('#close').click(function(){
+           $('#sccc').css('display','none')
+       })
+
+
+       $('#ads').toggle(
+               function(){
+                   console.log(12)
+                   $('.hide').css('display','block')
+               },
+               function(){
+                   $('.hide').css('display','none')
+               }
+       );
+       $('.li-cont>ul li').on('click','p',function(){
+           $('.li-cont>ul>li p').removeClass('act');
+           $(this).addClass('act');
+           var text = $(this).html();
+           var code = text.slice(0,2);
+           $('#ads p').html(code);
+       })
+       $('.close').click(function(){
+           $('.hide').css('display','none')
+       })
+       $('.search').click(function(){
+           $('#form').submit();
+       })
+   </script>
+    
+</block>
+

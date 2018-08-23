@@ -1,0 +1,35 @@
+<foreach name="list" item="message">
+    <div class="recommend-item" message-id="{$message['id']}">
+        <input class="readTime" value="{$message['readTime']}" hidden/>
+        <div class="item-container">
+            <div class="left-container">
+                <img src="/public/Home/images/message/icon_logo.png" class="logo"/>
+                <eq name="message['readTime']" value="0">
+                    <span class="red-point"></span>
+                </eq>
+            </div>
+            <div class="right-container">
+                <span class="top"><span>{$message['typeCaption']}</span><span class="date">{$message['createTimeCaption']}</span></span>
+                <span class="bottom">{$message['content']}</span>
+            </div>
+        </div>
+    </div>
+</foreach>
+<script>
+    $('.recommend-item').click(function () {
+        var readTime = parseInt($(this).find(".ReadTime").val());
+        if (readTime){
+            return;
+        }
+        var id = $(this).attr('message-id');
+        var $this = $(this);
+        $.get('iReadIt', { id }, function (e) {
+            if (e.status == 1) {
+                // console.log(e);
+                $this.find('.red-point').hide();
+            }
+        });
+    });
+</script>
+
+

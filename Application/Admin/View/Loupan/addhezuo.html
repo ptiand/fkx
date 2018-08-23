@@ -1,0 +1,174 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">设置合作规则</h4>
+</div>
+<?php if($info){ ?>
+<volist name='info' id="vo">
+    <div class="modal-body">
+            <fieldset>
+               <br/>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" >合作简介</label>
+                    <div class="col-sm-10">
+                        <textarea name="des" id="edit_des" class="edit" key="{$vo.id}" style="width: 100%;" >{$vo.des}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" >合作内容</label>
+                    <div class="col-sm-8">
+                        <textarea  name="contents" id="dess" class="edit" key="{$vo.id}" style="width: 100%;">{$vo.contents}</textarea>
+                    </div>
+                    <div class="col-sm-8">
+                        <button class="del" key="{$vo.id}">删除</button>
+                    </div>
+                    <div class="col-sm-8">
+                        <button class="edits" key="{$vo.id}">修改</button>
+                    </div>
+                </div>
+
+            </fieldset>
+
+    </div>
+</volist>
+<?php }else{ ?>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="defaultForm" method="post" action="{$self}">
+        <input type="hidden" name="loupan_id" value="{$Think.get.id}" />
+        <fieldset>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="des">合作简介</label>
+                <div class="col-sm-10">
+                    <textarea name="des" style="width: 100%;" id="des"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="contents">合作内容(以英文分号隔开)</label>
+                <div class="col-sm-10">
+                    <textarea  name="contents"  style="width: 100%;" id="contents"></textarea>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+    <button type="button" class="btn btn-primary" id="submit">添加</button>
+</div>
+<?php } ?>
+<script type="text/javascript">
+    var ue = UE.getEditor('edit_des');
+    var ues = UE.getEditor('dess');
+    $("#submit").click(function(){
+        $("#defaultForm").submit();
+    })
+    $(document).ready(function() {
+        $('#defaultForm')
+                .bootstrapValidator({
+                    message: 'This value is not valid',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        LoginName: {
+                            message: '账号不可用',
+                            validators: {
+                                notEmpty: {
+                                    message: '账号不能为空'
+                                },
+                                stringLength: {
+                                    min: 6,
+                                    max: 30,
+                                    message: '账号长度6-30'
+                                },
+                                /*remote: {
+                                 url: 'remote.php',
+                                 message: '账号不可用'
+                                 },*/
+                                regexp: {
+                                    regexp: /^[a-zA-Z0-9_\.]+$/,
+                                    message: '账号格式不正确'
+                                }
+                            }
+                        }
+                    }
+                })
+                .on('success.form.bv', function(e) {
+                    // Prevent form submission
+                    e.preventDefault();
+                    // Get the form instance
+                    var $form = $(e.target);
+                    // Get the BootstrapValidator instance
+                    var bv = $form.data('bootstrapValidator');
+                    // Use Ajax to submit form data
+                    $.post($form.attr('action'), $form.serialize(), function(result) {
+                        if(result.status==1){
+                            swal({
+                                title:"操作成功！",
+                                text:result.info,
+                                type:"success"
+                            },function(){
+                                $('#defaultForm').bootstrapValidator('resetForm', true);$('input').val('');$('#addCustomer').modal('hide');
+                            });
+                        }else{
+                            toastr.warning(result.info);return false;
+                        }
+                    }, 'json');
+                });
+    });
+
+    $('.edits').click(function(){
+
+      var id = $(this).attr('key');
+//        var name = $(this).attr('name');
+//        var v = $(this). val();
+//        var des = $('#edit_des'). val();
+  //      var contents = $('#dess'). val();
+        var des = ue.getContent();
+        var contents = ues.getContent();
+        var info = {id:id,des:des,contents:contents}
+        $.post("{:U('loupan/editHezuo')}",info,function(data){
+            if(data.status == 1){
+                _popup('修改成功');
+            }
+        })
+    })
+
+    $('.del').click(function(){
+        var obj = $(this);
+        var id = $(this).attr('key');
+
+
+        var info = {id:id}
+        $.post("{:U('loupan/delHezuo')}",info,function(data){
+            if(data.status == 1){
+                _popup('删除成功');
+                obj.parents('.modal-body').css('display','none');
+              //  location.reload();
+            }
+        })
+    })
+
+    //弹出层
+    function _popup(Msg, url){
+        $(".popup").remove();
+        var sender = $("<div class='popup' style='z-index: 9999;position: fixed;top: 15%;left: 0;width: 100%;text-align: center;'><span class='popup_msg' style='display: none;padding: 19px 67px;background: #5cb85c;z-index: 99999;color: #FFF;font-size: 18px;'>" + Msg + "</span></div>").appendTo("body");
+        $(".popup_msg", sender).fadeIn();
+        setTimeout(function() {
+            sender.animate({ top : '10px' , opacity : 0}, function() {
+                if (url != undefined && url) {
+                    location.href = url;
+                }
+            });
+        }, 1000);
+    }
+
+
+</script>

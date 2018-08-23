@@ -1,0 +1,29 @@
+<foreach name="userAccounts" item="account">
+    <?php
+        $stateCss = '';
+        if($account['state'] == $State['Dealing'])
+        {
+            $stateCss = 'state-dealing';
+        } else if($account['state'] == $State['Done'])
+        {
+            $stateCss = 'state-done';
+        } else if($account['state'] == $State['Cancel'])
+        {
+            $stateCss = 'state-cancel';
+        }
+        $moneyPre = '';
+        if($account['pay_type'] == $PayType['Commission'])
+        {
+            $moneyPre = '+';
+        } else if($account['pay_type'] == $PayType['Withdrawal'])
+        {
+            $moneyPre = '-';
+        }
+    ?>
+    <div class="item pay-detail">
+        <span class="pay-type">{$PayTypeCaption[$account['pay_type']]}</span>
+        <span class="pay-time">{$account['pay_time']|date="Y-m-d H:i", ###}</span>
+        <span class="pay-state {$stateCss}">{$StateCaption[$account['state']]}</span>
+        <span class="pay-amount {$stateCss}">{$moneyPre}{$account['amount']}&nbsp;元</span>
+    </div>
+</foreach>

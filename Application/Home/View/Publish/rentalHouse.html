@@ -1,0 +1,801 @@
+<extend name="Public/main" />
+<block name="title"><title>发布租房</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/Home/css/swiper-4.2.2.min.css">
+    <link rel="stylesheet" href="/public/Static/layer_mobile/need/layer.css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+    <link rel="stylesheet" href="/public/Home/css/publish.css">
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" id="NavBackImg" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>发布租房</span>
+        </div>
+        <if condition="$house['id'] != null">
+            <div class="button" id="HeaderDeleteBtn">
+                删除
+            </div>
+            <else />
+            <div class="button" >
+            </div>
+        </if>
+    </div>
+</block>
+<block name="main">
+    <style>
+        html body .container {
+            padding: 40px 0 50px 0;
+        }
+        .modal-dialog {
+            margin: 0px;
+        }
+        .modal-dialog .modal-content{
+            background-color: rgba(242, 242, 242, 1);
+            border: none;
+        }
+        body .modal {
+            overflow-y: auto;
+        }
+        #HeaderDeleteBtn{
+            color: #ff0000;
+        }
+    </style>
+    <form class="container" id="Main-Form">
+        <input value="{$house['id']}" name="id" id="HouseId" hidden/>
+        <input value="{$houseType}" id="HouseType" hidden/>
+        <if condition="$shop_house">
+            <input value="1" name="is_shop_house" type="hidden"/>
+        </if>
+        <input name="longitude" type="hidden" value="{$house['longitude']}"/>
+        <input name="latitude" type="hidden" value="{$house['latitude']}"/>
+        <div class="group-container">
+            <div class="title"><span>基本信息</span></div>
+
+            <div class="item">
+                <span class="item-label">房源名称</span>
+                <input class="input-container" type="text" name="name" value="{$house['name']}" id="NameInput" required placeholder="请输入"/>
+                <span class="item-tips">0/64</span>
+            </div>
+
+            <div class="seperator"></div>
+
+            <div class="item">
+                <span class="item-label">建筑类型</span>
+                <!--<input class="input-container" type="text" placeholder="请选择"/>-->
+                <select class="input-container" name="type" required>
+                    <foreach name="buildingTypeList" item="type">
+                        <option value="{$type['id']}">{$type['type_name']}</option>
+                    </foreach>
+                </select>
+                <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+            </div>
+
+            <div class="seperator"></div>
+
+            <div class="item">
+                <span class="item-label">房屋户型</span>
+                <div class="input-container multiple-line">
+                    <?php $numList=array(0, 1, 2, 3, 4, 5, 6, 7, 8)?>
+                    <div class="inner-container">
+                        <!--<input class="inner-input" type="number" placeholder="请选择"/>-->
+                        <select class="inner-input" name="houseRoom" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$house['houseRoom']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">室</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="livingRoom" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$house['livingRoom']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">厅</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="restRoom" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$house['restRoom']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">卫</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="diningRoom" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$house['diningRoom']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">厨</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="veranda" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$house['veranda']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">阳台</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">装修标准</span>
+                <select class="input-container" name="renovationStandard" required>
+                    <foreach name="decorationTypeList" item="type">
+                        <option value="{$type['id']}" {$house['renovationStandard']==$type['id']?'selected':''}>{$type['zxiu_name']}</option>
+                    </foreach>
+                </select>
+                <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+            </div>
+        </div>
+
+        <div class="group-container">
+            <div class="title">报价信息</div>
+            <div class="item">
+                <span class="item-label">住房面积</span>
+                <input class="input-container" type="number" name="square" value="{$house['square']}" required placeholder="请输入"/>
+                <span class="item-tips">平方米(㎡)</span>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">租金单价</span>
+                <input class="input-container" type="number" name="price" value="{$house['price']}" required placeholder="请输入"/>
+                <span class="item-tips">元/月</span>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">租赁方式</span>
+                <select class="input-container" name="rentalType" required>
+                    <foreach name="rentalTypeList" item="rentalType" key="id">
+                        <option value="{$id}" {$house['rentalType']==$id?'selected':''}>{$rentalType}</option>
+                    </foreach>
+                </select>
+                <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+            </div>
+        </div>
+
+        <div class="group-container">
+            <div class="title width-tail"><span>视频/相册</span><span class="item-tips" id="ImagesPercentage">0/8</span></div>
+            <div class="item image-item">
+                <div class="images-container">
+                    <notempty name="videoPath">
+                        <span class="images-item"><video class="image-container" src="{$videoPath}" ></video></span>
+                    </notempty>
+                    <foreach name="imagePaths" item="path">
+                        <span class="images-item"><img class="image-container" src="{$path}" /></span>
+                    </foreach>
+                    <span class="images-item add-image" id="Add-Image"><img src="/public/Home/images/icon-addimg.png" /></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group-container">
+            <div class="title width-tail"><span>房屋介绍</span><span class="item-tips" id="IntroduceTips">0/300</span></div>
+
+            <div class="item">
+                <textarea
+                    id="IntroduceTextArea"
+                    class="input-container multiple-line-input"
+                    maxlength="300"
+                    type="text" placeholder="如房屋介绍、亮点"
+                    name="introduce"></textarea>
+            </div>
+        </div>
+
+        <!--
+        <div class="group-container">
+            <div class="title width-tail"><span>我要说</span><span class="item-tips">0/114</span></div>
+
+            <div class="item">
+                <textarea
+                    class="input-container multiple-line-input"
+                    maxlength="114"
+                    type="text" placeholder="如房屋介绍、亮点"></textarea>
+            </div>
+        </div>
+        -->
+    </form>
+</block>
+<block name="tabbar">
+    <div class="bottom-container" id="to-step-2">
+        下一步，填写楼房信息
+    </div>
+</block>
+<block name="modal">
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="Step2Modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="header"  style="">
+                    <div class="button" id="Step2-Back">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span>发布租房</span>
+                    </div>
+                    <div class="button" id="Skip-Btn">
+                        跳过
+                    </div>
+                </div>
+                <form class="container content-container" id="Step-2-Form">
+                    <include file="Publish/rentalHouse_step2"/>
+                    <div class="bottom-container" id="to-step-3" style="z-index: 99999;">
+                        下一步，联系信息
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Step3Modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="header" id="page-header"  style="">
+                    <div class="button" id="Step3-Back">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span>发布租房</span>
+                    </div>
+                    <div class="button">
+                    </div>
+                </div>
+                <form class="container content-container" id="Step-3-Form">
+                    <include file="Publish/rentalHouse_step3"/>
+                    <div class="bottom-container" id="Submit" style="z-index: 99999;">
+                        保存并发布
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ImageViewModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="header" style="">
+                    <div class="button" id="Image-View-Back">
+                        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+                    </div>
+                    <div class="title">
+                        <span>视频/相册</span>
+                    </div>
+                    <div class="button" id="CompleteBtn">
+                        完成
+                    </div>
+                </div>
+                <div class="container content-container">
+                    <div class="image-view-container">
+                        <div class="image-list">
+                            <notempty name="videoPath">
+                                <video class="image-container" src="{$videoPath}" ></video>
+                            </notempty>
+                            <foreach name="imagePaths" item="path">
+                                <img class="image-container" src="{$path}" />
+                            </foreach>
+                        </div>
+                        <div class="Image-Swiper">
+                            <div class="swiper-container" id="imageDetailSwiper">
+                                <div class="swiper-wrapper" style="display: flex;">
+                                    <notempty name="videoPath">
+                                        <div class="swiper-slide img-container"
+                                             style=" width: 100%; height: 100%;"><video class="image-container" style="width: 100%;" src="{$videoPath}" ></video></div>
+                                    </notempty>
+                                    <foreach name="imagePaths" item="path">
+                                        <div class="swiper-slide img-container"
+                                             style=" width: 100%; height: 100%;"><img class="image-container" style="width: 100%;" src="{$path}" /></div>
+                                    </foreach>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="image-index"></span>
+                        <span class="image-delete">删除当前</span>
+                    </div>
+                    <div class="bottom-container" style="z-index: 99999;">
+                        <span class="box-item" id="Upload-Video">上传视频</span>
+                        <span class="box-item" id="Upload-Image">上传图片</span>
+                    </div>
+                    <form enctype="multipart/form-data">
+                        <input id="Upload-Input" style="display: none;" type="file" name="image" multiple="" accept="image/*" />
+                        <input id="Upload-Video-Input" style="display: none;" type="file" name="video" accept="video/*" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Publish:MapModal"/>
+
+</block>
+<block name="js">
+    <script src="/public/Home/js/swiper-4.2.2.min.js"></script>
+    <script src="/public/Static/bootstrap/js/bootstrap.js"></script>
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script>
+
+        $('#Step2Modal').on('touchmove', function (e) {
+            console.log(".............");
+            // e.preventDefault();
+        });
+
+        $('#Step2Modal').on('scroll', function (e) {
+            console.log(">>>>>>>>>>>>>");
+            // e.preventDefault();
+        });
+
+        var IMAGE_MAX_LENGTH = 8;
+        var IMAGE_URL_LIST = [];
+        var VIDEO_URL = null;
+
+        $('#NavBackImg').click(function () {
+            window.history.back(-1);
+        });
+
+        $("#HeaderDeleteBtn").click(function () {
+            // if (confirm('确定删除该房源吗？' )) {
+            //     // console.log('确定');
+            //     return $.post('{:U("Publish/delete")}', {
+            //         id: $("#HouseId").val(),
+            //         type: $('#HouseType').val()
+            //     }, function (e) {
+            //         if (e.status == '1') {
+            //             alert('删除成功！');
+            //             // window.location.href = '{:U("Center/mypublish")}';
+            //             window.history.back();
+            //         } else {
+            //             alert('删除失败！请稍后重试。');
+            //         }
+            //     });
+            // }
+            layer.open({
+                content: '确定删除该房源吗？'
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    return $.post('{$shop_house}' ? '{:U("Service/del_house")}' : '{:U("Publish/delete")}', {
+                        id: $("#HouseId").val(),
+                        house_id: $("#HouseId").val(),
+                        type: $('#HouseType').val()
+                    }, function (e) {
+                        layer.close(index);
+                        if (e.status == '1') {
+                            alert('删除成功！');
+                            window.location.href = '{$shop_house}' ? '{:U("Service/house_setup")}' : '{:U("Center/mypublish")}';
+                            // window.history.back();
+                        } else {
+                            alert('删除失败！请稍后重试。');
+                        }
+                    });
+                }
+            });
+            // console.log('取消');
+        });
+
+        $("#Add-Image").click(function() {
+            $('#ImageViewModal').modal({
+                show: true,
+            });
+        });
+        $("#to-step-2").click(function () {
+            var form = document.getElementById("Main-Form");
+            try{
+                if (form.reportValidity()) {
+                    $('#Step2Modal').modal('show');
+                }
+            } catch(e) {
+                console.log(e);
+                $('#Step2Modal').modal('show');
+            }
+        });
+
+        $("#Skip-Btn").click(function () {
+            $('#Step3Modal').modal('show');
+        });
+
+        $("#Step2-Back").click(function () {
+            $('#Step2Modal').modal('hide');
+        });
+
+        $("#to-step-3").click(function () {
+            $('#Step3Modal').modal('show');
+        });
+
+        $("#Step3-Back").click(function () {
+            // $('#Step2Modal').modal('hide');
+            $('#Step3Modal').modal('hide');
+            // $('#Step2Modal').modal({
+            //     show: true,
+            // });
+        });
+
+        $("#Image-View-Back").click(function () {
+            $("#ImageViewModal").modal("hide");
+        });
+
+        $("#CompleteBtn").click(function () {
+            $("#ImageViewModal").modal("hide");
+        });
+
+        $("#CitySelect").change(function () {
+            var cityId = $(this).val();
+            if (!cityId) {
+                return;
+            }
+            $('#AreaSelect').val('');
+            $('.hide-option').removeClass('hide-option');
+            $(".area-option").each(function (e) {
+                if ($(this).attr('pid') != cityId) {
+                    $(this).addClass('hide-option');
+                };
+            });
+            $("#AreaSelect").select();
+        });
+
+        $("#Submit").click(function () {
+            submit();
+        });
+
+        function updateImagesPercentage() {
+            $("#ImagesPercentage").text(`${IMAGE_URL_LIST.length+(VIDEO_URL?1:0)}/${IMAGE_MAX_LENGTH}`);
+        }
+
+        function submit() {
+            var step3form = document.getElementById("Step-3-Form");
+            try {
+                if (!step3form.reportValidity()) {
+                    return;
+                }
+            } catch (e) {
+
+            }
+            var $mainForm = $('#Main-Form');
+            var $step2Form = $('#Step-2-Form');
+            var $step3Form = $('#Step-3-Form');
+
+            var formData = {};
+            var othersData = {};
+            buildFormData($mainForm.serializeArray(), formData);
+            buildFormData($step2Form.serializeArray(), othersData);
+            buildFormData($step3Form.serializeArray(), othersData);
+            formData['state'] = othersData.state;
+            formData['address'] = othersData.address;
+            formData['cityId'] = othersData.cityId;
+            formData['areaId'] = othersData.areaId;
+            delete othersData['state'];
+            delete othersData['address'];
+            delete othersData.cityId;
+            delete othersData.areaId;
+            var ptxx = {};
+            $('.ptxx').each(function (i, e) {
+                delete othersData[$(this).attr('name')];
+                ptxx[$(this).attr('name')] = $(this).val();
+            });
+            othersData['ptxx'] = ptxx;
+            formData['others'] = othersData;
+            // if ($(".images-container").find('video').length) {
+            //     formData['video'] = IMAGE_URL_LIST[0];
+            //     IMAGE_URL_LIST.shift();
+            // }
+            formData['video'] = VIDEO_URL;
+            formData['images'] = IMAGE_URL_LIST;
+            console.log(">>>", formData);
+            // if (confirm("确定发布？")) {
+            //     $.post('{:U("Publish/rentalHouseSubmit")}', formData, function (e) {
+            //         // console.log('hello world', e);
+            //         if (e.status) {
+            //             alert('发布成功');
+            //             window.location.href = "/index";
+            //         }
+            //     });
+            // }
+
+            layer.open({
+                content: '确定发布？'
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post('{:U("Publish/rentalHouseSubmit")}', formData, function (e) {
+                        // console.log('hello world', e);
+                        layer.close(index);
+                        if (e.status) {
+                            alert('发布成功');
+                            if ('{$shop_house}'){
+                                window.location.href = '{:U("Service/house_setup")}';
+                            } else {
+                                window.location.href = "/index";
+                            }
+                        }else {
+                            alert('发布失败，请稍后重试！');
+                        }
+                    });
+
+                }
+            });
+
+            function buildFormData(serializeArray, targetObj) {
+                for (var item of serializeArray) {
+                    targetObj[item.name] = item.value;
+                }
+                return targetObj;
+            }
+        }
+
+        /*----on edit---*/
+        (function () {
+            $("#IntroduceTextArea").val("{$house['introduce']}");
+            $(".images-item:not(.add-image)").click(function () {
+                onFormImageClick($(this));
+            });
+            $(".images-item:not(.add-image)").each(function (e) {
+                var $elem = $(this).find('img');
+                if ($elem.length) {
+                    IMAGE_URL_LIST.push($elem.attr('src'));
+                }
+            });
+            $(".images-item:not(.add-image)").each(function (e) {
+                var $elem = $(this).find('video');
+                if($elem.length) {
+                    VIDEO_URL = $elem.attr('src');
+                }
+            });
+            updateImagesPercentage();
+            $('.image-list').children().click(function () {
+                onModalImageClick($(this));
+            });
+            if("{$house['videoPath']}") {
+                $(".swiper-wrapper").prepend(genSwiperItem('video', "{$house['videoPath']}"));
+            }
+            // genSwiperItem();
+
+        })();
+        /*-------------------*/
+        (function () {
+            var clientHeight = document.body.clientHeight;
+            var clientWidth = document.body.clientWidth;
+            $(".modal-dialog").css('min-height', clientHeight);
+            $(".modal-dialog .modal-content").css('min-height', clientHeight);
+
+            $(".Image-Swiper").css({'width': clientWidth, 'height': clientWidth});
+        })();
+
+        var swiper = new Swiper ('.swiper-container', {
+            direction: 'horizontal',
+            width: document.body.clientWidth,
+            pagination: {
+                el: '.image-index',
+                type: 'custom',
+                renderCustom: function (swiper, current, total) {
+                    return current + '/' + total;
+                }
+            }
+        });
+
+        (function () {
+
+            swiper.on('slideChange', function () {
+                $('.active-image').removeClass('active-image');
+                $(".image-list").find('.image-container').eq(swiper.activeIndex).addClass('active-image');
+            });
+
+            var imageUpload = document.getElementById('Upload-Input');
+            var videoUpload = document.getElementById('Upload-Video-Input');
+
+            $("#Upload-Video").click(function () {
+                if (!imagesLengthValidate()) {
+                    return alert('最多上传8张图片/视频');
+                }
+                $(videoUpload).click();
+            });
+
+            $("#Upload-Image").click(function () {
+                if (!imagesLengthValidate()) {
+                    return alert('最多上传8张图片/视频');
+                }
+                $(imageUpload).click();
+            });
+
+            $(".image-delete").click(function () {
+                if (IMAGE_URL_LIST.length!=0 ) {
+                    // if (confirm('确定删除当前图片/视频?')) {
+                    //     var index = swiper.activeIndex;
+                    //     removeImage(index);
+                    //     removeFormImage(index);
+                    // }
+                    layer.open({
+                        content: '确定删除当前图片/视频?'
+                        ,btn: ['确定', '取消']
+                        ,yes: function(index){
+                            layer.close(index);
+                            var aindex = swiper.activeIndex;
+                            removeImage(aindex);
+                            removeFormImage(aindex);
+                        }
+                    });
+                }
+            });
+
+            imageUpload.onchange = function (e){onUploadInputChange(e, false, function () {
+                imageUpload.value = '';
+            })};
+            videoUpload.onchange = function (e){onUploadInputChange(e, true, function () {
+                videoUpload.value = '';
+            })};
+
+            function imagesLengthValidate() {
+                return IMAGE_URL_LIST.length+(VIDEO_URL?1:0) < IMAGE_MAX_LENGTH;
+            }
+
+            // 注册并更新input后面那个n/m
+            function onInputKeyUp($input, $label, maxLength) {
+                $input.on('keyup', function (e) {
+                    $label.text(`${$(this).val().length}/${maxLength}`);
+                }).keyup();
+            }
+            (function () {
+                onInputKeyUp($("#NameInput"), $("#NameInput").next(), 64);
+                onInputKeyUp($("#IntroduceTextArea"), $("#IntroduceTips"), 300);
+            })();
+
+            function onUploadInputChange(event, isVideo, onFinish) {
+                transformFileToFormData(event.target.files, isVideo);
+
+                function onUploadFinished(url) {
+                    var tag = '';
+                    if (isVideo) {
+                        // IMAGE_URL_LIST.unshift(url);
+                        VIDEO_URL = url;
+                        tag = 'video';
+                        $(".swiper-wrapper video").parent().remove();
+                        $(".swiper-wrapper").prepend(genSwiperItem(tag, url));
+                    } else {
+                        IMAGE_URL_LIST.push(url);
+                        tag = 'img';
+                        $(".swiper-wrapper").append(genSwiperItem(tag, url));
+                    }
+
+                    function genSwiperItem(tag, url) {
+                        return `<div class="swiper-slide img-container"
+                                     style=" width: 100%; height: 100%;"><${tag} class="image-container" style="width: 100%;" src="${url}" /></div>`;
+                    }
+
+                    swiper.updateSlides();
+                    var $listItem = $(`<${tag} class="image-container" src="${url}" />`);
+                    $listItem.click(function () {
+                        onModalImageClick($listItem);
+                    });
+                    appendImageList($listItem, isVideo);
+                    var $listItem2 = $(`<span class="images-item"><${tag} class="image-container" src="${url}" /></span>`);
+                    $listItem2.click(function () {
+                        onFormImageClick($listItem);
+                    });
+                    appendFormImageList($listItem2, isVideo);
+                    updateImagesPercentage();
+                    onFinish();
+                }
+
+                // 上传图片
+                function upload (formData, isVideo) {
+                    var startTime = Date.now();
+                    layer.open({
+                        type: 2,
+                        content: '上传中，请稍候',
+                        shadeClose: false
+                    });
+                    var xhr = new XMLHttpRequest();
+                    xhr.upload.addEventListener('progress', function(e){console.log('上传中 ', e.loaded / e.total*100+"%")}, false);
+                    xhr.addEventListener('load', function(){console.log("加载中");}, false);
+                    xhr.addEventListener('error', function(){console.error("上传失败！");}, false);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            layer.closeAll();
+                            var result = JSON.parse(xhr.responseText);
+                            if (xhr.status === 200) {
+                                // 上传成功
+                                console.log("result <>>>", result);
+                                if (result.status == 1) {
+                                    for(var i=0; i< result.data.length;i++){
+                                        onUploadFinished(result.data[i]);
+                                    }
+                                } else {
+                                    alert('上传失败！请稍后重试！');
+                                }
+                            } else {
+                                // 上传失败
+                                alert('failed');
+                            }
+                        }
+                    };
+                    var path = isVideo ? '{:U("Publish/uploadVideo")}' : '{:U("Publish/uploadPic")}';
+                    xhr.open('POST', path , true);
+                    xhr.send(formData);
+                }
+
+                function transformFileToFormData (file, isVideo) {
+                    var type = isVideo? "video/*" : "image/*";
+                    var formData = new FormData();
+                    //formData.append('type', file.type);
+                    //formData.append('size', file.size || type);
+                    //formData.append('name', file.name);
+                    //formData.append('lastModifiedDate', file.lastModifiedDate);
+                    //formData.append('file', file);
+                    for (var i = 0; i <file.length; i++) {
+                        formData.append(["file["+i+"]"], file[i]);
+                    }
+                    upload(formData, isVideo);
+                }
+            }
+
+            function appendImageList(elem, isVideo) {
+                if (isVideo) {
+                    $(".image-list video:eq(0)").remove();
+                    $(".image-list").prepend(elem);
+                } else
+                {
+                    $(".image-list").append(elem);
+                }
+            }
+
+            function appendFormImageList(elem, isVideo) {
+                if (isVideo) {
+                    $(".images-container .images-item:eq(0)").find('video').parent().remove();
+                    $(".images-container").prepend(elem);
+                } else {
+                    $("#Add-Image").before(elem);
+                }
+            }
+
+            function removeImage(i) {
+                var $elem = $(".image-list").find('.image-container').eq(i);
+                if ($elem.prop('tagName').toLowerCase() == 'video') {
+                    VIDEO_URL = null;
+                } else {
+                    IMAGE_URL_LIST.splice(i, 1);
+                }
+                swiper.removeSlide(i);
+                $elem.remove();
+            }
+
+            function removeFormImage(i) {
+                $(".images-container").find('.images-item').eq(i).remove();
+                updateImagesPercentage();
+            }
+
+        })();
+
+        function onFormImageClick($image) {
+            var index = $image.index();
+            swiper.slideTo(index);
+            onModalImageClick($(`.image-list .image-container:eq(${index})`));
+            $('#ImageViewModal').modal({ show: true, });
+        }
+
+        function onModalImageClick($image) {
+            $('.active-image').removeClass('active-image');
+            $image.addClass('active-image');
+            swiper.slideTo($image.index());
+        }
+
+        function genSwiperItem(tag, url) {
+            return `<div class="swiper-slide img-container"
+                                     style=" width: 100%; height: 100%;"><${tag} class="image-container" style="width: 100%;" src="${url}" /></div>`;
+        }
+
+    </script>
+    <include file="Publish:MapModalJs"/>
+</block>

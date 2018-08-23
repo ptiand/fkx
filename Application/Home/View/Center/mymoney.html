@@ -1,0 +1,149 @@
+<extend name="Public/main" />
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/mymoney.css">
+    <style>
+        .btn {
+            margin: 30px 15px 0 15px;
+            border-radius: 5px;
+            background: #44c3cc;
+            height: 40px;
+            text-align: center;
+        }
+        .btn a {
+            font-size: 18px;
+            color: #fff;
+            line-height: 38px;
+        }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>我的佣金</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <div class="lang">
+            <p>您的账户余额：</p>
+            <p class="active">¥{$info.balance}</p>
+        </div>
+        <div class="lang">
+            <p>申请提现金额：</p>
+            <input type="text" id="balance" placeholder="输入体现的金额">
+        </div>
+        <div class="net">
+            <p>请选择体现方式</p>
+            <div class="net-in">
+                <input type="radio" value="1" class="chk" id="chk-1"><label for="chk-1"></label>
+                <img id="img-1" src="/public/Home/images/alipay.png" alt="">
+                <input type="radio"  value="2" class="chk" id="chk-2"><label for="chk-2"></label>
+                <img id="img-2" src="/public/Home/images/bank.png" alt="">
+            </div>
+        </div>
+        <div id="alipay">
+            <div class="lang">
+                <input type="text" id="phne" placeholder="输入手机号码">
+            </div>
+            <div class="lang">
+                <input type="text" id="zhang" placeholder="输入支付宝账号">
+            </div>
+            <div class="lang">
+                <input type="text" id="uname" placeholder="输入您的姓名">
+            </div>
+        </div>
+        <div id="banks" style="display:none">
+            <div class="lang">
+                <input type="text" id="phnes" placeholder="输入手机号码">
+            </div>
+            <div class="lang">
+                <input type="text" id="card" placeholder="输入银行卡号码">
+            </div>
+            <div class="lang">
+                <input type="text" id="address" placeholder="输入开户行">
+            </div>
+            <div class="lang">
+                <input type="text" id="name" placeholder="输入您的姓名">
+            </div>
+        </div>
+        <div class="btn sub">
+            <a>确定</a>
+        </div>
+    </div>
+</block>
+
+<block name="js">
+    <script>
+        $(document).ready(function(){
+            $('#chk-1').attr('checked',true)
+        })
+        $('#img-1').click(function(){
+            $('#alipay').css('display','block')
+            $('#banks').css('display','none')
+            $('#chk-1').attr('checked',true)
+            $('#chk-2').attr('checked',false)
+        })
+        $('#img-2').click(function(){
+            $('#alipay').css('display','none')
+            $('#banks').css('display','block')
+            $('#chk-2').attr('checked',true)
+            $('#chk-1').attr('checked',false)
+        })
+        $('#chk-1').click(function(){
+            $('#alipay').css('display','block')
+            $('#banks').css('display','none')
+            $('#chk-2').attr('checked',false)
+        })
+        $('#chk-2').click(function(){
+            $('#alipay').css('display','none')
+            $('#banks').css('display','block')
+            $('#chk-1').attr('checked',false)
+        })
+    </script>
+    <script>
+        $('.sub').click(function(){
+
+            var types = $(".chk:checked").val();
+            var balance = $('#balance').val();
+            var yue = '{$info.balance}';
+
+            if(parseInt(balance) > parseInt(yue)|| parseInt(yue) <= 0){
+                alert('佣金不足');
+                return false;
+            }
+
+            if(types == 1){
+
+                var phone = $('#phne').val();
+                var cards = $('#zhang').val();
+                var name = $('#uname').val();
+                var address = '';
+            }else{
+                var phone = $('#phnes').val();
+                var cards = $('#card').val();
+                var address = $('#address').val();
+                var name = $('#name').val();
+            }
+            var info = {'yue':balance,name:name,cards:cards,phone:phone,address:address,types:types,type:1}
+            $.post("{:U('Center/addout')}",info,function(data){
+
+                if(data.status == 1){
+                    alert('提交申请成功！');
+                    location.href= "{:U('center/index')}";
+                }else{
+                    alert(data.info);
+                    location.href= "{:U('center/index')}";
+                }
+            })
+
+
+        })
+
+
+    </script>
+</block>

@@ -1,0 +1,122 @@
+<extend name="Public/main" />
+<block name="title"><title>发布房源</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" id="NavBackImg" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>发布房源</span>
+        </div>
+        <div class="button">
+        </div>
+    </div>
+</block>
+<block name="main">
+    <style>
+        .container {
+            padding-top: 40px;
+        }
+        .container .item {
+            padding: 0 10px 0 10px;
+            display: flex;
+            height: 72px;
+            background: white;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .container .item .img-container {
+            width: 58px;
+            height: 58px;
+        }
+        .container .item .img-container img {
+            width: 58px;
+            height: 58px;
+        }
+        .container .item .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        .container .item .content span {
+            font-size: 13px;
+            color: #777;
+        }
+        .container .item .content .title {
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 24px;
+            color: #333;
+        }
+        .item-seperator {
+            width: 100%;
+            height: 1px;
+            overflow: hidden;
+            background-color: #efefef;
+        }
+        #publish-list {
+            margin-top: 8px;
+        }
+    </style>
+    <div class="container">
+        <div class="item" id="publish-old-house">
+            <div class="img-container"><img src="/public/Home/images/icon-er.png" alt="二手房" /></div>
+            <div class="content">
+                <span class="title">发布二手房</span>
+                <span>发布您的出售房源信息</span>
+            </div>
+            <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+        </div>
+        <div class="item-seperator"></div>
+        <div class="item" id="publish-rental-house">
+            <div class="img-container"><img src="/public/Home/images/icon-zu.png" alt="租房" /></div>
+            <div class="content">
+                <span class="title">发布房屋出租</span>
+                <span>发布您的个人房源出租信息</span>
+            </div>
+            <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+        </div>
+        <div class="item-seperator"></div>
+        <a class="item" href="tel:0592-3106673">
+            <div class="img-container"><img src="/public/Home/images/icon-weituo.png" alt="委托发布" /></div>
+            <div class="content">
+                <span class="title">委托发布</span>
+                <span>请拨打客服热线：0592-3106673</span>
+            </div>
+            <img src="/public/Home/images/btbar_phone2.png" width="20" height="20" />
+        </a>
+
+        <a class="item" id="publish-list">
+            <div class="img-container"><img src="/public/Home/images/icon-mypublic.png" alt="我发布的房源" /></div>
+            <div class="content">
+                <span class="title">我发布的房源</span>
+                <span>当前已发布的房源({$publishCount})</span>
+            </div>
+            <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+        </a>
+    </div>
+</block>
+<block name="js">
+    <script>
+        $("#publish-old-house").click(function () {
+            window.location.href = '{:U("Publish/oldHouse")}';
+        });
+
+        $("#publish-rental-house").click(function () {
+            window.location.href = '{:U("Publish/rentalHouse")}';
+        });
+
+        $("#publish-list").click(function () {
+            window.location.href = '{:U("Center/mypublish")}';
+        });
+
+        $("#NavBackImg").click(function () {
+            window.history.back(-1);
+        });
+    </script>
+</block>

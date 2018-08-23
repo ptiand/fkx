@@ -1,0 +1,319 @@
+<extend name="Public/main" />
+<block name="title">
+    <title>发布租房</title>
+</block>
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="/public/Static/iconfont/iconfont.css">
+    <link rel="stylesheet" href="/public/Static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+    <link rel="stylesheet" href="/public/Home/css/publish.css">
+</block>
+<block name="header">
+    <div class="header">
+        <a class="button" href="{:U('Service/houses_info', array('house_id'=>$room_info['house_id']))}">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22" />
+        </a>
+        <div class="title">
+            <span>{$room_info.room_name}房间</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <style>
+        html body .container {
+            padding: 40px 0 50px 0;
+        }
+
+        .iconfont-container {
+            flex-wrap: wrap;
+            justify-content: left;
+        }
+        .iconfont-container a, .iconfont-container a:hover {
+            text-align: center;
+            width: 20%;
+            padding: 5px 0;
+            color: #888;
+            text-decoration: none;
+        }
+        .iconfont-container a.clr-primary {
+            color: #34BBBE;
+        }
+        .iconfont-container .iconfont{
+            font-size: 45px;
+        }
+    </style>
+    <form class="container" id="Main-Form">
+        <input value="{$room_info['id']}" name="id" hidden/>
+        <div class="group-container">
+            <div class="title">基本信息</div>
+            <div class="item">
+                <span class="item-label">房间类型</span>
+                <!--<input class="input-container" type="text" placeholder="请选择"/>-->
+                <select class="input-container" name="apartment_type" required>
+                    <foreach name="apartment_type" item="type" key="key">
+                        <option value="{$key}" {$room_info['apartment_type'] == $key ? 'selected' : ''}>{$type}</option>
+                    </foreach>
+                </select>
+                <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+            </div>
+
+            <div class="seperator"></div>
+
+            <div class="item">
+                <span class="item-label">房间户型</span>
+                <div class="input-container multiple-line">
+                    <?php $numList=array(0, 1, 2, 3, 4, 5, 6, 7, 8)?>
+                    <div class="inner-container">
+                        <!--<input class="inner-input" type="number" placeholder="请选择"/>-->
+                        <select class="inner-input" name="room_num" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$room_info['room_num']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">室</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="living_num" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$room_info['living_num']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">厅</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="rest_num" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$room_info['rest_num']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">卫</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="kitchen_num" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$room_info['kitchen_num']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">厨</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                    <div class="inner-container">
+                        <select class="inner-input" name="veranda_num" required>
+                            <foreach name="numList" item="item">
+                                <option value="{$item}" {$room_info['veranda_num']==$item?'selected':''}>{$item}</option>
+                            </foreach>
+                        </select>
+                        <span class="item-tips inner-tail">阳台</span>
+                        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">装修标准</span>
+                <select class="input-container" name="zx_id" required>
+                    <foreach name="zx_list" item="type">
+                        <option value="{$type['id']}" {$room_info['zx_id']==$type['id']?'selected':''}>{$type['zxiu_name']}</option>
+                    </foreach>
+                </select>
+                <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">朝向</span>
+                <select class="input-container" name="orientations" required>
+                    <foreach name="orientations" item="type" key="key">
+                        <option value="{$key}" {$room_info['orientations']==$key?'selected':''}>{$type}</option>
+                    </foreach>
+                </select>
+                <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+            </div>
+        </div>
+
+        <div class="group-container">
+            <div class="title">报价信息</div>
+            <div class="item">
+                <span class="item-label">住房面积</span>
+                <input class="input-container" type="number" name="area_count" value="{$room_info['area_count']}" required placeholder="请输入" />
+                <span class="item-tips">平方米(㎡)</span>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">租金单价</span>
+                <input class="input-container" type="number" name="price" value="{$room_info['price']}" required placeholder="请输入" />
+                <span class="item-tips">元/月</span>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">租金</span>
+                <input class="input-container" type="number" name="foregift" value="{$room_info['foregift']}" required placeholder="请输入" />
+                <span class="item-tips">元</span>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">租赁方式</span>
+                <select class="input-container" name="rental_type" required>
+                    <foreach name="rental_type_caption" item="rental_type" key="id">
+                        <option value="{$id}" {$room_info['rental_type']==$id?'selected':''}>{$rental_type}</option>
+                    </foreach>
+                </select>
+                <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+            </div>
+        </div>
+        <div class="group-container">
+            <div class="title">房间设备</div>
+            <div class="item iconfont-container">
+                <a href="javascript:;" class="{$room_info['more_options']->wbl == '1' ? 'clr-primary' : ''}" name="wbl">
+                    <i class="icon iconfont icon-wbl"></i>
+                    <div class="name">微波炉</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->kd == '1' ? 'clr-primary' : ''}" name="kd">
+                    <i class="icon iconfont icon-kd"></i>
+                    <div class="name">宽带</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->kzf == '1' ? 'clr-primary' : ''}" name="kzf">
+                    <i class="icon iconfont icon-kzf"></i>
+                    <div class="name">厨房</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->rsq == '1' ? 'clr-primary' : ''}" name="rsq">
+                    <i class="icon iconfont icon-rsq"></i>
+                    <div class="name">热水器</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->c == '1' ? 'clr-primary' : ''}" name="c">
+                    <i class="icon iconfont icon-c"></i>
+                    <div class="name">床</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->xyj == '1' ? 'clr-primary' : ''}" name="xyj">
+                    <i class="icon iconfont icon-xyj"></i>
+                    <div class="name">洗衣机</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->wsj == '1' ? 'clr-primary' : ''}" name="wsj">
+                    <i class="icon iconfont icon-wsj"></i>
+                    <div class="name">卫生间</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->yt == '1' ? 'clr-primary' : ''}" name="yt">
+                    <i class="icon iconfont icon-yt"></i>
+                    <div class="name">阳台</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->yg == '1' ? 'clr-primary' : ''}" name="yg">
+                    <i class="icon iconfont icon-yg"></i>
+                    <div class="name">衣柜</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->sf == '1' ? 'clr-primary' : ''}" name="sf">
+                    <i class="icon iconfont icon-sf"></i>
+                    <div class="name">沙发</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->ds == '1' ? 'clr-primary' : ''}" name="ds">
+                    <i class="icon iconfont icon-ds"></i>
+                    <div class="name">电视机</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->bx == '1' ? 'clr-primary' : ''}" name="bx">
+                    <i class="icon iconfont icon-bx"></i>
+                    <div class="name">冰箱</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->nq == '1' ? 'clr-primary' : ''}" name="nq">
+                    <i class="icon iconfont icon-nq"></i>
+                    <div class="name">暖气</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->kt == '1' ? 'clr-primary' : ''}" name="kt">
+                    <i class="icon iconfont icon-kt"></i>
+                    <div class="name">空调</div>
+                </a>
+
+                <a href="javascript:;" class="{$room_info['more_options']->yz == '1' ? 'clr-primary' : ''}" name="yz">
+                    <i class="icon iconfont icon-yz"></i>
+                    <div class="name">椅子</div>
+                </a>
+            </div>
+        </div>
+    </form>
+</block>
+<block name="tabbar">
+    <div class="bottom-btn" id="submit-btn">
+        保存
+    </div>
+</block>
+<block name="js">
+    <script src="/public/Static/bootstrap/js/bootstrap.js"></script>
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script>
+        function showToast(msg, cb) {
+            layer.open({content: msg, type: 3, skin: 'msg', time: 1.5, end: cb});
+        }
+        function sendAjax(data, layerIdx) {
+            var loading = layer.open({type: 2, shadeClose: false});
+            $.ajax({
+                url: data.url,
+                data: data.data,
+                type: 'POST',
+                dataType: 'json',
+                success: function (resData) {
+                    layer.close(loading);
+                    if (resData.status == 1) {
+                        showToast('保存成功', function() {
+                            location.reload()
+                        });
+                    } else {
+                        layer.close(loading);
+                        showToast(resData.info);
+                    }
+
+                },
+                error: function (msg) {
+                    console.log('msg: ', msg);
+                    layer.close(loading);
+                    showToast('操作失败')
+                }
+            });
+        }
+        $(function() {
+            $('.iconfont-container a').on('click', function() {
+                $(this).toggleClass('clr-primary')
+            })
+            $('#submit-btn').on('click', function() {
+                var form = $('#Main-Form');
+                var dataArray = form.serializeArray();
+                try {
+                    if (!form[0].reportValidity()) {
+                        return;
+                    }
+                } catch (e) {
+
+                }
+
+                var data = {more_options: {}};
+                dataArray.forEach(function (val) {
+                    data[val.name] = val.value;
+                })
+                $('.iconfont-container a').each(function(idx, val) {
+                    var me = $(this)
+                    data.more_options[me.attr('name')] = me.hasClass('clr-primary') ? '1' : '0'
+                })
+                // layer.close(index);
+                sendAjax({
+                    url: '{:U("Service/update_edit_room")}',
+                    data: data
+                })
+            })
+        })
+
+    </script>
+</block>

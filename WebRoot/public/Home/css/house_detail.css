@@ -1,0 +1,464 @@
+html {
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+}
+.detail-header
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    color: #fff;
+}
+.detail-header .button
+{
+    display: flex;
+    width: 45px;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    align-items: center;
+    height: 100%;
+}
+.detail-header .button span {
+    display: flex;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.35);
+    padding: 3px;
+    width: 28px;
+    height: 28px;
+}
+.header
+{
+    background-color: rgba(52, 187, 190, 0.956862745098039);
+}
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 50px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.container .picture-container {
+    display: flex;
+    height: 200px;
+    background: #eaeaea;
+    position: relative;
+}
+
+.container .top-content {
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+.container .content {
+    padding: 10px;
+    background: white;
+    margin-top: 5px;
+}
+
+.container .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.container .title .title-text {
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.container .title .title-block {
+    background: cornflowerblue;
+    color: white;
+    font-size: 12px;
+    padding: 0 3px 0 3px;
+    border-radius: 2px;
+}
+.container .title .right-text{
+    font-size: 12px;
+    color: rgb(153,153,153);
+    min-width: 54px;
+    text-align: right;
+}
+
+.container .title .state{
+    color: rgb(0, 153, 0);
+    background-color: rgb(196, 255, 196);
+}
+
+.container .title .type{
+    color: rgb(0, 145, 145);
+    background-color: rgb(183, 226, 255);
+}
+
+.container .item {
+    padding: 5px 0 5px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.container .item .item-label {
+    font-size: 12px;
+    color: rgb(153,153,153);
+    min-width: 26px;
+    line-height: 18px;
+}
+
+.container .item .double-width {
+    min-width: 47px;
+}
+
+.container .item .item-content {
+    font-size: 13px;
+    margin-left: 10px;
+    display: flex;
+    flex: 1;
+}
+.container .item .item-content .login{
+    font-size: 12px;
+    color: #44C9CC;
+}
+
+.container .item .item-content.has-tail {
+    justify-content: space-between;
+}
+
+.container .item .item-content .price {
+    color: rgb(255, 102, 0);
+}
+
+
+#divide-line {
+    display: flex;
+    background: rgb(228, 228, 228);
+    width: 100%;
+    height: 1px;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.divide-line {
+    display: flex;
+    background: rgb(228, 228, 228);
+    width: 100%;
+    height: 1px;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.container .tag-container {
+    color: rgb(153,153,153);
+    font-size: 12px;
+    display: flex;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+}
+
+.tag-container .block {
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 1px;
+    margin: 0 3px 5px 0;
+    padding: 0 3px 0 3px;
+}
+
+#coupon-content {
+    background: linear-gradient(180deg, rgba(255, 102, 0, 1) 0%, rgba(255, 102, 0, 1) 0%, rgba(255, 0, 0, 1) 100%, rgba(255, 0, 0, 1) 100%);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    height: 72px;
+    color: white;
+    border-radius: 4px;
+    padding: 5px 0 5px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#coupon-content .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+}
+
+#coupon-content .left .title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#coupon-content .left .second-title {
+    font-size: 13px;
+}
+
+#coupon-content .right {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#coupon-content .right span {
+    background: rgba(255, 204, 0, 1);
+    height: 30px;
+    padding: 0 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 17px;
+    font-size: 13px;
+    color: #FF3300;
+}
+
+#coupon-content .line {
+    height: 90%;
+    width: 0;
+    border-left-width: 1px;
+    border-left-color: white;
+    border-left-style: dashed;
+}
+
+#extra-content {
+    background: white;
+}
+
+.toggle-more-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0 8px 0;
+}
+
+.toggle-more-content .btn {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0 2px 0;
+    background: white;
+    border: 1px solid rgb(60, 199, 202);
+    border-radius: 3px;
+    color: rgb(60, 199, 202);
+    text-align: center;
+}
+.toggle-more-content .btn:focus {
+    outline: none;
+}
+
+.container .last-content {
+    margin-bottom: 8px;
+}
+
+#nav-back-btn {
+    position: fixed;
+    left: 5px;
+    top: 5px;
+    z-index: 999;
+}
+
+#more-item-content {
+    display: none;
+    flex-direction: column;
+}
+.huxing-container
+{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.huxing-item
+{
+    width: 48%;
+    margin-bottom: 5px;
+}
+.huxing-info
+{
+    justify-content: space-between;
+    display: flex;
+    margin-top: 5px;
+    font-size: 11px;
+    color: #999999;
+}
+
+#extra-content .double-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#extra-content .double-row .item{
+    width: 50%;
+}
+
+#extra-content .double-row #more-item-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#detail-tail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-family: "SF UI Display Regular", "SF UI Display";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 11px;
+    color: rgb(204, 204, 204);
+    text-align: center;
+}
+
+.base-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    justify-content: space-around;
+
+}
+.base-content .base-item {
+    display: flex;
+    flex-direction: column;
+}
+.vertical-line {
+    width: 1px;
+    background: #f2f2f2;
+}
+.base-content .base-item .item-label {
+    font-size: 12px;
+    color: #999999;
+    text-align: center;
+}
+.base-content .base-item .item-primer-text {
+    font-size: 16px;
+    color: #FF6600;
+    text-align: center;
+}
+
+.grid-container {
+    display: flex;
+    padding: 2px 5px 2px 5px;
+    flex-wrap: wrap;
+}
+
+.grid-container .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+
+}
+
+.contact-modal
+{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.contact-view
+{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 15px;
+    font-size: 12px;
+    width: 90%;
+}
+.contact-view .border-bottom
+{
+    border-bottom: 1px #dddddd solid;
+}
+
+.contact-view .title
+{
+    font-size: 16px;
+    font-weight: 700;
+    align-self: center;
+}
+.contact-view .contact
+{
+    display: flex;
+    flex-direction: row;
+    padding: 15px 0px 3px 0;
+    justify-content: space-between;
+    font-size: 13px;
+}
+.contact-view .contact-label
+{
+    color: #999999;
+    width: 70px;
+}
+.contact-view .contact-info
+{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    flex:1;
+    padding-left: 0px;
+    word-wrap:break-word;
+}
+.contact-view .contact-item
+{
+    display: flex;
+    flex: 1;
+    padding-bottom: 12px;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact-view .contact-item i {
+    font-style: normal;
+    white-space:nowrap;
+    word-break:keep-all;
+}
+.contact-view .close-icon
+{
+    align-self: center;
+    margin-top: 20px;
+}
+
+.modal {
+    overflow-y: auto;
+}
+
+.modal.in .modal-dialog {
+    transform: none;
+}
+.modal-content {
+    border:0 none;
+}
+
+.btn-video {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99;
+    padding: 5px 10px;
+    color: white;
+    font-size: 12px;
+    border-radius: 0 14px 14px 0;
+    border: 1px solid #444;
+}
+
+.btn-video img {
+    transform: rotate(90deg);
+    margin-left: 3px;
+    width: 14px;
+    margin-top: -3px;
+}

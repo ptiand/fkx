@@ -1,0 +1,6 @@
+{
+	"sdkappid":"1400093807",
+	"identifier":"admin",
+	"private_pem_path":"./private_key",
+	"user_sig":""
+}

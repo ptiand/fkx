@@ -1,0 +1,52 @@
+<extend name="Public/main" />
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/seting.css">
+    <style type="text/css">
+        html body{background-color: #fff;}
+    </style>
+</block>
+<block name="header">
+    <div class="down-header">
+        <div class="button goBackBtn" name="goBack">
+            <span><img class="backIcon" src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"></span>
+        </div>
+    </div>
+</block>
+<block name="main">
+    <div class="info">
+        <img src="/public/Home/images/downapp-01.png" width="100%" />
+    </div>
+    <div class="downbar">
+        <a href="https://itunes.apple.com/cn/app/%E6%88%BF%E5%AE%A2%E8%A1%8C/id1390230176?mt=8" id="lnk-ios"><img src="/public/Home/images/downapp-02.png" width="107" height="24" /></a>
+        <a href="/app/fkx-stable-1.0.1.apk" id="lnk-android"><img src="/public/Home/images/downapp-02.png" width="107" height="24" /></a>
+    </div>
+    <div class="iosguid" id="iosguid" onclick="this.style.display='none'" style="display: none;">
+        <img src="/public/Home/images/bg_down-1.png" class="guid1" width="100%" />
+        <img src="/public/Home/images/bg_down-2.png" class="guid2" width="211" height="175" />
+    </div>
+<script type="text/javascript">
+var down1=document.getElementById("lnk-android");
+var down2=document.getElementById("lnk-ios");
+var iosguid=document.getElementById("iosguid");
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+if(/Android|webOS|BlackBerry/i.test(navigator.userAgent)) {
+    down1.style.display = 'flex';
+}else if(/iPhone|iPod/i.test(navigator.userAgent)) {
+   if (isWeiXin()) {
+        iosguid.style.display = 'block';
+    }
+    down2.style.display = 'flex';
+}
+ else {
+    down1.style.display = 'flex';
+    down2.style.display = 'flex';
+}
+</script>
+</block>

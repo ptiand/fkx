@@ -1,0 +1,136 @@
+<style type="text/css">
+.header .button {margin-right: 10px;}
+</style>
+<div class="group-container">
+    <div class="title"><span>房屋</span></div>
+
+    <div class="item">
+        <span class="item-label">产权年限</span>
+        <input class="input-container" type="text" name="cqnx" value="{$others->cqnx}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">房屋朝向</span>
+        <!--<input class="input-container" type="text" placeholder="请选择"/>-->
+        <select class="input-container" name="cx">
+            <foreach name="directionList" item="direction">
+                <option value="{$direction}" {$others->cx==$direction?'selected': ''}>{$direction}</option>
+            </foreach>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">建筑楼型</span>
+        <input class="input-container" type="text" name="lx" value="{$others->cqnx}" placeholder="请输入"/>
+    </div>
+
+    <div class="item">
+        <span class="item-label">所在楼层</span>
+        <input class="input-container" type="text" name="lc" value="{$others->cqnx}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">有无电梯</span>
+        <!--<input class="input-container" type="text" placeholder="请选择"/>-->
+        <select class="input-container" name="dt">
+            <option value="有" {$others->dt=='有'?'selected': ''}>有</option>
+            <option value="无" {$others->dt=='无'?'selected': ''}>无</option>
+        </select>
+        <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">房屋权属</span>
+        <input class="input-container" type="text" name="qs" value="{$others->qs}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">建筑年代</span>
+        <input class="input-container" type="text" name="jznd" value="{$others->jznd}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">房屋用途</span>
+        <input class="input-container" type="text" name="yt" value="{$others->yt}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">房屋配套</span>
+        <input class="input-container" type="text" name="pt" value="{$others->pt}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+</div>
+
+<div class="group-container">
+    <div class="title"><span>小区/物业</span></div>
+
+    <div class="item">
+        <span class="item-label">小区名称</span>
+        <input class="input-container" type="text" name="xq" value="{$others->xq}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">开发商家</span>
+        <input class="input-container" type="text" name="kfs" value="{$others->kfs}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">物业公司</span>
+        <input class="input-container" type="text" name="wygs" value="{$others->wygs}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">物业费用</span>
+        <input class="input-container" type="text" name="wyfy" value="{$others->wyfy}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">总户数</span>
+        <input class="input-container" type="text" name="zhs" value="{$others->zhs}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">停车位</span>
+        <input class="input-container" type="text" name="tcw" value="{$others->tcw}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">绿化率</span>
+        <input class="input-container" type="text" name="lhl" value="{$others->lhl}" placeholder="请输入"/>
+    </div>
+
+    <div class="seperator"></div>
+
+    <div class="item">
+        <span class="item-label">容积率</span>
+        <input class="input-container" type="text" name="rjl" value="{$others->rjl}" placeholder="请输入"/>
+    </div>
+</div>

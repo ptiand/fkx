@@ -1,0 +1,164 @@
+@charset 'utf-8';
+/*全部块*/
+.wrap{
+	overflow: hidden;
+}
+/*进度块*/
+.SpeedOfProgress{
+	padding: 19px 39px;
+	background-color: #f6f6f6;
+	overflow: auto;
+}
+.SpeedOfProgress ul{
+	/*border: 1px solid blue;*/
+	overflow: hidden;
+}
+.SpeedOfProgress li{
+	list-style: none;
+	font-size: 36px;
+	float: left;
+	width: 25%;
+}
+/*重做详情块*/
+.details{
+	/*background-color: pink;*/
+	padding: 35px 39px;
+	overflow: hidden;
+}
+.details-picture{
+	padding-top: 10px;
+	float: left;
+	margin: 0 26px 0 0;
+}
+.details-picture img{
+	width: 229px;
+	height: 196px;
+}
+/*详情中间*/
+.Building-information{
+    width: 64%;
+    float: left;
+}
+/*详情项目名*/
+.Building-information h1{
+	font:normal normal 45px 'Microsoft Yahei';
+	color: #000;
+}
+/*单价*/
+.UnitPrice span{
+	font-size: 49px;
+	color: #fb9c9c;
+	padding-right: 15px;
+}
+.UnitPrice em{
+	font-size: 40px;
+	color: #000;
+}
+/*佣金*/
+.Commission{
+	overflow: hidden;
+}
+.Commission-childs1, .Commission-childs2{
+	float: left;
+}
+.Commission-childs1 p{
+	background-color: #2c8be9;
+	padding: 7px 10px;
+	color: #fff;
+	font-size: 33px;
+}
+.Commission-childs2 p{
+	background-color: #44c3cc;
+	padding: 7px 10px;
+	font-size: 33px;
+}
+/*地址*/
+.address{
+	margin: 10px 0 0 0;
+}
+.address p{
+	font-size: 33px;
+	color: #c2c2c2;
+}
+/*个人信息*/
+.information{
+	padding: 10px 39px 0 39px;
+	background-color: #fff;
+}
+.information li{
+	border-bottom: 5px solid #f6f6f6;
+	line-height: 90px;
+}
+.information p{
+	display: inline;
+	font-size: 3rem;
+}
+.information input{
+	border: none;
+	width: 70%;
+	height: 73px;
+	/*background-color: pink;*/
+	font-size: 40px;
+	overflow: hidden;
+}
+/*个人信息提醒文字的颜色*/
+    .information input::-webkit-input-placeholder{
+    		letter-spacing:4px;
+    		font-size: 35px;
+            color:#c8c8c8;
+        }
+    .information input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+            letter-spacing:4px;
+            font-size: 35px;
+            color:#c8c8c8;
+        }
+    .information input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+            letter-spacing:4px;
+            font-size: 35px;
+            color:#c8c8c8;
+        }
+    .information input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+            letter-spacing:4px;
+            font-size: 35px;
+            color:#c8c8c8;
+        }
+/*备注信息*/
+.Remarks{
+	margin: 45px 0 0 0;
+	padding: 0 39px;
+	width: 100%;
+/*	background-color: pink;*/
+}
+.Remarks .RemarksText{
+	font:normal normal 37px 'Microsoft Yahei' ;
+	color: #9c9c9c;
+}
+.Remarks .text{
+	width: 91%;
+	height: 266px;
+	border: 1px solid #bfbfbf;
+	font-size: 37px;
+	/*overflow: scroll;*/
+	margin: 15px 0 0 0;
+}
+.Explain{
+	font-size:33px;
+	color: #bfbfbf;
+}
+/*确认提交按钮*/
+.confirm{
+	display: block;
+	width: 91%;
+	height: 143px;
+	background-color: #44c3cc;
+	margin: 45px 0 100px 0;
+	border-radius: 45px;
+	text-align: center;
+}
+.confirm p{
+	font:normal 54px 'Microsoft Yahei';
+	color: #fff;
+	text-align: center;
+	margin: auto auto;
+	line-height: 148px;
+}

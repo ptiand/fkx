@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/money.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <title>修改密码</title>
+</head>
+<body style="background:#fff">
+<div class="bind">
+    <ul id="img">
+        <li><div class="left"><img src="/public/Home/images/lock.png" alt=""><input type="text" id="y_pass" placeholder="请输入原密码"></div><div id="chek"><img id="i-1" width="20" height="22" src="/public/Home/images/open.png" alt=""></div></li>
+        <li><div class="left"><img src="/public/Home/images/lock.png" alt=""><input type="text" id="pass" placeholder="请输入新密码，6-16位"></div><div id="chek"><img id="i-2" width="20" height="22" src="/public/Home/images/open.png" alt=""></div></li>
+        <li><div class="left"><img src="/public/Home/images/lock.png" alt=""><input type="text" id="repass" placeholder="请再次输入新密码"></div><div id="chek"><img id="i-3" width="20" height="22" src="/public/Home/images/open.png" alt=""></div></li>
+
+    </ul>
+</div>
+<div class="btn sub">
+    <a>确认修改</a>
+</div>
+<script>
+    $('#i-1').toggle(
+        function(){
+            $(this).attr('src','/public/Home/images/close.png')
+            $('#y_pass').prop('type','password')
+        },
+        function(){
+            $(this).attr('src','/public/Home/images/open.png')
+            $('#y_pass').prop('type','text')
+        },
+    )
+    $('#i-2').toggle(
+        function(){
+            $(this).attr('src','/public/Home/images/close.png')
+            $('#pass').prop('type','password')
+        },
+        function(){
+            $(this).attr('src','/public/Home/images/open.png')
+            $('#pass').prop('type','text')
+        },
+    )
+    $('#i-3').toggle(
+        function(){
+            $(this).attr('src','/public/Home/images/close.png')
+            $('#repass').prop('type','password')
+        },
+        function(){
+            $(this).attr('src','/public/Home/images/open.png')
+            $('#repass').prop('type','text')
+        },
+    )
+
+
+    var im = $('#chek img');
+    im.on('click',function(){
+        console.log($(this).index())
+    })
+    $('.sub').click(function(){
+
+        var y_pass = $('#y_pass').val();
+        var pass = $('#pass').val();
+        var pwd = $('#repass').val();
+
+        if(pass.length < 6 ){
+            alert('密码长度必须大于6位数');
+            return false;
+        }
+        if(pass == y_pass){
+            alert('新旧密码不能一样');
+            return false;
+        }
+        if(pass != pwd){
+            alert('新密码与确认密码不一致');
+            return false;
+        }
+        var info = {'y_pass':y_pass,pass:pass,pwd:pwd}
+        $.post("{:U('Center/edit_p')}",info,function(data){
+            console.log(data)
+            if(1 == data.status){
+                alert(data.info);
+                location.href = "{:U('Login/index')}";
+            }else{
+                alert(data.info)
+            }
+        })
+
+    })
+
+
+</script>
+</body>
+</html>

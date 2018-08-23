@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/register.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <title>修改密码</title>
+</head>
+<body>
+<div id="container" class="bg-img">
+    <img id="background" src="/public/Home/images/backgrounds.jpeg" alt="">
+</div>
+<div class="login">
+    <ul>
+        <li><img src="/public/Home/images/lock.png" alt=""><input id="code" type="text" value="请输入密码"><img id="show" width="24px" height="24px" src="/public/Home/images/open.png" alt=""></li>
+        <li><img src="/public/Home/images/lock.png" alt=""><input id="codes" type="text" value="请再次输入密码"><img id="hide" src="/public/Home/images/open.png" alt=""></li>
+    </ul>
+    <div class="btn sub">
+        <a>确认修改</a>
+    </div>
+</div>
+<script>
+    $('.login>ul li').on('click','input',function(){
+        $(this).val('')
+    })
+</script>
+
+<script>
+    $('#show').click(function(){
+        if($(this).attr('src')==='/public/Home/images/open.png') {
+            $('#code').prop('type','password')
+            $(this).attr('src','/public/Home/images/close.png')
+        }else{
+            $('#code').prop('type','text')
+            $(this).attr('src','/public/Home/images/open.png')
+        }
+    });
+    $('#hide').click(function(){
+        if($(this).attr('src')==='/public/Home/images/open.png') {
+            $('#codes').prop('type','password')
+            $(this).attr('src','/public/Home/images/close.png')
+        }else{
+            $('#codes').prop('type','text')
+            $(this).attr('src','/public/Home/images/open.png')
+        }
+    })
+
+    $('.sub').click(function(){
+        var phone = $('#code').val();
+        var code = $('#codes').val();
+        if(!phone || !code){
+            alert('密码或者确认密码不能为空');
+            return false;
+        }
+        var info = {'code':code,phone:phone}
+        $.post("{:U('Login/pwd_ch')}",info,function(data){
+            console.log(data)
+            if(1 == data.status){
+                location.href = '/index.php/login/index';
+            }else{
+                alert(data.info)
+            }
+        })
+
+    })
+
+</script>
+</body>
+</html>

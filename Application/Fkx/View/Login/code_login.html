@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/register.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <title>验证码登录</title>
+</head>
+<body>
+<div id="container" class="bg-img">
+    <img id="background" src="/public/Home/images/backgrounds.jpeg" alt="">
+</div>
+<div class="login">
+    <ul>
+        <li><img src="/public/Home/images/phone.png" alt=""><input id="phone" type="text" value="请输入手机号码"></li>
+        <li><input style="margin-left:5%" id="huoqu" type="text" value="请输入验证码"></li>  <div id="code" class="button"><p>点击获取验证码</p></div>          </ul>
+    <div class="btn sub">
+        <a href="">登录</a>
+    </div>
+</div>
+<script>
+
+    $('.login>ul li').on('click','input',function(){
+        $(this).val('')
+    });
+    $.ajaxSetup({
+        async: false
+    });
+    $('#code').click(function(){
+
+        var phone = $('#phone').val();
+        if(!phone){
+            alert('手机号不能为空');
+            return false;
+        }
+        var info={'phone':phone}
+        var status = 1;
+        $.post("{:U('Login/is_cunz')}",info,function(data){
+            console.log(data)
+            if(1 == data.status){
+                status = 1;
+            }else{
+                status = 2;
+            }
+        })
+        if(status == 2){
+            alert('该手机号不存在');
+            return false;
+        }
+
+        if($('#code p').html()!=='点击获取验证码'){
+            return false
+        }
+        $.post("{:U('Login/sand_sms')}",info,function(datas){
+            if(1 == datas.status){
+                alert(datas.info);
+                var n = 60;
+                $('#code p').html(60);
+                var t=setInterval(function(){
+                    n--;
+                    $('#code p').html(n);
+                    if(n===0){
+                        clearInterval(t);
+                        $('#code p').html('点击获取验证码')
+                    }
+                },1000)
+            }else{
+                alert(datas.info);
+            }
+        })
+
+    })
+    $('.sub').click(function(){
+        var phone = $('#phone').val();
+        var code = $('#huoqu').val();
+        if(!phone || !code){
+            alert('手机号或者验证码不能为空');
+            return false;
+        }
+        var info = {'code':code,phone:phone}
+        $.post("{:U('Login/code_in')}",info,function(data){
+            console.log(data)
+            if(1 == data.status){
+                location.href = '/index.php/index/index';
+            }else{
+                alert(data.info)
+            }
+        })
+
+    })
+</script>
+
+</body>
+</html>

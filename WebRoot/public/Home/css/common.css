@@ -1,0 +1,479 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+html body{
+    /*max-width: 414px;*/
+    font-family: "PingFang-SC-Regular","SF Pro SC","SF Pro Text","Helvetica","Microsoft Yahei", "微软雅黑",arial;
+    font-size: 62.5%;
+    font: inherit;
+    background-color: #f2f2f2;
+}
+a{
+    text-decoration: none;
+    color: #34BBBE;
+}
+ul li{
+    list-style: none;
+}
+input {
+    border: none;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.clr-gray {
+    color: #999;
+}
+.clr-red {
+    color: #f11;
+}
+.clr-black {
+    color: #000;
+}
+.clr-yellow {
+    color: #ff9900;
+}
+.clr-green {
+    color: #3eb94e;
+}
+.clr-primary{
+    color: #34BBBE;
+}
+.float-l{
+    float: left;
+}
+.float-r{
+    float: right;
+}
+.ellipsis {
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.btn {
+    padding: 5px 8px;
+    background-color: #34BBBE;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.bottom-tab-bar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    background: #ffffff;
+    border-top: 1px solid #eaeaea;
+    align-items: center;
+}
+.bottom-tab {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    text-align: center;
+}
+
+.bottom-tab img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+.bottom-tab a {
+    font-size: 11px;
+    display: block;
+    color: #888;
+}
+.active {
+    color: #44c3ca !important;
+}
+.bottom-btn {
+    width: 100%;
+    height: 40px;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    background: #44c3ca;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+.bottom-btn.disabled{
+    background-color: #cdcdcd;
+}
+
+.header
+{
+    display:flex;
+    flex-direction: row;
+    background-color: #34BBBE;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    color: #fff;
+}
+.header .button
+{
+    display: flex;
+    width: 32px;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    align-items: center;
+    height: 100%;
+}
+.header .title
+{
+    font-size: 16px;
+    font-weight: 400;
+}
+.header .search
+{
+    display: flex;
+    flex: auto;
+    margin-left: 8px;
+    position: relative;
+}
+.header input
+{
+    flex: auto;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.85);
+    padding-left: 12px;
+    font-size: 13px;
+}
+.header input:focus {
+    background-color: #fff;
+}
+.header .index_sc {
+    position: absolute;
+    font-size: 13px;
+    height: 30px;
+    border:0 none;
+    color: #666;
+    background:none;
+    width: 54px;
+    text-align: center;
+    z-index: 1;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+}
+.index_scdrop {
+    position: absolute;
+    top: 9px;
+    left: 40px;
+    z-index: 2;
+}
+.index_scbtn {
+    height: 32px;
+    width: 32px;
+    overflow: hidden;
+    text-indent: -9999em;
+    background: url(/public/Home/images/search.png) no-repeat center center;
+    background-size: 16px 16px;
+    position: absolute;
+    border:0 none;
+    right: 0;
+    top: 0;
+}
+
+.content-container
+{
+    padding-top: 40px;
+}
+.tab-content-container
+{
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+.btn-content-container
+{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.gt{
+    padding-left: 5px;
+}
+.gt img
+{
+    width: 6px;
+    height: 12px;
+}
+.icon-with-dot
+{
+    display: flex;
+    position: relative;
+}
+.dot
+{
+    background: red;
+    width: 14px;
+    height: 14px;
+    font-family: arial;
+    font-size: 10px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    right: 0px;
+}
+.filter-line-container {
+    display: flex;
+    height: 32px;
+    width: 100%;
+    background-color: rgba(246, 246, 246, 1);
+    align-items: center;
+    justify-content: space-around;
+    z-index: 199;
+    position: fixed;
+}
+.filter-line-container .item {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #666666;
+}
+.filter-line-container .item .icon {
+    width: 8px;
+    height: 5px;
+    margin-left: 2px;
+}
+
+.filter-container {
+    display: none;
+    flex: 1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 72px;
+    z-index: 150;
+    flex-direction: column;
+    font-size: 12px;
+    color: #333333;
+}
+.filter-container .content {
+    display: flex;
+    background-color: white;
+    /*height: 280px;*/
+    max-height: 300px;
+    border-bottom: 1px #e4e4e4 solid;
+}
+
+.filter-container .btn-content {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+.filter-container .mask {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.349019607843137);
+}
+
+.filter-container .content .list-content {
+    display: none;
+    flex: 1;
+    font-size: 13px;
+}
+.filter-container .content .list-content div[name='city']:last-child .item  {
+    border: 0 none;
+}
+.filter-container .content .show {
+    display: flex;
+    flex-direction: column;
+}
+
+#area {
+    flex-direction: row;
+}
+
+#area .left-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px #e4e4e4 solid;
+    overflow-y: auto;
+}
+#area .right-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.filter-container .content .list-content .list-container {
+    padding: 0 10px;
+}
+.filter-container .content .list-content .item {
+    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+}
+.filter-container .content .list-content .item:last-child {
+    border-bottom:none;
+}
+#filter-confirm-btn {
+    width: 95%;
+    border: none;
+    padding: 8px 0 8px 0;
+    border-radius: 4px;
+    background-color: #34BBBE;
+    color: white;
+    font-size: 13px;
+}
+
+#list-container {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    padding:0 15px;
+}
+
+#list-container .list-item {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-bottom: 1px solid #F2F2F2;
+    font-size: 12px;
+}
+
+.list-footer-tip
+{
+    text-align:center;
+    padding: 30px 0;
+}
+.list-footer-tip .text
+{
+    color: #999;
+    font-size: 14px;
+    margin-top: 12px;
+}
+.list-footer-hidden
+{
+    display: none;
+}
+
+/*下载引导*/
+
+.down-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    color: #fff;
+}
+.down-header .button {
+    display: flex;
+    width: 45px;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    align-items: center;
+    height: 100%;
+}
+.down-header .button span {
+    display: flex;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.35);
+    width: 28px;
+    height: 28px;
+}
+.backIcon {
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+
+.info {
+    padding:0 0 44px 0;
+    background-color: #7195b2;
+}
+.downbar {
+    background-color: #024967;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 44px;
+    text-align: center;
+    display: flex;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    -webkit-display: flex;
+}
+.downbar a {
+    display: flex;
+    display: none;
+    flex:1;
+    justify-content: center;
+}
+.downbar a img {
+    margin:10px 0;
+}
+
+.downapp {
+    display: none;
+    height: 50px;
+    background-color: #fff;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    position: relative;
+    border-radius: 5px;
+}
+.downapp a {
+
+}
+.downapp img {
+    float: left;
+    margin-right: 8px;
+    border-radius: 15%;
+    border:1px solid #eaeaea;
+}
+.downapp .tit{
+    font-size: 16px;
+    color: #333;
+    line-height: 30px;
+    font-weight: normal;
+}
+.downapp .titsub {
+    font-size: 12px;
+    color: #999;
+}
+.downapp .downbtn {
+    position: absolute;
+    right: 23px;
+    top: 12px;
+    padding:5px 8px;
+    background-color: #34BBBE;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.iosguid {position:fixed;z-index: 9999;width: 100%;top:0;right:0;bottom:0;left:0;background-color: rgba(0,0,0,0.75);}
+.iosguid .guid1 {position:fixed;bottom: 0;left: 0;right: 0;z-index: 1;}
+.iosguid .guid2 {position: absolute;right: 5px;top: -3px;z-index: 2;}

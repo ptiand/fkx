@@ -1,0 +1,176 @@
+<extend name="Public/main" />
+<block name="title"><title>{$type_name}详情</title></block>
+<block name="css">
+    <style>
+        .list-item{
+            color: #000;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-bottom: 1px solid #f4f4f4;
+            background-color: #fff;
+        }
+        .list-item:last-child{
+            border-bottom: none;
+        }
+        .item-content{
+            flex: 1;
+        }
+        .item-content .clr-gray {
+            font-weight: normal;
+        }
+        .item-price {
+            width: 30%;
+        }
+        .tip-section {
+            display: none;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+    </style>
+</block>
+
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>{$type_name}详情</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <div id="listContainer">
+        </div>
+        <div id="loadingTip" class="tip-section"> 加载中... </div>
+        <div id="endTip" class="tip-section">- 已经到底了 -</div>
+        <div id="emptyTip" class="tip-section">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <div style="margin-top: 12px;">- 暂无信息 -</div>
+        </div>
+    </div>
+
+</block>
+<block name="js">
+    <script id="item-temp" type="template/javascript">
+        <a class="list-item" href="{:U('Service/total_item4house_detail', array('type' => $type, 'house_id' => '[#house_id]'))}">
+            <div class="item-content">
+                <div>[#name]</div>
+                <div class="clr-gray">[#address]</div>
+            </div>
+            <if condition="$type eq 2">
+            <div class="item-price">￥[#price]</div>
+            <elseif condition="$type eq 3"/>
+            <div class="item-price">￥[#price]</div>
+            <elseif condition="$type eq 4"/>
+            <div class="item-price clr-gray">即将到期<span class="clr-red">[#price]</span>套</div>
+            <elseif condition="$type eq 5"/>
+            <div class="item-price">空置：[#price]%</div>
+            <else/>
+            <div class="item-price">￥[#price]</div>
+            </if>
+            <img src="/public/Home/images/arrow.png" alt="">
+        </a>
+    </script>
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script type="text/javascript">
+        function showToast(msg, cb) {
+            layer.open({content: msg, type: 3, skin: 'msg', time: 1.5, end: cb});
+        }
+        $(function() {
+            var currentPage = 0,
+                loading = false,
+                pageSize = 10,
+                isEnd = false;
+            var $listContainer = $('#listContainer');
+            var TYPE_FIELD_MAP = {1: 'month_in', 2: 'not_pay', 3: 'last_month_in', 4: 'be_expire', 5: 'empty_rate'};
+
+            var scrollBefore = $(window).scrollTop();
+            $(window).scroll(function () {
+                var scrollAfter = $(window).scrollTop();
+                if (scrollAfter < scrollBefore) {
+                    return;
+                }
+                var body = $('body').get(0);
+                var scrollBottom = body.scrollHeight - body.scrollTop - body.clientHeight;
+                if (scrollBottom <= 80 && !loading) {
+                    scrollBefore = scrollAfter;
+                    getList();
+                }
+            });
+
+            getList();
+            $listContainer.on('click', '.house-title', function() {
+                var me = $(this)
+                me.toggleClass('expand')
+                me.next().slideToggle()
+            })
+            function getList()
+            {
+                if(loading || isEnd) return;
+                loading = true;
+                $('#loadingTip').show();
+                currentPage ++;
+                $.ajax({
+                    url: "{:U('Service/load_total_tongchou')}",
+                    data:{page_size: pageSize, cur_page:currentPage, load_type: '{$type}'},
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (resData)
+                    {
+                        loading = false;
+                        $('#loadingTip').hide();
+                        console.log('response data: ', resData);
+                        if(Array.isArray(resData.rows))
+                        {
+                            var html = [], temp = $("#item-temp").text(), itemCount = 0;
+                            
+                            resData.rows.forEach(function(item, idx) {
+                                html.push(temp.replace("[#name]", item.name)
+                                    .replace("[#address]", item.address)
+                                    .replace("[#price]", parseFloat(item[TYPE_FIELD_MAP['{$type}']]) || 0)
+                                    .replace(RegExp(encodeURIComponent('[#house_id]'), 'g'), item.id)
+                                );
+                            })
+                            if(html)
+                            {
+                                if(currentPage === 1)
+                                {
+                                    $listContainer.html(html);
+                                }
+                                else
+                                {
+                                    $listContainer.append(html);
+                                }
+                            }
+
+                            itemCount = $listContainer.children().length;
+                            if(itemCount >= resData.total)
+                            {
+                                if(itemCount)
+                                {
+                                    isEnd = true;
+                                    $('#endTip').show();
+                                } else
+                                {
+                                    $('#emptyTip').show();
+                                }
+                            }
+                        }
+                    },
+                    error: function ()
+                    {
+                        loading = false;
+                        $('#loadingTip').hide();
+                    }
+                });
+            }
+        });
+    </script>
+</block>

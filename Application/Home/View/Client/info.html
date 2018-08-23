@@ -1,0 +1,47 @@
+<extend name="Public/main" />
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/business.css">
+</block>
+
+<block name="main">
+
+    <div class="top-text-container">
+        <h1>{$info.nick_name}</h1>
+        <p>{$info.phone}</p>
+    </div>
+    <div class="mid-text-container">
+        <p style="padding: 5px 5px 5px 20px;font-size:13px;color:#ccc;">性别:{$info.sex}</p>
+        <p style="padding: 5px 5px 5px 20px;font-size:13px;color:#ccc;">置业目的:{$info.zhiye}</p>
+        <p style="padding: 5px 5px 5px 20px;font-size:13px;color:#ccc;">关注户型:{$info.huxing}</p>
+    </div>
+    <div class="mid-container-other">
+        <div class="mid-container-left">
+            <h1 style="width: 100px;">跟进状态</h1>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="baokuo">
+            <volist name="fin" id="fvo">
+            <div class="mid-right-other">
+                <div class="container-text-left">
+                    <!--<h2>跟进状态</h2>-->
+                    <p>{$fvo.created_at}</p>
+                    <p>{$fvo.contents}</p>
+                </div>
+            </div>
+            </volist>
+
+        </div>
+    </div>
+
+</block>
+<block name="js">
+    <script>
+        $('.subs').click(function(){
+
+            $('#sub').submit();
+
+        })
+    </script>
+    
+</block>
+

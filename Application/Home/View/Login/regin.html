@@ -1,0 +1,105 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/register.css">
+    <script src="/public/Home/js/jquery-1.9.1.js"></script>
+    <title>注册</title>
+</head>
+<body>
+<div id="container" class="bg-img"></div>
+<div class="goback">
+    <img src="/public/Home/images/nav_back_icon.png" alt="" id="nav-back-img" width="22" height="22"/>
+</div>
+<div class="login">
+    <ul>
+        <input id="id" type="hidden" value="{$id}">
+        <input id="phone" type="hidden" value="{$phone}">
+        <li><img src="/public/Home/images/phone.png" alt=""><input id="nick_name" type="text" placeholder="请输入姓名"></li>
+        <li><img src="/public/Home/images/lock.png" alt=""><input id="pwd" type="password" placeholder="请输入密码"><img id="show" width="24px" height="24px" src="/public/Home/images/close.png" alt=""></li>
+        <!-- <li><img src="/public/Home/images/lock.png" alt=""><input id="repwd" type="password" placeholder="请再次输入密码"><img id="hide" src="/public/Home/images/close.png" alt=""></li> -->
+    </ul>
+    <!-- <div class="little">
+        <input class="chick" id="chk" checked type="checkbox">
+        <label for="chk"></label>
+        <p>同意《<a href="{:U('Index/pingtai')}"><span>房客行用户协议</span></a>》</p>
+    </div> -->
+    <div class="btn sub">
+        <a class="">点击注册</a>
+    </div>
+</div>
+<script>
+    $("#nav-back-img").click(function () {
+        window.history.back();
+    });
+        $('#show').click(function(){
+            if($(this).attr('src')==='/public/Home/images/close.png') {
+                $('#pwd').prop('type','text')
+                $(this).attr('src','/public/Home/images/open.png')
+            }else{
+                $('#pwd').prop('type','password')
+                $(this).attr('src','/public/Home/images/close.png')
+            }
+        });
+        $('#hide').click(function(){
+            if($(this).attr('src')==='/public/Home/images/open.png') {
+                $('#repwd').prop('type','password')
+                $(this).attr('src','/public/Home/images/close.png')
+            }else{
+                $('#repwd').prop('type','text')
+                $(this).attr('src','/public/Home/images/open.png')
+            }
+        })
+
+
+
+    $('.sub').click(function(){
+
+        // if(!$('#chk').is(':checked')) {
+        //     alert('请先同意注册协议');
+        //     return false;
+        // }
+
+        var id = $('#id').val();
+        var phone = $('#phone').val();
+        var nick_name = $('#nick_name').val();
+        var pwd = $('#pwd').val();
+        var repwd = $('#repwd').val();
+        //判断手机号码是否已经注册过了
+        if(!nick_name){
+            alert('请填写名字');
+            return false;
+        }
+        if(pwd.length < 6 ){
+            alert('密码长度必须大于6位数');
+            return false;
+        }
+        // if(pwd != repwd){
+        //     alert('两次密码不一致');
+        //     return false;
+        // }
+        var info = {'pwd':pwd,id:id,repwd:repwd,nick_name:nick_name,phone:phone}
+        $.post("{:U('Login/regin_in')}",info,function(data){
+            console.log(data)
+            if(1 == data.status){
+                location.href = "{:U('Index/index')}";
+            }else{
+                alert(data.info)
+            }
+        })
+
+
+
+
+
+
+
+
+    })
+
+</script>
+
+</body>
+</html>

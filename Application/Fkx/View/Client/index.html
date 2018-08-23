@@ -1,0 +1,67 @@
+<extend name="Public/main" />
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/business.css">
+</block>
+
+<block name="main">
+   <style>
+    .container-text-left{
+        width: 50% !important;
+    }
+    </style>
+    <div class="mane-top">
+        <ul>
+            <li><a class="active" href="/index.php/Client/index?search=<?php echo $_GET['search']; ?>">全部<p>({$count.all})</p></a></li> <!--  状态数量体现在p里 -->
+            <li><a href="/index.php/Client/index?status=1&search=<?php echo $_GET['search']; ?>">跟进中<p>({$count.gj})</p></a></li>
+            <li><a href="/index.php/Client/index?status=2&search=<?php echo $_GET['search']; ?>">已成交<p>({$count.cj})</p></a></li>
+            <li><a href="/index.php/Client/index?status=3&search=<?php echo $_GET['search']; ?>">已失效<p>({$count.sx})</p></a></li>
+        </ul>
+    </div>
+    <div class="search-box">
+        <form id="sub" action="" method="get" style="width: 80%;">
+            <input type="hidden" name="status" value="{$w.status}">
+            <input type="text" value="<?php echo $_GET['search']; ?>" name="search" id="search" placeholder="按名字和电话搜索">
+         </form>
+        <a class="subs" >搜索</a>
+    </div>
+
+    <volist name="info" id="vo" key="key">
+        <a href="{:U('Client/info',array('id'=>$vo['id']))}">
+    <div class="mid-container">
+        <div class="mid-container-left">
+            <h1>{$key}</h1>
+        </div>
+
+            <div class="mid-container-right">
+
+                <div class="container-text-left">
+                    <h2>{$vo.loupan_name}</h2>
+                    <p>姓名：{$vo.nick_name}</p>
+                    <p>备注：{$vo.node}</p>
+                </div>
+
+                <div class="container-text-right">
+                    <p>{$vo.created_at}<span>({$vo.status})</span></p>
+                    <p>电话：{$vo.phone}</p>
+                </div>
+
+
+            </div>
+
+    </div>
+        </a>
+    </volist>
+
+
+</block>
+<block name="js">
+    <script>
+        $('.subs').click(function(){
+
+            $('#sub').submit();
+
+        })
+    </script>
+    
+</block>
+

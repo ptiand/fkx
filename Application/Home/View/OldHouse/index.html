@@ -1,0 +1,357 @@
+<extend name="Public/main"/>
+<block name="title"><title>二手房频道</title></block>
+<block name="css">
+    <!--<link rel="stylesheet" href="/public/Home/css/House.css">-->
+    <link rel="stylesheet" href="/public/Home/css/house_list.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <script src="/public/Home/js/items.js"></script>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button">
+            <!--<span>厦门</span>-->
+            <img src="/public/Home/images/nav_back_icon.png" alt="" id="nav-back-img" width="22" height="22"/>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="搜索二手房" id="search-input" value="{$keyWord}"/>
+            <button id="SearchBtn" class="index_scbtn">搜索</button>
+        </div>
+        <div class="button">
+            <a class="icon-with-dot" href="{:U('Message/index')}">
+                <img src="/public/Home/images/message.png" alt="" width="23" height="23" />
+            </a>
+        </div>
+    </div>
+</block>
+<block name="main">
+    <style>
+        .city-children
+        {
+            display: none;
+        }
+    </style>
+
+    <div class="container">
+        <div class="filter-line-container">
+            <div class="item" id="filter-city-btn">
+                <span>区域</span>
+                <img class="icon" src="/public/Home/images/down.png" alt="">
+            </div>
+            <div class="item" id="filter-total-price-btn">
+                <span>总价</span>
+                <img class="icon" src="/public/Home/images/down.png" alt="">
+            </div>
+            <div class="item">
+                <span>户型</span>
+                <img class="icon" src="/public/Home/images/down.png" alt="">
+            </div>
+            <div class="item">
+                <span>装修</span>
+                <img class="icon" src="/public/Home/images/down.png" alt="">
+            </div>
+            <div class="item">
+                <span>类型</span>
+                <img class="icon" src="/public/Home/images/down.png" alt="">
+            </div>
+        </div>
+        <div class="filter-container">
+            <div class="content">
+                <div class="list-content" id="area">
+                    <div class="left-content list-container" id="city-filter-container">
+                        <div name="city">
+                            <span class="item" value="-1">不限</span>
+                            <div class="city-children">
+                                <span class="item"  onclick="onAreaClick(this, -1)">不限
+                                    <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                                </span>
+                            </div>
+                        </div>
+                        <foreach name="districtList" item="district">
+                            <if condition="$district['pid']=='0'">
+                                <div name="city">
+                                    <span class="item" value="{$district['id']}" >{$district['city_name']}</span>
+                                    <div class="city-children">
+                                        <span class="item" onclick="onAreaClick(this, -1)">不限
+                                            <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                                        </span>
+                                        <foreach name="districtList" item="cItem">
+                                            <if condition="$cItem['pid']==$district['id'] ">
+                                                <span class="item" onclick="onAreaClick(this, {$cItem['id']})">{$cItem['city_name']}
+                                                    <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                                                </span>
+                                            </if>
+                                        </foreach>
+                                    </div>
+                                </div>
+                            </if>
+                        </foreach>
+                    </div>
+                    <div class="right-content list-container" id="area-filter-container">
+
+                    </div>
+
+                </div>
+                <div class="list-content" id="title-price">
+                    <div class="list-container">
+                        <span class="item" onclick="onTotalPriceClick(this, -1)">不限
+                            <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                        </span>
+
+                        <foreach name="totalPriceList" item="price">
+                            <span class="item" onclick="onTotalPriceClick(this, {$price['value']})">{$price['caption']}
+                                <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                            </span>
+                        </foreach>
+                    </div>
+
+                </div>
+                <div class="list-content" id="huxing">
+                    <div class="list-container">
+                        <span class="item" onclick="onHuxingClick(this, -1)">不限
+                            <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                        </span>
+                        <foreach name="huxingList" item="huxing">
+                            <span class="item" onclick="onHuxingClick(this, {$huxing['value']})">{$huxing['caption']}
+                                <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                            </span>
+                        </foreach>
+                    </div>
+                </div>
+                <div class="list-content" id="decoration">
+                    <div class="list-container">
+                        <span class="item" onclick="onDecorationClick(this, -1)">不限
+                            <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                        </span>
+                        <foreach name="decorationTypeList" item="type">
+                            <span class="item" onclick="onDecorationClick(this, {$type['id']})">{$type['zxiu_name']}
+                                <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                            </span>
+                        </foreach>
+                    </div>
+                </div>
+                <div class="list-content" id="type">
+                    <div class="list-container">
+                        <span class="item" onclick="onTypeClick(this, -1)">不限
+                            <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                        </span>
+                        <foreach name="buildingTypeList" item="type">
+                            <span class="item" onclick="onTypeClick(this, {$type['id']})">{$type['type_name']}
+                                <img class="checked-icon" src="/public/Home/images/check_icon.png"/>
+                            </span>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-content">
+                <button id="filter-confirm-btn">确定</button>
+            </div>
+            <div class="mask"></div>
+        </div>
+        <div id="list-container" class="storageRange">
+        </div>
+        <div id="empty-container">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <span>找不到或者没有相关的信息</span>
+        </div>
+        <div id="empty-tail">-- 已经到底了 --</div>
+    </div>
+</block>
+
+<block name="js">
+    <script>
+        var Filter = {
+            district: {city: -1, area: -1},
+            totalPrice: -1,
+            huxing: -1,
+            decoration: -1,
+            type: -1,
+            name: '{$keyWord}' || -1,
+        };
+
+        $('.filter-line-container .item').click(function () {
+            setVisibility($(".filter-container"), true);
+            $('.list-content.show').removeClass('show');
+            $('.filter-line-container .item.active').removeClass('active');
+            var index = $(this).index();
+            $('.list-content').eq(index).addClass('show');
+            $(this).addClass('active');
+        });
+
+        $('.mask').click(function () {
+            setVisibility($(".filter-container"), false);
+            // $('.item.active').removeClass('active');
+        });
+
+        // $('#filter-city-btn').click(function () {
+        //     $.get('{:U("Lists/listArea")}', {}, function (data) {
+        //         $("#area-filter-container").empty();
+        //         $("#area-filter-container").append(data.info);
+        //     });
+        // });
+
+        $("#nav-back-img").click(function () {
+            window.history.back();
+        });
+
+        (function () {
+            var pending = false;
+            var currentPage = window.sessionStorage.getItem('OldHouse/index/currentPage') ? window.sessionStorage.getItem('OldHouse/index/currentPage') : 0;
+            var pageSize = 10;
+            var scrollBefore = $(window).scrollTop();
+            $(window).scroll(function () {
+                var scrollAfter = $(window).scrollTop();
+                if (scrollAfter < scrollBefore) {
+                    console.log("scroll to top, ignore");
+                    return;
+                }
+                var body = $('body').get(0);
+                var scrollBottom = body.scrollHeight - body.scrollTop - body.clientHeight;
+                if (scrollBottom<=80 && !pending) {
+                    pending = true;
+                    currentPage;
+                    console.log('load next, current page ', currentPage);
+                    loadMore(currentPage, 10);
+                }
+            });
+
+            loadMore();
+            function loadMore() {
+                $.get("{:U('OldHouse/listItem')}", {currentPage, pageSize, filter:Filter}, function (data) {
+                    pending = false;
+                    if (data.status == 0) {
+                        var isEmpty = isListEmpty();
+                        setVisibility($("#empty-container"), isEmpty);
+                        setVisibility($("#empty-tail"), !isEmpty);
+                    } else {
+                        setVisibility($("#empty-container"), false);
+                        setVisibility($("#empty-tail"), getListSize()<pageSize);
+                        $("#list-container").last().append(data.info);
+                        currentPage++;
+                    }
+                    window.sessionStorage.setItem('OldHouse/index/currentPage', currentPage);
+
+                });
+            };
+
+            function isListEmpty() {
+                return getListSize()==0;
+            }
+
+            function getListSize() {
+                return $('#list-container').children().length
+            }
+
+            $('#filter-confirm-btn').click(function () {
+                setVisibility($(".filter-container"), false);
+                $('.filter-line-container .item.active').removeClass('active');
+                currentPage=0;
+                $("#list-container").empty();
+                loadMore();
+            });
+
+            $("#SearchBtn").click(function (e) {
+                var $searchInput = $('#search-input');
+                var keyWord = $searchInput.val().trim();
+                currentPage=0;
+                Filter.name = keyWord||-1;
+                $("#list-container").empty();
+                loadMore();
+            });
+            $('#search-input').keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $("#SearchBtn").click();
+                }
+            });
+
+            // (function () {
+            //     var interval = null;
+            //     function startIntervalSearch() {
+            //         if (interval) {
+            //             return;
+            //         }
+            //         var $searchInput = $('#search-input');
+            //         var oldValue = $searchInput.val().trim();
+            //         interval = setInterval(function () {
+            //             var value = $searchInput.val().trim();
+            //             // console.log("value=", value, 'oldvalue=', oldValue);
+            //             if ((oldValue || value) && value!=oldValue) {
+            //                 Filter.name = value||-1;
+            //                 currentPage=0;
+            //                 $("#list-container").empty();
+            //                 loadMore();
+            //                 oldValue = value;
+            //             }
+            //         }, 300);
+            //     }
+            //     function clearIntervalSearch() {
+            //         if (interval) {
+            //             clearInterval(interval);
+            //             interval = null;
+            //         }
+            //     }
+            //
+            //     $('#search-input').on('keyup', function () {
+            //         startIntervalSearch();
+            //     });
+            //     $('#search-input').on('blur', function () {
+            //         clearIntervalSearch();
+            //     });
+            // })();
+        })();
+
+        function onCityClick(dthis, value) {
+            $("#city-filter-container .item.active").removeClass('active');
+            $(dthis).addClass('active');
+            Filter.district.city = value;
+        }
+
+        function onAreaClick(dthis, value) {
+            $("#area-filter-container .item.active").removeClass('active');
+            $(dthis).addClass('active');
+            Filter.district.area = value;
+        }
+
+        function onTotalPriceClick(dthis, value) {
+            $("#title-price .item.active").removeClass('active');
+            $(dthis).addClass('active');
+            Filter.totalPrice = value;
+        }
+
+        function onHuxingClick(dthis, value) {
+            $("#huxing .item.active").removeClass('active');
+            $(dthis).addClass('active');
+            Filter.huxing = value;
+        }
+
+        function onDecorationClick(dthis, value) {
+            $("#decoration .item.active").removeClass('active');
+            $(dthis).addClass('active');
+            Filter.decoration = value;
+        }
+
+        function onTypeClick(dthis, value) {
+            $("#type .item.active").removeClass('active');
+            $(dthis).addClass('active');
+            Filter.type = value;
+        }
+
+        $('#city-filter-container [name="city"]').click(function ()
+        {
+            // console.log($(this).find('.city-children'));
+            var $area = $(this).find('.city-children')[0];
+            $('#area-filter-container').html($area.innerHTML);
+            Filter.district.area = -1;
+            var $currCity = $($(this).find('.item')[0]);
+            onCityClick($currCity, $currCity.attr('value'));
+        });
+
+        function setVisibility($target, visible) {
+            return $target.css('display', visible ? 'flex' : 'none');
+        }
+
+        function isVisible($target) {
+            return $target.css('display')!='none';
+        }
+
+    </script>
+</block>

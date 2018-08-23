@@ -1,0 +1,154 @@
+<extend name="Public/main"/>
+<block name="title"><title>我的预约</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/house_list.css">
+    <style>
+    html body
+    {
+        background-color: #F2F2F2;
+    }
+    .info-item
+    {
+        padding: 0px 10px;
+        margin-bottom: 5px;
+        background-color: white;
+    }
+    .info-item .title
+    {
+        padding-top: 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .info-item .title .status
+    {
+        font-size: 14px;
+    }
+    .info-item .title .expired
+    {
+        color: #999999;
+    }
+    .info-item .title .submitted
+    {
+        color: #00CC00
+    }
+    .info-item .title .done
+    {
+        color: #333333;
+    }
+    .address-info
+    {
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        color: #666666;
+        padding-top: 5px;
+    }
+    .address-info .address-label
+    {
+        padding-right: 10px;
+    }
+    .seperator {
+        margin-top: 8px;
+        height: 1px;
+        background-color: #e4e4e4;
+    }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>我的预约</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <div id="listContainer">
+        </div>
+        <div id="loadingTip" style="text-align:center;padding: 30px 0;">
+            <div style="color: #999;font-size: 14px;margin-top: 12px;"> 加载中... </div>
+        </div>
+        <div id="endTip" style="text-align:center;padding: 30px 0;display: none;">
+            <div style="color: #999;font-size: 14px;margin-top: 12px;">- 已经到底了 -</div>
+        </div>
+        <div id="emptyTip" style="text-align:center;padding: 30px 0;background-color:#fff;display: none;">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <div style="color: #999;font-size: 14px;margin-top: 12px;">- 暂无预约记录 -</div>
+        </div>
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+(function () {
+    var currentPage = 0,
+        loading = false,
+        pageSize = 10,
+        isEnd = false;
+
+    var scrollBefore = $(window).scrollTop();
+    $(window).scroll(function () {
+        var scrollAfter = $(window).scrollTop();
+        if (scrollAfter < scrollBefore) {
+            return;
+        }
+        var body = $('body').get(0);
+        var scrollBottom = body.scrollHeight - body.scrollTop - body.clientHeight;
+        if (scrollBottom<=80 && !loading) {
+            getList();
+        }
+    });
+    getList();
+    function getList()
+    {
+        if(loading || isEnd) return;
+        loading = true;
+        currentPage ++;
+        $.ajax({
+            url: '{:U("Info/loadData")}',
+            data:{pageSize: pageSize, currentPage:currentPage},
+            type: 'POST',
+            success: function (resData)
+            {
+                loading = false;
+                if(resData.status == 1)
+                {
+                    if(resData.info.html)
+                    {
+                        if(currentPage === 1)
+                        {
+                            $('#listContainer').html(resData.info.html);
+                        }
+                        else
+                        {
+                            $('#listContainer').append(resData.info.html);
+                        }
+                    }
+                    if(!resData.info.hasMore)
+                    {
+                        $('#loadingTip').hide();
+                        if($('#listContainer').children().length)
+                        {
+                            isEnd = true;
+                            $('#endTip').show();
+                        } else
+                        {
+                            $('#emptyTip').show();
+                        }
+                    }
+                }
+            },
+            error: function ()
+            {
+                loading = false;
+            }
+        });
+    }
+
+})();
+</script>
+</block>

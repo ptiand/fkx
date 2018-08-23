@@ -1,0 +1,287 @@
+html body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-family: 'Microsoft YaHei', "Heiti SC";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    background-color: white;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    background-color: white;
+}
+
+
+.recommend .recommend-list
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.recommend .recommend-list:last-child
+{
+    padding-bottom: 0px;
+}
+.recommend-item
+{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    position: relative;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #f2f2f2;
+}
+.recommend-item:last-child {
+    border:none;
+}
+.main-title {
+    padding:3px 0;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 32px;
+}
+.main-title div {color: #999;}
+.main-title div b {
+    color: #34BBBE;margin-right: 8px;
+}
+.main-title .gt {
+    
+}
+.main-content {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+.islock {
+    position: absolute;
+    left: 0;top: 0;
+    height: 15px;line-height: 15px;
+    font-size: 10px;color: #fff;
+    background-color: #ff6600;
+    padding:0 3px;
+    border-top-left-radius: 3px;
+}
+.bottom-content {
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+    background-color: #f5f5f5;
+    color: #666;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 11px;
+    padding: 3px 0;
+}
+.recommend-item-img {
+    width: 110px;
+    height: 80px;
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 110px;
+}
+.recommend-item .main-content img
+{
+    width: 110px;
+    height: 80px;
+}
+.recommend-item .houseInfo
+{
+    margin-left:12px;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+.recommend-item .houseInfo .title
+{
+    font-weight: 400;
+    font-size: 16px;
+    padding:2px 0;
+    width: 100%;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+}
+.recommend-item .houseInfo .attr
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.recommend-item .houseInfo .attr .left
+ {
+     display: flex;
+     flex-direction: column;
+ }
+.recommend-item .houseInfo .attr .left span
+{
+    font-size: 11px;
+    font-weight: 400;
+    color: rgb(153, 153, 153);
+}
+.recommend-item .houseInfo .attr .right
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 35%;
+    color: #FF3300;
+    font-family: Helvetica;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    top:24px;
+}
+
+.recommend-item .houseInfo .attr .right span
+{
+    font-size: 10px;
+    font-weight: 400;
+}
+.recommend-item .houseInfo .attr .right .money
+{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 15px;
+    
+}
+
+.recommend-item .houseInfo .attr .right .submoney
+{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 10px;
+    color: #999;
+    
+}
+.recommend-item .houseInfo .attr .right .submoney .money{
+    font-size: 12px;
+}
+
+.recommend-item .houseInfo .label
+{
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 2px;
+    line-height: 12px;
+}
+.recommend-item .houseInfo .label span
+{
+    margin: 2px 4px 2px 0;
+    padding:2px 3px;
+    white-space: nowrap;
+    float: left;
+}
+.recommend-item .houseInfo .label .first
+{
+    color: #34BBBE;
+    background-color: rgba(233, 250, 250, 1);
+}
+.recommend-item .houseInfo .label .second
+{
+    color: #ff9900;
+    background-color: rgba(255, 242, 223, 1);
+}
+.recommend-item .houseInfo .label .third
+{
+    color: #66CC66;
+    background-color: rgba(241, 251, 236, 1);
+}
+
+.recommend-list .message
+{
+    font-size: 10px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#city-filter-container div[name=city] {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-font {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    color: rgb(153, 153, 153);
+}
+
+#empty-tail {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 11px;
+    color: rgb(204, 204, 204);
+}
+
+#empty-container {
+    display: none;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(153, 153, 153);
+    font-size: 14px;
+    /*height: 100%;*/
+    background: #fff;
+    padding: 40px 0;
+}
+
+#empty-container span {
+    margin-top: 10px;
+}
+
+.checked-icon {
+    display: none;
+}
+
+.active .checked-icon {
+    display: block;
+}
+
+.container .source-filter {
+    height: 32px;
+    position: fixed;
+    z-index: 200;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(246, 246, 246, 1);
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.container .source-filter .source-item {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #666666;
+    height: 100%;
+}
+
+.container .source-filter .source-divide-line {
+    width: 1px;
+    background-color: #e4e4e4;
+    height: 60%;
+}

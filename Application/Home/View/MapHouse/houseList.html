@@ -1,0 +1,187 @@
+<extend name="Public/main"/>
+<block name="title"><title>地图找房-房源列表</title></block>
+<block name="css">
+    <!--<link rel="stylesheet" href="/public/Home/css/House.css">-->
+    <link rel="stylesheet" href="/public/Home/css/house_list.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button goBackBtn">
+            <!--<span>厦门</span>-->
+            <img src="/public/Home/images/nav_back_icon.png" alt="" id="nav-back-img" width="22" height="22"/>
+        </div>
+        <div class="search">
+
+        </div>
+    </div>
+</block>
+<block name="main">
+    <div class="container">
+        <div class="storageRange">
+            <if condition="$type eq 3">
+            <foreach name="houseList" item="house">
+                <div class="recommend-item" onclick="javascript:window.location.href='{:U(\'RentalHouse/detail\', array(\'id\'=>$house[\'id\']))}'">
+                    <div class="main-content">
+                        <div class="recommend-item-img">
+                            <img src="{$house.primaryImage|default='/public/no_photo.png'}" alt="图片"/>
+                        </div>
+                        <div class="houseInfo">
+                            <span class="title">{$house.name}</span>
+                            <div class="attr">
+                                <div class="left">
+                                    <span>{$house.areaCaption}</span>
+                        <span>
+                            <?php
+                                $text='';
+                                if($house['houseRoom']) $text .= $house['houseRoom'] . '室';
+                                if($house['livingRoom']) $text .= $house['livingRoom'] . '厅';
+                                if($house['restRoom']) $text .= $house['restRoom'] . '卫';
+                                if($house['diningRoom']) $text .= $house['diningRoom'] . '厨';
+                                if($text) $text .= ' |';
+                                echo $text;
+                            ?>
+                            {$house.square|round}㎡
+                        </span>
+                                </div>
+                                <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($house['price'], 0)}</span>
+                            <span>元/月</span>
+                        </span>
+                                </div>
+                            </div>
+                            <div class="label">
+                                <if condition="$house['source'] == $Source['Personal']">
+                                    <notempty name="house['stateCaption']">
+                                        <span class="first">{$house.stateCaption}</span>
+                                    </notempty>
+                                    <notempty name="house['typeCaption']">
+                                        <span class="second">{$house.typeCaption}</span>
+                                    </notempty>
+                                </if>
+                                <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                                <foreach name="house['tagList']" item="tag" key="key">
+                                    <span class="block {$classMap[$key%3]}">{$tag}</span>
+                                </foreach>
+                            </div>
+                        </div>
+                    </div>
+                    <if condition="$house['source']==2 && $house['commission']">
+                        <div class="bottom-content">
+                            <span>佣金： {$house.commission}</span>
+                        </div>
+                    </if>
+                </div>
+            </foreach>
+			<elseif condition="$type eq 2"/>
+            <foreach name="houseList" item="house">
+                <div class="recommend-item" onclick="javascript:window.location.href='{:U(\'OldHouse/detail\', array(\'id\'=>$house[\'id\']))}'">
+                    <div class="main-content">
+                        <div class="recommend-item-img">
+                            <img src="{$house.primaryImage|default='/public/no_photo.png'}" alt="图片"/>
+                        </div>
+                        <div class="houseInfo">
+                            <span class="title">{$house.name}</span>
+                            <div class="attr">
+                                <div class="left">
+                                    <span>{$house.areaCaption}</span>
+                        <span>
+                            <?php
+                                $text='';
+                                if($house['houseRoom']) $text .= $house['houseRoom'] . '室';
+                                if($house['livingRoom']) $text .= $house['livingRoom'] . '厅';
+                                if($house['restRoom']) $text .= $house['restRoom'] . '卫';
+                                if($house['diningRoom']) $text .= $house['diningRoom'] . '厨';
+                                if($text) $text .= ' |';
+                                echo $text;
+                            ?>
+                            {$house.square|round}㎡
+                        </span>
+                                </div>
+                                <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($house['totalPrice'], 0)}</span>
+                            <span>万元/套</span>
+                        </span>
+                                </div>
+                            </div>
+                            <div class="label">
+                                <span class="first">{$house.stateCaption}</span>
+                                <span class="second">{$house.typeCaption}</span>
+                                <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                                <foreach name="house['tagList']" item="tag" key="key">
+                                    <span class="{$classMap[$key%3]}">{$tag}</span>
+                                </foreach>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </foreach>
+            <else/>
+                <foreach name="houseList" item="house">
+                    <div class="recommend-item" onclick="javascript:window.location.href='{:U(\'Lists/newHouseDetail\', array(\'id\'=>$house[\'id\']))}'">
+                        <div class="main-content">
+                            <div class="recommend-item-img">
+                                <img src="{$house.primaryImage|default='/public/no_photo.png'}" alt="图片"/>
+                            </div>
+                            <div class="houseInfo">
+                                <span class="title">{$house.name}</span>
+                                <div class="attr">
+                                    <div class="left">
+                                        <span>{$house.areaCaption}</span>
+                        <span>
+                            <if condition="!empty($house['minHouseRoom']) && !empty($house['maxHouseRoom'])">
+                                <?php if($house['minHouseRoom'] != $house['maxHouseRoom']){
+                                    echo $house['minHouseRoom'].'-'.$house['maxHouseRoom'].'室';
+                                } else{
+                                    echo $house['maxHouseRoom'].'室';
+                                }?>
+                            </if>
+                            <if condition="(!empty($house['minHouseRoom']) || !empty($house['maxHouseRoom'])) && (!empty($house['minSquare']) || !empty($house['maxSquare']))">|</if>
+                            <if condition="!empty($house['minSquare']) && !empty($house['maxSquare'])">
+                                <?php if($house['minSquare'] != $house['maxSquare']){
+                                    echo $house['minSquare'].'-'.$house['maxSquare'].'㎡';
+                                } else {
+                                    echo $house['maxSquare'].'㎡';
+                                }?>
+                            </if>
+                            <if condition="empty($house['minHouseRoom']) && empty($house['maxHouseRoom']) && empty($house['minSquare']) && empty($house['maxSquare'])">敬请关注</if>
+                        </span>
+                                    </div>
+                                    <div class="right">
+                        <span style="flex-direction: row">
+                            <!--<span class="money">{:renderMoney($house['minTotalPrice'], 0)}</span>-->
+                            <!--<span>万元/套起</span>-->
+                            <span class="money">
+                                <if condition="$house['minTotalPrice'] gt 0">{:renderMoney($house['minTotalPrice'])}</if>
+                                <if condition="!($house['minTotalPrice'] gt 0) && $house['minPrice']">{:renderMoney($house['minPrice'])}</if>
+                            </span>
+                            <span>
+                                <if condition="$house['minTotalPrice'] gt 0">万元/套起</if>
+                                <if condition="!($house['minTotalPrice'] gt 0) && $house['minPrice']">元/㎡起</if>
+                            </span>
+                        </span>
+                                    </div>
+                                </div>
+                                <div class="label">
+                                    <span class="first">{$house.stateCaption}</span>
+                                    <span class="second">{$house.typeCaption}</span>
+                                    <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                                    <foreach name="house['tagList']" item="tag" key="key">
+                                        <span class="{$classMap[$key%3]}">{$tag}</span>
+                                    </foreach>
+                                </div>
+                            </div>
+                        </div>
+                        <if condition="$house['commission']">
+                            <div class="bottom-content">
+                                <span>佣金： {$house.commission}</span>
+                            </div>
+                        </if>
+                    </div>
+                </foreach>
+            </if>
+        </div>
+    </div>
+</block>

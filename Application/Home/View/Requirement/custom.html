@@ -1,0 +1,190 @@
+<extend name="Public/main"/>
+<block name="title"><title>购房需求</title></block>
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/form.css">
+    <style>
+    #RequirementForm .range-input
+    {
+        width: 64px;
+        border: #cccccc;
+        border-style: solid;
+        border-width:1px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    #RequirementForm .checkbox-input-container
+    {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .checkbox-label
+    {
+        width: 64px;
+        border: #cccccc 1px solid;
+        padding: 5px 0px;
+        border-radius: 5px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        font-size: 11px;
+        font-weight: 400;
+        justify-content: center;
+        display: flex;;
+    }
+    .checkbox-label input
+    {
+        display: none;
+    }
+    .checked
+    {
+        border-color: #34BBBE;
+        color: #34BBBE;
+    }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>购房需求</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <form id="RequirementForm">
+        <div class="group-container">
+            <div class="item">
+                <span class="item-label">姓名</span>
+                <input class="input-container" id="NameInput" name="username" required type="text" placeholder="请输入姓名"/>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">手机</span>
+                <input class="input-container" id="PhoneInput" name="phone" value="{$phone}" required type="text" placeholder="请输入联系手机号"/>
+            </div>
+            <div class="item">
+                <span class="item-label">预算范围</span>
+                <div class="input-container" style="display: block;">
+                    <input class="range-input" name="minPrice" type="text" placeholder="最低"/>
+                    <span>-</span>
+                    <input class="range-input" name="maxPrice" type="text" placeholder="最高"/>
+                    <span>万元</span>
+                </div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">户型要求</span>
+                <div class="input-container checkbox-input-container">
+                    <foreach name="HuXingCaption" item="huxing">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="{$key}" name="huxing[]" /><span>{$huxing}</span>
+                        </label>
+                    </foreach>
+                </div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">住房面积</span>
+                <div class="input-container" style="display: block;">
+                    <input class="range-input" name="minSquare" type="text" placeholder="最低"/>
+                    <span>-</span>
+                    <input class="range-input" name="maxSquare" type="text" placeholder="最高"/>
+                    <span>平方米(㎡)</span>
+                </div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">房屋朝向</span>
+                <div class="input-container checkbox-input-container">
+                    <foreach name="ChaoXiangCaption" item="cx">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="{$key}" name="chaoxiang[]" /><span>{$cx}</span>
+                        </label>
+                    </foreach>
+                </div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">装修情况</span>
+                <div class="input-container checkbox-input-container">
+                    <foreach name="ZhuangXiuCaption" item="zx">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="{$key}" name="zhuangxiu[]" /><span>{$zx}</span>
+                        </label>
+                    </foreach>
+                </div>
+            </div>
+            <div class="seperator"></div>
+            <div class="item">
+                <span class="item-label">区域范围</span>
+                <textarea class="input-container" style="height: 54px;"
+                          maxlength="255"
+                          name="area"
+                          type="text" placeholder="输入您想要的置房区域"></textarea>
+            </div>
+        </div>
+        </form>
+        <div class="bottom-container" id="SubmitRequirement">提交</div>
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+$(function () {
+    $('.checkbox-label input').click(function ()
+    {
+        if($(this).parent('.checkbox-label').hasClass('checked'))
+        {
+            $(this).parent('.checkbox-label').removeClass('checked');
+        }
+        else
+        {
+            $(this).parent('.checkbox-label').addClass('checked');
+        }
+    });
+    $('#SubmitRequirement').click(function ()
+    {
+        try {
+            if(!document.getElementById('RequirementForm').reportValidity())
+            {
+                return false;
+            }
+        } catch (e) {
+            if(!document.getElementById("NameInput").value)
+            {
+                alert("请输入姓名");
+                return;
+            }
+            if(!document.getElementById("PhoneInput").value)
+            {
+                alert("请输入手机号");
+                return;
+            }
+        }
+        $.ajax({
+            url: '{:U("Requirement/custom")}',
+            data: $('#RequirementForm').serialize(),
+            type: 'POST',
+            success:function (resData)
+            {
+                if(resData.status == 1)
+                {
+                    FkxToast.success(resData.info);
+                    history.back();
+                }
+                else
+                {
+                    FkxToast.error(resData.info);
+                }
+            },
+            error: function ()
+            {
+                FkxToast.error('提交失败！');
+            }
+        });
+    });
+});
+</script>
+</block>

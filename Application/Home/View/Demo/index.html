@@ -1,0 +1,364 @@
+<extend name="Public/main" />
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button">
+            <span>厦门</span>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="搜索房源信息" />
+        </div>
+        <div class="button">
+            <span>消息</span>
+        </div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <div class="main_visual">
+            <div class="flicking_con">
+            </div>
+            <div class="main_image">
+                <ul>
+                    <li><span><a href="#"><img id="b_1" src="/uploads/type/2017-12-22/5a3c7e2558cad.png"></a></span></li>
+                    <li><span><a href="#"><img id="b_2" src="/uploads/type/2017-12-22/5a3c7e41e7c89.png"></a></span></li>
+                    <li><span><a href="#"><img id="b_3" src="/uploads/type/2018-02-03/5a758b27e76dd.jpg"></a></span></li>
+                </ul>
+                <a href="javascript:;" id="btn_prev"></a>
+                <a href="javascript:;" id="btn_next"></a>
+
+            </div>
+        </div>
+        <div class="mid-container">
+            <ul>
+                <li>
+                    <a class="img" href="{:U('Loupan/index')}" style="background-color: #04bb8f;">
+                        <img src="/public/Home/images/index_loupan_icon.png" alt="新房">
+                    </a>
+                    <a href="{:U('Loupan/index')}">新房</a>
+                </li>
+                <li>
+                    <a class="img" href="{:U('OldHouse/mymoney')}" style="background-color: #f2ab2d;">
+                        <img src="/public/Home/images/index_old_house.png" alt="">
+                    </a>
+                    <a href="{:U('OldHouse/mymoney')}">二手房</a>
+                </li>
+                <li>
+                    <a class="img" href="{:U('Rental/index')}" style="background-color: #fd5c5f;">
+                        <img src="/public/Home/images/index_rental.png" alt="">
+                    </a>
+                    <a href="{:U('Rental/index')}">租房</a>
+                </li>
+                <li>
+                    <a class="img" href="{:U('Publish/index')}" style="background-color: #348ce6;">
+                        <img src="/public/Home/images/index_publish.png" alt="">
+                    </a>
+                    <a href="{:U('Publish/index')}">出租/售</a>
+                </li>
+            </ul>
+        </div>
+        <div class="requirement">
+            <span>没有我要的房源</span>
+            <a class="custom-button" href="{:U('Requirement/index')}">
+                <span>免费需求定制</span>
+            </a>
+        </div>
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">交易流程</span>
+                <span class="right">房客行全程为您服务 ></span>
+            </div>
+            <div class="trade-process-img">
+                <img src="/public/Home/images/trade_process.png" alt="交易流程图"/>
+            </div>
+        </div>
+        <!-- 新房 -->
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">精选新房</span>
+                <span class="right">更多新房 ></span>
+            </div>
+            <div class="recommend-list">
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 二手房 -->
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">精选二手房</span>
+                <span class="right">更多二手房 ></span>
+            </div>
+            <div class="recommend-list">
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 租房 -->
+        <div class="recommend">
+            <div class="recommend-header">
+                <span class="left">精选租房</span>
+                <span class="right">更多租房 ></span>
+            </div>
+            <div class="recommend-list">
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommend-item" url="">
+                    <div>
+                        <img src="/uploads/loupan/2017-12-09/5a2bd3425aea1.jpg" alt="房屋图片" />
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">新景国际城</span>
+                        <div class="attr">
+                            <div class="left">
+                                <span>2-5室  |  89-148㎡</span>
+                                <span>翔安 海翔大道</span>
+                            </div>
+                            <div class="right">
+                                <span>500万元/套起</span>
+                                <!-- <span>340000元/㎡</span> -->
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span>代售</span>
+                            <span>别墅</span>
+                            <span>商业区</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-footer">
+            <span>-- 已经到底了 --</span>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script>
+        var indexLi = $('.main_image>ul li').length;
+        (function() {
+            var wid = window.innerWidth*0.04;
+            var left = Number($('.flicking_con').css('left').slice(0,3))
+
+            var num = indexLi-3;
+            var slip = left-num*wid;
+            console.log(slip)
+            $('.flicking_con').css('left',slip)
+            for(i=0;i<indexLi;i++){
+                var a = '<a></a>'
+
+            $('.flicking_con').append(a)
+        }
+        })();
+
+        var current_loading = false;
+        var page_container_object =  $("body").get(0);
+        var time=1;
+        $(window).scroll(function(){
+            var scroll_interval = page_container_object.scrollHeight - page_container_object.scrollTop-page_container_object.clientHeight;
+            if (scroll_interval <= 100 && !current_loading) {
+                current_loading = true;
+                loadMore(time);
+            }
+        });
+        //"向服务器请求数据"
+        function loadMore(te) {
+            $.get("{:U('Index/loadloupan')}",{ time : te} , function(data) {
+                if(data.status==0){
+                    // $(".loadingA").add(".loadingB").add(".loadingC").hide();
+                }else{
+                    $(".con").last().append(data.houses);
+                    current_loading =false;
+                    time++;
+                }
+            });
+        }
+        $('.recommend-item').click(function (ele)
+        {
+            window.location.href=$(this).attr('url');
+        });
+
+    </script>
+    
+</block>
+

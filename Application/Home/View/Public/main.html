@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <meta name="description" content="房客行——移动互联网房产C2C服务平台，买卖双方直沟通，买房租房全免中介费，新房返高佣，海量租房券等你拿。" />
+    <meta name="Keywords" content="房地产 新房 一手房 二手房 公寓 出租 C2C 中介" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <block name="title"><title>{$title|default='房客行'}</title></block>
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <block name="css"></block>
+
+    <script src="/public/Static/jquery-2.1.3.min.js"></script>
+    <script src="/public/Home/js/jquery.touchSlider.js"></script>
+    <style>
+        .actives{
+            color:#44c3ca !important;
+        }
+    </style>
+    <script type="text/javascript">
+        function FkxToast()
+        {
+        }
+        FkxToast.success = function (msg) {
+            alert(msg);
+        };
+        FkxToast.error = function (msg) {
+            alert(msg);
+        };
+    </script>
+</head>
+<body>
+    <input type="hidden" id="path_info_" value="<?php if (!empty($_SERVER['PATH_INFO'])){ echo $_SERVER['PATH_INFO'];}else{echo 'main';} ?>">
+<block name="header"></block>
+<block name="main"></block>
+<block name="tabbar"></block>
+<block name="modal"></block>
+<block name="js"></block>
+<script>
+$(".goBackBtn").click(function () {
+    window.history.back();
+});
+(function () {
+    var path_info = $('#path_info_').val() == 'main' ? 'Index/index' : $('#path_info_').val();
+    var index_list = path_info + '/list';
+    var index_top = path_info + '/top';
+    var index_current_page = path_info + '/currentPage';
+    var back = true;
+    function historyTopAndContent() {
+        if ( back ) {
+            setTimeout(function() {
+                $(document).scrollTop(window.sessionStorage.getItem(index_top));
+            }, 100);
+            if (window.sessionStorage.getItem(index_list)) {
+                $('.storageRange').html(window.sessionStorage.getItem(index_list));
+            }
+            back = false;
+            return false;
+        } 
+    }
+    historyTopAndContent();
+    $(window).scroll(function () {
+        if ($('.storageRange').html() != undefined) {
+            window.sessionStorage.setItem(index_list, $('.storageRange').html());
+        }
+        window.sessionStorage.setItem(index_top, $(document).scrollTop());
+    });
+})();
+
+// if(navigator && navigator.geolocation)
+// {
+//     navigator.geolocation.getCurrentPosition(function(position){
+//         if(position && position.coords)
+//         {
+//             console.log('longitude:', position.coords.longitude, 'latitude:', position.coords.latitude);
+//             $.post('{:U("Location/report")}',{longitude: position.coords.longitude, latitude: position.coords.latitude});
+//         }
+//     }, function(err){console.log(err);});
+// }
+</script>
+</body>
+</html>

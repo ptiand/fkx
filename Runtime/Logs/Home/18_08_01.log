@@ -1,0 +1,993 @@
+[ 2018-08-01T14:29:36+08:00 ] 127.0.0.1 /index.php/Service/register_tenant/id/1/room_id/6.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `agreement` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `agreement` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `agreement_cost` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `agreement_cost` WHERE `a_id` = 1  [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `apartment_rooms` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `apartment_rooms` WHERE `id` = 6 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `id` = 1000000022 LIMIT 1   [ RunTime:0.0200s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Array to string conversion E:\myphp\fkx\Runtime\Cache\Home\deeefc58b350474d3703c29f19a96015.php 第 206 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009000s ]
+
+[ 2018-08-01T14:29:39+08:00 ] 127.0.0.1 /index.php/Service/tenant_info/house_id/1000000022.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `id` = 1000000022 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `apartment_floor` [ RunTime:0.0180s ]
+SQL: SELECT `id`,`floor_name` FROM `apartment_floor` WHERE `house_id` = 1000000022  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `apartment_rooms` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `apartment_rooms` WHERE `house_id` = 1000000022  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `agreement` [ RunTime:0.0190s ]
+SQL: SELECT `id` FROM `agreement` WHERE `house_id` = 1000000022 AND `room_id` = 6 AND `status` = 1 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.006000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006000s ]
+
+[ 2018-08-01T14:29:43+08:00 ] 127.0.0.1 /index.php/Service/house_setup.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.064000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-08-01T14:29:45+08:00 ] 127.0.0.1 /index.php/Service/load_houses.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0260s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1 LIMIT 0,20   [ RunTime:0.0210s ]
+NOTIC: [8] Undefined variable: reorder E:\myphp\fkx\Application\Home\Controller\ServiceController.class.php 第 81 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `RentalHouses` WHERE `source` = 2 AND `userId` = 100022 AND `shop_id` = 1 LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T14:29:48+08:00 ] 127.0.0.1 /index.php/Service/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.1670s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-08-01T14:29:49+08:00 ] 127.0.0.1 /index.php/Im/getLoginInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 1 for Library\TencentIMSdk\IMSdk::createAndInitRestAPI(), called in E:\myphp\fkx\Application\Home\Controller\ImController.class.php on line 200 and defined E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 32 行.
+NOTIC: [8] Undefined variable: identifier E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 35 行.
+
+[ 2018-08-01T14:29:52+08:00 ] 127.0.0.1 /index.php/Center/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `users` WHERE `id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isLogin E:\myphp\fkx\Runtime\Cache\Home\2d360899476391df7722df53bc49d31d.php 第 295 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T14:29:57+08:00 ] 127.0.0.1 /index.php/Service/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-08-01T14:29:58+08:00 ] 127.0.0.1 /index.php/Im/getLoginInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 1 for Library\TencentIMSdk\IMSdk::createAndInitRestAPI(), called in E:\myphp\fkx\Application\Home\Controller\ImController.class.php on line 200 and defined E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 32 行.
+NOTIC: [8] Undefined variable: identifier E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 35 行.
+
+[ 2018-08-01T14:30:06+08:00 ] 127.0.0.1 /index.php/Mymsg/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:30:07+08:00 ] 127.0.0.1 /index.php/Mymsg/load_msg.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `user_msg` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 0,20   [ RunTime:0.0200s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-08-01T14:30:21+08:00 ] 127.0.0.1 /index.php/Im/getLoginInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 1 for Library\TencentIMSdk\IMSdk::createAndInitRestAPI(), called in E:\myphp\fkx\Application\Home\Controller\ImController.class.php on line 200 and defined E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 32 行.
+NOTIC: [8] Undefined variable: identifier E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 35 行.
+
+[ 2018-08-01T14:30:37+08:00 ] 127.0.0.1 /index.php/Mymsg/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0270s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-08-01T14:30:38+08:00 ] 127.0.0.1 /index.php/Mymsg/load_msg.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `user_msg` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 0,20   [ RunTime:0.0180s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-08-01T14:31:16+08:00 ] 127.0.0.1 /index.php/Mymsg/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-08-01T14:31:19+08:00 ] 127.0.0.1 /index.php/Mymsg/load_msg.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `user_msg` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 0,20   [ RunTime:0.0180s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 1   [ RunTime:0.0160s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T14:31:29+08:00 ] 127.0.0.1 /index.php/Mymsg/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:31:32+08:00 ] 127.0.0.1 /index.php/Mymsg/load_msg.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `user_msg` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 0,20   [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:31:34+08:00 ] 127.0.0.1 /index.php/Mymsg/read_msg/msg_id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `user_msg` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `user_msg` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: room_info E:\myphp\fkx\Runtime\Cache\Home\f876575755aa8aed47bf392fdaf01c5f.php 第 94 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-08-01T14:32:43+08:00 ] 127.0.0.1 /index.php/Mymsg/load_msg.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `user_msg` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 0,20   [ RunTime:0.0200s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `user_msg` WHERE `to_user_id` = 100022 LIMIT 1   [ RunTime:0.0190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:32:45+08:00 ] 127.0.0.1 /index.php/Im/getLoginInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 1 for Library\TencentIMSdk\IMSdk::createAndInitRestAPI(), called in E:\myphp\fkx\Application\Home\Controller\ImController.class.php on line 200 and defined E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 32 行.
+NOTIC: [8] Undefined variable: identifier E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 35 行.
+
+[ 2018-08-01T14:32:49+08:00 ] 127.0.0.1 /index.php/Center/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `users` WHERE `id` = 100022 LIMIT 1   [ RunTime:0.0210s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0270s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: isLogin E:\myphp\fkx\Runtime\Cache\Home\2d360899476391df7722df53bc49d31d.php 第 295 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-08-01T14:33:00+08:00 ] 127.0.0.1 /index.php/shops/edit_shop_info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `Shops` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Shops` WHERE `user_id` = 100022 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2018-08-01T14:34:01+08:00 ] 127.0.0.1 /index.php/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ad` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `ad` WHERE `status` = 2 AND `positions` = 'index' ORDER BY sort asc  [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: houses E:\myphp\fkx\Runtime\Cache\Home\9b1c26b1cee56f532f15c56b96a07c74.php 第 167 行.
+NOTIC: [8] Undefined variable: houses E:\myphp\fkx\Runtime\Cache\Home\9b1c26b1cee56f532f15c56b96a07c74.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008000s ]
+
+[ 2018-08-01T14:34:01+08:00 ] 127.0.0.1 /uploads/type/2018-02-03/5a758b27e76dd.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:01+08:00 ] 127.0.0.1 /uploads/type/2017-12-22/5a3c7e2558cad.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:02+08:00 ] 127.0.0.1 /uploads/type/2017-12-22/5a3c7e41e7c89.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:02+08:00 ] 127.0.0.1 /public/Home/images/left.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:02+08:00 ] 127.0.0.1 /public/Home/images/right.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:02+08:00 ] 127.0.0.1 /index.php/Im/getLoginInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Missing argument 1 for Library\TencentIMSdk\IMSdk::createAndInitRestAPI(), called in E:\myphp\fkx\Application\Home\Controller\ImController.class.php on line 200 and defined E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 32 行.
+NOTIC: [8] Undefined variable: identifier E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 35 行.
+
+[ 2018-08-01T14:34:05+08:00 ] 127.0.0.1 /index.php/Index/loadRecommendOldHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `OldHouses` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `OldHouses` WHERE `state` <> 9 AND `sort` > 0 ORDER BY sort ASC, updateTime DESC   [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 11 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 4 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 2 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T14:34:07+08:00 ] 127.0.0.1 /index.php/Index/loadRecommendRentalHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 AND `sort` > 0 ORDER BY sort ASC, updateTime DESC   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:09+08:00 ] 127.0.0.1 /index.php/Index/loadRecommendNewHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `NewHouses` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `NewHouses` WHERE `state` <> 9 AND `sort` > 0 ORDER BY sort ASC, updateTime DESC   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `HouseHuxings` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 1 ORDER BY sort ASC  [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 11 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0200s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 22 ORDER BY sort ASC  [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0190s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 24 ORDER BY sort ASC  [ RunTime:0.0200s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 28 ORDER BY sort ASC  [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 1 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:12+08:00 ] 127.0.0.1 /index.php/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` = 0  [ RunTime:0.0210s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `types` WHERE `is_del` <> 1  [ RunTime:0.0200s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:14+08:00 ] 127.0.0.1 /index.php/RentalHouse/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` = 0  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `types` WHERE `is_del` <> 1  [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-08-01T14:34:15+08:00 ] 127.0.0.1 /index.php/RentalHouse/listItem.html?currentPage=0&pageSize=10&filter%5Bdistrict%5D%5Bcity%5D=-1&filter%5Bdistrict%5D%5Barea%5D=-1&filter%5Bhuxing%5D=-1&filter%5Bname%5D=-1&filter%5Bsource%5D=1&filter%5Bprice%5D%5Btype%5D=1&filter%5Bprice%5D%5Bprice%5D=-1&filter%5Bprice%5D%5BcustomPrice%5D%5Bmin%5D=0&filter%5Bprice%5D%5BcustomPrice%5D%5Bmax%5D=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 AND `source` = 1 ORDER BY  1/`sort` DESC, `updateTime` DESC LIMIT 0,10   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `types`  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [8] Undefined offset: 350211 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350211 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [8] Undefined offset: 350203 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350203 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [8] Undefined offset: 350206 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350203 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350203 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T14:34:15+08:00 ] 127.0.0.1 /uploads/pictures/2018-05-06/5aeeb08a80932.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T14:34:26+08:00 ] 127.0.0.1 /index.php/RentalHouse/detail/id/1000000020.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `id` = 1000000020 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `zxiu` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `zxiu` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 0 E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 44 行.
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 350200 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350200 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 350211 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350211 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `Medias` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = 1000000020 AND `type` = 2 AND `houseType` = 3 AND `isDel` <> 1 ORDER BY id DESC LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Medias` WHERE `houseId` = 1000000020 AND `type` = 1 AND `houseType` = 3 AND `isDel` <> 1 ORDER BY sort ASC  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0160s ]
+NOTIC: [8] Undefined index:  E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = null LIMIT 1   [ RunTime:0.0160s ]
+NOTIC: [2] Cannot use a scalar value as an array E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `Cards` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Cards` WHERE `houseId` = 1000000020 AND `houseType` = 3 AND `state` = 1 ORDER BY id DESC LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `Favorites` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Favorites` WHERE `userId` = 100022 AND `houseId` = 1000000020 AND `houseType` = 3 AND `state` = 1 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: video E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 115 行.
+NOTIC: [8] Undefined index: video E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 122 行.
+NOTIC: [2] Missing argument 2 for renderLoginHtml(), called in E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php on line 148 and defined E:\myphp\fkx\Application\Home\Common\function.php 第 85 行.
+NOTIC: [8] Undefined index: video E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 366 行.
+NOTIC: [8] Undefined index: video E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 413 行.
+NOTIC: [8] Undefined index: video E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 419 行.
+NOTIC: [8] Undefined index: video E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 456 行.
+NOTIC: [8] Undefined variable: mediaAd E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 792 行.
+NOTIC: [8] Undefined variable: mediaAd E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 793 行.
+NOTIC: [8] Undefined index: video E:\myphp\fkx\Runtime\Cache\Home\42c588accfc93ded2dd98e78fc0ab46c.php 第 794 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.042000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T16:53:25+08:00 ] 127.0.0.1 /index.php/RentalHouse/listItem.html?currentPage=0&pageSize=10&filter%5Bdistrict%5D%5Bcity%5D=-1&filter%5Bdistrict%5D%5Barea%5D=-1&filter%5Bhuxing%5D=-1&filter%5Bname%5D=-1&filter%5Bsource%5D=1&filter%5Bprice%5D%5Btype%5D=1&filter%5Bprice%5D%5Bprice%5D=-1&filter%5Bprice%5D%5BcustomPrice%5D%5Bmin%5D=0&filter%5Bprice%5D%5BcustomPrice%5D%5Bmax%5D=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 AND `source` = 1 ORDER BY  1/`sort` DESC, `updateTime` DESC LIMIT 0,10   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `types`  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [8] Undefined offset: 350211 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350211 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [8] Undefined offset: 350203 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350203 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [8] Undefined offset: 350206 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350203 LIMIT 1   [ RunTime:0.0180s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350203 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 350206 LIMIT 1   [ RunTime:0.0170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T16:53:25+08:00 ] 127.0.0.1 /index.php/Im/getLoginInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Missing argument 1 for Library\TencentIMSdk\IMSdk::createAndInitRestAPI(), called in E:\myphp\fkx\Application\Home\Controller\ImController.class.php on line 200 and defined E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 32 行.
+NOTIC: [8] Undefined variable: identifier E:\myphp\fkx\Library\TencentIMSdk\IMSdk.class.php 第 35 行.
+
+[ 2018-08-01T16:53:28+08:00 ] 127.0.0.1 /index.php/Index/loadRecommendNewHouse.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `NewHouses` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `NewHouses` WHERE `state` <> 9 AND `sort` > 0 ORDER BY sort ASC, updateTime DESC   [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `HouseHuxings` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 1 ORDER BY sort ASC  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 2 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 11 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 22 ORDER BY sort ASC  [ RunTime:0.0170s ]
+NOTIC: [8] Undefined offset: 3 E:\myphp\fkx\Application\Common\Model\TypeModel.class.php 第 16 行.
+SQL: SELECT * FROM `types` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 24 ORDER BY sort ASC  [ RunTime:0.0180s ]
+SQL: SELECT * FROM `HouseHuxings` WHERE `newHouseId` = 28 ORDER BY sort ASC  [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 1 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0160s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T16:53:30+08:00 ] 127.0.0.1 /index.php/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ad` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `ad` WHERE `status` = 2 AND `positions` = 'index' ORDER BY sort asc  [ RunTime:0.0190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: houses E:\myphp\fkx\Runtime\Cache\Home\9b1c26b1cee56f532f15c56b96a07c74.php 第 167 行.
+NOTIC: [8] Undefined variable: houses E:\myphp\fkx\Runtime\Cache\Home\9b1c26b1cee56f532f15c56b96a07c74.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-08-01T16:53:32+08:00 ] 127.0.0.1 /index.php/RentalHouse/index2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `citys` WHERE `is_del` = 0  [ RunTime:0.0210s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `types` WHERE `is_del` <> 1  [ RunTime:0.0190s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T16:53:35+08:00 ] 127.0.0.1 /index.php/RentalHouse/listItem.html?currentPage=0&pageSize=10&filter%5Bdistrict%5D%5Bcity%5D=-1&filter%5Bdistrict%5D%5Barea%5D=-1&filter%5Bhuxing%5D=-1&filter%5Bname%5D=-1&filter%5Bsource%5D=2&filter%5Bprice%5D%5Btype%5D=1&filter%5Bprice%5D%5Bprice%5D=-1&filter%5Bprice%5D%5BcustomPrice%5D%5Bmin%5D=0&filter%5Bprice%5D%5BcustomPrice%5D%5Bmax%5D=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 AND `source` = 2 ORDER BY  1/`sort` DESC, `updateTime` DESC LIMIT 0,10   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `types`  [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0200s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0190s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0190s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 207 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-08-01T16:53:35+08:00 ] 127.0.0.1 /uploads/pictures/2018-07-19/5b504a6cd0121.jpeg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Uploads
+
+[ 2018-08-01T17:41:43+08:00 ] 127.0.0.1 /index.php/RentalHouse/listItem.html?currentPage=1&pageSize=10&filter%5Bdistrict%5D%5Bcity%5D=-1&filter%5Bdistrict%5D%5Barea%5D=-1&filter%5Bhuxing%5D=-1&filter%5Bname%5D=-1&filter%5Bsource%5D=2&filter%5Bprice%5D%5Btype%5D=1&filter%5Bprice%5D%5Bprice%5D=-1&filter%5Bprice%5D%5BcustomPrice%5D%5Bmin%5D=0&filter%5Bprice%5D%5BcustomPrice%5D%5Bmax%5D=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `RentalHouses` [ RunTime:0.0230s ]
+SQL: SELECT * FROM `RentalHouses` WHERE `state` <> 9 AND `source` = 2 ORDER BY  1/`sort` DESC, `updateTime` DESC LIMIT 10,10   [ RunTime:0.0210s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `types`  [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 3 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0200s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0200s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0200s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+NOTIC: [2] Invalid argument supplied for foreach() E:\myphp\fkx\Application\Home\Controller\RentalHouseController.class.php 第 218 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+

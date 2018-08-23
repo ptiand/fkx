@@ -1,0 +1,68 @@
+[ 2018-07-17T09:48:39+08:00 ] 127.0.0.1 /index.php/shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.003000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+NOTIC: [8] Undefined variable: publishCount E:\myphp\fkx\Runtime\Cache\Home\0f05187a9b6d9fc997b53ecd683f2df6.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.050000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-07-17T10:30:30+08:00 ] 127.0.0.1 /index.php/Center/mypublish.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SELECT *,count(*) as count FROM (SELECT userId,state FROM OldHouses oh UNION ALL SELECT userId,state FROM RentalHouses) as t WHERE `userId` = '100022' AND `state` <> 9 GROUP BY state  [ RunTime:0.1970s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.042000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.042000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.013000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-07-17T10:30:33+08:00 ] 127.0.0.1 /index.php/Center/mypublish_listItem.html?currentPage=0&pageSize=10&filter%5Bstate%5D=-1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SELECT * FROM (SELECT id,`name`,`state`,`updateTime`,`userId`,`isLocked`,`primaryImage`,`type`,`cityId`,`areaId`,`address`,`price`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`square`,1 as publishType,`totalPrice`,tags from OldHouses oh
+        UNION ALL SELECT id,`name`,`state`,`updateTime`,`userId`,`isLocked`,`primaryImage`,`type`,`cityId`,`areaId`,`address`,`price`,`houseRoom`,`livingRoom`,`restRoom`,`diningRoom`,`veranda`,`square`,2 as publishType,0 as totalPrice,'[]' as tags from RentalHouses rh) as t WHERE `userId` = '100022' AND `state` <> 9 ORDER BY  updateTime DESC LIMIT 0,10   [ RunTime:0.0250s ]
+SQL: SHOW COLUMNS FROM `types` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `types`  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `Tags` [ RunTime:0.0220s ]
+SQL: SELECT * FROM `Tags` WHERE `type` = 2 AND `state` = 1 ORDER BY id ASC  [ RunTime:0.0180s ]
+SQL: SHOW COLUMNS FROM `citys` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 10 E:\myphp\fkx\Application\Common\Model\CityModel.class.php 第 16 行.
+SQL: SELECT * FROM `citys` WHERE `id` = 10 LIMIT 1   [ RunTime:0.0340s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+

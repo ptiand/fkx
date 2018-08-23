@@ -1,0 +1,44 @@
+<if condition="empty($houses)">
+    <div class="message">
+        <span>暂无精选房源！</span>
+    </div>
+    <else/>
+    <volist name="houses" id="house">
+        <div class="recommend-item"  onclick="javascript:window.location.href='{:U('RentalHouse/detail',array('id'=>$house['id']))}'">
+            <div class="recommend-item-img">
+                <img src="{$house.primaryImage|default='/public/no_photo.png'}" alt="" />
+            </div>
+            <div class="houseInfo">
+                <span class="title">{$house.name}</span>
+                <div class="attr">
+                    <div class="left">
+                        <span>{$house.area}</span>
+                        <span>{$house.houseRoom}室{$house.livingRoom}厅<if condition="$house['restRoom'] gt 0">{$house.restRoom}卫</if>
+                        | {:renderNumber($house['square'],0)}㎡</span>
+                    </div>
+                    <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($house['price'])}</span>
+                            <span>元/月</span>
+                        </span>
+                    </div>
+                </div>
+                <?php $classNames = array(1=>'first', 2=> 'second', 0=> 'third');?>
+                <div class="label">
+                    <if condition="$house['source'] == $Source['Personal']">
+                        <notempty name="house['stateCaption']">
+                            <span class="first">{$house.stateCaption}</span>
+                        </notempty>
+                        <notempty name="house['typeCaption']">
+                            <span class="second">{$house.typeCaption}</span>
+                        </notempty>
+                    </if>
+                    <foreach name="house['tags']" item="tag" key="key">
+                        <span class="{$classNames[$key%3]}">{$tagNames[$tag]}</span>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </volist>
+</if>
+

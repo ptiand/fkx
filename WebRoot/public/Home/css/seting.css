@@ -1,0 +1,77 @@
+.head {
+    padding: 0 15px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    height: 57px;
+    position: relative;
+    background-color: #fff;
+}
+.head p {
+    font-size: 14px;
+    color: #333333;
+    line-height: 55px;
+}
+.head img{
+    width: 50px;
+    height: 50px;
+    margin: 4px 30px 0 0;
+}
+.arrow {
+    position: absolute !important;
+    top: 17px;
+    right: 5px;
+    
+}
+.arrow img {
+    width: 13px;
+    height: 11px;
+    margin: 0 !important;
+}
+.bottom {
+    margin: 70px 15px 0 15px;
+    height: 40px;
+    background: #44c3cc;
+    border-radius: 5px;
+    text-align: center;
+}
+.bottom a {
+    font-size: 17px;
+    color: #ffffff;
+    line-height: 40px;
+}
+
+
+.rule {
+    padding: 15px;
+}
+.rule h1 {
+    font-size: 16px;
+    color: #333333;
+    margin-top: 10px;
+}
+.rule h2 {
+    font-size: 14px;
+    color: #333333;
+    line-height: 24px;
+    font-weight: normal;
+}
+.rule p {
+    font-size: 12px;
+    color: #666666;
+}
+
+.con {padding: 64px 20px 0 20px;font-size: 14px;font-family: microsoft yahei;}
+.con .logo {text-align: center;}
+.con .logo h1 {font-size: 23px;font-weight: normal;color: #444;}
+.con .logo p{color: #999;font-size: 13px;margin-top: 2px;}
+.con .discription {line-height: 1.5em;text-indent: 2em;margin-top: 20px;color: #333;font-size: 15px;}
+.con .d-wrap {margin-top: 15px;padding:5px 5px 8px 12px;border: 1px solid #ccc;}
+.con .d-wrap li {padding: 5px 0;}
+.con .d-contact {margin-top: 30px;}
+.con .d-contact a {color: #333;}
+
+.con .down {margin-top: 40px;}
+.con .down a {
+    display: none;margin: 20px auto;width: 75%;color: #fff;font-size: 16px;text-align: center;height: 42px;line-height: 42px;background-color:#34BBBE; 
+}

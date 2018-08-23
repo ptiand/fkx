@@ -1,0 +1,71 @@
+<div class="header"  style="position: unset">
+    <div class="button" id="ReportModalClose">
+        <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+    </div>
+    <div class="title">
+        <span>客户报备</span>
+    </div>
+    <div class="button">
+    </div>
+</div>
+<div style="flex:1;display: flex;">
+    <div class="container">
+        <div class="group-container">
+            <div class="group-container">
+                <form id="ReportForm">
+                <div class="item">
+                    <span class="item-label">客户名称</span>
+                    <input class="input-container" id="NameInput" name="report.username" required type="text" placeholder="请输入客户名称"/>
+                </div>
+                <div class="seperator"></div>
+                <div class="item">
+                    <span class="item-label">客户性别</span>
+                    <select class="input-container" name="report.sex">
+                        <foreach name="SexCaption" item="sex">
+                            <option value="{$key}">{$sex}</option>
+                        </foreach>
+                    </select>
+                    <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                </div>
+                <div class="seperator"></div>
+                <div class="item">
+                    <span class="item-label">客户电话</span>
+                    <input class="input-container" id="PhoneInput" name="report.phone" required type="text" placeholder="请输入客户电话"/>
+                </div>
+                <div class="seperator"></div>
+                <div class="item report-zhiye">
+                    <span class="item-label">置业目的</span>
+                    <select class="input-container" name="report.zhiye">
+                        <option value="">请选择</option>
+                        <foreach name="ZhiyeCaption" item="zhiye">
+                            <option value="{$key}">{$zhiye}</option>
+                        </foreach>
+                    </select>
+                    <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                </div>
+                <div class="seperator report-zhiye"></div>
+                <div class="item report-huxing">
+                    <span class="item-label">关注户型</span>
+                    <select class="input-container" name="report.huxing">
+                        <option value="">请选择</option>
+                        <foreach name="HuxingCaption" item="huxing">
+                            <option value="{$key}">{$huxing}</option>
+                        </foreach>
+                    </select>
+                    <i class="gt"><img src="/public/Home/images/icon_gt.png" /></i>
+                </div>
+                <div class="seperator report-huxing"></div>
+                <div class="item">
+                    <span class="item-label">备注信息</span>
+                    <textarea class="input-container" style="height: 54px;"
+                        maxlength="255"
+                        name="report.content"
+                        type="text" placeholder="例：价格300-333万之间，置业目的：投资房地产，区域：思明区嘉禾路，需求点：学区房等"></textarea>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="bottom-container" id="SubmitReport">提交</div>
+    </div>
+
+</div>

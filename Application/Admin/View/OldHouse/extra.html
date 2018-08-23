@@ -1,0 +1,214 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">编辑二手房信息</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="Form" method="post" action="{$self}">
+        <input type="hidden" name="id" value="{$house.id}" />
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="xq">小区</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="xq" type="text" name="extra.xq" value="{$extra.xq}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="kfs">开发商</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="kfs" name="extra.kfs" type="text" value="{$extra.kfs}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="wygs">物业公司</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="wygs" name="extra.wygs" type="text" value="{$extra.wygs}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="wyfy">物业费用</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="wyfy" name="extra.wyfy" type="text" value="{$extra.wyfy}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="cqnx">产权年限</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="cqnx" name="extra.cqnx" type="text" value="{$extra.cqnx}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">建筑类型</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">{$houseTypes[$house['type']]}</p>
+                </div>
+                <label class="col-sm-2 control-label" for="jznd">建筑年代</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="jznd" name="extra.jznd" type="text" value="{$extra.jznd}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="lc">楼层</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="lc" name="extra.lc" type="text" value="{$extra.lc}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="zhs">总户数</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="zhs" name="extra.zhs" type="text" value="{$extra.zhs}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="tcw">停车位</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="tcw" name="extra.tcw" type="text" value="{$extra.tcw}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="lhl">绿化率</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="lhl" name="extra.lhl" type="text" value="{$extra.lhl}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="rjl">容积率</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="rjl" name="extra.rjl" type="text" value="{$extra.rjl}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="cx">朝向</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="cx" name="extra.cx" type="text" value="{$extra.cx}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="lx">楼型</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="lx" name="extra.lx" type="text" value="{$extra.lx}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="dt">电梯</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="dt" name="extra.dt" type="text" value="{$extra.dt}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="qs">权属</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="qs" name="extra.qs" type="text" value="{$extra.qs}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <!--<label class="col-sm-2 control-label" for="nd">年代</label>-->
+                <!--<div class="col-sm-4">-->
+                    <!--<input class="form-control" id="nd" name="extra.nd" type="text" value="{$extra.nd}"/>-->
+                <!--</div>-->
+                <label class="col-sm-2 control-label" for="yt">用途</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="yt" name="extra.yt" type="text" value="{$extra.yt}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="pt">配套</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="pt" name="extra.pt" type="text" value="{$extra.pt}"/>
+                </div>
+                <label class="col-sm-2 control-label" for="gp">挂牌</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="gp" name="extra.gp" type="text" value="{$extra.gp}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="yzxm">业主姓名</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="yzxm" name="extra.yzxm" value="{$extra.yzxm}" type="text" />
+                </div>
+                <label class="col-sm-2 control-label" for="yzdh">业主电话</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="yzdh" name="extra.yzdh" value="{$extra.yzdh}" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="xsyz">显示业主信息</label>
+                <!--<div class="col-sm-4">-->
+                    <!--<input class="form-control" id="xsyz" name="extra.xsyz" value="{$extra.xsyz}" type="text" />-->
+                <!--</div>-->
+                <div class="col-sm-4" style="padding-top:4px;">
+                    <input type="radio" value="0" {$extra['xsyz']?'':'checked="checked"'} name="extra.xsyz">
+                    不显示
+                    <input type="radio" value="1" {$extra['xsyz']?'checked="checked"':''} name="extra.xsyz">
+                    显示
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-sm-2 control-label">联系信息</label>
+                <div class="col-sm-10">
+                    <table class="table" id="ContactTable">
+                        <thead>
+                        <tr>
+                            <th>客服名称</th>
+                            <th>客服电话</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name="extra.contacts" item="contact" key="k">
+                                <tr>
+                                    <td><input class="form-control" type="text" name="contact.name[]" value="{$contact.name}"/></td>
+                                    <td><input class="form-control" type="text" name="contact.tel[]" value="{$contact.tel}"/></td>
+                                    <td><a name="deleteContact" class="btn btn-danger">删除</a></td>
+                                </tr>
+                            </foreach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <a id="addContact" class="btn btn-success">添加客服</a>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+    <button type="button" class="btn btn-primary" id="submit">保存</button>
+</div>
+<style>
+.uploadifive-queue
+{
+    display: none;
+}
+</style>
+<script type="text/javascript" src='__PUBLIC__/Static/uploadifive/Sample/jquery.uploadifive.min.js'></script>
+<script type="application/javascript">
+$(function () {
+    $("#submit").click(function(){
+        var $form = $('#Form');
+        $form.bootstrapValidator('validate');
+        if(!$form.data('bootstrapValidator').isValid())
+            return;
+        $.post($form.attr('action'), $form.serialize(), function(result) {
+            if(result.status==1){
+                swal({
+                    title:"操作成功！",
+                    text:result.info,
+                    type:"success"
+                },function(){
+                    $form.bootstrapValidator('resetForm', true);
+                    $('#Modal').modal('hide');
+                });
+            }else{
+                toastr.warning(result.info);return false;
+            }
+        }, 'json');
+    });
+
+    $('#ContactTable').delegate('[name="deleteContact"]', 'click', function ()
+    {
+        $(this).parents('tr').remove();
+    });
+    $('#addContact').click(function ()
+    {
+        var html = '<tr>';
+            html += '<td><input class="form-control" type="text" name="contact.name[]" value=""/></td>';
+            html += '<td><input class="form-control" type="text" name="contact.tel[]" value=""/></td>';
+            html += '<td><a name="deleteContact" class="btn btn-danger">删除</a></td>';
+            html += '</tr>';
+        $('#ContactTable tbody').append(html);
+    });
+
+});
+</script>

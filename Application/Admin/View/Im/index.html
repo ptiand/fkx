@@ -1,0 +1,307 @@
+<extend name="Public/common" />
+<block name="title"><title>微聊</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/index.css">
+    <link rel="stylesheet" href="/public/Home/css/house_list.css">
+</block>
+<block name="body">
+    <style>
+        html body {
+            background-color: rgba(242, 242, 242, 1);;
+        }
+        #list-container {
+            margin-top: 0;
+            padding: 0;
+            width: 50%;
+            margin: auto;
+        }
+        #list-container .recommend-item {
+            background-color: white;
+        }
+        #list-container .item-container {
+            display: flex;
+            padding: 0 10px;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .item-container .logo {
+            width: 36px;
+            height: 36px;
+            border: 1px solid lightgray;
+            border-radius: 18px;
+        }
+
+        .item-container .right-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .item-container .left-container {
+            position: relative;
+        }
+
+        .left-container .red-point {
+            background-color: red;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            font-size: 10px;
+        }
+
+        .item-container .right-container .top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .item-container .right-container .bottom {
+            margin-top: 5px;
+            color: #666;
+            overflow: hidden;
+            max-width: 410px;
+            text-overflow: ellipsis;
+        }
+
+        .right-container .top .date {
+            font-family: 'Arial Normal', 'Arial';
+            font-weight: 400;
+            font-style: normal;
+            font-size: 11px;
+            color: #999999;
+        }
+        #list-container .recommend-item {
+            padding: 10px;
+            border-bottom: 1px solid lightgray;
+            cursor: pointer;
+        }
+        #empty-tail {
+            justify-content: center;
+        }
+
+        #empty-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+    <div class="tab-content-container">
+        <div id="list-container">
+        </div>
+        <div id="empty-tail">-- 已经到底了 --</div>
+        <div id="empty-container">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <span>- 暂无消息 -</span>
+        </div>
+        <!--<div style="text-align:center;padding: 30px 0;background-color: #fff;">-->
+            <!--<img src="/public/Home/images/empty_list_icon.png"/>-->
+            <!--<div style="color: #999;font-size: 14px;margin-top: 12px;">- 暂无消息 -</div>-->
+        <!--</div>-->
+    </div>
+</block>
+<block name="script">
+    <script src="/public/Static/webim/sdk/webim.js"></script>
+    <script src="/public/Static/webim/sdk/json2.js"></script>
+    <script src="/public/Static/moment.js"></script>
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script type="application/javascript">
+
+        (function () {
+
+            let GroupNameCache = {};
+
+            const loginInfo = {
+                identifier: '{$identifier}',
+                userSig: '{$sig}',
+                sdkAppID: '{$sdkAppID}',
+                accountType: '{$accountType}',
+                identifierNick: '',
+                headurl: '',
+            };
+
+            //监听新消息事件
+            //newMsgList 为新消息数组，结构为[Msg]
+            function onMsgNotify(newMsgList) {
+                getRecentContactList(createListHtml);
+            }
+
+            let listeners = {
+                "onConnNotify": (e)=>{} //监听连接状态回调变化事件,必填
+                ,
+                "jsonpCallback": (e)=>{} //IE9(含)以下浏览器用到的jsonp回调函数，
+                ,
+                "onMsgNotify": (e)=>{onMsgNotify(e);console.log("onMsgNotify >>> ", e);} //监听新消息(私聊，普通群(非直播聊天室)消息，全员推送消息)事件，必填
+                ,
+                "onBigGroupMsgNotify": (e)=>{} //监听新消息(直播聊天室)事件，直播场景下必填
+                ,
+                "onGroupSystemNotifys": (e)=>{} //监听（多终端同步）群系统消息事件，如果不需要监听，可不填
+                ,
+                "onGroupInfoChangeNotify": (e)=>{} //监听群资料变化事件，选填
+                ,
+                "onFriendSystemNotifys": (e)=>{} //监听好友系统通知事件，选填
+                ,
+                "onProfileSystemNotifys": (e)=>{} //监听资料系统（自己或好友）通知事件，选填
+                ,
+                "onKickedEventCall": (e)=>{} //被其他登录实例踢下线
+                ,
+                "onC2cEventNotifys": (e)=>{} //监听C2C系统消息通道
+                ,
+                "onAppliedDownloadUrl": (e)=>{} //申请文件/音频下载地址的回调
+            };
+
+            const options = {
+                'isAccessFormalEnv': true, //是否访问正式环境，默认访问正式，选填
+                'isLogOn': false //是否开启控制台打印日志,默认开启，选填
+            };
+
+            layer.open({
+                type: 2,
+                content: '加载中',
+                shadeClose: false
+            });
+            webim.login(loginInfo, listeners, options, (resp) => {
+                // 登录成功
+                console.log("resp", resp);
+                getRecentContactList(createListHtml);
+                layer.closeAll();
+                // getGroupList();
+            }, err => {
+                alert(err.ErrorInfo);
+                layer.closeAll();
+            });
+
+            function getGroupList() {
+                const options = {
+                    'Member_Account': loginInfo.identifier,
+                    'Offset': 0,
+                    'GroupBaseInfoFilter': [
+                        'Type',
+                        'Name',
+                        'Introduction',
+                        'Notification',
+                        'FaceUrl',
+                        'CreateTime',
+                        'Owner_Account',
+                        'LastInfoTime',
+                        'LastMsgTime',
+                        'NextMsgSeq',
+                        'MemberNum',
+                        'MaxMemberNum',
+                        'ApplyJoinOption',
+                        'ShutUpAllMember'
+                    ],
+                    'SelfInfoFilter': [
+                        'Role',
+                        'JoinTime',
+                        'MsgFlag',
+                        'UnreadMsgNum'
+                    ]
+                };
+                webim.getJoinedGroupListHigh(
+                    options,
+                    (resp) => {
+                        if (!resp.GroupIdList || resp.GroupIdList.length == 0) {
+                            alert('你目前还没有加入任何群组');
+                            return;
+                        }
+                        console.log("groupList", resp.GroupIdList);
+                    }
+                );
+            }
+
+            function getRecentContactList(callback) {
+                webim.getRecentContactList({
+                    'Count': 100 //最近的会话数 ,最大为 100
+                },function(resp){
+                    //业务处理
+                    console.log("getRecentContactList >>> ", resp);
+                    callback(resp.SessionItem);
+                },function(resp){
+                    //错误回调
+                    alert('服务器出错!');
+                });
+            }
+            
+            function createListHtml(sessionList=[]) {
+                if (!sessionList.length) {
+                    setVisibility($('#empty-tail'), false);
+                    setVisibility($('#empty-container'), true);
+                    return;
+                }
+                getGroupNames(sessionList.map((s, i) => s.ToAccount), function (groupNames) {
+                    let html = '';
+                    for (let session of sessionList) {
+                        selSess = webim.MsgStore.sessByTypeId(session.Type, session.ToAccount);
+                        let nickName=session.GroupNick, timeStamp=session.MsgTimeStamp, message=session.MsgShow,
+                            groupId=session.ToAccount, unreadMsgCount=session.UnreadMsgCount;
+                        nickName = groupNames[groupId]||nickName;
+                        html += createItemHtml({nickName, timeStamp, message, groupId, unreadMsgCount})
+                    }
+                    $("#list-container").html(html);
+                    setVisibility($('#empty-tail'), true);
+                    setVisibility($('#empty-container'), false);
+                });
+
+            }
+            
+            function createItemHtml({nickName, timeStamp, message, groupId, unreadMsgCount}) {
+                let unreadStyle='';
+                if (!unreadMsgCount) {
+                    unreadStyle ='display: none;';
+                }
+                return `<div class="recommend-item" groupId="${groupId}" onclick="javascript: window.location.href='{:U('Im/chat')}?groupId=${encodeURIComponent(groupId)}'">
+    <div class="item-container">
+        <div class="left-container">
+            <img src="/public/Home/images/message/icon_logo.png" class="logo"/>
+            <span class="red-point" style="${unreadStyle}" >${unreadMsgCount}</span>
+        </div>
+        <div class="right-container">
+            <span class="top">${nickName}<span></span><span class="date">${moment(timeStamp*1000).format('YYYY-MM-DD HH:mm:ss')}</span></span>
+            <span class="bottom">${message}</span>
+        </div>
+    </div>
+</div>`;
+            }
+
+            function setVisibility($target, visible) {
+                return $target.css('display', visible ? 'flex' : 'none');
+            }
+
+            // 异步获取群名称
+            function getGroupNames(groupIdList = [], callback) {
+                const ids = Object.keys(GroupNameCache);
+                for (let id in groupIdList) {
+                    const index = ids.indexOf(id);
+                    if (index > -1) {
+                        groupIdList.splice(index, 1);
+                    }
+                }
+                if (!groupIdList.length) {
+                    return GroupNameCache;
+                }
+                $.post('getGroupName', { groupIdList }, function (e) {
+                    console.log("getGroupName >>> ", e);
+                    if (e.status != 1) {
+                        throw new Error('系统错误！');
+                    }
+                    const groupNames = e.content.groupNames;
+                    for (let key in groupNames) {
+                        GroupNameCache[key] = groupNames[key];
+                    }
+                    callback(GroupNameCache);
+                });
+            }
+
+        })();
+    </script>
+</block>

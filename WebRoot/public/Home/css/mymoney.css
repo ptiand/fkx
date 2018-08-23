@@ -1,0 +1,63 @@
+body {
+    background: #f2f2f2;
+}
+.lang {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+    display: flex;
+    margin-bottom: 10px;
+    background: #ffffff;
+}
+.lang p {
+    font-size: 14px;
+    color: #333333;
+    margin-right: 10px;
+    line-height: 45px;
+}
+.lang input {
+    width: 60%;
+    font-size: 14px;
+    color: #c2c2c2 !important;
+}
+.active {
+    color: #44c3cc;
+}
+.net {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+.net p {
+    font-size: 14px;
+    color: #333333;
+    margin-right: 10px;
+}
+.net-in {
+    margin-top: 10px;
+    display: flex;
+}
+.net-in img {
+    max-width: 74px;
+    max-height: 36px;
+}
+.chk {
+    opacity: 0;
+}
+.chk+label::before{
+    content: "\a0";
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 11;
+    height: 11;
+    border-radius: 50%;
+    border: 3px solid #c2c2c2;;
+    text-indent: .15em;
+    line-height: 1; 
+    margin-right: 5px;
+}
+.chk:checked+label::before {
+    border: 3px solid #44c3cc !important;
+}
+

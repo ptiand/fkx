@@ -1,0 +1,61 @@
+<if condition="empty($houses)">
+    <div class="message">
+        <span>暂无精选房源！</span>
+    </div>
+<else/>
+    <volist name="houses" id="house">
+        <div class="recommend-item" onclick="javascript:window.location.href='{:U('Lists/newHouseDetail',array('id'=>$house['id']))}'">
+            <div class="recommend-item-img">
+                <img src="{$house.primaryImage|default='/public/no_photo.png'}" alt="" />
+            </div>
+            <div class="houseInfo">
+                <span class="title">{$house.name}</span>
+                <div class="attr">
+                    <div class="left">
+                        <span>{$house.area}</span>
+                        <span>
+                            <if condition="!empty($house['minHouseRoom']) && !empty($house['maxHouseRoom'])">
+                                <?php if($house['minHouseRoom'] != $house['maxHouseRoom']){
+                                    echo $house['minHouseRoom'].'-'.$house['maxHouseRoom'].'室';
+                                } else{
+                                    echo $house['maxHouseRoom'].'室';
+                                }?>
+                            </if>
+                            <if condition="(!empty($house['minHouseRoom']) || !empty($house['maxHouseRoom'])) && (!empty($house['minSquare']) || !empty($house['maxSquare']))">|</if>
+                            <if condition="!empty($house['minSquare']) && !empty($house['maxSquare'])">
+                                <?php if($house['minSquare'] != $house['maxSquare']){
+                                    echo $house['minSquare'].'-'.$house['maxSquare'].'㎡';
+                                } else {
+                                    echo $house['maxSquare'].'㎡';
+                                }?>
+                            </if>
+                            <if condition="empty($house['minHouseRoom']) && empty($house['maxHouseRoom']) && empty($house['minSquare']) && empty($house['maxSquare'])">敬请关注</if>
+                        </span>
+                        
+                    </div>
+                    <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">
+                                <if condition="$house['minTotalPrice'] gt 0">{:renderMoney($house['minTotalPrice'])}</if>
+                                <if condition="!($house['minTotalPrice'] gt 0) && $house['minPrice']">{:renderMoney($house['minPrice'])}</if>
+                            </span>
+                            <span>
+                                <if condition="$house['minTotalPrice'] gt 0">万元/套起</if>
+                                <if condition="!($house['minTotalPrice'] gt 0) && $house['minPrice']">元/㎡起</if>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <?php $classNames = array(1=>'first', 2=> 'second', 0=> 'third');?>
+                <div class="label">
+                    <span class="first">{$house.stateCaption}</span>
+                    <span class="second">{$house.typeCaption}</span>
+                <foreach name="house['tags']" item="tag" key="key">
+                    <span class="{$classNames[$key%3]}">{$tagNames[$tag]}</span>
+                </foreach>
+                </div>
+            </div>
+        </div>
+    </volist>
+</if>
+

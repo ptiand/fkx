@@ -1,0 +1,170 @@
+<extend name="Public/main" />
+<block name="title"><title>服务</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/center.css">
+    <style>
+        .total-section {
+            background-color: #f8f8f8;
+            display: block;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .total-income {
+            background: #fff;
+            padding: 20px;
+            line-height: 2;
+        }
+        .total-income .clr-red{
+            font-size: 30px;
+        }
+        .total-list {
+            display: flex;
+            line-height: 1.5;
+        }
+        .total-item {
+            flex: 1;
+            padding: 5px 0;
+        }
+    </style>
+</block>
+
+<block name="header">
+    <div class="header">
+        <div class="button">
+        </div>
+        <div class="title">
+            <span>服务</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="container" style="padding-top: 40px;margin-bottom: 45px;">
+        <if condition="$shop_info['request_flag'] eq 1">
+        <a class="total-section" href="{:U('Service/total_detail')}">
+            <div class="total-income">
+                <span class="clr-red" data-field="month_in">0</span>
+                <div class="clr-gray">本月收入 (元)</div>
+            </div>
+            <div class="total-list">
+                <div class="total-item clr-gray">
+                    欠费 (元)
+                    <div class="clr-red" data-field="not_pay">0</div>
+                </div>
+                <div class="total-item clr-gray">
+                    即将到期 (套)
+                    <div class="clr-red" data-field="be_expire">0</div>
+                </div>
+                <div class="total-item clr-gray">
+                    空置率
+                    <div class="clr-red" data-field="empty_rate">0</div>
+                </div>
+                <div class="total-item clr-gray">
+                    上月收入 (元)
+                    <div class="clr-red" data-field="last_month_in">0</div>
+                </div>
+            </div>
+        </a>
+        </if>
+        <ul>
+            <if condition="$shop_info['request_flag'] eq 1">
+            <li>
+                <a href="{:U('Service/house_setup')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/publish.png" alt="">
+                    <p>公寓管理</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            <else />
+            <li>
+                <a href="{:U('Cservice/index')}">
+                <div class="left">
+                    <img src="/public/Home/images/content-2.png" alt="">
+                    <p>账单管理</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            </if>
+            <li>
+                <a href="{:U('Mymsg/index')}">
+                <div class="left">
+                    <img src="/public/Home/images/content-2.png" alt="">
+                    <p>消息管理</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="{:U('Service/check_in')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/report.png" alt="">
+                    <p>租客登记</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li> -->
+        </ul>
+        <ul>
+            <li>
+                <a href="{:U('Favorite/index')}">
+                <div class="left">
+                    <img src="/public/Home/images/btbar_fav2.png" alt="">
+                    <p>我的收藏</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+        </ul>
+        <div style="height: 20px;"></div>
+    </div>
+
+</block>
+<block name="tabbar">
+    <include file="Public:tabbar"/>
+</block>
+<block name="js">
+    <if condition="$shop_info.request_flag eq 1">
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script type="text/javascript">
+        function showToast(msg, cb) {
+            layer.open({content: msg, type: 3, skin: 'msg', time: 1.5, end: cb});
+        }
+        $(function() {
+            var loading = layer.open({type: 2, shadeClose: false});
+            $.ajax({
+                url: "{:U('Service/load_tongchou')}",
+                type: 'GET',
+                dataType: 'json',
+                success: function (resData) {
+                    layer.close(loading);
+                    console.log('resp: ', resData)
+                    $(".total-section .clr-red").each(function(idx, item) {
+                        var me = $(item), field = me.data('field');
+                        var text = resData[field] || 0;
+                        me.html(field == 'empty_rate' ? (text + '%') : text);
+                    })
+
+                },
+                error: function (msg) {
+                    layer.close(loading);
+                    showToast('操作失败')
+                }
+            });
+        });
+    </script>
+    </if>
+</block>

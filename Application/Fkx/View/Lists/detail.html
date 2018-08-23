@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/money.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+<div>
+    <div class="tle">
+        <p>
+            <if condition="($info['type'] eq 1)">
+                佣金规则
+                <else />
+                合作规则
+            </if>
+        </p>
+    </div>
+    <div class="ble">
+        {$info.contents|htmlspecialchars_decode}
+    </div>
+</div>
+</body>
+</html>

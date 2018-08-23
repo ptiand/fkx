@@ -1,0 +1,246 @@
+<extend name="Public/main" />
+<block name="title"><title>我的</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/center.css">
+</block>
+
+<block name="main">
+    <div class="banner">
+        <a href="{:U('Center/editinfo')}">
+            <img src="{$info.pic|default='/public/Home/images/img_member.png'}" alt="个人头像">
+        </a>
+        <h1>{$info.user_name}</h1>
+        <p>{$info.phone}</p>
+        <if condition="$isWeixin">
+            <if condition="$info['openid']">
+                <p class="clr-green">已绑定微信</p>
+            <else/>
+                <p class="clr-yellow"><a href="javascript:void(0);" class="J_bind_wx">去绑定微信</a></p>
+            </if>
+        </if>
+        <div class="seting">
+            <a href="{:U('Center/editinfo')}">
+                <img src="/public/Home/images/seting.png" alt="">
+            </a>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 45px;padding-top: 165px;">
+        <ul>
+            <li>
+                <a href="{:U('Center/mypublish')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/publish.png" alt="">
+                    <p>我的发布</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="{:U('Info/index')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/alarm.png" alt="">
+                    <p>我的预约</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Report/index')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/report.png" alt="">
+                    <p>报备记录</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Requirement/index')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/custom.png" alt="">
+                    <p>定制需求</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            <!--
+            <a href="{:U('Client/index')}">
+                <li>
+
+                    <div class="left">
+                        <img src="/public/Home/images/person.png" alt="">
+                        <p>我的客户</p>
+                    </div>
+                    <div class="right">
+                        <img src="/public/Home/images/arrow.png" alt="">
+                    </div>
+
+                </li>
+            </a>
+            -->
+            <li>
+                <a href="{:U('Center/prize')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/reward.png" alt="">
+                    <p>佣金和奖励</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('UserCard/index')}">
+                <div class="left">
+                    <img src="/public/Home/images/my/card.png" alt="">
+                    <p>卡券包</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+                </a>
+            </li>
+            <!--
+            <li>
+                <div class="left">
+                    <img src="/public/Home/images/my/message.png" alt="">
+                    <p>我的消息</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+            </li>
+            
+            <a href="{:U('Weixin/center')}">
+            <li style="border:none">
+                <div class="left">
+                    <img src="/public/Home/images/new.png" alt="">
+                    <p>推荐注册分佣</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+            </li>
+            </a>
+            -->
+        </ul>
+        <!--<ul>-->
+            <!--<li>-->
+                <!--<div class="left">-->
+                    <!--<img src="/public/Home/images/phonelittle.png" alt="">-->
+                    <!--<p>绑定手机号</p>-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--<img src="/public/Home/images/arrow.png" alt="">-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<div class="left">-->
+                    <!--<img src="/public/Home/images/new.png" alt="">-->
+                    <!--<p>推荐注册佣金</p>-->
+                <!--</div>-->
+                <!--<div class="right">-->
+                    <!--<img src="/public/Home/images/arrow.png" alt="">-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <ul>
+            <if condition="$shop_info.request_flag eq 1">
+                <a href="{:U('shops/edit_shop_info')}">
+                <li>
+                    <div class="left">
+                        <img src="/public/Home/images/icon-new.png" alt="">
+                        <p>店铺信息管理</p>
+                    </div>
+                    <div class="right">
+                        <img src="/public/Home/images/arrow.png" alt="">
+                    </div>
+                </li>
+                </a>
+            <else/>
+                <a href="{:U('shops/index')}">
+                <li>
+                    <div class="left">
+                        <img src="/public/Home/images/icon-new.png" alt="">
+                        <p>申请开店</p>
+                    </div>
+                    <div class="right">
+                        <img src="/public/Home/images/arrow.png" alt="">
+                    </div>
+                </li>
+                </a>
+            </if>
+            <a href="{:U('Index/pingtai')}">
+            <li>
+                <div class="left">
+                    <img src="/public/Home/images/lows.png" alt="">
+                    <p>平台规则</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+            </li>
+            </a>
+            <a href="{:U('Center/xy')}">
+            <li>
+                <div class="left">
+                    <img src="/public/Home/images/about.png" alt="">
+                    <p>关于平台</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+            </li>
+            </a>
+            <a href="tel:0592-3106673">
+            <li style="border:none">
+                <div class="left">
+                    <img src="/public/Home/images/call.png" alt="">
+                    <p>联系客服</p>
+                </div>
+                <div class="right">
+                    <img src="/public/Home/images/arrow.png" alt="">
+                </div>
+            </li>
+            </a>
+        </ul>
+        <div style="height: 20px;"></div>
+    </div>
+
+</block>
+<block name="tabbar">
+    <include file="Public:tabbar"/>
+</block>
+<block name="js">
+    <script type="text/javascript">
+        $(".J_bind_wx").click(function(){
+            $.ajax({
+                url: '{:U("Center/bindWx")}',
+                data:{ajax:1},
+                type: 'POST',
+                dataType: 'json',
+                success: function (resData)
+                {
+                    if (resData.status == 1) {
+                        FkxToast.success(resData.info);
+                        location.reload();
+                    }else{
+                        FkxToast.error(resData.info);
+                    }
+                },
+                error:function(){
+                    FkxToast.error('提交失败！');
+                }
+            });
+        });
+    </script>
+</block>

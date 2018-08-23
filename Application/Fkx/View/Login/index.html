@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/register.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <title>登录首页</title>
+</head>
+<body>
+<div id="container" class="bg-img">
+    <img id="background" src="/public/Home/images/backgrounds.jpeg" alt="">
+</div>
+<div class="login">
+    <ul>
+        <li><img src="/public/Home/images/phone.png" alt=""><input id="phone" type="text" placeholder="请输入手机号码"></li>
+        <li><img src="/public/Home/images/lock.png" alt=""><input id="pwd" type="password" placeholder="请输入密码"></li>            </ul>
+    <div class="btn sub">
+        <a class="">登录</a>
+    </div>
+    <div class="text">
+        <a href="/index.php/Login/regin_1">注册</a>
+        <a href="/index.php/Login/code_login">验证码登录</a>
+        <a href="/index.php/Login/forgetPwd">忘记密码</a>
+    </div>
+</div>
+<script>
+    $('.login>ul li').on('click','input',function(){
+        $(this).val('')
+    })
+</script>
+
+<script>
+
+    $('.sub').click(function(){
+        var phone = $('#phone').val();
+        var pwd = $('#pwd').val();
+        //判断手机号码是否已经注册过了
+        if(!phone || !pwd){
+            alert('手机号码或者密码不能为空');
+            return false;
+        }
+        if(pwd.length < 6 ){
+            alert('密码长度必须大于6位数');
+            return false;
+        }
+        var info = {'pwd':pwd,phone:phone}
+        $.post("{:U('Login/login_in')}",info,function(data){
+            console.log(data)
+            if(1 == data.status){
+
+                location.href = "{:U('Index/index')}";
+            }else{
+                alert(data.info)
+            }
+        })
+
+
+
+
+
+
+
+
+    })
+
+
+</script>
+</body>
+</html>

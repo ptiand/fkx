@@ -1,0 +1,92 @@
+
+<block name="css">
+    <!--<link rel="stylesheet" href="/public/Home/css/bottom_btns.css">-->
+    <!--<link rel="stylesheet" href="/public/Home/css/house_detail.css">-->
+    <style type="text/css">
+        /*html body {*/
+            /*flex: 1;*/
+            /*background: rgba(51, 51, 51, 1);*/
+        /*}*/
+        #page-header.header {
+            background-color: rgba(51, 51, 51, 1);
+        }
+        .content-container {
+            padding-bottom: 0;
+        }
+        #huxing-container {
+            display: flex;
+            /*flex: 1;*/
+            background-color: rgba(51, 51, 51, 1);
+            /*padding: 10px;*/
+            flex-wrap: wrap;
+            overflow: auto;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        #huxing-container .img-container {
+            width: 100%;
+            height: 100%;
+            background: gray;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #huxing-container .item-container {
+            width: 46%;
+            height: 40%;
+            background: none;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+        }
+        #huxing-container .item-container.empty-item {
+            background: none;
+        }
+        #huxing-container .text-container {
+            width: 100%;
+            justify-content: space-between;
+            color: white;
+            font-size: 11px;
+            line-height: normal;
+            font-weight: 400;
+            font-style: normal;
+            align-items: center;
+            display: flex;
+            height: 26px;
+        }
+
+    </style>
+</block>
+<block name="main">
+    <div id="huxing-container" >
+        <foreach name="houseHuxingList" item="huxing">
+            <div class="item-container">
+                <div class="img-container" style="background-image: url('{$huxing.pic|default='/public/no_photo.png'}')"></div>
+                <span class="text-container">
+                    <span>{$huxing['houseRoom']}室{$huxing['livingRoom']}厅{$huxing['restRoom']}卫{$huxing['diningRoom']}厨</span>
+                    <if condition="$huxing['square'] gt 0">
+                        <span >{$houseHuxing.square|default='0'}㎡</span>
+                    </if>
+                </span>
+            </div>
+        </foreach>
+        <?php if (count($houseHuxingList)%2==1) { ?>
+            <div class="item-container empty-item">
+            </div>
+        <?php } ?>
+    </div>
+</block>
+<block name="js">
+    <script>
+        // $('#huxing-container').on('touchmove', function (e) {
+        //     e.preventDefault();
+        // });
+        //
+        // $('#huxing-container').on('scroll', function (e) {
+        //     e.preventDefault();
+        // });
+    </script>
+</block>

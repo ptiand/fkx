@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>我要看房</title>
+    <link rel="stylesheet" href="/public/Home/css/reset.css">
+    <link rel="stylesheet" href="/public/Home/css/Showings.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <!-- 进度 -->
+    <div class="SpeedOfProgress">
+        <ul>
+            <li>1.预约看房→</li>
+            <li>2.专人服务→</li>
+            <li>3.购房成交→</li>
+            <li>4.房客行发放</li>
+        </ul>
+    </div>
+
+    <!-- 重做信息块 -->
+    <div class="details">
+        <!-- 图片块 -->
+ 			<span class="details-picture">
+ 				<img src="{$info.pic}" alt="项目">
+ 			</span>
+        <div class="Building-information">
+            <h1>{$info.title}</h1>
+            <!-- 单价 -->
+            <div class="UnitPrice">
+                <span>{$info.price}</span>
+                <em>元/平起</em>
+            </div>
+            <!-- 佣金 -->
+            <div class="Commission">
+                <div class="Commission-childs1">
+                    <p>佣金</p>
+                </div>
+                <div class="Commission-childs2">
+                    <p>{$info.prices}</p>
+                </div>
+            </div>
+            <div class="address">
+                <p>{$info.address}</p>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- 个人信息 -->
+    <ul class="information">
+        <li>
+            <p>姓&nbsp;&nbsp;&nbsp; &nbsp;名：</p>
+            <input type="text" id="name" name="name" size="15px" placeholder="请输入姓名">
+        </li>
+        <li>
+            <p>手 机 号：</p>
+            <input type="text" id="phone" name="phone" placeholder="请输入手机号">
+        </li>
+        <li>
+            <p>看房时间：</p>
+            <input type="text" id="time" name="time" placeholder="请输入看房时间">
+        </li>
+    </ul>
+    <!-- 备注信息 -->
+    <div class="Remarks">
+        <p class="RemarksText">备注信息</p>
+        <textarea id="node" class="text" name="node" placeholder="" style="color: rgb(51, 51, 51);"></textarea>
+        <p class="Explain">房客行不会以任何形式泄露客户信息</p>
+        <!-- 确认提交按钮 -->
+        <a class="confirm sub">
+            <p>确认提交</p>
+        </a>
+
+
+    </div>
+
+</div>
+</body>
+<script>
+    $('.sub').click(function(){
+        var loupan_id = "{$Think.get.loupan_id}"
+        var name = $('#name').val();
+        if(!name){
+            alert('名字不能为空');
+            return false;
+        }
+        var phone = $('#phone').val();
+        if(!phone){
+            alert('手机号码不能为空');
+            return false;
+        }
+        var time_at = $('#time').val();
+//        if(!time_at){
+//            alert('看房时间不能为空');
+//            return false;
+//        }
+        var node = $('#node').val();
+
+        var info = {name:name,phone:phone,node:node,loupan_id:loupan_id,time_at:time_at};
+        $.post("{:U('client/kanf_in')}",info,function(data){
+//            console.log(data)
+            if(1 == data.status){
+                alert(data.info);
+                location.href = "{:U('Lists/lpinfo',array('id'=>$info['id']))}";
+            }else{
+                alert(data.info)
+//                $('.error').html(data.info)
+            }
+        })
+    })
+</script>
+</html>

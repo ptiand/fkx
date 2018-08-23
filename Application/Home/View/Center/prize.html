@@ -1,0 +1,312 @@
+<extend name="Public/main"/>
+<block name="title"><title>我的佣金</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/form.css">
+    <style>
+    .title
+    {
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        color: #1A5B5E;
+    }
+    .title span
+    {
+        margin: 0px 5px;
+        padding-bottom: 1px;
+    }
+    .title .current
+    {
+        color: #FFFFFF;
+        border-bottom: 2px white solid;
+    }
+    .group-container .item-label
+    {
+        font-size: 12px;
+        color: #999999;
+    }
+    .prize
+    {
+        background-color: white;
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: 400;
+    }
+    .prize .money
+    {
+        font-size: 20px;
+        color: #FF6600;
+        margin: 12px 0px;
+    }
+    .prize .title
+    {
+        font-size: 12px;
+        color: #666666;
+        margin-bottom: 12px;
+    }
+    .prize .withdrawal-btn
+    {
+        font-size: 12px;
+        color: #34BBBE;
+        border: 1px #34BBBE solid;
+        margin-bottom: 12px;
+        padding: 8px 22px;
+    }
+    .pay-detail
+    {
+        font-weight: 400;
+        font-size: 12px;
+    }
+    .pay-detail .pay-type
+    {
+        color: #666666;
+        width: 15%;
+    }
+    .pay-detail .pay-time
+    {
+        color: #999999;
+        width: 35%;
+    }
+    .pay-detail .state-dealing
+    {
+        color: #FF9900;
+    }
+    .pay-detail .state-cancel
+    {
+        color: #999999;
+    }
+    .pay-detail .state-done
+    {
+        color: #333333;;
+    }
+    .pay-detail .pay-state
+    {
+        width: 20%;
+    }
+    .pay-detail .pay-amount
+    {
+        text-align: right;
+        width: 30%;
+    }
+    .reward
+    {
+        margin-bottom: 5px;
+    }
+    .reward .reward-state
+    {
+        font-weight: 700;
+        font-style: normal;
+        color: #34BBBE;
+    }
+    .reward .reward-btn
+    {
+        font-size: 12px;
+        color: #999999;
+    }
+
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span class="current" tab="account">我的佣金</span>
+            <span tab="reward">我的奖励</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container" type="account">
+        <div class="prize">
+            <span class="money">{$amount}</span>
+            <span class="title">我的余额（元）</span>
+            <a class="withdrawal-btn" href="{:U('Center/withdrawal')}">我要提现</a>
+        </div>
+        <div class="group-container">
+            <div class="title inner-title">
+                <span class="time">余额明细</span>
+            </div>
+            <div id="accountList">
+
+            </div>
+        </div>
+        <div id="loadingTip" class="list-footer-tip">
+            <div class="text"> 加载中... </div>
+        </div>
+        <div id="endTip" class="list-footer-tip list-footer-hidden">
+            <div class="text">- 已经到底了 -</div>
+        </div>
+        <div id="emptyTip" class="list-footer-tip list-footer-hidden" style="background-color: #fff;">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <div class="text">- 暂无余额明细 -</div>
+        </div>
+    </div>
+    <div class="content-container" style="display: none;" type="reward">
+        <div class="group-container" id="rewardList">
+
+        </div>
+        <div id="rewardLoadingTip" class="list-footer-tip">
+            <div class="text"> 加载中... </div>
+        </div>
+        <div id="rewardEndTip" class="list-footer-tip list-footer-hidden">
+            <div class="text">- 已经到底了 -</div>
+        </div>
+        <div id="rewardEmptyTip" class="list-footer-tip list-footer-hidden" style="background-color: #fff;">
+            <img src="/public/Home/images/empty_list_icon.png"/>
+            <div class="text">- 暂无奖励 -</div>
+        </div>
+    </div>
+</block>
+<block name="js">
+<script type="text/javascript">
+$(function ()
+{
+    var showingTab = 'account';
+    $('.header .title span').click(function ()
+    {
+        showingTab = $(this).attr('tab');
+        $(this).siblings('span').removeClass('current');
+        $(this).addClass('current');
+        $('.content-container').hide();
+        $('[type="'+showingTab+'"]').show();
+    });
+
+    var scrollBefore = $(window).scrollTop();
+    $(window).scroll(function () {
+        var scrollAfter = $(window).scrollTop();
+        if (scrollAfter < scrollBefore) {
+            return;
+        }
+        var body = $('body').get(0);
+        var scrollBottom = body.scrollHeight - body.scrollTop - body.clientHeight;
+        if (scrollBottom<=80) {
+            if(showingTab == 'account')
+            {
+                getAccountList();
+            }
+            else
+            {
+                getRewardList();
+            }
+        }
+    });
+    $(document).ready(function () {
+        getAccountList();
+        getRewardList();
+    });
+
+    var getAccountList = (function ()
+    {
+        var currentPage = 0,
+            loading = false,
+            pageSize = 10,
+            isEnd = false;
+        function getData()
+        {
+            if(loading || isEnd) return;
+            loading = true;
+            currentPage ++;
+            $.ajax({
+                url: '{:U("Center/loadAccountData")}',
+                data:{pageSize: pageSize, currentPage:currentPage},
+                type: 'POST',
+                success: function (resData)
+                {
+                    loading = false;
+                    if(resData.status == 1)
+                    {
+                        if(resData.info.html)
+                        {
+                            if(currentPage === 1)
+                            {
+                                $('#accountList').html(resData.info.html);
+                            }
+                            else
+                            {
+                                $('#accountList').append(resData.info.html);
+                            }
+                        }
+                        if(!resData.info.hasMore)
+                        {
+                            $('#loadingTip').hide();
+                            if($('#accountList').children().length)
+                            {
+                                isEnd = true;
+                                $('#endTip').show();
+                            } else
+                            {
+                                $('#emptyTip').show();
+                            }
+                        }
+                    }
+                },
+                error: function ()
+                {
+                    loading = false;
+                }
+            });
+        }
+        return getData;
+    })();
+    var getRewardList = (function ()
+    {
+        var currentPage = 0,
+            loading = false,
+            pageSize = 10,
+            isEnd = false;
+        function getData()
+        {
+            if(loading || isEnd) return;
+            loading = true;
+            currentPage ++;
+            $.ajax({
+                url: '{:U("Center/loadRewardData")}',
+                data:{pageSize: pageSize, currentPage:currentPage},
+                type: 'POST',
+                success: function (resData)
+                {
+                    loading = false;
+                    if(resData.status == 1)
+                    {
+                        if(resData.info.html)
+                        {
+                            if(currentPage === 1)
+                            {
+                                $('#rewardList').html(resData.info.html);
+                            }
+                            else
+                            {
+                                $('#rewardList').append(resData.info.html);
+                            }
+                        }
+                        if(!resData.info.hasMore)
+                        {
+                            $('#rewardLoadingTip').hide();
+                            if($('#rewardList').children().length)
+                            {
+                                isEnd = true;
+                                $('#rewardEndTip').show();
+                            } else
+                            {
+                                $('#rewardEmptyTip').show();
+                            }
+                        }
+                    }
+                },
+                error: function ()
+                {
+                    loading = false;
+                }
+            });
+        }
+        return getData;
+    })();
+
+});
+</script>
+</block>

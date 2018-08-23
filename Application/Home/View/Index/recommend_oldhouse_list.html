@@ -1,0 +1,42 @@
+<if condition="empty($houses)">
+    <div class="message">
+        <span>暂无精选房源！</span>
+    </div>
+    <else/>
+    <volist name="houses" id="house">
+        <div class="recommend-item"  onclick="javascript:window.location.href='{:U('OldHouse/detail',array('id'=>$house['id']))}'">
+            <div class="recommend-item-img">
+                <img src="{$house.primaryImage|default='/public/no_photo.png'}" alt="" />
+            </div>
+            <div class="houseInfo">
+                <span class="title">{$house.name}</span>
+                <div class="attr">
+                    <div class="left">
+                        <span>{$house.area}</span>
+                        <span>{$house.houseRoom}室{$house.livingRoom}厅
+                        | {:renderNumber($house['square'],0)}㎡</span>
+                    </div>
+                    <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($house['totalPrice'])}</span>
+                            <span>万元/套</span>
+                        </span>
+                        <span class="submoney" style="flex-direction: row">
+                            <span class="money">{:renderMoney($house['price'])}</span>
+                            <span>元/㎡</span>
+                        </span>
+                    </div>
+                </div>
+                <?php $classNames = array(1=>'first', 2=> 'second', 0=> 'third');?>
+                <div class="label">
+                    <span class="first">{$house.stateCaption}</span>
+                    <span class="second">{$house.typeCaption}</span>
+                    <foreach name="house['tags']" item="tag" key="key">
+                        <span class="{$classNames[$key%3]}">{$tagNames[$tag]}</span>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </volist>
+</if>
+

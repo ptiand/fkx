@@ -1,0 +1,50 @@
+<foreach name="houseList" item="house">
+    <div class="recommend-item">
+        <?php $modifyUrl=U('Publish/'.$house["publishPath"], array("id"=>$house["id"])); ?>
+        <div class="main-title to-publish" onclick="javascript: window.location.href='{$modifyUrl}'">
+            <div><b>{$house['publishTypeCaption']}</b><span>修改: <?php echo date('Y-m-d H:i', $house['updateTime'])?></span></div>
+            <span class="gt">修改&nbsp;&nbsp;<img src="/public/Home/images/icon_gt.png" width="6" height="12" /></span>
+        </div>
+        <?php $detailUrl=U($house['detailPath'].'/detail', array('id'=>$house['id'])) ?>
+        <div class="main-content" onclick="javascript: window.location.href='{$detailUrl}'">
+            <div class="recommend-item-img">
+                <img src="{$house.primaryImage|default='/public/no_photo.png'}" alt="图片"/>
+            </div>
+            <div class="houseInfo">
+                <span class="title">{$house.name}</span>
+                <div class="attr">
+                    <div class="left">
+                        <span>{$house.areaCaption}</span>
+                        <span>
+                            <?php
+                                $text='';
+                                if($house['houseRoom']) $text .= $house['houseRoom'] . '室';
+                                if($house['livingRoom']) $text .= $house['livingRoom'] . '厅';
+                                if($house['restRoom']) $text .= $house['restRoom'] . '卫';
+                                if($house['diningRoom']) $text .= $house['diningRoom'] . '厨';
+                                if($text) $text .= ' |';
+                                echo $text;
+                            ?>
+                            {$house.square|round}㎡
+                        </span>
+                    </div>
+                    <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($house['priceCaption'], 0)}</span>
+                            <span>{$house['priceCaptionUnit']}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="label">
+                    <span class="first">{$house.stateCaption}</span>
+                    <span class="second">{$house.typeCaption}</span>
+                    <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                    <foreach name="house['tagList']" item="tag" key="key">
+                        <span class="{$classMap[$key%3]}">{$tag}</span>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+</foreach>
+

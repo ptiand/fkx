@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/public/Home/css/common.css">
+    <link rel="stylesheet" href="/public/Home/css/register.css">
+    <script src="/public/Home/js/jquery-1.7.1.min.js"></script>
+    <title>注册</title>
+</head>
+<body>
+<div id="container" class="bg-img">
+    <img id="background" src="/public/Home/images/backgrounds.jpeg" alt="">
+</div>
+<div class="login">
+    <ul>
+        <li><img src="/public/Home/images/phone.png" alt=""><input id="phone" type="text" placeholder="请输入手机号"></li>
+        <li><input style="padding-left:7px;" id="huoqu" type="text" placeholder="请输入验证码"><div id="codes" style="width:30%;height:24px;border-radius:5px;background:#44c3cc;margin:auto 6px auto 0;text-align:center"><a style="font-size:12px;line-height:23px;color:#fff" id="code" href="">获取验证码</a></div></li>
+
+    </ul>
+    <div class="btn sub">
+        <a  class="">下一步</a>
+    </div>
+    <script>
+        $('#codes a').click(function(e){
+            e.preventDefault()
+        })
+        $.ajaxSetup({
+            async: false
+        });
+        $('#codes').click(function(){
+
+            var phone = $('#phone').val();
+            if(!phone){
+                alert('手机号不能为空');
+                return false;
+            }
+            var info={'phone':phone}
+            var status = 1;
+            $.post("{:U('Login/is_cunz')}",info,function(data){
+                console.log(data)
+                if(1 == data.status){
+                    status = 2;
+                }
+            })
+            if(status == 2){
+                alert('该手机号已经存在');
+                return false;
+            }
+
+            if($('#codes a').html()!=='获取验证码'){
+                return false
+            }
+            $.post("{:U('Login/sand_sms')}",info,function(datas){
+
+                if(1 == datas.status){
+                    alert(datas.info);
+                    var n = 60;
+                    $('#codes a').html(60);
+                    var t=setInterval(function(){
+                        n--;
+                        $('#codes a').html(n);
+                        if(n===0){
+                            clearInterval(t);
+                            $('#codes a').html('获取验证码')
+                        }
+                    },1000)
+                }else{
+                    alert(datas.info);
+                }
+            })
+        })
+
+        $('.sub').click(function(){
+            var phone = $('#phone').val();
+            var code = $('#huoqu').val();
+            if(!phone || !code){
+                alert('手机号或者验证码不能为空');
+                return false;
+            }
+            var openid = '{$info.openid}';
+            var pid = '{$info.pid}';
+            var info = {'code':code,phone:phone,openid:openid,pid:pid}
+            $.post("{:U('Login/next_reg')}",info,function(data){
+                console.log(data)
+                if(1 == data.status){
+                   location.href = '/index.php/login/regin?id='+data.info;
+                }else{
+                    alert(data.info)
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>

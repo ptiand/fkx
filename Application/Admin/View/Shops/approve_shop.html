@@ -1,0 +1,137 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel"><empty name="Think.get.id">新增<else /> 编辑</empty>店铺</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" id="defaultForm" method="post" action="{$self}">
+        <input type="hidden" name="id" value="{$info.id}" />
+        <fieldset>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="shop_name">店铺名称</label>
+                <div class="col-sm-4">
+                    {$info.shop_name}
+                </div>
+                <label class="col-sm-2 control-label" for="user_id">申请人姓名</label>
+                <div class="col-sm-4">
+                    {$info.user_name}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="weixin_no">手机号码</label>
+                <div class="col-sm-4">
+                    {$info.user_phone}
+                </div>
+                <if condition="empty($info.cert_img)">
+                <label class="col-sm-2 control-label" for="zhifubao_no">身份证号码</label>
+                <div class="col-sm-4">
+                    {$info.id_card}
+                </div>
+                <else/>
+                <label class="col-sm-2 control-label" >营业执照</label>
+                <div class="col-sm-4">
+                    <img src="{$info.cert_img|default='/public/no_photo.png'}" width="100" id="photo_bg_preview" />
+                </div>
+                </if>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="shop_name">银行卡户名</label>
+                <div class="col-sm-4">
+                    {$info.bank_user}
+                </div>
+                <label class="col-sm-2 control-label" for="user_id">银行卡号</label>
+                <div class="col-sm-4">
+                    {$info.bank_card}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="shop_name">开户行名称</label>
+                <div class="col-sm-4">
+                    {$info.bank_name}
+                </div>
+                <label class="col-sm-2 control-label" for="user_id">开户行地址</label>
+                <div class="col-sm-4">
+                    {$info.bank_address}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="shop_info">店铺简介</label>
+                <div class="col-sm-10">
+                    {$info.shop_info}
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-2 control-label" for="FullName"><span style="color: red;">*</span>&nbsp;性别</label>-->
+                <!--<div class="col-sm-4">-->
+                    <!--<input type="radio" value="1" checked="checked" name="sex">-->
+                    <!--男-->
+                    <!--<input type="radio" value="2" <if condition="$info['sex'] eq 2">checked="checked"</if> name="sex">-->
+                    <!--女-->
+                <!--</div>-->
+                <!--<label  class="col-sm-2 control-label">会员等级</label>-->
+                <!--<div class="col-sm-3">-->
+                    <!--{:parse_dropdownlist($info[grade_id],$grade,"grade_id","grade_id","form-control","请选择会员等级")}-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="amount"><span style="color: red;">*</span>&nbsp;佣金总金额</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="amount" name="amount"  value="{$info.amount}" type="text" />
+                </div>
+            </div>
+            -->
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" id="pass-btn">审批通过</button>
+    <button type="button" class="btn btn-default" id="deny-btn">审批不通过</button>
+</div>
+
+<script type="text/javascript" src='__PUBLIC__/Static/uploadifive/Sample/jquery.uploadifive.min.js'></script>
+
+<script type="text/javascript">
+
+    $(function(){
+        $("#pass-btn").click(function(){
+
+            // Use Ajax to submit form data
+            $.post("{:U('Shops/apply_shop')}", {ids: ["{$info.id}"], request_flag: 1}, function(result) {
+                if(result.status==1){
+                    swal({
+                        title:"操作成功！",
+                        text:result.info,
+                        type:"success"
+                    }, function(){
+                        $('#addShops').modal('hide');
+                    });
+                }else{
+                    toastr.warning(result.info);return false;
+                }
+            }, 'json');
+        })
+
+        $("#deny-btn").click(function(){
+
+            // Use Ajax to submit form data
+            $.post("{:U('Shops/apply_shop')}", {ids: ["{$info.id}"], request_flag: 3}, function(result) {
+                if(result.status==1){
+                    swal({
+                        title:"操作成功！",
+                        text:result.info,
+                        type:"success"
+                    }, function(){
+                        $('#addShops').modal('hide');
+                    });
+                }else{
+                    toastr.warning(result.info);return false;
+                }
+            }, 'json');
+        })
+    })
+</script>

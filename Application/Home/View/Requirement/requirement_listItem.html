@@ -1,0 +1,56 @@
+<foreach name="requires" item="req">
+<div class="card">
+    <span class="title item">
+        <span class="time">提交时间：{$req['createTime']|date="Y-m-d H:i",###}</span>
+        <div class="delete-btn" data-id="{$req.id}"><span>删除</span></div>
+    </span>
+    <div class="item">
+        <span class="item-label">预算范围</span>
+        <span class="input-container info">{$req['minPrice']|default='0'}-{$req['maxPrice']}万元</span>
+    </div>
+    <div class="item">
+        <span class="item-label">户型要求</span>
+        <span class="input-container info">
+            <if condition="$req['huxing']">
+                <foreach name="req['huxing']" item="hx" key="key">
+                    <?php if($key>0){echo '、';} echo $HuXingCaption[$hx];?>
+                </foreach>
+            <else/>
+                -
+            </if>
+        </span>
+    </div>
+    <div class="item">
+        <span class="item-label">住房面积</span>
+        <span class="input-container info">{$req['minSquare']|default='0'}-{$req['maxSquare']}平方米(㎡)</span>
+    </div>
+    <div class="item">
+        <span class="item-label">房屋朝向</span>
+        <span class="input-container info">
+            <if condition="$req['chaoxiang']">
+                <foreach name="req['chaoxiang']" item="cx" key="key">
+                    <?php if($key>0){echo '、';} echo $ChaoXiangCaption[$cx];?>
+                </foreach>
+            <else/>
+                -
+            </if>
+        </span>
+    </div>
+    <div class="item">
+        <span class="item-label">装修情况</span>
+        <span class="input-container info">
+            <if condition="$req['zhuangxiu']">
+                <foreach name="req['zhuangxiu']" item="zx" key="key">
+                    <?php if($key>0){echo '、';} echo $ZhuangXiuCaption[$zx];?>
+                </foreach>
+            <else/>
+                -
+            </if>
+        </span>
+    </div>
+    <div class="item">
+        <span class="item-label">区域范围</span>
+        <span class="input-container info">{$req['area']}</span>
+    </div>
+</div>
+</foreach>

@@ -1,0 +1,15 @@
+<volist name="info" id="vo">
+    <div class="main-container">
+        <a href="{:U('Lists/lpinfo',array('id'=>$vo['id']))}">
+            <img src="{$vo.pic}" alt="">
+        </a>
+        <div class="main-container-text">
+            <p>{$vo.title}</p>
+            <p>佣金：<span><?php if($yongjin == 1){ ?>{$vo.prices} <?php }else{ echo '<a href="/index.php/login/index">登录可见</a>'; ?> <?php } ?></span></p>
+        </div>
+        <div class="main-container-bottom">
+            <img src="/public/Home/images/local.png" alt="">
+            <p>{$vo.address}</p>
+        </div>
+    </div>
+</volist>

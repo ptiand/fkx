@@ -1,0 +1,125 @@
+<extend name="Public/main"/>
+<block name="title"><title>提现申请</title></block>
+<block name="css">
+    <link rel="stylesheet" href="/public/Home/css/form.css">
+</block>
+<block name="header">
+    <div class="header">
+        <div class="button" onclick="history.back()">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </div>
+        <div class="title">
+            <span>提现申请</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="content-container">
+        <div class="group-container">
+            <div class="group-container">
+                <form id="Form">
+                    <div class="item">
+                        <span class="item-label">当前余额</span>
+                        <span class="input-container info">{$amount}</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-label">提现金额</span>
+                        <div class="input-container">
+                            <input name="amount" required oninvalid="setCustomValidity('请输入提现金额')" oninput="setCustomValidity('')" type="text" placeholder="请输入金额"/>
+                            <span>元</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="item-label">提现方式</span>
+                        <div class="input-container">
+                            <label style="flex: 1;">
+                                <input class="withdraw-type" type="radio" name="type" required value="{$Type['Zfb']}">支付宝
+                            </label>
+                            <label style="flex: 1;">
+                                <input class="withdraw-type" type="radio" name="type" required value="{$Type['Bank']}">银行卡
+                            </label>
+                        </div>
+                    </div>
+                    <div class="item" target="all" style="display: none;">
+                        <span class="item-label">手机号码</span>
+                        <input name="phone" class="input-container" type="text" placeholder="请输入联系手机号码"/>
+                    </div>
+                    <div class="item" target="all" style="display: none;">
+                        <span class="item-label">提现账号</span>
+                        <input name="cards" class="input-container" type="text" placeholder=""/>
+                    </div>
+                    <div class="item" target="bank" style="display: none;">
+                        <span class="item-label">开户银行</span>
+                        <input name="address" class="input-container" type="text" placeholder="请输入银行名称"/>
+                    </div>
+                    <div class="item" target="all" style="display: none;">
+                        <span class="item-label">账号姓名</span>
+                        <input name="name" class="input-container" type="text" placeholder="请输入真实姓名"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-container" id="Submit">提交申请</div>
+</block>
+<block name="js">
+<script type="text/javascript">
+$(function ()
+{
+    $('[name="type"]').on('change', function ()
+    {
+        var type = $('[name="type"]:checked').val();
+        $('[target="all"]').css('display', 'flex');
+        $('[target="all"] input').attr('required', 'required');
+        if(type == {$Type['Zfb']})
+        {
+            $('[name="cards"]').attr('placeholder','请输入支付宝账号');
+            $('[target="bank"]').css('display', 'none');
+            $('[name="address"]').removeAttr('required')
+        }
+        else if(type == {$Type['Bank']})
+        {
+            $('[name="cards"]').attr('placeholder','请输入银行卡号');
+            $('[target="zfb"]').css('display', 'none');
+            $('[target="bank"]').css('display', 'flex');
+            $('[name="address"]').attr('required', 'required');
+        }
+    });
+    $('#Submit').click(function ()
+    {
+        try {
+            if(!document.getElementById('Form').reportValidity())
+            {
+                return;
+            }
+        } catch (e) {
+
+        }
+        var data = $('#Form').serialize();
+        $.ajax({
+            url:'{:U("Center/withdrawal")}',
+            type:'POST',
+            data: data,
+            success:function (resData)
+            {
+                if(resData.status == 1)
+                {
+                    FkxToast.success(resData.info);
+                    history.back();
+                }
+                else
+                {
+                    FkxToast.error(resData.info);
+                }
+            },
+            error: function ()
+            {
+                FkxToast.error('提交失败！');
+            }
+        });
+    });
+
+});
+</script>
+</block>

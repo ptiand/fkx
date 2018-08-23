@@ -1,0 +1,222 @@
+<foreach name="infos" item="info">
+    <?php
+    $statusCss = '';
+    if($info['status'] == $Status['Expired'])
+    {
+        $statusCss = 'expired';
+    }
+    else if($info['status'] == $Status['Submitted'])
+    {
+        $statusCss = 'submitted';
+    }
+    else if($info['status'] == $Status['Done'])
+    {
+        $statusCss = 'done';
+    }
+    ?>
+    <if condition="!$info['houseType'] && !$info['houseId']">
+        <div class="info-item" style="padding-bottom: 8px;">
+            <div class="title">
+                <span>预约：{$info['time_at']}</span>
+                <span class="{$statusCss}">{$StatusCaption[$info['status']]}</span>
+            </div>
+            <div class="seperator"></div>
+            <div class="address-info">
+                <span class="address-label">提交时间</span>
+                <span>{$info['created_at']|date="Y年m月d日 H:i",###}</span>
+            </div>
+        </div>
+    </if>
+    <if condition="$info['houseType'] eq $HouseType['NewHouse']">
+        <div class="info-item">
+            <div class="title">
+                <span>预约：{$info['time_at']}</span>
+                <span class="{$statusCss}">{$StatusCaption[$info['status']]}</span>
+            </div>
+            <div class="recommend-item" onclick="javascript:window.location.href='{:U('Lists/newHouseDetail', array('id'=>$info['houseId']))}'">
+                <div class="main-content">
+                    <div class="recommend-item-img">
+                        <img src="{$info['house']['primaryImage']|default='/public/no_photo.png'}" alt="图片"/>
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">{$info['house']['name']}</span>
+                        <div class="attr">
+                            <div class="left">
+                            <span>
+                                <if condition="!empty($info['house']['minHouseRoom']) && !empty($info['house']['maxHouseRoom'])">
+                                    <?php if($info['house']['minHouseRoom'] != $info['house']['maxHouseRoom']){
+                                        echo $info['house']['minHouseRoom'].'-'.$info['house']['maxHouseRoom'].'室';
+                                    } else{
+                                        echo $info['house']['maxHouseRoom'].'室';
+                                    }?>
+                                </if>
+                                <if condition="(!empty($info['house']['minHouseRoom']) || !empty($info['house']['maxHouseRoom'])) && (!empty($info['house']['minSquare']) || !empty($info['house']['maxSquare']))">|</if>
+                                <if condition="!empty($info['house']['minSquare']) && !empty($info['house']['maxSquare'])">
+                                    <?php if($info['house']['minSquare'] != $info['house']['maxSquare']){
+                                        echo $info['house']['minSquare'].'-'.$info['house']['maxSquare'].'㎡';
+                                    } else {
+                                        echo $info['house']['maxSquare'].'㎡';
+                                    }?>
+                                </if>
+                                <if condition="empty($info['house']['minHouseRoom']) && empty($info['house']['maxHouseRoom']) && empty($info['house']['minSquare']) && empty($info['house']['maxSquare'])">敬请关注</if>
+                            </span>
+                                <span>{$info['house']['areaCaption']}</span>
+                            </div>
+                            <div class="right">
+                            <span style="flex-direction: row">
+                                <span class="money">
+                                    <if condition="$info['house']['minTotalPrice'] gt 0">{:renderMoney($info['house']['minTotalPrice'])}</if>
+                                    <if condition="!($info['house']['minTotalPrice'] gt 0) && $info['house']['minPrice']">{:renderMoney($info['house']['minPrice'])}</if>
+                                </span>
+                                <span>
+                                    <if condition="$info['house']['minTotalPrice'] gt 0">万元/套起</if>
+                                    <if condition="!($info['house']['minTotalPrice'] gt 0) && $info['house']['minPrice']">元/㎡起</if>
+                                </span>
+                            </span>
+                            </div>
+                        </div>
+                        <?php $classNames = array(1=>'first', 2=> 'second', 0=> 'third');?>
+                        <div class="label">
+                            <span class="first">{$info['house']['stateCaption']}</span>
+                            <span class="second">{$info['house']['typeCaption']}</span>
+                            <foreach name="fav['house']['tags']" item="tag" key="key">
+                                <span class="{$classNames[$key%3]}">{$tagNames[$tag]}</span>
+                            </foreach>
+                        </div>
+                    </div>
+                </div>
+                <div class="address-info">
+                    <span class="address-label">地址</span>
+                    <span>{$info['house']['cityCaption']}&nbsp;{$info['house']['areaCaption']}&nbsp;{$info['house']['address']}</span>
+                </div>
+                <div class="seperator"></div>
+                <div class="address-info">
+                    <span class="address-label">提交时间</span>
+                    <span>{$info['created_at']|date="Y年m月d日 H:i",###}</span>
+                </div>
+            </div>
+        </div>
+    </if>
+    <if condition="$info['houseType'] eq $HouseType['OldHouse']">
+        <div class="info-item">
+            <div class="title">
+                <span>预约：{$info['time_at']}</span>
+                <span class="{$statusCss}">{$StatusCaption[$info['status']]}</span>
+            </div>
+            <div class="recommend-item" onclick="javascript:window.location.href='{:U('OldHouse/detail', array('id'=>$info['house']['id']))}'">
+                <div class="main-content">
+                    <div class="recommend-item-img">
+                        <img src="{$info['house']['primaryImage']|default='/public/no_photo.png'}" alt="图片"/>
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">{$info['house']['name']}</span>
+                        <div class="attr">
+                            <div class="left">
+                        <span>
+                            <?php
+                                $text='';
+                                if($info['house']['houseRoom']) $text .= $info['house']['houseRoom'] . '室';
+                                if($info['house']['livingRoom']) $text .= $info['house']['livingRoom'] . '厅';
+                                if($info['house']['restRoom']) $text .= $info['house']['restRoom'] . '卫';
+                                if($info['house']['diningRoom']) $text .= $info['house']['diningRoom'] . '厨';
+                                if($text) $text .= ' |';
+                                echo $text;
+                            ?>
+                            {$info['house']['square']|round}㎡
+                        </span>
+                                <span>{$info['house']['areaCaption']}</span>
+                            </div>
+                            <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($info['house']['totalPrice'], 0)}</span>
+                            <span>万元/套起</span>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="label">
+                            <span class="first">{$info['house']['stateCaption']}</span>
+                            <span class="second">{$info['house']['typeCaption']}</span>
+                            <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                            <foreach name="fav['house']['tags']" item="tag" key="key">
+                                <span class="{$classMap[$key%3]}">{$tagNames[$tag]}</span>
+                            </foreach>
+                        </div>
+                    </div>
+                </div>
+                <div class="address-info">
+                    <span class="address-label">地址</span>
+                    <span>{$info['house']['cityCaption']}&nbsp;{$info['house']['areaCaption']}&nbsp;{$info['house']['address']}</span>
+                </div>
+                <div class="seperator"></div>
+                <div class="address-info">
+                    <span class="address-label">提交时间</span>
+                    <span>{$info['created_at']|date="Y年m月d日 H:i",###}</span>
+                </div>
+            </div>
+        </div>
+    </if>
+    <if condition="$info['houseType'] eq $HouseType['RentalHouse']">
+        <div class="info-item">
+            <div class="title">
+                <span>预约：{$info['time_at']}</span>
+                <span class="{$statusCss}">{$StatusCaption[$info['status']]}</span>
+            </div>
+            <div class="recommend-item" onclick="javascript:window.location.href='{:U('RentalHouse/detail', array('id'=>$info['house']['id']))}'">
+                <div class="main-content">
+                    <div class="recommend-item-img">
+                        <img src="{$info['house']['primaryImage']|default='/public/no_photo.png'}" alt="图片"/>
+                    </div>
+                    <div class="houseInfo">
+                        <span class="title">{$info['house']['name']}</span>
+                        <div class="attr">
+                            <div class="left">
+                        <span>
+                            <?php
+                                $text='';
+                                if($info['house']['houseRoom']) $text .= $info['house']['houseRoom'] . '室';
+                                if($info['house']['livingRoom']) $text .= $info['house']['livingRoom'] . '厅';
+                                if($info['house']['restRoom']) $text .= $info['house']['restRoom'] . '卫';
+                                if($info['house']['diningRoom']) $text .= $info['house']['diningRoom'] . '厨';
+                                if($text) $text .= ' |';
+                                echo $text;
+                            ?>
+                            {$info['house']['square']|round}㎡
+                        </span>
+                                <span>{$info['house']['areaCaption']}</span>
+                            </div>
+                            <div class="right">
+                        <span style="flex-direction: row">
+                            <span class="money">{:renderMoney($info['house']['price'], 0)}</span>
+                            <span>元/月</span>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="label">
+                            <if condition="$house['source'] == $Source['Personal']">
+                                <notempty name="house['stateCaption']">
+                                    <span class="first">{$house.stateCaption}</span>
+                                </notempty>
+                                <notempty name="house['typeCaption']">
+                                    <span class="second">{$house.typeCaption}</span>
+                                </notempty>
+                            </if>
+                            <?php $classMap=array('1'=>'first', '2'=>'second', '0'=>'third',)?>
+                            <foreach name="fav['house']['tags']" item="tag" key="key">
+                                <span class="block {$classMap[$key%3]}">{$tagNames[$tag]}</span>
+                            </foreach>
+                        </div>
+                    </div>
+                </div>
+                <div class="address-info">
+                    <span class="address-label">地址</span>
+                    <span>{$info['house']['cityCaption']}&nbsp;{$info['house']['areaCaption']}&nbsp;{$info['house']['address']}</span>
+                </div>
+                <div class="seperator"></div>
+                <div class="address-info">
+                    <span class="address-label">提交时间</span>
+                    <span>{$info['created_at']|date="Y年m月d日 H:i",###}</span>
+                </div>
+            </div>
+        </div>
+    </if>
+</foreach>

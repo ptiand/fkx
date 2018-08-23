@@ -1,0 +1,317 @@
+<extend name="Public/main"/>
+<block name="title"><title>公寓管理</title></block>
+<block name="css">
+    <style>
+    html body
+    {
+        background-color: #F2F2F2;
+    }
+    .info-item {
+        display: flex;
+        position: relative;
+        background-color: #fff;
+        padding: 6px;
+        color: #000;
+    }
+    .item-content {
+        flex: 1;
+        width: 10%;
+        padding: 0 6px;
+    }
+    .info-icon {
+        display: block;
+        width: 24px;
+        height: 24px;
+    }
+    .address {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+    .floor-section {
+        padding: 10px 5px;
+    }
+    .floor-title {
+        padding: 10px;
+        background: #fff;
+        border-bottom: 1px solid #f4f4f4;
+    }
+    .floor-title .del-icon {
+        width: 24px;
+        height: 24px;
+        float: right;
+    }
+    .floor-title .arrow-icon {
+        width: 18px;
+        height: 16px;
+        transition: all linear 0.3s
+    }
+    .arrow-icon.expand {
+        transform: rotate(90deg);
+    }
+    .floor-content {
+        background: #fff;
+        padding: 10px;
+        font-size: 0;
+    }
+    .room-item {
+        display: inline-block;
+        padding: 5px 15px 6px;
+        border: 1px solid #34BBBE;
+        border-radius: 4px;
+        font-size: 20px;
+        margin-right: 12px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #34BBBE;
+        position: relative;
+    }
+    .room-item:after {
+        display: block;
+        background-color: #f11;
+        color: #fff;
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        overflow: hidden;
+        line-height: 14px;
+        padding-left: 4px;
+        box-sizing: border-box;
+    }
+    .room-item.show-del:after{
+        content: "-";
+    }
+    .layui-m-layer4 .layui-m-layerchild{
+        width: 90%;
+    }
+    .layui-m-layer4 .layui-m-layercont{
+        padding: 0 !important;
+        line-height: 2;
+    }
+    .layer-input {
+        width: 100%;
+        padding: 12px 4px;
+        box-sizing: border-box !important;
+        border: 1px solid #999;
+        border-radius: 4px;
+    }
+    .form-item {
+        text-align: left;
+        border-top: 1px solid #f1f1f1;
+        padding: 10px 20px;
+    }
+    .form-input {
+        float: right;
+        line-height: 2;
+    }
+    </style>
+</block>
+<block name="header">
+    <div class="header">
+        <a class="button" href="{:U('Service/house_setup')}">
+            <img src="/public/Home/images/nav_back_icon.png" alt="" width="22" height="22"/>
+        </a>
+        <div class="title">
+            <span>{$house_info.name}</span>
+        </div>
+        <div class="button"></div>
+    </div>
+</block>
+<block name="main">
+    <div class="btn-content-container">
+        <div class="info-item">
+            <img class="info-icon" src="/public/Home/images/icon-new.png" alt="">
+            <div class="item-content">
+                <div class="ellipsis">{$house_info.name}</div>
+                <div class="address clr-gray ellipsis">{$house_info.address}</div>
+            </div>
+            <a href="{:U('Publish/shopHouse', array('id'=>$house_info['id']))}">
+                修改
+            </a>
+        </div>
+        <foreach name="house_info.floor_info" item="floor">
+        <div class="floor-section">
+            <div class="floor-title">{$floor.floor_name} 层 
+                <img class="arrow-icon expand" src="/public/Home/images/arrow.png" alt="">
+                <img class="del-icon" src="/public/Home/images/x.png" data-id="{$floor.id}" data-name="{$floor.floor_name}" alt="删除"/>
+            </div>
+            <div class="floor-content">
+                <foreach name="floor.room_info" item="room">
+                <a class="room-item" href="{:U('Service/edit_room', array('room_id'=>$room['id']))}" data-id="{$room.id}" data-name="{$room.room_name}">{$room.room_name}
+                    <a class="del-icon" href="javascript:;">-</a>
+                </a>
+                </foreach>
+                <div class="room-item room-add" data-id="{$floor.id}">+</div>
+                <div class="room-item room-del" data-id="{$floor.id}">-</div>
+            </div>
+        </div>
+        </foreach>
+        <if condition="empty($house_info['floor_info'])">
+            <div class="floor-section">
+                <div class="floor-title clr-gray">未添加楼层</div>
+            </div>
+        </if>
+    </div>
+</block>
+<block name="tabbar">
+    <a class="bottom-btn" href="javascript:;">
+        添加楼层
+    </a>
+</block>
+<block name="js">
+    <script id="add-room-temp" type="template/javascript">
+        <div class="form-item">
+            <input id="single-room" type="radio" name="type" checked /> <label for="single-room">添加单个房号</label>
+            <input id="multi-room" type="radio" name="type" /> <label for="multi-room">批量添加房号</label>
+        </div>
+        <form class="single-room">
+            <input type="hidden" name="floor_id" value="[#floor_id]"/>
+            <input type="hidden" name="add_num" value="1"/>
+            <div class="form-item">
+                房间号<input class="form-input" name="room_name" placeholder="输入房间号" />
+            </div>
+        </form>
+        <form class="multi-room" style="display: none">
+            <input type="hidden" name="floor_id" value="[#floor_id]"/>
+            <div class="form-item">
+                需添加房间数 <input class="form-input" name="add_num" placeholder="输入房间数" />
+            </div>
+        </form>
+    </script>
+    <script src="/public/Static/layer_mobile/layer.js"></script>
+    <script type="text/javascript">
+        function showToast(msg) {
+            layer.open({content: msg, type: 3, skin: 'msg', time: 1.5});
+        }
+        function sendAjax(data, layerIdx) {
+            var loading = layer.open({type: 2, shadeClose: false});
+            $.ajax({
+                url: data.url,
+                data: data.data,
+                type: 'POST',
+                dataType: 'json',
+                success: function (resData) {
+                    //layer.close(loading);
+                    console.log('resp: ', resData)
+                    if (resData.status == 1) {
+                        location.reload();
+                    } else {
+                        layer.close(loading);
+                        showToast(resData.info);
+                    }
+
+                },
+                error: function (msg) {
+                    console.log('msg: ', msg);
+                    layer.close(loading);
+                    showToast('操作失败')
+                }
+            });
+        }
+        function addFloor (name) {
+            sendAjax({
+                url: '{:U("Service/add_floor")}',
+                data: {house_id: '{$house_info.id}', floor_name: name}
+            })
+        }
+        function delFloor (id) {
+            sendAjax({
+                url: '{:U("Service/del_floor")}',
+                data: {house_id: '{$house_info.id}', floor_id: id}
+            })
+        }
+        $(function () {
+            $('.floor-title').on('click', function() {
+                var me = $(this)
+                me.find('.arrow-icon').toggleClass('expand')
+                me.next().slideToggle()
+            })
+            $('.floor-title .del-icon').on('click', function(e) {
+                var me = $(this)
+                
+                e.stopPropagation();
+                layer.open({
+                    title: '楼层删除',
+                    content: '确认删除 “' + me.data('name') + '” 楼层？',
+                    btn: ['是', '否'],
+                    yes: function(index) {
+                        layer.close(index)
+                        delFloor(me.data('id'))
+                    }
+                });
+            })
+            $('.room-add').on('click', function() {
+                var me = $(this)
+                layer.open({
+                    title: '添加房间',
+                    type: 4,
+                    content: $('#add-room-temp').text().replace(/\[\#floor_id\]/g, me.data('id')),
+                    shadeClose: false,
+                    btn: ['确定', '取消'],
+                    yes: function(index) {
+                        var checkedRadio = $('.form-item [name="type"]:checked')
+                        var dataArray = $('.' + checkedRadio.attr('id')).serializeArray();
+                        var data = {house_id: '{$house_info.id}'};
+                        dataArray.forEach(function (val) {
+                            data[val.name] = val.value;
+                        })
+                        // layer.close(index);
+                        sendAjax({
+                            url: '{:U("Service/add_room")}',
+                            data: data
+                        })
+                    }
+                })
+                $(".form-item [name=type]").on('change', function(){
+                    $('.' + this.id).show().siblings('form').hide();
+                })
+            })
+            $('.room-del').on('click', function() {
+                $(this).siblings('.room-item[data-name]').toggleClass('show-del');
+            })
+            $('.room-item').on('click', function(e) {
+                var me = $(this)
+
+                if(!me.hasClass('show-del')){
+                    return;
+                }
+                e.preventDefault();
+                layer.open({
+                    title: '删除房间',
+                    content: '确认删除 “' + me.data('name') + '” 房间？',
+                    shadeClose: false,
+                    btn: ['确定', '取消'],
+                    yes: function(index) {
+                        var data = {room_id: me.data('id')};
+                        // layer.close(index);
+                        sendAjax({
+                            url: '{:U("Service/del_room")}',
+                            data: data
+                        })
+                    }
+                })
+            })
+            $('.bottom-btn').on('click', function() {
+                layer.open({
+                    title: '添加楼层',
+                    content: '<input id="floor-input" class="layer-input" placeholder="请输入楼层名称"/>',
+                    shadeClose: false,
+                    btn: ['确定', '取消'],
+                    yes: function(index) {
+                        var input = $('#floor-input');
+                        var value = $('#floor-input').val();
+                        if(value.length > 0){
+                            //layer.close(index);
+                            addFloor(value, index)
+                        } else {
+                            showToast('楼层名称不能为空')
+                        }
+                    }
+                })
+            })
+
+        });
+    </script>
+</block>
